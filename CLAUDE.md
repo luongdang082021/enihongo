@@ -11,6 +11,6 @@ Tài liệu đầy đủ nằm trong [`docs/`](docs/README.md). Trước khi là
 Tóm tắt các điểm quan trọng:
 
 - Trang tĩnh, không backend; giữ trang nhẹ ([`docs/planning/performance-budget.md`](docs/planning/performance-budget.md)).
-- Giao diện và giải thích bằng tiếng Việt; chữ Nhật giai đoạn đầu chỉ dùng hiragana.
+- Giao diện và giải thích bằng tiếng Việt (gốc `/`) và tiếng Anh (`/en/`, D-018); mọi chuỗi mới phải thêm vào cả hai ngôn ngữ (`src/_data/i18n.js`, `src/js/i18n/`). Chữ Nhật giai đoạn đầu chỉ dùng hiragana.
 - Nội dung tự biên soạn, không sao chép giáo trình in.
-- Mã nguồn trong `src/`, dựng bằng Eleventy (`npm run build:local`, `npm test`, `npm run size`), triển khai bằng GitHub Actions. Dojo ở `src/luyen-tap/index.njk` ([`docs/product/hiragana-dojo-spec.md`](docs/product/hiragana-dojo-spec.md)).
+- Mã nguồn trong `src/`, dựng bằng Eleventy (`npm run build:local`, `npm test`, `npm run size`; `tools/e2e-i18n.py` cho chọn ngôn ngữ), triển khai bằng GitHub Actions. Dojo ở `src/luyen-tap/index.njk` ([`docs/product/hiragana-dojo-spec.md`](docs/product/hiragana-dojo-spec.md)).

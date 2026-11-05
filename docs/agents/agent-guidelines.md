@@ -15,7 +15,7 @@ Trạng thái: đang dùng. Cập nhật: 2026-11-05.
 - Site là trang tĩnh trên GitHub Pages. Không thêm backend, tài khoản, bảng xếp hạng hay dịch vụ trả phí khi chưa có quyết định mới trong `decisions.md`.
 - Giữ trang nhẹ. Không thêm thư viện hay font ngoài khi chưa kiểm tra [`../planning/performance-budget.md`](../planning/performance-budget.md).
 - Không sao chép giáo trình in hay nội dung có bản quyền ([`../content/content-guidelines.md`](../content/content-guidelines.md)).
-- Giao diện và giải thích bằng tiếng Việt. Chữ Nhật trong bài giai đoạn đầu chỉ dùng hiragana.
+- Giao diện và giải thích bằng tiếng Việt và tiếng Anh (D-018). Mọi chuỗi giao diện mới thêm vào cả hai danh mục (`src/_data/i18n.js`, `src/js/i18n/vi.js` và `en.js`); `npm test` kiểm tra khớp khóa. Chữ Nhật trong bài giai đoạn đầu chỉ dùng hiragana.
 - Không đưa khóa bí mật, token hay dữ liệu cá nhân vào repo.
 - Mở rộng dựa trên cái đã có: engine quiz và dữ liệu của Dojo dùng chung cho bài học, không viết lại.
 

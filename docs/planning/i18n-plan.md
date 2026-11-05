@@ -2,7 +2,7 @@
 
 Tóm tắt: site có hai ngôn ngữ chính, tiếng Việt (mặc định, giữ nguyên URL hiện có) và tiếng Anh (dưới `/en/`); làm hạ tầng trước khi viết thêm khóa mới để không phải dịch lại về sau.
 
-Trạng thái: nháp kế hoạch. D-018 đã chốt (2026-11-06) kèm bổ sung chọn ngôn ngữ theo vị trí; một chi tiết (trang con) cần bạn xác nhận. Ưu tiên cao hơn khóa Katakana (nội dung) và giáo trình sơ cấp. Cập nhật: 2026-11-06.
+Trạng thái: hạ tầng và giao diện tiếng Anh đã làm (xem "Tiến độ triển khai"); bài học tiếng Anh chờ D-019. D-018 đã chốt (2026-11-06) kèm bổ sung chọn ngôn ngữ theo vị trí; một chi tiết (trang con) cần bạn xác nhận. Ưu tiên cao hơn khóa Katakana (nội dung) và giáo trình sơ cấp. Cập nhật: 2026-11-06.
 
 ## Mục tiêu
 
@@ -108,6 +108,24 @@ Dịch máy từng chữ không dùng được vì phần lớn lời giải th�
 6. Script chọn ngôn ngữ theo vị trí và gợi ý ở trang con; kiểm tra bằng Playwright với bốn trường hợp múi giờ và ngôn ngữ.
 7. Cập nhật kiểm tra, sitemap, Lighthouse cho hai ngôn ngữ.
 8. Từ lúc này mọi khóa mới (Katakana, sơ cấp) viết song ngữ ngay từ đầu.
+
+## Tiến độ triển khai (cập nhật 2026-11-06)
+
+| Bước | Trạng thái | Ghi chú |
+|---|---|---|
+| 2. Hạ tầng | Xong | Chuỗi trang ở `src/_data/i18n.js` (đối tượng JS, không phải JSON, để dùng chung cho hai ngôn ngữ trong một tệp); `src/_data/routes.json` ánh xạ URL; thân trang dùng chung ở `src/_includes/pages/*.njk`, trang tiếng Anh nằm ở `src/en/` với `lang: en` từ `src/en/en.json`. Lọc `route` và `l10n`. Đầu ra tiếng Việt chỉ khác ở `hreflang` và nút chuyển ngôn ngữ |
+| 3. Tách chuỗi JS | Xong | `src/js/i18n/{vi,en}.js`, `src/js/i18n.js` (`t`, `gloss`, `num`). Snapshot quiz tiếng Việt có seed trùng khớp trước và sau |
+| 4. Trang tiếng Anh | Xong phần giao diện | Trang chủ, khóa học, Hiragana, giới thiệu, Dojo, "sắp ra mắt". Danh sách bài tiếng Anh vẫn trỏ về bài tiếng Việt, kèm ghi chú |
+| 5. Bài học tiếng Anh | Chưa làm | Chờ D-019. Nghĩa từ tiếng Anh (`en`) đã có cho mọi từ trong bài |
+| 6. Chọn theo vị trí | Xong | `src/_includes/partials/lang-script.njk`; kiểm tra `tools/e2e-i18n.py` |
+| 7. Kiểm tra và đo | Một phần | `tools/check-i18n.mjs` nằm trong `npm test`; Lighthouse 100/100/96/100 (best-practices 96 do beacon bị chặn trong sandbox) cho `/`, `/en/`; `/en/practice/` hiệu năng 98 |
+
+Điểm khác với kế hoạch ban đầu:
+
+- Chuyển hướng tự động chỉ ở trang chủ (`/` và `/en/`); trang con chỉ hiện banner gợi ý (đề xuất của kế hoạch, chờ bạn xác nhận nếu muốn chuyển hướng cả trang con).
+- Bot (user agent chứa `bot`, `crawl`, `spider`, `slurp`, `lighthouse`, `preview`) không bị chuyển hướng.
+- Chưa có kiểm tra tự động tìm chữ có dấu tiếng Việt còn sót trong template và JavaScript ngoài danh mục (rủi ro ở bảng dưới); hiện kiểm tra bằng `tools/check-i18n.mjs` (danh mục, dữ liệu, câu hỏi) và `tools/e2e-i18n.py` (trang tiếng Anh).
+- Bài học (`lesson.njk`) vẫn chỉ có tiếng Việt, nên trang bài không có `hreflang`; nút chuyển ngôn ngữ ở bài dẫn về trang chủ bản kia.
 
 ## Rủi ro
 
