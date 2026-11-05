@@ -25,8 +25,9 @@ Quy ước: không sửa quyết định cũ; nếu đổi hướng thì thêm d
 | D-015 | 2026-11-06 | Giáo trình tự biên soạn, bám JF Standard và CEFR, không dùng nội dung sách in; đổi tên khóa N5 thành "Tiếng Nhật sơ cấp 1 và 2" | Hoãn (pending), xem [`../content/curriculum.md`](../content/curriculum.md) |
 | D-016 | 2026-11-06 | Nguồn dữ liệu nghĩa và âm đọc kanji | Hoãn (pending) |
 | D-017 | 2026-11-06 | Âm thanh cho khóa nghe và luyện JFT-Basic | Hoãn (pending) |
-| D-018 | 2026-11-06 | Hai ngôn ngữ Việt và Anh: tiếng Việt ở gốc, tiếng Anh dưới `/en/`, slug dịch, nút chuyển ngôn ngữ, mã bài và tiến độ dùng chung | Chờ chốt, xem [`i18n-plan.md`](i18n-plan.md) |
+| D-018 | 2026-11-06 | Hai ngôn ngữ Việt và Anh: tiếng Việt ở gốc, tiếng Anh dưới `/en/`, slug dịch, nút chuyển ngôn ngữ, mã bài và tiến độ dùng chung. Bổ sung: lần đầu chọn ngôn ngữ theo vị trí người dùng (Việt Nam thì tiếng Việt, nơi khác thì tiếng Anh; vị trí lấy từ múi giờ trình duyệt) | Đã chốt (2026-11-06); chi tiết áp dụng ở trang con chờ xác nhận, xem [`i18n-plan.md`](i18n-plan.md) |
 | D-019 | 2026-11-06 | Người duyệt bản tiếng Anh | Chờ chốt |
+| D-020 | 2026-11-06 | Tra IP bằng dịch vụ ngoài để xác định nước | Hoãn (pending) |
 
 ## Ghi chú cho D-002
 

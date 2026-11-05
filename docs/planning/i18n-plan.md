@@ -2,7 +2,7 @@
 
 Tóm tắt: site có hai ngôn ngữ chính, tiếng Việt (mặc định, giữ nguyên URL hiện có) và tiếng Anh (dưới `/en/`); làm hạ tầng trước khi viết thêm khóa mới để không phải dịch lại về sau.
 
-Trạng thái: nháp kế hoạch, quyết định D-018 chờ chốt. Ưu tiên cao hơn khóa Katakana (nội dung) và giáo trình sơ cấp. Cập nhật: 2026-11-06.
+Trạng thái: nháp kế hoạch. D-018 đã chốt (2026-11-06) kèm bổ sung chọn ngôn ngữ theo vị trí; một chi tiết (trang con) cần bạn xác nhận. Ưu tiên cao hơn khóa Katakana (nội dung) và giáo trình sơ cấp. Cập nhật: 2026-11-06.
 
 ## Mục tiêu
 
@@ -18,9 +18,40 @@ Trạng thái: nháp kế hoạch, quyết định D-018 chờ chốt. Ưu tiên
 | Ngôn ngữ mặc định | Tiếng Việt, ở gốc `/enihongo/` | Giữ nguyên mọi đường dẫn đã chia sẻ và đã được lập chỉ mục |
 | Tiếng Anh | Dưới `/enihongo/en/` | Một cây thư mục riêng, dễ dựng và dễ cache |
 | Slug | Dịch theo ngôn ngữ: `/khoa-hoc/hiragana/bai-02-hang-a/` và `/en/courses/hiragana/lesson-02-a-row/` | Tốt cho SEO và người đọc; ánh xạ qua `translationKey` |
-| Chọn ngôn ngữ | Nút chuyển ở đầu trang, nhớ lựa chọn trong `localStorage`; không tự chuyển hướng theo trình duyệt, chỉ hiện gợi ý một dòng nếu ngôn ngữ trình duyệt khác trang đang xem | Tránh nhảy trang bất ngờ, không ảnh hưởng bot tìm kiếm |
+| Chọn ngôn ngữ | Nút chuyển ở đầu trang, nhớ lựa chọn trong `localStorage`. Lần đầu (chưa có lựa chọn) chọn theo vị trí người dùng: Việt Nam thì tiếng Việt, nơi khác thì tiếng Anh. Xem mục "Chọn ngôn ngữ theo vị trí" | Đúng yêu cầu: mặc định theo vị trí, người dùng luôn tự đổi được |
 | Mã bài và tiến độ | `hiragana-02` không đổi theo ngôn ngữ | Tiến độ và điểm cao dùng chung |
 | Nội dung bài | Mỗi ngôn ngữ một tệp `.md` riêng, chung `translationKey`; dữ liệu chữ (`chars.k`, `chars.r`) và từ (`kana`, `romaji`) viết một lần, văn bản giải thích viết riêng | Văn bản không dịch từng chữ được (xem mục "Nội dung") |
+
+## Chọn ngôn ngữ theo vị trí
+
+Yêu cầu (2026-11-06): người dùng ở Việt Nam thấy tiếng Việt, mọi nơi khác thấy tiếng Anh.
+
+**Thứ tự ưu tiên khi quyết định ngôn ngữ**
+
+1. Lựa chọn rõ ràng của người dùng (nút chuyển ngôn ngữ), lưu trong `localStorage` khóa `enihongo:lang`.
+2. Tham số `?lang=vi` hoặc `?lang=en` trong liên kết (dùng khi chia sẻ).
+3. Vị trí của người dùng (bên dưới).
+4. Không xác định được thì dùng tiếng Việt.
+
+**Cách xác định vị trí.** Site tĩnh không có máy chủ nên không đọc được địa chỉ IP. Dùng tín hiệu có sẵn ở trình duyệt, không gọi dịch vụ ngoài:
+
+- Múi giờ: `Intl.DateTimeFormat().resolvedOptions().timeZone` là `Asia/Ho_Chi_Minh` hoặc `Asia/Saigon` thì coi là Việt Nam.
+- Nếu không đọc được múi giờ: `navigator.languages` có `vi` thì coi là Việt Nam, ngược lại tiếng Anh.
+- Không lưu vị trí, chỉ lưu ngôn ngữ được chọn; không gửi gì đi đâu.
+
+**Vì sao không tra IP.** Tra IP chính xác hơn nhưng cần gọi dịch vụ bên thứ ba: gửi địa chỉ IP của người học ra ngoài (phải công bố ở trang giới thiệu), thêm một lần gọi mạng và một điểm có thể lỗi trước khi hiện được trang. Đề xuất để dành, hỏi lại nếu thấy múi giờ sai nhiều (D-020).
+
+**Giới hạn đã biết.** Người Việt đang ở nước ngoài hoặc dùng VPN và đặt múi giờ nơi khác sẽ thấy tiếng Anh lần đầu; người nước ngoài dùng múi giờ Việt Nam sẽ thấy tiếng Việt. Nút chuyển ngôn ngữ phải thấy rõ ở đầu mọi trang, và lựa chọn được nhớ nên chỉ phải đổi một lần.
+
+**Khi nào áp dụng.**
+
+- Trang chủ (`/` và `/en/`), lần đầu chưa có lựa chọn: một đoạn script nhỏ chạy ngay đầu trang (trước khi vẽ nội dung, để không nháy) chuyển hướng bằng `location.replace` tới bản đúng ngôn ngữ.
+- Trang con (bài học, khóa học, Dojo): giữ ngôn ngữ của đường dẫn, và hiện một dòng gợi ý "Xem bằng tiếng Anh?" (hoặc ngược lại) nếu lệch với vị trí. Lý do: liên kết được chia sẻ và kết quả tìm kiếm cần mở đúng ngôn ngữ đã ghi trong liên kết. **Cần bạn xác nhận**: nếu muốn chuyển hướng cả trang con thì đổi thành luôn chuyển, chấp nhận rủi ro bên dưới.
+- Bot tìm kiếm (user agent chứa `bot`, `crawl`, `spider`...) không bị chuyển hướng; hai bản ngôn ngữ đều đọc được không cần JavaScript và có `hreflang`, `x-default` trỏ về tiếng Việt.
+
+**Rủi ro SEO nếu chuyển hướng theo vị trí.** Trình thu thập của công cụ tìm kiếm thường chạy từ múi giờ nước ngoài; nếu bị chuyển hướng, bản tiếng Việt có thể mất khỏi chỉ mục. Biện pháp: bỏ qua chuyển hướng với bot, chỉ chuyển ở trang chủ, giữ `hreflang` hai chiều.
+
+**Kiểm tra.** Playwright đặt `timezoneId` và `locale` cho bốn trường hợp (Việt Nam; Mỹ; múi giờ lạ kèm ngôn ngữ `vi`; đã có lựa chọn lưu sẵn trái với vị trí) và xác nhận ngôn ngữ cuối cùng, không có vòng chuyển hướng, bot không bị chuyển, nút chuyển ngôn ngữ ghi đè được.
 
 ## Phạm vi công việc
 
@@ -32,6 +63,7 @@ Trạng thái: nháp kế hoạch, quyết định D-018 chờ chốt. Ưu tiên
 - Thẻ `hreflang` cho từng cặp trang, `x-default` trỏ về tiếng Việt; `canonical` trỏ về chính trang đó.
 - `sitemap.xml` liệt kê cả hai ngôn ngữ kèm `xhtml:link` thay thế; `manifest.webmanifest` theo ngôn ngữ (hoặc bản chung).
 - Trang 404: một trang, hiện cả hai ngôn ngữ.
+- Script chọn ngôn ngữ theo vị trí (xem mục trên) nhúng ở `<head>` của trang chủ, kích thước khoảng 1 KB.
 - Service worker: không đổi, cache theo URL.
 
 ### 2. Chuỗi trong JavaScript
@@ -68,13 +100,14 @@ Dịch máy từng chữ không dùng được vì phần lớn lời giải th�
 
 ## Trình tự làm việc
 
-1. Chốt D-018.
+1. (Xong) Chốt D-018.
 2. Dựng hạ tầng: cấu trúc `vi` và `en`, `permalink`, layout đọc chuỗi từ danh mục, nút chuyển ngôn ngữ, `hreflang`. Trang tiếng Việt phải giữ nguyên URL và nội dung (so sánh đầu ra trước và sau).
 3. Tách chuỗi giao diện trong HTML và JavaScript sang danh mục tiếng Việt; chưa thêm tiếng Anh, chạy `npm test` để chắc không đổi hành vi.
 4. Thêm danh mục tiếng Anh và trang tiếng Anh cho phần giao diện (trang chủ, khóa học, giới thiệu, Dojo).
 5. Viết bản tiếng Anh cho bài 1 đến 3 để duyệt văn phong; sau đó các bài còn lại.
-6. Cập nhật kiểm tra, sitemap, Lighthouse cho hai ngôn ngữ.
-7. Từ lúc này mọi khóa mới (Katakana, sơ cấp) viết song ngữ ngay từ đầu.
+6. Script chọn ngôn ngữ theo vị trí và gợi ý ở trang con; kiểm tra bằng Playwright với bốn trường hợp múi giờ và ngôn ngữ.
+7. Cập nhật kiểm tra, sitemap, Lighthouse cho hai ngôn ngữ.
+8. Từ lúc này mọi khóa mới (Katakana, sơ cấp) viết song ngữ ngay từ đầu.
 
 ## Rủi ro
 
@@ -86,9 +119,10 @@ Dịch máy từng chữ không dùng được vì phần lớn lời giải th�
 | Khối lượng nội dung tăng gấp đôi | Dữ liệu chữ và từ dùng chung; chỉ văn bản giải thích viết hai lần |
 | Quá tải bảo trì khi thêm khóa | Quy trình song ngữ ngay từ đầu, bài thiếu bản dịch ở trạng thái `draft` |
 
-## Quyết định đang chờ
+## Quyết định
 
 | Mã | Câu hỏi | Đề xuất |
 |---|---|---|
-| D-018 | Cấu trúc URL và cách chọn ngôn ngữ như bảng "Quyết định thiết kế đề xuất" | Chốt như đề xuất |
-| D-019 | Ai duyệt bản tiếng Anh | Chọn người trước khi bắt đầu bước 5 |
+| D-018 | Cấu trúc URL và cách chọn ngôn ngữ như bảng "Quyết định thiết kế đề xuất", gồm chọn theo vị trí | Đã chốt (2026-11-06) |
+| D-020 | Tra IP để xác định nước thay cho múi giờ | Hoãn, xem lại nếu múi giờ sai nhiều |
+| D-019 | Ai duyệt bản tiếng Anh | Chờ chốt, cần có trước bước 5 |
