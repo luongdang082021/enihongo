@@ -20,7 +20,7 @@ Trạng thái: nháp, các ngưỡng là mục tiêu ban đầu và có thể ch
 2. **Không framework nặng.** JavaScript thuần; chia code theo trang; dùng `import()` cho engine quiz.
 3. **SVG.** Mọi hình là SVG nhỏ hoặc CSS. Thứ tự nét tải theo từng chữ khi cần.
 4. **Cache.** GitHub Pages đặt cache ngắn và không cho chỉnh header, nên file CSS và JS có hash trong tên để cache lâu an toàn.
-5. **PWA.** Service worker cache ưu tiên cho file có hash, giúp học offline. Cần chiến lược cập nhật rõ để không giữ bản cũ.
+5. **PWA.** Đã làm: service worker ưu tiên mạng, chỉ dùng bản đã lưu khi mất mạng. Không dùng cache-first vì các module JS import không có hash trong tên, cache-first sẽ giữ bản cũ.
 6. **DOM gọn.** Danh sách dài dùng `content-visibility: auto`.
 7. **Giữ ngân sách trong CI.** Có thể thêm Lighthouse CI hoặc một script kiểm tra kích thước file sau build.
 

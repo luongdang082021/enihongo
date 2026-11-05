@@ -1,0 +1,20 @@
+---
+permalink: manifest.webmanifest
+eleventyExcludeFromCollections: true
+---
+{
+  "name": "enihongo - học tiếng Nhật",
+  "short_name": "enihongo",
+  "description": "{{ site.tagline }}",
+  "lang": "vi",
+  "start_url": "{{ '/' | url }}",
+  "scope": "{{ '/' | url }}",
+  "display": "standalone",
+  "background_color": "#EBEFF5",
+  "theme_color": "#2748B8",
+  "icons": [
+    { "src": "{{ '/icons/icon-192.png' | url }}", "sizes": "192x192", "type": "image/png" },
+    { "src": "{{ '/icons/icon-512.png' | url }}", "sizes": "512x512", "type": "image/png" },
+    { "src": "{{ '/icons/icon.svg' | url }}", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

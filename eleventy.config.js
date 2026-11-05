@@ -8,7 +8,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     'src/css': 'css',
     'src/js': 'js',
-    'src/fonts': 'fonts'
+    'src/fonts': 'fonts',
+    'src/icons': 'icons'
   });
 
   // Gắn ?v=<hash nội dung> vào CSS/JS để trình duyệt tải lại khi file đổi.

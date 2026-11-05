@@ -10,7 +10,7 @@ Trạng thái: nháp. Cập nhật: 2026-11-05.
 - Open Graph và Twitter Card cho từng bài, kèm ảnh xem trước (SVG chuyển sang PNG khi build, nếu cần).
 - `sitemap.xml` và `robots.txt`.
 - URL thật cho từng bài (không dùng hash routing).
-- Dữ liệu có cấu trúc (JSON-LD `Course`) có thể thêm sau.
+- Dữ liệu có cấu trúc: JSON-LD `WebSite` ở trang chủ và `Course` ở khóa Hiragana (đã làm). Ảnh xem trước dùng biểu tượng 512 px.
 
 ## Đo lường
 
