@@ -14,7 +14,7 @@ Trạng thái: nháp. Cập nhật: 2026-11-05.
 
 ## Đo lường
 
-- Dùng công cụ nhẹ, không cookie: GoatCounter hoặc Cloudflare Web Analytics. Chọn một và ghi vào `decisions.md`.
+- Dùng Cloudflare Web Analytics (không cookie), đã chốt ở D-010. Mã nhúng nằm trong `base.njk`, chỉ xuất hiện khi `cfBeaconToken` trong `src/_data/site.json` có giá trị. Lấy token: Cloudflare dashboard, Web Analytics, thêm site `luongdang082021.github.io` (chế độ không cần đổi DNS), sao chép token trong đoạn mã.
 - Câu hỏi cần trả lời: bài nào được xem nhiều, bài nào bỏ dở, thiết bị nào phổ biến.
 - Ghi rõ trong trang giới thiệu rằng site không dùng cookie theo dõi.
 
@@ -26,4 +26,4 @@ Trạng thái: nháp. Cập nhật: 2026-11-05.
 ## Chia sẻ
 
 - Nút chia sẻ dùng link thường, không nhúng script mạng xã hội.
-- Thẻ "Sắp ra mắt" có thể dẫn sang repo GitHub để người dùng Star hoặc Watch (D-007).
+- Thẻ "Sắp ra mắt" không dẫn đi đâu (D-007).

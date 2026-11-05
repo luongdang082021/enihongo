@@ -46,6 +46,7 @@
   </div>
 </footer>
 <script>if("serviceWorker"in navigator)addEventListener("load",function(){navigator.serviceWorker.register("{{ '/sw.js' | url }}").catch(function(){})})</script>
+{% if site.cfBeaconToken %}<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ site.cfBeaconToken }}"}'></script>{% endif %}
 {% if script %}<script type="module" src="{{ script | asset }}"></script>{% endif %}
 </body>
 </html>

@@ -14,10 +14,10 @@ Quy ước: không sửa quyết định cũ; nếu đổi hướng thì thêm d
 | D-004 | 2026-11-05 | Nội dung tự biên soạn, không sao chép giáo trình in | Đã chốt |
 | D-005 | 2026-11-05 | Cách dựng trang: Eleventy 3 + GitHub Actions (không dùng HTML viết tay) | Đã chốt (2026-11-05) |
 | D-006 | 2026-11-05 | Đường dẫn: giữ `luongdang082021.github.io/enihongo/`, chưa mua tên miền | Đã chốt (2026-11-05, theo giả định; đổi được sau bằng biến `PATH_PREFIX`) |
-| D-007 | 2026-11-05 | Thẻ "Sắp ra mắt" dẫn tới đâu: repo GitHub (Star/Watch), Google Form, hoặc không dẫn | Chờ chốt |
+| D-007 | 2026-11-05 | Thẻ "Sắp ra mắt" không dẫn đi đâu (không link, không form) | Đã chốt (2026-11-05) |
 | D-008 | 2026-11-05 | Giai đoạn 1: dựng khung và 3 bài mẫu (bài 1–3) để duyệt, rồi mới viết các bài còn lại | Đã chốt (2026-11-05) |
 | D-009 | 2026-11-05 | Tiến độ học lưu bằng `localStorage`, có xuất/nhập JSON; không có tài khoản | Đề xuất |
-| D-010 | 2026-11-05 | Analytics: chọn GoatCounter hoặc Cloudflare Web Analytics | Chờ chốt |
+| D-010 | 2026-11-05 | Analytics: Cloudflare Web Analytics (không cookie). Chỉ bật khi điền token vào `src/_data/site.json` (`cfBeaconToken`) | Đã chốt (2026-11-05); chờ token |
 
 ## Ghi chú cho D-002
 

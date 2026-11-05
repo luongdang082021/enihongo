@@ -2,5 +2,6 @@
   "name": "enihongo",
   "tagline": "Học tiếng Nhật miễn phí, từ chữ cái đầu tiên",
   "origin": "https://luongdang082021.github.io",
-  "repo": "https://github.com/luongdang082021/enihongo"
+  "repo": "https://github.com/luongdang082021/enihongo",
+  "cfBeaconToken": ""
 }
