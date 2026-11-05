@@ -14,23 +14,23 @@ Trạng thái: đang dùng. Cập nhật: 2026-11-05.
 
 ## Giai đoạn 1: việc cần làm
 
-- [ ] Chốt cách dựng trang (xem D-005 trong [`decisions.md`](decisions.md))
-- [ ] Chốt đường dẫn gốc (D-006)
-- [ ] Hệ thống thiết kế: màu, font, khoảng cách, chế độ sáng và tối
-- [ ] Trang chủ và `/khoa-hoc/`
-- [ ] Thẻ khóa "Sắp ra mắt" cho 5 khóa chưa mở
-- [ ] Tự host font đã cắt gọn
-- [ ] Tách engine quiz thành module dùng chung (dữ liệu chữ và từ ra file riêng)
-- [ ] Đưa bộ kiểm tra mô phỏng câu hỏi vào `tools/`
+- [x] Chốt cách dựng trang (xem D-005 trong [`decisions.md`](decisions.md))
+- [x] Chốt đường dẫn gốc (D-006)
+- [x] Hệ thống thiết kế: màu, font, khoảng cách, chế độ sáng và tối
+- [x] Trang chủ và `/khoa-hoc/`
+- [x] Thẻ khóa "Sắp ra mắt" cho 5 khóa chưa mở
+- [x] Tự host font đã cắt gọn
+- [x] Tách engine quiz thành module dùng chung (dữ liệu chữ và từ ra file riêng)
+- [x] Đưa bộ kiểm tra mô phỏng câu hỏi vào `tools/`
 - [ ] Đo Lighthouse làm mốc ban đầu
 
 ## Giai đoạn 2: việc cần làm
 
-- [ ] Mẫu bài học ([`../content/lesson-template.md`](../content/lesson-template.md)) và 3 bài mẫu để duyệt phong cách
+- [x] Mẫu bài học ([`../content/lesson-template.md`](../content/lesson-template.md)) và 3 bài mẫu để duyệt phong cách
 - [ ] Viết nốt các bài còn lại theo [`../content/hiragana-course-outline.md`](../content/hiragana-course-outline.md)
-- [ ] Flashcard lặp lại ngắt quãng đơn giản, lưu bằng `localStorage`
-- [ ] Mini quiz 10 câu cho mỗi bài
-- [ ] Tiến độ học và nút xuất/nhập JSON
+- [x] Flashcard lặp lại ngắt quãng đơn giản, lưu bằng `localStorage`
+- [x] Mini quiz 10 câu cho mỗi bài
+- [x] Tiến độ học và nút xuất/nhập JSON
 
 ## Giai đoạn 3 và 4
 

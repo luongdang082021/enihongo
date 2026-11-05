@@ -12,10 +12,10 @@ Quy ước: không sửa quyết định cũ; nếu đổi hướng thì thêm d
 | D-002 | 2026-11-05 | Bỏ bảng xếp hạng và backend ở giai đoạn này. Đề xuất cũ giữ ở [`archive/leaderboard-proposal.md`](archive/leaderboard-proposal.md) | Đã chốt |
 | D-003 | 2026-11-05 | Chiến lược: miễn phí, chia sẻ rộng, phân cấp khóa học; chỉ mở khóa cơ bản, các khóa khác "Sắp ra mắt" | Đã chốt |
 | D-004 | 2026-11-05 | Nội dung tự biên soạn, không sao chép giáo trình in | Đã chốt |
-| D-005 | 2026-11-05 | Cách dựng trang: (a) bộ tạo trang tĩnh nhỏ như Eleventy + GitHub Actions, hoặc (b) HTML viết tay không build. Đề xuất (a) | Chờ chốt |
-| D-006 | 2026-11-05 | Đường dẫn: giữ `github.io/enihongo/` hay mua tên miền riêng | Chờ chốt |
+| D-005 | 2026-11-05 | Cách dựng trang: Eleventy 3 + GitHub Actions (không dùng HTML viết tay) | Đã chốt (2026-11-05) |
+| D-006 | 2026-11-05 | Đường dẫn: giữ `luongdang082021.github.io/enihongo/`, chưa mua tên miền | Đã chốt (2026-11-05, theo giả định; đổi được sau bằng biến `PATH_PREFIX`) |
 | D-007 | 2026-11-05 | Thẻ "Sắp ra mắt" dẫn tới đâu: repo GitHub (Star/Watch), Google Form, hoặc không dẫn | Chờ chốt |
-| D-008 | 2026-11-05 | Cách làm giai đoạn 1: dựng khung và 3 bài mẫu rồi xem, hay xem mẫu giao diện trước | Chờ chốt |
+| D-008 | 2026-11-05 | Giai đoạn 1: dựng khung và 3 bài mẫu (bài 1–3) để duyệt, rồi mới viết các bài còn lại | Đã chốt (2026-11-05) |
 | D-009 | 2026-11-05 | Tiến độ học lưu bằng `localStorage`, có xuất/nhập JSON; không có tài khoản | Đề xuất |
 | D-010 | 2026-11-05 | Analytics: chọn GoatCounter hoặc Cloudflare Web Analytics | Chờ chốt |
 

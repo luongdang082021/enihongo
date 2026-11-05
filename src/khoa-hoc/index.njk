@@ -1,0 +1,20 @@
+---
+layout: layouts/base.njk
+title: Khóa học
+description: Các khóa học tiếng Nhật trên enihongo. Hiện đang mở khóa Nhập môn Hiragana, các khóa khác sắp ra mắt.
+---
+<div class="wrap">
+  <header class="page-head">
+    <h1>Khóa học</h1>
+    <p class="lede">Học theo thứ tự từ cơ bản đến nâng cao. Khóa đầu tiên đã mở, các khóa sau sẽ lần lượt ra mắt.</p>
+  </header>
+  <div class="cards">
+    {% for c in courses %}
+      {% if c.status == 'open' %}
+      <a class="course open" href="{{ c.url | url }}"><span class="badge go">Đang mở</span><h3>{{ c.name }}</h3><p>{{ c.blurb }}</p><p>{{ c.meta }}</p></a>
+      {% else %}
+      <div class="course soon"><span class="badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2zm-7-2a2 2 0 0 1 4 0v2h-4V7z"/></svg>Sắp ra mắt</span><h3>{{ c.name }}</h3><p>{{ c.blurb }}</p></div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

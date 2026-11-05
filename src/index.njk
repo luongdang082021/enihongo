@@ -1,0 +1,41 @@
+---
+layout: layouts/base.njk
+title: Học tiếng Nhật miễn phí
+description: Học tiếng Nhật miễn phí cho người Việt, bắt đầu từ bảng chữ Hiragana. Không cần đăng ký, học ngay trên điện thoại.
+---
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Miễn phí · không cần đăng ký</p>
+    <h1>Học tiếng Nhật từ chữ cái đầu tiên</h1>
+    <p class="lede">Bài học ngắn bằng tiếng Việt, mỗi bài khoảng 10 phút. Học xong thì luyện bằng quiz để nhớ chữ.</p>
+    <div class="cta">
+      <a class="btn primary" href="{{ '/khoa-hoc/hiragana/' | url }}">Bắt đầu học Hiragana</a>
+      <a class="btn" href="{{ '/luyen-tap/hiragana-dojo/' | url }}">Chơi thử Hiragana Dojo</a>
+    </div>
+    <div class="cells hero-cells" style="--s:84px" aria-hidden="true">
+      <span class="cell">あ</span><span class="cell">い</span><span class="cell">う</span><span class="cell">え</span><span class="cell">お</span>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-courses">
+    <h2 id="h-courses">Các khóa học</h2>
+    <div class="cards">
+      {% for c in courses %}
+        {% if c.status == 'open' %}
+        <a class="course open" href="{{ c.url | url }}"><span class="badge go">Đang mở</span><h3>{{ c.name }}</h3><p>{{ c.blurb }}</p><p>{{ c.meta }}</p></a>
+        {% else %}
+        <div class="course soon"><span class="badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2zm-7-2a2 2 0 0 1 4 0v2h-4V7z"/></svg>Sắp ra mắt</span><h3>{{ c.name }}</h3><p>{{ c.blurb }}</p></div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-practice">
+    <h2 id="h-practice">Luyện tập</h2>
+    <div class="practice">
+      <h3>Hiragana Dojo</h3>
+      <p>Game quiz 5 hiệp, mỗi hiệp 20 câu: chữ cơ bản, âm đục, âm ghép, trường âm và âm ngắt.</p>
+      <div><a class="btn" href="{{ '/luyen-tap/hiragana-dojo/' | url }}">Vào Dojo</a></div>
+    </div>
+  </section>
+</div>

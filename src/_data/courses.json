@@ -1,0 +1,40 @@
+[
+  {
+    "id": "hiragana",
+    "name": "Nhập môn Hiragana",
+    "status": "open",
+    "blurb": "Bảng chữ cái đầu tiên của tiếng Nhật: từ nguyên âm đến âm ghép, trường âm và âm ngắt.",
+    "meta": "14 bài · khoảng 10 phút mỗi bài",
+    "url": "/khoa-hoc/hiragana/"
+  },
+  {
+    "id": "katakana",
+    "name": "Katakana",
+    "status": "soon",
+    "blurb": "Bảng chữ dùng cho từ mượn và tên nước ngoài."
+  },
+  {
+    "id": "n5",
+    "name": "Ngữ pháp và từ vựng sơ cấp (N5)",
+    "status": "soon",
+    "blurb": "Câu cơ bản và từ vựng thường gặp."
+  },
+  {
+    "id": "kanji",
+    "name": "Kanji cơ bản",
+    "status": "soon",
+    "blurb": "Những chữ Hán thường gặp đầu tiên."
+  },
+  {
+    "id": "giao-tiep-jft",
+    "name": "Giao tiếp và luyện JFT-Basic",
+    "status": "soon",
+    "blurb": "Tình huống giao tiếp hằng ngày và làm quen dạng đề."
+  },
+  {
+    "id": "luyen-nghe",
+    "name": "Luyện nghe",
+    "status": "soon",
+    "blurb": "Nghe và nhận diện từ, câu ngắn."
+  }
+]

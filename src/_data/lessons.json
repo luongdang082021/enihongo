@@ -1,0 +1,16 @@
+[
+  { "n": 1, "id": "hiragana-01", "slug": "bai-01-lam-quen", "title": "Làm quen", "summary": "Ba bộ chữ, khái niệm nhịp và cách học khóa này.", "state": "ready" },
+  { "n": 2, "id": "hiragana-02", "slug": "bai-02-hang-a", "title": "Hàng あ", "summary": "Năm nguyên âm あ い う え お.", "state": "ready" },
+  { "n": 3, "id": "hiragana-03", "slug": "bai-03-hang-ka-sa", "title": "Hàng か và さ", "summary": "Mười chữ か き く け こ さ し す せ そ.", "state": "ready" },
+  { "n": 4, "id": "hiragana-04", "slug": "bai-04-hang-ta-na", "title": "Hàng た và な", "summary": "た ち つ て と, な に ぬ ね の.", "state": "soon" },
+  { "n": 5, "id": "hiragana-05", "slug": "bai-05-hang-ha-ma", "title": "Hàng は và ま", "summary": "は ひ ふ へ ほ, ま み む め も.", "state": "soon" },
+  { "n": 6, "id": "hiragana-06", "slug": "bai-06-hang-ya-ra", "title": "Hàng や và ら", "summary": "や ゆ よ, ら り る れ ろ.", "state": "soon" },
+  { "n": 7, "id": "hiragana-07", "slug": "bai-07-wa-wo-n", "title": "わ, を và ん", "summary": "Ba chữ cuối của bảng chữ.", "state": "soon" },
+  { "n": 8, "id": "hiragana-08", "slug": "bai-08-am-duc", "title": "Âm đục và bán đục", "summary": "Dấu ゛ và ゜: が ざ だ ば ぱ.", "state": "soon" },
+  { "n": 9, "id": "hiragana-09", "slug": "bai-09-am-ghep", "title": "Âm ghép", "summary": "ゃ ゅ ょ nhỏ gộp thành một nhịp.", "state": "soon" },
+  { "n": 10, "id": "hiragana-10", "slug": "bai-10-truong-am", "title": "Trường âm", "summary": "Nguyên âm kéo dài: おかあさん, せんせい.", "state": "soon" },
+  { "n": 11, "id": "hiragana-11", "slug": "bai-11-am-ngat", "title": "Âm ngắt", "summary": "っ nhỏ làm đôi phụ âm: がっこう.", "state": "soon" },
+  { "n": 12, "id": "hiragana-12", "slug": "bai-12-nhung-tu-dau-tien", "title": "Những từ đầu tiên", "summary": "Câu chào và tự giới thiệu.", "state": "soon" },
+  { "n": 13, "id": "hiragana-13", "slug": "bai-13-on-tap", "title": "Ôn tập tổng hợp", "summary": "Mini quiz dài và danh sách chữ hay nhầm.", "state": "soon" },
+  { "n": 14, "id": "hiragana-14", "slug": "", "title": "Hiragana Dojo", "summary": "Game luyện tập 5 hiệp × 20 câu.", "state": "dojo", "url": "/luyen-tap/hiragana-dojo/" }
+]

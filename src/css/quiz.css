@@ -1,0 +1,81 @@
+/* Giao diện quiz dùng chung cho Hiragana Dojo và mini quiz trong bài học. */
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.rtitle{flex:1;min-width:0;text-align:center;font-weight:700;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.score{font-weight:700;font-variant-numeric:tabular-nums;min-width:4.5em;text-align:right}
+.segs{display:grid;gap:3px;margin:8px 0 6px}
+.segs i{height:6px;border-radius:2px;background:var(--line)}
+.segs i.cur{background:var(--accent)}
+.segs i.ok{background:var(--good)}
+.segs i.no{background:var(--bad)}
+.meta{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums;min-height:20px}
+.meta .combo{color:var(--accent);font-weight:700}
+.qcard{background:var(--card);border:1.5px solid var(--line);border-radius:10px;padding:18px 16px;margin-top:12px;display:grid;gap:16px}
+.tag{justify-self:start;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);border:1.5px solid var(--accent);padding:2px 8px;border-radius:4px}
+.prompt{font-size:18px;font-weight:600;text-wrap:balance}
+.stage{display:grid;gap:10px;justify-items:center}
+.romaji{font-family:var(--kana);font-weight:900;font-size:clamp(40px,13vw,64px);line-height:1.15;letter-spacing:.02em;padding:10px 22px;border:1.5px solid var(--grid);border-radius:4px;background:var(--paper);text-align:center;overflow-wrap:anywhere;max-width:100%}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt,.mbtn{position:relative;min-width:0;min-height:68px;padding:10px 12px;background:var(--card);border:1.5px solid var(--line);border-radius:8px;font-family:var(--ui);font-weight:600;font-size:22px;line-height:1.2;overflow-wrap:anywhere;color:var(--ink)}
+.opt.kana,.mbtn.kana{font-family:var(--kana);font-weight:700;font-size:30px}
+.opt.kana.long{font-size:23px}
+.opt .k{position:absolute;top:4px;left:8px;font:600 11px var(--ui);color:var(--ink-2)}
+.opt:not(:disabled):hover,.mbtn:not(:disabled):hover{border-color:var(--accent)}
+.opt:disabled{cursor:default}
+.opt:disabled:not(.good):not(.bad){opacity:.55}
+.opt.good,.mbtn.done{background:var(--good-bg);border-color:var(--good);color:var(--good)}
+.opt.bad{background:var(--bad-bg);border-color:var(--bad);color:var(--bad)}
+.opt.good::after{content:"✓";position:absolute;top:4px;right:9px;font-size:14px}
+.opt.bad::after{content:"✕";position:absolute;top:4px;right:9px;font-size:14px}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.match .col{display:grid;gap:8px;align-content:start}
+.mbtn{min-height:56px}
+.mbtn.kana{font-size:28px}
+.mbtn.sel{border-color:var(--accent);box-shadow:inset 0 0 0 2px var(--accent)}
+.mbtn.shake{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.typeform{display:grid;gap:10px}
+.typeform input{width:100%;font:600 28px var(--ui);text-align:center;padding:12px;border:1.5px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.typeform input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.typeform input.good{border-color:var(--good);background:var(--good-bg);color:var(--good);box-shadow:none}
+.typeform input.bad{border-color:var(--bad);background:var(--bad-bg);color:var(--bad);box-shadow:none}
+.fb{display:grid;gap:8px;padding:12px 14px;border-radius:8px;border:1.5px solid;font-size:14px}
+.fb.good{background:var(--good-bg);border-color:var(--good)}
+.fb.bad{background:var(--bad-bg);border-color:var(--bad)}
+.fb strong{font-size:16px}
+.fb.good strong{color:var(--good)}
+.fb.bad strong{color:var(--bad)}
+.fb .ans{font-family:var(--kana);font-size:18px}
+.fb .ex b{font-family:var(--kana)}
+.fb .mm{font-family:var(--kana);letter-spacing:.08em;color:var(--ink-2)}
+.fb .btn{justify-self:stretch}
+
+/* kết quả */
+.res{display:grid;gap:18px}
+.res h2{font-family:var(--kana);font-weight:900;font-size:28px;line-height:1.2}
+.bigscore{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.big{font-family:var(--kana);font-weight:900;font-size:64px;line-height:1;font-variant-numeric:tabular-nums}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.stat{padding:10px 12px;border:1.5px solid var(--line);border-radius:8px;background:var(--card)}
+.stat b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--ink-2)}
+.res h3{font-size:14px;font-weight:700;color:var(--ink-2)}
+.miss{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.miss li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:8px 12px;border:1.5px solid var(--line);border-radius:8px;background:var(--card);font-size:14px}
+.miss .t{color:var(--ink-2);font-size:12px;flex:none}
+.miss .a{font-family:var(--kana);font-weight:700;text-align:right;overflow-wrap:anywhere}
+.actions{display:grid;gap:10px}
+.newbest{color:var(--accent);font-weight:700}
+
+/* menu các hiệp của Dojo */
+.ladder{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.rung{width:100%;display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:14px;align-items:center;text-align:left;padding:14px 16px 14px 10px;background:var(--card);border:1.5px solid var(--line);border-radius:10px}
+.rung:hover{border-color:var(--accent)}
+.num{font-family:var(--kana);font-weight:900;font-size:40px;line-height:1;color:var(--accent);text-align:center}
+.rbody{display:grid;gap:2px;min-width:0}
+.rname{font-weight:700;font-size:16px}
+.sub{color:var(--ink-2);font-size:13px}
+.chips{font-family:var(--kana);font-weight:500;font-size:18px;letter-spacing:.06em;overflow-wrap:anywhere}
+.best{display:grid;gap:3px;justify-items:end;font-size:12px;color:var(--ink-2);text-align:right}
+.best b{font-size:18px;color:var(--ink);font-variant-numeric:tabular-nums}
+.foot-note{margin-top:18px;color:var(--ink-2);font-size:13px;display:grid;gap:4px}
+.foot-note b{color:var(--ink)}

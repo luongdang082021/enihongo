@@ -1,0 +1,72 @@
+---
+layout: layouts/base.njk
+quiz: true
+script: /js/lesson.js
+---
+{% set prev = lessons[n - 2] if n > 1 else null %}
+{% set next = lessons[n] if n < lessons.length else null %}
+<article class="lesson wrap" data-lesson="{{ lessonId }}">
+  <nav class="crumbs" aria-label="Đường dẫn"><a href="{{ '/khoa-hoc/' | url }}">Khóa học</a> / <a href="{{ '/khoa-hoc/hiragana/' | url }}">Nhập môn Hiragana</a> / Bài {{ n }}</nav>
+  <header>
+    <p class="eyebrow">Bài {{ n }} · khoảng {{ minutes }} phút</p>
+    <h1>{{ title }}</h1>
+    <ul class="goals">{% for g in objectives %}<li>{{ g }}</li>{% endfor %}</ul>
+    {% if status == 'draft' %}<p class="note-draft">Bản nháp: nội dung đang chờ người biết tiếng Nhật duyệt.</p>{% endif %}
+  </header>
+
+  {% if chars %}
+  <section aria-labelledby="h-chars">
+    <h2 id="h-chars">Bảng chữ</h2>
+    <div class="char-grid">
+      {% for c in chars %}
+      <div class="char">
+        <span class="cell" aria-hidden="true">{{ c.k }}</span>
+        <span class="rom"><span class="sr-only">{{ c.k }} đọc là </span>{{ c.r }}</span>
+        <span class="tip">{{ c.tip }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="prose">
+    {{ content | safe }}
+  </section>
+
+  {% if words %}
+  <section aria-labelledby="h-words">
+    <h2 id="h-words">Từ đầu tiên</h2>
+    <ul class="words">
+      {% for w in words %}<li><span class="wk">{{ w.kana }}</span><span class="wr">{{ w.romaji }}</span><span class="wv">{{ w.vi }}</span></li>{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% if chars %}
+  <section aria-labelledby="h-flash">
+    <h2 id="h-flash">Flashcard</h2>
+    <div data-flashcards><p class="hint">Cần bật JavaScript để dùng flashcard.</p></div>
+  </section>
+  <section aria-labelledby="h-quiz">
+    <h2 id="h-quiz">Mini quiz</h2>
+    <div class="quiz-box" data-miniquiz>
+      <p>10 câu về các chữ trong bài. Đúng từ 7 câu thì bài được đánh dấu hoàn thành.</p>
+      <button class="btn primary" type="button" data-act="start-quiz">Bắt đầu mini quiz</button>
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="done-row">
+    <button class="btn" type="button" data-complete>Đánh dấu hoàn thành</button>
+    <span class="done-state" data-complete-state aria-live="polite"></span>
+  </section>
+
+  <nav class="pager" aria-label="Chuyển bài">
+    {% if prev %}<a href="{{ ('/khoa-hoc/hiragana/' + prev.slug + '/') | url }}"><small>Bài trước</small><b>{{ prev.title }}</b></a>{% else %}<span></span>{% endif %}
+    {% if next %}
+      {% if next.state == 'ready' %}<a class="next" href="{{ ('/khoa-hoc/hiragana/' + next.slug + '/') | url }}"><small>Bài tiếp theo</small><b>{{ next.title }}</b></a>
+      {% else %}<span class="next"><small>Bài tiếp theo</small><b>{{ next.title }} (sắp có)</b></span>{% endif %}
+    {% endif %}
+  </nav>
+</article>
+{% if chars %}<script type="application/json" id="lesson-data">{{ { id: lessonId, chars: chars } | dump | safe }}</script>{% endif %}

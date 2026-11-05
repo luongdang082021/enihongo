@@ -18,7 +18,7 @@ Trạng thái: đang dùng. Cập nhật: 2026-11-05.
 
 ## Hiện trạng
 
-- Có: game quiz Hiragana Dojo (5 hiệp × 20 câu), một file `index.html` chạy độc lập. Đặc tả ở [`../product/hiragana-dojo-spec.md`](../product/hiragana-dojo-spec.md).
+- Có: game quiz Hiragana Dojo (5 hiệp × 20 câu), module trong `src/js/`, dựng bằng Eleventy. Đặc tả ở [`../product/hiragana-dojo-spec.md`](../product/hiragana-dojo-spec.md).
 - Đã deploy bằng GitHub Pages từ nhánh `main`, thư mục gốc.
 - Chưa có: trang chủ, danh sách khóa, bài học, tiến độ học.
 

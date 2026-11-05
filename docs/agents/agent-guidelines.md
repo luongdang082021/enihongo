@@ -30,7 +30,7 @@ Trạng thái: đang dùng. Cập nhật: 2026-11-05.
 ## Kiểm tra trước khi commit
 
 - Mở được trang ở chiều rộng khoảng 400 px, cả chế độ sáng và tối, không cuộn ngang.
-- Với thay đổi trong `index.html`: kiểm tra cú pháp script bằng `node --check` trên phần script đã tách, và chạy mô phỏng câu hỏi (xem đặc tả Dojo).
+- Chạy `npm test` (mô phỏng câu hỏi, kể cả mini quiz các bài), `npm run build:local` rồi `npm run size` (ngân sách gzip). Bài học dùng `status: draft` cho tới khi người biết tiếng Nhật duyệt.
 - Link tương đối trong tài liệu còn hoạt động.
 - Kích thước file đổi nhiều thì đo lại theo skill `perf-audit`.
 

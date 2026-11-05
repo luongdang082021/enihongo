@@ -15,7 +15,7 @@ Trạng thái: nháp, chờ chốt D-005 và D-006. Cập nhật: 2026-11-05.
 | `/luyen-tap/hiragana-dojo` | Game quiz hiện tại |
 | `/gioi-thieu` | Mục đích dự án, cách đóng góp |
 
-Hiện tại `index.html` ở gốc repo chính là game. Khi dựng trang, game chuyển về `/luyen-tap/hiragana-dojo` và `index.html` trở thành trang chủ.
+Mã nguồn các trang nằm trong `src/` (Eleventy). `index.html` ở gốc repo là bản game cũ, giữ tới khi Pages chuyển sang GitHub Actions; sau đó xóa. Trang chủ mới là `src/index.njk`, game ở `/luyen-tap/hiragana-dojo/`.
 
 ## Các cấp
 

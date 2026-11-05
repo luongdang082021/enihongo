@@ -60,7 +60,7 @@ Hàm chuẩn hóa chấp nhận kiểu gõ si, ti, tu, hu, zi, sya, tya, zya, jy
 
 ## Cấu trúc mã
 
-`index.html` gồm CSS, HTML và một khối `<script>`. Trong script, phần logic thuần (dữ liệu, bộ sinh câu hỏi) nằm trước dòng chú thích `//--UI--`, phần giao diện nằm sau. Ranh giới này cho phép chạy phần logic trong Node để kiểm tra mô phỏng mà không cần trình duyệt.
+Mã chia module trong `src/js/`: `quiz-core.js` (dữ liệu chữ và từ, bộ sinh câu hỏi, không đụng DOM nên chạy được trong Node), `quiz-ui.js` (`mountQuiz`, giao diện chơi và kết quả dùng chung), `dojo.js` (menu 5 hiệp), `lesson.js` (flashcard, mini quiz, hoàn thành bài), `progress.js` (localStorage `enihongo:v1`, xuất/nhập JSON). Kiểm tra mô phỏng: `npm test` (`tools/check-quiz.mjs`).
 
 ## Kiểm tra mô phỏng
 

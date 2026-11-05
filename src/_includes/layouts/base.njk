@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{% if title %}{{ title }} · {% endif %}{{ site.name }}</title>
+<meta name="description" content="{{ description or site.tagline }}">
+<link rel="canonical" href="{{ site.origin }}{{ page.url | url }}">
+{% if noindex %}<meta name="robots" content="noindex">{% endif %}
+<meta name="theme-color" content="#EBEFF5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D1220" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:title" content="{{ title or site.name }}">
+<meta property="og:description" content="{{ description or site.tagline }}">
+<meta property="og:url" content="{{ site.origin }}{{ page.url | url }}">
+<link rel="stylesheet" href="{{ '/css/main.css' | asset }}">
+{% if quiz %}<link rel="stylesheet" href="{{ '/css/quiz.css' | asset }}">{% endif %}
+</head>
+<body>
+<a class="skip" href="#main">Bỏ qua điều hướng</a>
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="{{ '/' | url }}"><span class="brand-cell" aria-hidden="true">あ</span><span>enihongo</span></a>
+    <nav aria-label="Chính">
+      <a href="{{ '/khoa-hoc/' | url }}"{% if page.url.startsWith('/khoa-hoc/') %} aria-current="page"{% endif %}>Khóa học</a>
+      <a href="{{ '/luyen-tap/hiragana-dojo/' | url }}"{% if page.url.startsWith('/luyen-tap/') %} aria-current="page"{% endif %}>Luyện tập</a>
+      <a href="{{ '/gioi-thieu/' | url }}"{% if page.url == '/gioi-thieu/' %} aria-current="page"{% endif %}>Giới thiệu</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+{{ content | safe }}
+</main>
+<footer class="site-footer">
+  <div class="inner">
+    <p>enihongo là website học tiếng Nhật miễn phí, không cần đăng ký.</p>
+    <p><a href="{{ site.repo }}">Mã nguồn trên GitHub</a></p>
+  </div>
+</footer>
+{% if script %}<script type="module" src="{{ script | asset }}"></script>{% endif %}
+</body>
+</html>
