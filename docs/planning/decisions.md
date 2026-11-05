@@ -18,6 +18,10 @@ Quy ước: không sửa quyết định cũ; nếu đổi hướng thì thêm d
 | D-008 | 2026-11-05 | Giai đoạn 1: dựng khung và 3 bài mẫu (bài 1–3) để duyệt, rồi mới viết các bài còn lại | Đã chốt (2026-11-05) |
 | D-009 | 2026-11-05 | Tiến độ học lưu bằng `localStorage`, có xuất/nhập JSON; không có tài khoản | Đề xuất |
 | D-010 | 2026-11-05 | Analytics: Cloudflare Web Analytics (không cookie). Chỉ bật khi điền token vào `src/_data/site.json` (`cfBeaconToken`) | Đã chốt (2026-11-05); token đã điền |
+| D-011 | 2026-11-05 | Thứ tự nét lấy từ KanjiVG (CC BY-SA 3.0): ghi nguồn ở trang giới thiệu và trong giao diện, dữ liệu rút gọn `src/data/strokes.json` giữ nguyên giấy phép CC BY-SA. Phát âm dùng giọng đọc của thiết bị, không có file âm thanh | Đề xuất (đang áp dụng, cần bạn xác nhận) |
+| D-012 | 2026-11-05 | Katakana: có khóa cứng Hiragana trước hay không | Chờ chốt, xem [`katakana-plan.md`](katakana-plan.md) |
+| D-013 | 2026-11-05 | Katakana: chủ đề từ mượn trong bài và Dojo | Chờ chốt |
+| D-014 | 2026-11-05 | Katakana Dojo là game riêng hay gộp chung | Chờ chốt |
 
 ## Ghi chú cho D-002
 

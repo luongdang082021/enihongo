@@ -10,7 +10,8 @@ Trạng thái: đang dùng. Cập nhật: 2026-11-05.
 | 1. Khung trang | Thiết kế giao diện, trang chủ, lưới khóa học có thẻ khóa, pipeline build và deploy, chuyển Dojo về `/luyen-tap/hiragana-dojo` | Xong (2026-11-05) |
 | 2. Khóa Hiragana | 13 bài và Dojo, flashcard, mini quiz, tiến độ học | Xong (2026-11-05) |
 | 3. Hoàn thiện | SEO, analytics nhẹ, PWA offline, đo hiệu năng | Đang làm: SEO, PWA và đo hiệu năng xong; analytics đã bật |
-| 4. Mở rộng | Thứ tự nét, âm thanh phát âm | Chưa bắt đầu |
+| 4. Thứ tự nét và phát âm | Thứ tự nét (KanjiVG), phát âm bằng giọng thiết bị | Đã làm cho chữ đơn của Hiragana (2026-11-05) |
+| 5. Katakana | Khóa Katakana và Katakana Dojo | Kế hoạch: [`katakana-plan.md`](katakana-plan.md) |
 
 ## Giai đoạn 1: việc cần làm
 
@@ -40,6 +41,16 @@ Trạng thái: đang dùng. Cập nhật: 2026-11-05.
 - [x] Thẻ "Sắp ra mắt" không dẫn đi đâu (D-007)
 - [ ] Đo lại Lighthouse trên bản deploy thật
 
-## Giai đoạn 4
+## Giai đoạn 4: việc cần làm
 
-Xem [`growth-and-seo.md`](growth-and-seo.md) và [`performance-budget.md`](performance-budget.md). Thứ tự nét viết cần kiểm tra giấy phép nguồn dữ liệu trước khi dùng.
+- [x] Kiểm tra giấy phép dữ liệu nét: KanjiVG là CC BY-SA 3.0, dùng được nếu ghi nguồn và giữ giấy phép cho dữ liệu rút gọn (D-011)
+- [x] `tools/build-strokes.mjs` tạo `src/data/strokes.json` (73 chữ, 22 KB, khoảng 7 KB gzip), chỉ tải khi bấm "Nét viết"
+- [x] Nút "Nét viết" (vẽ từng nét, có số thứ tự) và "Nghe" trong bài học
+- [ ] Thứ tự nét cho chữ ghép (きゃ...): hiện chưa có, chỉ chữ đơn
+- [ ] Đo giọng đọc trên Android và iOS thật; nếu thiết bị thiếu giọng Nhật thì nút Nghe tự ẩn
+
+Xem thêm [`growth-and-seo.md`](growth-and-seo.md) và [`performance-budget.md`](performance-budget.md).
+
+## Giai đoạn 5: Katakana
+
+Xem [`katakana-plan.md`](katakana-plan.md).

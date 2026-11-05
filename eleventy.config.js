@@ -9,7 +9,8 @@ export default function (eleventyConfig) {
     'src/css': 'css',
     'src/js': 'js',
     'src/fonts': 'fonts',
-    'src/icons': 'icons'
+    'src/icons': 'icons',
+    'src/data': 'data'
   });
 
   // Gắn ?v=<hash nội dung> vào CSS/JS để trình duyệt tải lại khi file đổi.

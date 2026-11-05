@@ -1,3 +1,4 @@
+import {canSpeak,speak} from './speak.js';
 import {lessonState,completeLesson,saveQuizScore,dueOf,rateCard,nextDue} from './progress.js';
 
 const root=document.querySelector('[data-lesson]');
@@ -73,3 +74,35 @@ if(data){
     });
   });
 }
+
+/* thứ tự nét và phát âm (bổ sung, không có thì bài học vẫn dùng bình thường) */
+const panel=root.querySelector('[data-stroke-panel]');
+const speakOk=canSpeak();
+root.querySelectorAll('.char[data-char]').forEach(el=>{
+  const k=el.dataset.char;
+  const tools=document.createElement('div');tools.className='tools';
+  if([...k].length===1)tools.insertAdjacentHTML('beforeend',`<button type="button" class="mini" data-stroke="${esc(k)}">Nét viết</button>`);
+  tools.insertAdjacentHTML('beforeend',`<button type="button" class="mini" data-sound="${esc(k)}" hidden>Nghe</button>`);
+  el.appendChild(tools);
+});
+root.querySelectorAll('.words li[data-say]').forEach(li=>{
+  li.insertAdjacentHTML('beforeend',`<button type="button" class="mini" data-sound="${esc(li.dataset.say)}" hidden>Nghe</button>`);
+});
+speakOk.then(ok=>{if(ok)root.querySelectorAll('[data-sound]').forEach(b=>{b.hidden=false})});
+root.addEventListener('click',async e=>{
+  const snd=e.target.closest('[data-sound]');
+  if(snd){speak(snd.dataset.sound);return}
+  const sk=e.target.closest('[data-stroke]');
+  if(sk&&panel){
+    const k=sk.dataset.stroke;
+    panel.hidden=false;panel.innerHTML='<p class="hint">Đang tải…</p>';
+    try{
+      const {loadStrokes,strokeSVG}=await import('./strokes.js');
+      const all=await loadStrokes();
+      if(!all[k]){panel.innerHTML='<p class="hint">Chưa có dữ liệu nét cho chữ này.</p>';return}
+      const draw=()=>{panel.innerHTML=`<b>${esc(k)}</b>${strokeSVG(all[k],200)}<p class="hint">${all[k].length} nét. Số cho biết thứ tự.</p><button type="button" class="mini" data-replay>Xem lại</button><p class="credit">Dữ liệu nét: KanjiVG, giấy phép CC BY-SA 3.0.</p>`;panel.querySelector('[data-replay]').addEventListener('click',draw);panel.dataset.k=k};
+      draw();
+      panel.scrollIntoView({block:'nearest',behavior:'smooth'});
+    }catch(err){panel.innerHTML='<p class="hint">Không tải được dữ liệu nét. Kiểm tra kết nối rồi thử lại.</p>'}
+  }
+});

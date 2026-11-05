@@ -19,13 +19,14 @@ script: /js/lesson.js
     <h2 id="h-chars">Bảng chữ</h2>
     <div class="char-grid">
       {% for c in chars %}
-      <div class="char">
+      <div class="char" data-char="{{ c.k }}">
         <span class="cell{% if c.k | length > 1 %} y{% endif %}" aria-hidden="true">{{ c.k }}</span>
         <span class="rom"><span class="sr-only">{{ c.k }} đọc là </span>{{ c.r }}</span>
         <span class="tip">{{ c.tip }}</span>
       </div>
       {% endfor %}
     </div>
+    <div class="stroke-panel" data-stroke-panel hidden></div>
   </section>
   {% endif %}
 
@@ -37,7 +38,7 @@ script: /js/lesson.js
   <section aria-labelledby="h-words">
     <h2 id="h-words">Từ đầu tiên</h2>
     <ul class="words">
-      {% for w in words %}<li><span class="wk">{{ w.kana }}</span><span class="wr">{{ w.romaji }}</span><span class="wv">{{ w.vi }}</span></li>{% endfor %}
+      {% for w in words %}<li data-say="{{ w.kana }}"><span class="wk">{{ w.kana }}</span><span class="wr">{{ w.romaji }}</span><span class="wv">{{ w.vi }}</span></li>{% endfor %}
     </ul>
   </section>
   {% endif %}
