@@ -22,9 +22,11 @@ Quy ước: không sửa quyết định cũ; nếu đổi hướng thì thêm d
 | D-012 | 2026-11-05 | Katakana: không khóa cứng Hiragana trước; hiện gợi ý "nên học Hiragana trước" ở đầu khóa | Đã chốt (2026-11-06), xem [`katakana-plan.md`](katakana-plan.md) |
 | D-013 | 2026-11-05 | Katakana: từ mượn theo chủ đề đồ ăn uống, địa danh, đồ vật hằng ngày; tránh tên thương hiệu | Đã chốt (2026-11-06) |
 | D-014 | 2026-11-05 | Dojo là một tính năng chung (không tách theo từng khóa): bên trong chọn bộ chữ hoặc nội dung (Hiragana, Katakana, Kanji, tổng hợp...) theo các bài đã học, và cho phép trộn nhiều bài hoặc chủ đề | Đã chốt (2026-11-06), thiết kế trong [`katakana-plan.md`](katakana-plan.md) |
-| D-015 | 2026-11-06 | Giáo trình tự biên soạn, bám JF Standard và CEFR, không dùng nội dung sách in; đổi tên khóa N5 thành "Tiếng Nhật sơ cấp 1 và 2" | Đề xuất, xem [`../content/curriculum.md`](../content/curriculum.md) |
-| D-016 | 2026-11-06 | Nguồn dữ liệu nghĩa và âm đọc kanji | Chờ chốt |
-| D-017 | 2026-11-06 | Âm thanh cho khóa nghe và luyện JFT-Basic | Chờ chốt |
+| D-015 | 2026-11-06 | Giáo trình tự biên soạn, bám JF Standard và CEFR, không dùng nội dung sách in; đổi tên khóa N5 thành "Tiếng Nhật sơ cấp 1 và 2" | Hoãn (pending), xem [`../content/curriculum.md`](../content/curriculum.md) |
+| D-016 | 2026-11-06 | Nguồn dữ liệu nghĩa và âm đọc kanji | Hoãn (pending) |
+| D-017 | 2026-11-06 | Âm thanh cho khóa nghe và luyện JFT-Basic | Hoãn (pending) |
+| D-018 | 2026-11-06 | Hai ngôn ngữ Việt và Anh: tiếng Việt ở gốc, tiếng Anh dưới `/en/`, slug dịch, nút chuyển ngôn ngữ, mã bài và tiến độ dùng chung | Chờ chốt, xem [`i18n-plan.md`](i18n-plan.md) |
+| D-019 | 2026-11-06 | Người duyệt bản tiếng Anh | Chờ chốt |
 
 ## Ghi chú cho D-002
 

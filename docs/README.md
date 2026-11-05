@@ -7,7 +7,7 @@ Mục lục và quy ước cho thư mục `docs/`. Cập nhật lần cuối: 20
 | Thư mục | Chứa gì | Đọc khi |
 |---|---|---|
 | [`context/`](context/) | Bối cảnh dự án, đối tượng người học, thuật ngữ | Mới vào dự án |
-| [`planning/`](planning/) | Lộ trình, cấu trúc site, ngân sách hiệu năng, tăng trưởng, kế hoạch Katakana, nhật ký quyết định | Lập kế hoạch, chọn hướng |
+| [`planning/`](planning/) | Lộ trình, cấu trúc site, ngân sách hiệu năng, tăng trưởng, kế hoạch hai ngôn ngữ, kế hoạch Katakana, nhật ký quyết định | Lập kế hoạch, chọn hướng |
 | [`planning/archive/`](planning/archive/) | Đề xuất đã gác lại, giữ để tham khảo | Muốn xem lại ý tưởng cũ |
 | [`content/`](content/) | Giáo trình và khung chương trình, dàn bài khóa học, mẫu bài học, quy ước viết nội dung, các khóa sắp ra mắt | Viết hoặc duyệt bài |
 | [`product/`](product/) | Đặc tả sản phẩm đang chạy (Hiragana Dojo) | Sửa game, thêm dạng câu hỏi |

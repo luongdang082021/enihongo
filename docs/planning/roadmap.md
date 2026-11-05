@@ -11,7 +11,10 @@ Trạng thái: đang dùng. Cập nhật: 2026-11-05.
 | 2. Khóa Hiragana | 13 bài và Dojo, flashcard, mini quiz, tiến độ học | Xong (2026-11-05) |
 | 3. Hoàn thiện | SEO, analytics nhẹ, PWA offline, đo hiệu năng | Đang làm: SEO, PWA và đo hiệu năng xong; analytics đã bật |
 | 4. Thứ tự nét và phát âm | Thứ tự nét (KanjiVG), phát âm bằng giọng thiết bị | Đã làm cho chữ đơn của Hiragana (2026-11-05) |
-| 5. Katakana và Dojo chung | Khóa Katakana, Dojo chọn theo bộ chữ, bài và chủ đề | Kế hoạch: [`katakana-plan.md`](katakana-plan.md) |
+| 5. Dojo chung | Dojo chọn theo bộ chữ, bài và chủ đề (D-014) | Đang làm (2026-11-06) |
+| 6. Hai ngôn ngữ | Việt và Anh, xem [`i18n-plan.md`](i18n-plan.md) | Kế hoạch, ưu tiên trước Katakana và giáo trình |
+| 7. Katakana | Khóa Katakana song ngữ, xem [`katakana-plan.md`](katakana-plan.md) | Kế hoạch |
+| 8. Giáo trình sơ cấp | Theo [`../content/curriculum.md`](../content/curriculum.md); D-015 đến D-017 hoãn | Hoãn |
 
 ## Giai đoạn 1: việc cần làm
 
@@ -51,6 +54,9 @@ Trạng thái: đang dùng. Cập nhật: 2026-11-05.
 
 Xem thêm [`growth-and-seo.md`](growth-and-seo.md) và [`performance-budget.md`](performance-budget.md).
 
-## Giai đoạn 5: Katakana
+## Thứ tự ưu tiên từ giai đoạn 5
 
-Xem [`katakana-plan.md`](katakana-plan.md).
+1. **Dojo chung** (D-014): làm trước vì không phụ thuộc nội dung mới.
+2. **Hai ngôn ngữ** ([`i18n-plan.md`](i18n-plan.md)): làm trước khi viết thêm khóa mới để mọi khóa sau viết song ngữ ngay, tránh dịch lại.
+3. **Katakana** ([`katakana-plan.md`](katakana-plan.md)): tách engine hiểu hai bộ chữ, viết song ngữ.
+4. **Giáo trình sơ cấp** ([`../content/curriculum.md`](../content/curriculum.md)): chờ D-015 đến D-017.

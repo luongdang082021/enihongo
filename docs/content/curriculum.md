@@ -2,7 +2,7 @@
 
 Tóm tắt: giáo trình của enihongo do dự án tự biên soạn, bám khung năng lực công khai (JF Standard, CEFR) và mô tả bài thi chính thức (JLPT, JFT-Basic), không dùng lại nội dung sách in.
 
-Trạng thái: nháp kế hoạch, chờ duyệt D-015. Cập nhật: 2026-11-06.
+Trạng thái: nháp kế hoạch. D-015 đến D-017 hoãn; ưu tiên thấp hơn hai ngôn ngữ ([`../planning/i18n-plan.md`](../planning/i18n-plan.md)) và Katakana. Cập nhật: 2026-11-06.
 
 ## Nguyên tắc
 

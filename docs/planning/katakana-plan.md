@@ -2,7 +2,7 @@
 
 Tóm tắt: mở khóa Katakana thứ hai, tái dùng khung trang và engine quiz; việc khó nhất là làm engine hiểu hai bộ chữ và viết nội dung cho từ mượn.
 
-Trạng thái: kế hoạch đã duyệt, chưa bắt đầu viết mã. D-012 đến D-014 đã chốt (2026-11-06). Cập nhật: 2026-11-05.
+Trạng thái: kế hoạch đã duyệt, chưa bắt đầu viết mã; làm sau Dojo chung và hạ tầng hai ngôn ngữ ([`i18n-plan.md`](i18n-plan.md)), bài viết song ngữ ngay từ đầu. D-012 đến D-014 đã chốt (2026-11-06). Cập nhật: 2026-11-05.
 
 ## Mục tiêu
 
