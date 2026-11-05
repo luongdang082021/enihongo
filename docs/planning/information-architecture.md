@@ -15,7 +15,7 @@ Trạng thái: nháp, chờ chốt D-005 và D-006. Cập nhật: 2026-11-05.
 | `/luyen-tap/` | Dojo chung: 5 hiệp Hiragana hoặc tự chọn bài và chủ đề (`?bai=hiragana-03` chọn sẵn bài). `/luyen-tap/hiragana-dojo/` chuyển hướng về đây |
 | `/gioi-thieu` | Mục đích dự án, cách đóng góp |
 
-Mã nguồn các trang nằm trong `src/` (Eleventy). `index.html` ở gốc repo là bản game cũ, giữ tới khi Pages chuyển sang GitHub Actions; sau đó xóa. Trang chủ mới là `src/index.njk`, game ở `/luyen-tap/hiragana-dojo/`.
+Mã nguồn các trang nằm trong `src/` (Eleventy). Trang chủ là `src/index.njk`, Dojo ở `/luyen-tap/`.
 
 ## Các cấp
 
