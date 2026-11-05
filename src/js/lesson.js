@@ -19,11 +19,12 @@ paintDone();
 if(data){
   /* flashcard: chưa nhớ / đã nhớ, không lưu */
   const fc=root.querySelector('[data-flashcards]');
+  if(fc){
   let deck=[],pos=0,flipped=false,known=0;
   const reset=()=>{deck=data.chars.slice();pos=0;flipped=false;known=0;drawFlash()};
   function drawFlash(){
     if(pos>=deck.length){
-      fc.innerHTML=`<div class="quiz-sum"><p>Xong lượt này. Còn ${deck.length-known>0?deck.length-known:0} chữ chưa nhớ.</p><div class="row"><button class="btn primary" type="button" data-f="again">Học lại từ đầu</button></div></div>`;
+      fc.innerHTML=`<div class="quiz-sum"><p>Xong lượt này. Học lại để nhớ chắc hơn, hoặc làm mini quiz bên dưới.</p><div class="row"><button class="btn primary" type="button" data-f="again">Học lại từ đầu</button></div></div>`;
       return;
     }
     const c=deck[pos];
@@ -38,11 +39,12 @@ if(data){
     else if(a==='again')reset();
   });
   reset();
+  }
 
   /* mini quiz */
   const box=root.querySelector('[data-miniquiz]');
   const intro=box.innerHTML;
-  const plan={k2r:4,r2k:3,type:2,match:1};
+  const plan=data.plan||{k2r:4,r2k:3,type:2,match:1};
   let q=null;
   const stop=()=>{if(q){q.destroy();q=null}box.innerHTML=intro};
   box.addEventListener('click',async e=>{
@@ -51,8 +53,8 @@ if(data){
     const [{buildLesson},{mountQuiz}]=await Promise.all([import('./quiz-core.js'),import('./quiz-ui.js')]);
     box.innerHTML='';
     q=mountQuiz(box,{
-      questions:buildLesson(data.chars,plan),title:'Mini quiz',quitLabel:'Thoát',
-      rebuild:()=>buildLesson(data.chars,plan),
+      questions:buildLesson(data.chars||[],plan,data.words),title:'Mini quiz',quitLabel:'Thoát',
+      rebuild:()=>buildLesson(data.chars||[],plan,data.words),
       onFinish:res=>{
         if(res.review)return {};
         saveQuizScore(id,res.score,res.stars);

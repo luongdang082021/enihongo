@@ -20,7 +20,7 @@ script: /js/lesson.js
     <div class="char-grid">
       {% for c in chars %}
       <div class="char">
-        <span class="cell" aria-hidden="true">{{ c.k }}</span>
+        <span class="cell{% if c.k | length > 1 %} y{% endif %}" aria-hidden="true">{{ c.k }}</span>
         <span class="rom"><span class="sr-only">{{ c.k }} đọc là </span>{{ c.r }}</span>
         <span class="tip">{{ c.tip }}</span>
       </div>
@@ -47,10 +47,12 @@ script: /js/lesson.js
     <h2 id="h-flash">Flashcard</h2>
     <div data-flashcards><p class="hint">Cần bật JavaScript để dùng flashcard.</p></div>
   </section>
+  {% endif %}
+  {% if qplan %}
   <section aria-labelledby="h-quiz">
     <h2 id="h-quiz">Mini quiz</h2>
     <div class="quiz-box" data-miniquiz>
-      <p>10 câu về các chữ trong bài. Đúng từ 7 câu thì bài được đánh dấu hoàn thành.</p>
+      <p>{{ qcount }} câu ôn các nội dung trong bài. Đúng từ 70% số câu thì bài được đánh dấu hoàn thành.</p>
       <button class="btn primary" type="button" data-act="start-quiz">Bắt đầu mini quiz</button>
     </div>
   </section>
@@ -65,8 +67,9 @@ script: /js/lesson.js
     {% if prev %}<a href="{{ ('/khoa-hoc/hiragana/' + prev.slug + '/') | url }}"><small>Bài trước</small><b>{{ prev.title }}</b></a>{% else %}<span></span>{% endif %}
     {% if next %}
       {% if next.state == 'ready' %}<a class="next" href="{{ ('/khoa-hoc/hiragana/' + next.slug + '/') | url }}"><small>Bài tiếp theo</small><b>{{ next.title }}</b></a>
+      {% elif next.state == 'dojo' %}<a class="next" href="{{ next.url | url }}"><small>Luyện tiếp</small><b>{{ next.title }}</b></a>
       {% else %}<span class="next"><small>Bài tiếp theo</small><b>{{ next.title }} (sắp có)</b></span>{% endif %}
     {% endif %}
   </nav>
 </article>
-{% if chars %}<script type="application/json" id="lesson-data">{{ { id: lessonId, chars: chars } | dump | safe }}</script>{% endif %}
+{% if qplan %}<script type="application/json" id="lesson-data">{{ { id: lessonId, chars: chars, words: words, plan: qplan } | dump | safe }}</script>{% endif %}

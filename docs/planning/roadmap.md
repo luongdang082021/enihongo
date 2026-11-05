@@ -27,7 +27,7 @@ Trạng thái: đang dùng. Cập nhật: 2026-11-05.
 ## Giai đoạn 2: việc cần làm
 
 - [x] Mẫu bài học ([`../content/lesson-template.md`](../content/lesson-template.md)) và 3 bài mẫu để duyệt phong cách
-- [ ] Viết nốt các bài còn lại theo [`../content/hiragana-course-outline.md`](../content/hiragana-course-outline.md)
+- [x] Viết nốt các bài còn lại theo [`../content/hiragana-course-outline.md`](../content/hiragana-course-outline.md)
 - [x] Flashcard lặp lại ngắt quãng đơn giản, lưu bằng `localStorage`
 - [x] Mini quiz 10 câu cho mỗi bài
 - [x] Tiến độ học và nút xuất/nhập JSON

@@ -4,6 +4,8 @@ lessonId: hiragana-03
 n: 3
 minutes: 10
 status: published
+qcount: 10
+qplan: { k2r: 4, r2k: 3, type: 2, match: 1 }
 objectives:
   - Đọc và nhận ra 10 chữ か き く け こ さ し す せ そ
   - Biết し đọc là "shi", không phải "si"

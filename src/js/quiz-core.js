@@ -214,21 +214,42 @@ function buildFromCtx(ctx){
 export function build(idx){return buildFromCtx(ROUNDS[idx])}
 export {BASIC,DAKU,YOON,R,AMB,ROUNDS,T,CHOICE,PLAIN,buildFromCtx,norm,parseMorae,shuffle,pick,take,esc,ALLK,ALLW,LONGW,SOKW,YOONW};
 
-/* Bộ câu hỏi cho mini quiz trong bài học: chỉ dùng các chữ của bài, distractor lấy từ cùng bảng. */
-export function buildLesson(chars,plan){
-  const items=chars.map(c=>({k:c.k,r:c.r})).filter(x=>!AMB.has(x.k));
-  if(items.length<4)throw new Error('cần ít nhất 4 chữ');
+/* Bộ câu hỏi cho mini quiz trong bài học: chỉ dùng các chữ và từ của bài, distractor lấy từ cùng bảng. */
+export function mkWord(kana,vi,romaji){
+  const m=parseMorae(kana);
+  return{k:kana,vi:vi||'',m:m,r:romaji||romajiOf(m)};
+}
+const WORD_TYPES=new Set(['wk2r','wr2k','wtype','fill','mora']);
+export function buildLesson(chars,plan,words){
+  let items=chars.map(c=>({k:c.k,r:c.r})).filter(x=>!AMB.has(x.k));
+  const ws=(words||[]).filter(w=>w.quiz!==false).map(w=>mkWord(w.kana,w.vi,w.romaji));
+  const needChars=Object.keys(plan).some(t=>!WORD_TYPES.has(t));
+  if(needChars&&items.length<4){ // bài ít chữ (vd わ を ん): thêm vài chữ cũ để ôn
+    const extra=take(BASIC.flat().filter(x=>!AMB.has(x.k)&&!items.some(i=>i.k===x.k)&&x.k!=='を'),4);
+    items=[...items,...extra];
+  }
   const pool=items.length>=8?items:[...items,...BASIC.flat().filter(x=>!AMB.has(x.k)&&!items.some(i=>i.k===x.k))];
-  const used=new Set();
-  const draw=()=>{let c=items.filter(x=>!used.has(x.k));if(!c.length){used.clear();c=items}const x=pick(c);used.add(x.k);return x};
+  const used=new Set(),usedW=new Set();
+  const draw=(src,set,f)=>{let c=src.filter(x=>!set.has(x.k)&&(!f||f(x)));if(!c.length){set.clear();c=src.filter(x=>!f||f(x))}if(!c.length)return null;const x=pick(c);set.add(x.k);return x};
+  const dI=f=>draw(items,used,f),dW=f=>draw(ws,usedW,f);
+  const hasSpecial=w=>w.m.some((x,i)=>x==='っ'||isLong(w.m,i));
   const list=[];Object.entries(plan).forEach(([t,n])=>{for(let i=0;i<n;i++)list.push(t)});
   const order=shuffle(list);
-  const f=order.indexOf('k2r');if(f>0){const t=order[0];order[0]=order[f];order[f]=t}
+  const f=order.findIndex(t=>t==='k2r'||t==='wk2r');if(f>0){const t=order[0];order[0]=order[f];order[f]=t}
   return order.map(t=>{
-    if(t==='k2r')return qK2R(draw(),pool);
-    if(t==='r2k')return qR2K(draw(),pool);
-    if(t==='type')return qType(draw());
-    if(t==='match'){const g=[];let n=0;while(g.length<Math.min(4,items.length)&&n++<80){const x=draw();if(!g.some(y=>y.k===x.k||y.r===x.r))g.push(x)}return qMatch(g)}
+    switch(t){
+      case 'k2r':return qK2R(dI(),pool);
+      case 'r2k':return qR2K(dI(),pool);
+      case 'type':return qType(dI());
+      case 'match':{const g=[];let n=0;while(g.length<Math.min(4,items.length)&&n++<80){const x=dI();if(!g.some(y=>y.k===x.k||y.r===x.r))g.push(x)}return qMatch(g)}
+      case 'voice':return qVoice();
+      case 'size':{const y=dI(x=>x.k.length===2&&'ゃゅょ'.includes(x.k[1]));if(!y)throw new Error('size cần chữ ghép');return qSize(y)}
+      case 'wk2r':return qWK2R(dW());
+      case 'wr2k':return qWR2K(dW());
+      case 'wtype':return qWType(dW());
+      case 'fill':{const w=dW(hasSpecial);return w?qFill(w):qMora(dW())}
+      case 'mora':return qMora(dW());
+    }
     throw new Error('unknown type '+t);
   });
 }

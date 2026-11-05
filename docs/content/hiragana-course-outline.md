@@ -2,7 +2,7 @@
 
 Tóm tắt: 14 bài, mỗi bài khoảng 10 phút, từ làm quen đến game luyện tập tổng hợp.
 
-Trạng thái: nháp dàn bài, chưa có nội dung bài. Cập nhật: 2026-11-05.
+Trạng thái: bài 1–13 đã viết (`src/khoa-hoc/hiragana/`), từ ví dụ trong bài là bản chính thức và có thể khác cột gợi ý bên dưới (ví dụ へや, ちず, まど, りんご bị thay vì dùng chữ chưa học). Cập nhật: 2026-11-05.
 
 Mỗi bài theo [`lesson-template.md`](lesson-template.md). Từ ví dụ ở dưới là gợi ý, cần duyệt trước khi dùng.
 
