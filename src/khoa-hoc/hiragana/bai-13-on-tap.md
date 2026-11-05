@@ -25,14 +25,14 @@ chars:
   - { k: "は", r: "ha", tip: "Nét đứng và nét ngang có đuôi cuộn." }
   - { k: "ほ", r: "ho", tip: "Giống は nhưng thêm một nét ngang." }
 words:
-  - { kana: "かばん", romaji: "kaban", vi: "cái cặp" }
-  - { kana: "しゃしん", romaji: "shashin", vi: "ảnh" }
-  - { kana: "おかあさん", romaji: "okaasan", vi: "mẹ" }
-  - { kana: "がっこう", romaji: "gakkou", vi: "trường học" }
-  - { kana: "ざっし", romaji: "zasshi", vi: "tạp chí" }
-  - { kana: "ともだち", romaji: "tomodachi", vi: "bạn bè" }
-  - { kana: "せんせい", romaji: "sensei", vi: "giáo viên" }
-  - { kana: "ちょっと", romaji: "chotto", vi: "một chút" }
+  - { kana: "かばん", romaji: "kaban", vi: "cái cặp", en: "bag" }
+  - { kana: "しゃしん", romaji: "shashin", vi: "ảnh", en: "photo" }
+  - { kana: "おかあさん", romaji: "okaasan", vi: "mẹ", en: "mother" }
+  - { kana: "がっこう", romaji: "gakkou", vi: "trường học", en: "school" }
+  - { kana: "ざっし", romaji: "zasshi", vi: "tạp chí", en: "magazine" }
+  - { kana: "ともだち", romaji: "tomodachi", vi: "bạn bè", en: "friend" }
+  - { kana: "せんせい", romaji: "sensei", vi: "giáo viên", en: "teacher" }
+  - { kana: "ちょっと", romaji: "chotto", vi: "một chút", en: "a little" }
 ---
 ## Các cặp dễ nhầm
 

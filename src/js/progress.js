@@ -1,3 +1,4 @@
+import {t as tr} from './i18n.js';
 /* Tiến độ lưu cục bộ trong localStorage (khóa enihongo:v1). Không có tài khoản hay máy chủ. */
 const KEY='enihongo:v1',OLD='hiragana-dojo-best';
 const empty=()=>({v:1,lessons:{},dojo:{},cards:{}});
@@ -36,7 +37,7 @@ export function saveDojo(round,score,stars){
 export function exportJSON(){return JSON.stringify(read(),null,2)}
 export function importJSON(text){
   const d=JSON.parse(text);
-  if(!d||d.v!==1||typeof d.lessons!=='object'||typeof d.dojo!=='object')throw new Error('Tệp không đúng định dạng enihongo.');
+  if(!d||d.v!==1||typeof d.lessons!=='object'||typeof d.dojo!=='object')throw new Error(tr('pr.badFile'));
   return write({...empty(),...d});
 }
 

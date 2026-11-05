@@ -24,13 +24,13 @@ chars:
   - { k: "せ", r: "se", tip: "Đọc \"sê\". Giống け nhưng nét ngang dài hơn." }
   - { k: "そ", r: "so", tip: "Đọc \"sô\". Nét gấp khúc như hình zigzag." }
 words:
-  - { kana: "かさ", romaji: "kasa", vi: "cái ô" }
-  - { kana: "あさ", romaji: "asa", vi: "buổi sáng" }
-  - { kana: "かお", romaji: "kao", vi: "khuôn mặt" }
-  - { kana: "すし", romaji: "sushi", vi: "sushi" }
-  - { kana: "あき", romaji: "aki", vi: "mùa thu" }
-  - { kana: "しお", romaji: "shio", vi: "muối" }
-  - { kana: "すいか", romaji: "suika", vi: "dưa hấu" }
+  - { kana: "かさ", romaji: "kasa", vi: "cái ô", en: "umbrella" }
+  - { kana: "あさ", romaji: "asa", vi: "buổi sáng", en: "morning" }
+  - { kana: "かお", romaji: "kao", vi: "khuôn mặt", en: "face" }
+  - { kana: "すし", romaji: "sushi", vi: "sushi", en: "sushi" }
+  - { kana: "あき", romaji: "aki", vi: "mùa thu", en: "autumn" }
+  - { kana: "しお", romaji: "shio", vi: "muối", en: "salt" }
+  - { kana: "すいか", romaji: "suika", vi: "dưa hấu", en: "watermelon" }
 ---
 ## Quy luật
 

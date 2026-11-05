@@ -17,13 +17,13 @@ chars:
   - { k: "を", r: "wo", tip: "Trong sách viết là \"wo\" nhưng đọc là \"o\". Chỉ dùng làm trợ từ." }
   - { k: "ん", r: "n", tip: "Một nhịp riêng, đọc \"n\" ở cuối âm tiết. Hình như chữ h viết gập." }
 words:
-  - { kana: "わたし", romaji: "watashi", vi: "tôi" }
-  - { kana: "かわ", romaji: "kawa", vi: "con sông" }
-  - { kana: "わかる", romaji: "wakaru", vi: "hiểu" }
-  - { kana: "ほん", romaji: "hon", vi: "quyển sách" }
-  - { kana: "にほん", romaji: "nihon", vi: "Nhật Bản" }
-  - { kana: "みかん", romaji: "mikan", vi: "quả quýt" }
-  - { kana: "さんま", romaji: "sanma", vi: "cá thu đao" }
+  - { kana: "わたし", romaji: "watashi", vi: "tôi", en: "I, me" }
+  - { kana: "かわ", romaji: "kawa", vi: "con sông", en: "river" }
+  - { kana: "わかる", romaji: "wakaru", vi: "hiểu", en: "to understand" }
+  - { kana: "ほん", romaji: "hon", vi: "quyển sách", en: "book" }
+  - { kana: "にほん", romaji: "nihon", vi: "Nhật Bản", en: "Japan" }
+  - { kana: "みかん", romaji: "mikan", vi: "quả quýt", en: "mandarin orange" }
+  - { kana: "さんま", romaji: "sanma", vi: "cá thu đao", en: "Pacific saury" }
 ---
 ## Ba chữ cuối
 

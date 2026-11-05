@@ -1,3 +1,5 @@
+import {t as tr,gloss,has} from './i18n.js';
+
 
 
 /* ---------- helpers ---------- */
@@ -15,15 +17,15 @@ const YOON=parseRows(['きゃ:kya きゅ:kyu きょ:kyo','しゃ:sha しゅ:shu 
 const R={};[BASIC,DAKU,YOON].forEach(rows=>rows.flat().forEach(x=>{R[x.k]=x.r}));
 const AMB=new Set(['ぢ','づ']);
 const ALT={'を':['o'],'ん':['nn']};
-const NOTE={'し':'し đọc là "shi", không phải "si".','ち':'ち đọc là "chi".','つ':'つ đọc là "tsu".','ふ':'ふ đọc là "fu", âm nằm giữa "hu" và "fu".','を':'を đọc như "o", chỉ dùng làm trợ từ.','ん':'ん là một nhịp riêng, đọc "n".','は':'は đọc "ha"; khi làm trợ từ thì đọc "wa".','へ':'へ đọc "he"; khi làm trợ từ thì đọc "e".','じ':'じ đọc là "ji".','ず':'ず đọc là "zu".','ぢ':'ぢ đọc giống じ (ji), ít dùng.','づ':'づ đọc giống ず (zu), ít dùng.'};
+const noteOf=k=>has('note.'+k)?tr('note.'+k):'';
 
 /* ---------- words (mora based) ---------- */
 function parseMorae(s){const out=[];for(const ch of s){if('ゃゅょ'.includes(ch)&&out.length)out[out.length-1]+=ch;else out.push(ch)}return out}
 function romajiOf(m){let out='',pend=false;for(const x of m){if(x==='っ'){pend=true;continue}const r=R[x]||'?';out+=pend?(r.startsWith('ch')?'t':r[0])+r:r;pend=false}return out}
-const mkWords=s=>s.split('|').map(t=>{const p=t.split(':');const m=parseMorae(p[0]);return{k:p[0],vi:p[1],m:m,r:romajiOf(m)}});
-const LONGW=mkWords('おかあさん:mẹ|おとうさん:bố|おにいさん:anh trai|おねえさん:chị gái|おばあさん:bà|おじいさん:ông|ゆうめい:nổi tiếng|せんせい:giáo viên|おおきい:to, lớn|ちいさい:nhỏ|とおい:xa|ありがとう:cảm ơn|こうこう:trường cấp 3|くうき:không khí|ひこうき:máy bay|とうきょう:Tokyo|えいが:phim|ふうふ:vợ chồng|きのう:hôm qua|おおさか:Osaka');
-const SOKW=mkWords('がっこう:trường học|きって:tem thư|ざっし:tạp chí|いっぱい:nhiều, đầy|ちょっと:một chút|にっぽん:Nhật Bản|しゅっぱつ:xuất phát|まっすぐ:thẳng|けっこん:kết hôn|きっぷ:vé|いっしょ:cùng nhau|みっつ:ba cái|やっつ:tám cái|ほっかいどう:Hokkaido|さっぽろ:Sapporo|はっぱ:chiếc lá|ずっと:suốt, mãi|ぜったい:nhất định|もっと:hơn nữa');
-const YOONW=mkWords('しゃしん:ảnh|かいしゃ:công ty|おちゃ:trà|ひゃく:một trăm|りょこう:du lịch|びょういん:bệnh viện|じてんしゃ:xe đạp|しゅくだい:bài tập về nhà|ぎゅうにゅう:sữa bò|きょう:hôm nay|ちゅうごく:Trung Quốc|きゅう:số chín|じゃがいも:khoai tây|びょうき:bệnh|りょうり:món ăn|ちゃいろ:màu nâu|うんてんしゅ:tài xế');
+const mkWords=s=>s.split('|').map(t=>{const p=t.split(':');const m=parseMorae(p[0]);return{k:p[0],vi:p[1],en:p[2],m:m,r:romajiOf(m)}});
+const LONGW=mkWords('おかあさん:mẹ:mother|おとうさん:bố:father|おにいさん:anh trai:older brother|おねえさん:chị gái:older sister|おばあさん:bà:grandmother|おじいさん:ông:grandfather|ゆうめい:nổi tiếng:famous|せんせい:giáo viên:teacher|おおきい:to, lớn:big|ちいさい:nhỏ:small|とおい:xa:far|ありがとう:cảm ơn:thank you|こうこう:trường cấp 3:high school|くうき:không khí:air|ひこうき:máy bay:airplane|とうきょう:Tokyo:Tokyo|えいが:phim:movie|ふうふ:vợ chồng:married couple|きのう:hôm qua:yesterday|おおさか:Osaka:Osaka');
+const SOKW=mkWords('がっこう:trường học:school|きって:tem thư:postage stamp|ざっし:tạp chí:magazine|いっぱい:nhiều, đầy:a lot, full|ちょっと:một chút:a little|にっぽん:Nhật Bản:Japan|しゅっぱつ:xuất phát:departure|まっすぐ:thẳng:straight|けっこん:kết hôn:marriage|きっぷ:vé:ticket|いっしょ:cùng nhau:together|みっつ:ba cái:three things|やっつ:tám cái:eight things|ほっかいどう:Hokkaido:Hokkaido|さっぽろ:Sapporo:Sapporo|はっぱ:chiếc lá:leaf|ずっと:suốt, mãi:all along|ぜったい:nhất định:absolutely|もっと:hơn nữa:more');
+const YOONW=mkWords('しゃしん:ảnh:photo|かいしゃ:công ty:company|おちゃ:trà:tea|ひゃく:một trăm:one hundred|りょこう:du lịch:travel|びょういん:bệnh viện:hospital|じてんしゃ:xe đạp:bicycle|しゅくだい:bài tập về nhà:homework|ぎゅうにゅう:sữa bò:milk|きょう:hôm nay:today|ちゅうごく:Trung Quốc:China|きゅう:số chín:nine|じゃがいも:khoai tây:potato|びょうき:bệnh:illness|りょうり:món ăn:cooking, dish|ちゃいろ:màu nâu:brown|うんてんしゅ:tài xế:driver');
 const ALLW=[...LONGW,...SOKW,...YOONW];
 
 const V=x=>{const r=R[x];return r?r[r.length-1]:''};
@@ -83,44 +85,44 @@ function distract(it,pool,n){
 
 /* ---------- explanations ---------- */
 function explainK(it){
-  let s=`「${esc(it.k)}」 đọc là <b>${esc(it.r)}</b>.`;
-  if(NOTE[it.k])s+=' '+NOTE[it.k];
-  if(it.k.length>1)s+=' ゃゅょ nhỏ gộp vào chữ trước, cả cụm là 1 nhịp.';
+  let s=tr('e.read',{k:esc(it.k),r:esc(it.r)});
+  if(noteOf(it.k))s+=' '+noteOf(it.k);
+  if(it.k.length>1)s+=tr('e.yoonK');
   return s;
 }
 function explainW(w){
-  let s=`<b>${esc(w.k)}</b> = <b>${esc(w.r)}</b> · ${esc(w.vi)}<br><span class="mm">${w.m.join('・')}</span>`;
+  let s=`<b>${esc(w.k)}</b> = <b>${esc(w.r)}</b> · ${esc(gloss(w))}<br><span class="mm">${w.m.join('・')}</span>`;
   const n=[];
-  if(w.m.includes('っ'))n.push('っ nhỏ (âm ngắt) làm đôi phụ âm kế tiếp, ví dụ っ + こ = kko.');
-  if(w.m.some((x,i)=>isLong(w.m,i)))n.push('Nguyên âm kéo dài chiếm thêm 1 nhịp, viết bằng cách lặp nguyên âm (aa, ii, uu, ei, ou, oo).');
-  if(w.m.some(x=>x.length>1))n.push('ゃゅょ nhỏ gộp vào chữ đứng trước thành 1 nhịp.');
+  if(w.m.includes('っ'))n.push(tr('e.sok'));
+  if(w.m.some((x,i)=>isLong(w.m,i)))n.push(tr('e.long'));
+  if(w.m.some(x=>x.length>1))n.push(tr('e.yoonW'));
   return s+(n.length?'<br>'+n.join('<br>'):'');
 }
 
 /* ---------- question builders ---------- */
-const T={k2r:'Chữ → romaji',r2k:'Romaji → chữ',type:'Gõ romaji',match:'Nối cặp',odd:'Tìm chữ khác nhóm',voice:'Dấu ゛ ゜',size:'Âm ghép',wk2r:'Từ → romaji',wr2k:'Romaji → từ',wtype:'Gõ cả từ',fill:'Điền chữ thiếu',mora:'Đếm nhịp'};
+const T=Object.fromEntries(['k2r','r2k','type','match','odd','voice','size','wk2r','wr2k','wtype','fill','mora'].map(k=>[k,tr('ty.'+k)]));
 const CHOICE=new Set(['k2r','r2k','odd','voice','size','wk2r','wr2k','fill','mora']);
 const PLAIN=new Set(['k2r','r2k','odd','voice','size','type','match']);
 
 function qK2R(it,pool){
-  return{type:'k2r',prompt:'Chữ này đọc là gì?',stage:{m:parseMorae(it.k)},opts:shuffle([it.r,...distract(it,pool,3).map(x=>x.r)]),font:'latin',answer:it.r,explain:explainK(it),sum:`${it.k} = ${it.r}`};
+  return{type:'k2r',prompt:tr('p.k2r'),stage:{m:parseMorae(it.k)},opts:shuffle([it.r,...distract(it,pool,3).map(x=>x.r)]),font:'latin',answer:it.r,explain:explainK(it),sum:`${it.k} = ${it.r}`};
 }
 function qR2K(it,pool){
-  return{type:'r2k',prompt:'Chọn chữ đọc là:',stage:{text:it.r},opts:shuffle([it.k,...distract(it,pool,3).map(x=>x.k)]),font:'kana',answer:it.k,explain:explainK(it),sum:`${it.r} = ${it.k}`};
+  return{type:'r2k',prompt:tr('p.r2k'),stage:{text:it.r},opts:shuffle([it.k,...distract(it,pool,3).map(x=>x.k)]),font:'kana',answer:it.k,explain:explainK(it),sum:`${it.r} = ${it.k}`};
 }
 function qType(it){
-  return{type:'type',prompt:'Gõ cách đọc của chữ này bằng romaji:',stage:{m:parseMorae(it.k),hint:'Gõ chữ Latinh, không cần dấu cách.'},answer:it.r,alt:ALT[it.k]||[],cap:15,explain:explainK(it),sum:`${it.k} = ${it.r}`};
+  return{type:'type',prompt:tr('p.type'),stage:{m:parseMorae(it.k),hint:tr('h.type')},answer:it.r,alt:ALT[it.k]||[],cap:15,explain:explainK(it),sum:`${it.k} = ${it.r}`};
 }
 function qMatch(g){
-  return{type:'match',prompt:'Nối mỗi chữ với cách đọc của nó:',pairs:g,cap:25,explain:g.map(p=>`${esc(p.k)} = ${esc(p.r)}`).join(' · '),sum:g.map(p=>`${p.k} ${p.r}`).join(', ')};
+  return{type:'match',prompt:tr('p.match'),pairs:g,cap:25,explain:g.map(p=>`${esc(p.k)} = ${esc(p.r)}`).join(' · '),sum:g.map(p=>`${p.k} ${p.r}`).join(', ')};
 }
 function qOdd(rows){
   const el=rows.map(r=>r.filter(x=>!AMB.has(x.k))).filter(r=>r.length>=3);
   const A=pick(el),trio=take(A,3);
   let out=null;
   for(const B of shuffle(el.filter(r=>r!==A))){const c=B.filter(x=>!A.some(a=>a.r===x.r));if(c.length){out=pick(c);break}}
-  return{type:'odd',prompt:`Chữ nào KHÔNG đọc là một trong: ${A.map(x=>x.r).join(', ')}?`,opts:shuffle([...trio.map(x=>x.k),out.k]),font:'kana',answer:out.k,
-    explain:`「${esc(out.k)}」 đọc là <b>${esc(out.r)}</b>, nằm ngoài nhóm này. Ba chữ còn lại: ${trio.map(x=>esc(x.k)+' ('+esc(x.r)+')').join(', ')}.`,sum:`${out.k} = ${out.r}`};
+  return{type:'odd',prompt:tr('p.odd',{list:A.map(x=>x.r).join(', ')}),opts:shuffle([...trio.map(x=>x.k),out.k]),font:'kana',answer:out.k,
+    explain:tr('e.odd',{k:esc(out.k),r:esc(out.r),rest:trio.map(x=>esc(x.k)+' ('+esc(x.r)+')').join(', ')}),sum:`${out.k} = ${out.r}`};
 }
 const VP=[];
 (function(){const add=(b,v,mk)=>{[...b].forEach((c,i)=>VP.push({base:c,voiced:[...v][i],mark:mk}))};
@@ -134,12 +136,12 @@ function qVoice(){
     const opts=[vIt];
     if(alt)opts.push({k:alt.voiced,r:R[alt.voiced]});
     distract(vIt,pool.filter(x=>!alt||x.k!==alt.voiced),3).forEach(x=>{if(opts.length<4)opts.push(x)});
-    return{type:'voice',prompt:`Thêm dấu ${v.mark} vào 「${v.base}」 thì được chữ nào?`,stage:{m:[v.base]},opts:shuffle(opts.map(x=>x.k)),font:'kana',answer:v.voiced,
-      explain:`${v.base} (${R[v.base]}) + ${v.mark} = <b>${v.voiced}</b> (${R[v.voiced]}).${v.mark==='゜'?' Dấu ゜ chỉ đi với hàng は: ぱ ぴ ぷ ぺ ぽ.':''}`,sum:`${v.base} + ${v.mark} = ${v.voiced}`};
+    return{type:'voice',prompt:tr('p.voiceAdd',{mark:v.mark,base:v.base}),stage:{m:[v.base]},opts:shuffle(opts.map(x=>x.k)),font:'kana',answer:v.voiced,
+      explain:`${v.base} (${R[v.base]}) + ${v.mark} = <b>${v.voiced}</b> (${R[v.voiced]}).${v.mark==='゜'?tr('e.handaku'):''}`,sum:`${v.base} + ${v.mark} = ${v.voiced}`};
   }
   const bIt={k:v.base,r:R[v.base]};
   const pool=BASIC.flat().filter(x=>!AMB.has(x.k));
-  return{type:'voice',prompt:`Bỏ dấu khỏi 「${v.voiced}」 thì được chữ nào?`,stage:{m:[v.voiced]},opts:shuffle([v.base,...distract(bIt,pool,3).map(x=>x.k)]),font:'kana',answer:v.base,
+  return{type:'voice',prompt:tr('p.voiceDel',{voiced:v.voiced}),stage:{m:[v.voiced]},opts:shuffle([v.base,...distract(bIt,pool,3).map(x=>x.k)]),font:'kana',answer:v.base,
     explain:`${v.voiced} (${R[v.voiced]}) = <b>${v.base}</b> (${R[v.base]}) + ${v.mark}.`,sum:`${v.voiced} − ${v.mark} = ${v.base}`};
 }
 const LARGE={'ゃ':'や','ゅ':'ゆ','ょ':'よ'};
@@ -148,40 +150,40 @@ function qSize(y){
   const large=c+l;
   const other=c+pick('ゃゅょ'.split('').filter(z=>z!==s));
   const diff=pick(YOON.flat().filter(x=>x.k[1]===s&&x.k[0]!==c)).k;
-  return{type:'size',prompt:`Chữ nào đọc liền thành một nhịp 「${y.r}」?`,stage:{text:y.r},opts:shuffle([y.k,large,other,diff]),font:'kana',answer:y.k,
-    explain:`<b>${y.k}</b> = ${y.r}, chỉ 1 nhịp vì ${s} viết nhỏ. ${large} có ${l} cỡ thường nên đọc 2 nhịp: ${R[c]} + ${R[l]}.`,sum:`${y.r} = ${y.k}`};
+  return{type:'size',prompt:tr('p.size',{r:y.r}),stage:{text:y.r},opts:shuffle([y.k,large,other,diff]),font:'kana',answer:y.k,
+    explain:tr('e.size',{k:y.k,r:y.r,s:s,large:large,l:l,r1:R[c],r2:R[l]}),sum:`${y.r} = ${y.k}`};
 }
 function qWK2R(w){
-  return{type:'wk2r',prompt:'Từ này đọc là gì?',stage:{m:w.m},opts:shuffle([w.r,...mutants(w,3).map(x=>x.r)]),font:'latin',answer:w.r,explain:explainW(w),sum:`${w.k} = ${w.r}`};
+  return{type:'wk2r',prompt:tr('p.wk2r'),stage:{m:w.m},opts:shuffle([w.r,...mutants(w,3).map(x=>x.r)]),font:'latin',answer:w.r,explain:explainW(w),sum:`${w.k} = ${w.r}`};
 }
 function qWR2K(w){
-  return{type:'wr2k',prompt:'Chọn cách viết hiragana đúng của từ:',stage:{text:w.r,hint:w.vi},opts:shuffle([w.k,...mutants(w,3).map(x=>x.k)]),font:'kana',answer:w.k,explain:explainW(w),sum:`${w.r} = ${w.k}`};
+  return{type:'wr2k',prompt:tr('p.wr2k'),stage:{text:w.r,hint:gloss(w)},opts:shuffle([w.k,...mutants(w,3).map(x=>x.k)]),font:'kana',answer:w.k,explain:explainW(w),sum:`${w.r} = ${w.k}`};
 }
 function qWType(w){
-  return{type:'wtype',prompt:'Gõ romaji của cả từ:',stage:{m:w.m,hint:'Âm kéo dài: lặp nguyên âm (aa, ii, uu, ei, ou). Âm ngắt っ: gấp đôi phụ âm.'},answer:w.r,alt:[],cap:20,explain:explainW(w),sum:`${w.k} = ${w.r}`};
+  return{type:'wtype',prompt:tr('p.wtype'),stage:{m:w.m,hint:tr('h.wtype')},answer:w.r,alt:[],cap:20,explain:explainW(w),sum:`${w.k} = ${w.r}`};
 }
 function qFill(w){
   const c=[];w.m.forEach((x,i)=>{if(x==='っ'||isLong(w.m,i))c.push(i)});
   const i=pick(c),ans=w.m[i];
   const ds=ans==='っ'?['つ','う','ん']:take(['あ','い','う','え','お','っ'].filter(x=>x!==ans),3);
-  return{type:'fill',prompt:'Điền chữ còn thiếu để ra đúng từ:',stage:{m:w.m,blank:i,hint:`${w.r} · ${w.vi}`},opts:shuffle([ans,...ds]),font:'kana',answer:ans,explain:explainW(w),sum:`${w.k} = ${w.r}`};
+  return{type:'fill',prompt:tr('p.fill'),stage:{m:w.m,blank:i,hint:`${w.r} · ${gloss(w)}`},opts:shuffle([ans,...ds]),font:'kana',answer:ans,explain:explainW(w),sum:`${w.k} = ${w.r}`};
 }
 function qMora(w){
   const n=w.m.length,len=[...w.k].length;
   const pr=[len!==n?len:0,n+1,n-1,n+2,n-2].filter(x=>x>=1&&x!==n);
   const ds=[];pr.forEach(x=>{if(!ds.includes(x)&&ds.length<3)ds.push(x)});
-  return{type:'mora',prompt:'Từ này có mấy nhịp (mora)?',stage:{m:w.m},opts:[n,...ds].sort((a,b)=>a-b).map(String),font:'num',answer:String(n),
-    explain:`${w.m.map(esc).join(' | ')} = <b>${n} nhịp</b>. Mỗi っ, ん và nguyên âm kéo dài tính 1 nhịp; ゃゅょ nhỏ không tính riêng.<br>${esc(w.k)} = ${esc(w.r)} · ${esc(w.vi)}`,sum:`${w.k}: ${n} nhịp`};
+  return{type:'mora',prompt:tr('p.mora'),stage:{m:w.m},opts:[n,...ds].sort((a,b)=>a-b).map(String),font:'num',answer:String(n),
+    explain:tr('e.mora',{morae:w.m.map(esc).join(' | '),n:n,k:esc(w.k),r:esc(w.r),gl:esc(gloss(w))}),sum:tr('s.mora',{k:w.k,n:n})};
 }
 
 /* ---------- rounds ---------- */
 const ALLK=[...BASIC,...DAKU,...YOON].flat();
 const ROUNDS=[
-  {num:'一',name:'Chữ cơ bản',sub:'あ → わ, ん · 46 chữ',chips:'あ き す ち ぬ',pool:BASIC.flat(),rows:BASIC,words:[],plan:{k2r:7,r2k:6,type:3,odd:2,match:2}},
-  {num:'二',name:'Âm đục & bán đục',sub:'dấu ゛ và ゜ · が ざ だ ば ぱ',chips:'が じ ず べ ぽ',pool:DAKU.flat(),rows:DAKU,words:[],plan:{k2r:6,r2k:5,type:3,odd:2,match:1,voice:3}},
-  {num:'三',name:'Âm ghép',sub:'ゃ ゅ ょ nhỏ · 1 nhịp',chips:'きゃ しゅ ちょ りゃ',pool:YOON.flat(),rows:YOON,words:YOONW,plan:{k2r:4,r2k:4,type:3,odd:2,match:1,size:3,wk2r:2,wtype:1}},
-  {num:'四',name:'Trường âm & âm ngắt',sub:'おう・ええ・いい · っ',chips:'おかあさん がっこう',pool:[],rows:[],words:[...LONGW,...SOKW],plan:{wk2r:6,wr2k:4,wtype:3,fill:4,mora:3}},
-  {num:'五',name:'Tổng hợp',sub:'mọi dạng câu hỏi, mọi loại chữ',chips:'ぎゅうにゅう ざっし',pool:ALLK,rows:[...BASIC,...DAKU,...YOON],words:ALLW,plan:{k2r:3,r2k:3,type:3,wk2r:3,wr2k:2,wtype:2,fill:1,mora:1,odd:1,match:1}}
+  {num:'一',name:tr('r1.name'),sub:tr('r1.sub'),chips:'あ き す ち ぬ',pool:BASIC.flat(),rows:BASIC,words:[],plan:{k2r:7,r2k:6,type:3,odd:2,match:2}},
+  {num:'二',name:tr('r2.name'),sub:tr('r2.sub'),chips:'が じ ず べ ぽ',pool:DAKU.flat(),rows:DAKU,words:[],plan:{k2r:6,r2k:5,type:3,odd:2,match:1,voice:3}},
+  {num:'三',name:tr('r3.name'),sub:tr('r3.sub'),chips:'きゃ しゅ ちょ りゃ',pool:YOON.flat(),rows:YOON,words:YOONW,plan:{k2r:4,r2k:4,type:3,odd:2,match:1,size:3,wk2r:2,wtype:1}},
+  {num:'四',name:tr('r4.name'),sub:tr('r4.sub'),chips:'おかあさん がっこう',pool:[],rows:[],words:[...LONGW,...SOKW],plan:{wk2r:6,wr2k:4,wtype:3,fill:4,mora:3}},
+  {num:'五',name:tr('r5.name'),sub:tr('r5.sub'),chips:'ぎゅうにゅう ざっし',pool:ALLK,rows:[...BASIC,...DAKU,...YOON],words:ALLW,plan:{k2r:3,r2k:3,type:3,wk2r:3,wr2k:2,wtype:2,fill:1,mora:1,odd:1,match:1}}
 ];
 function buildFromCtx(ctx){
   const used=new Set();
@@ -215,14 +217,14 @@ export function build(idx){return buildFromCtx(ROUNDS[idx])}
 export {BASIC,DAKU,YOON,R,AMB,ROUNDS,T,CHOICE,PLAIN,buildFromCtx,norm,parseMorae,shuffle,pick,take,esc,ALLK,ALLW,LONGW,SOKW,YOONW};
 
 /* Bộ câu hỏi cho mini quiz trong bài học: chỉ dùng các chữ và từ của bài, distractor lấy từ cùng bảng. */
-export function mkWord(kana,vi,romaji){
+export function mkWord(kana,vi,romaji,en){
   const m=parseMorae(kana);
-  return{k:kana,vi:vi||'',m:m,r:romaji||romajiOf(m)};
+  return{k:kana,vi:vi||'',en:en||'',m:m,r:romaji||romajiOf(m)};
 }
 const WORD_TYPES=new Set(['wk2r','wr2k','wtype','fill','mora']);
 export function buildLesson(chars,plan,words){
   let items=chars.map(c=>({k:c.k,r:c.r})).filter(x=>!AMB.has(x.k));
-  const ws=(words||[]).filter(w=>w.quiz!==false).map(w=>mkWord(w.kana,w.vi,w.romaji));
+  const ws=(words||[]).filter(w=>w.quiz!==false).map(w=>mkWord(w.kana,w.vi,w.romaji,w.en));
   const needChars=Object.keys(plan).some(t=>!WORD_TYPES.has(t));
   if(needChars&&items.length<4){ // bài ít chữ (vd わ を ん): thêm vài chữ cũ để ôn
     const extra=take(BASIC.flat().filter(x=>!AMB.has(x.k)&&!items.some(i=>i.k===x.k)&&x.k!=='を'),4);

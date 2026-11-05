@@ -37,14 +37,14 @@ chars:
   - { k: "ぺ", r: "pe", tip: "へ + ゜" }
   - { k: "ぽ", r: "po", tip: "ほ + ゜" }
 words:
-  - { kana: "かばん", romaji: "kaban", vi: "cái cặp" }
-  - { kana: "ともだち", romaji: "tomodachi", vi: "bạn bè" }
-  - { kana: "ぱん", romaji: "pan", vi: "bánh mì" }
-  - { kana: "ごはん", romaji: "gohan", vi: "cơm" }
-  - { kana: "かぎ", romaji: "kagi", vi: "chìa khóa" }
-  - { kana: "でんわ", romaji: "denwa", vi: "điện thoại" }
-  - { kana: "たまご", romaji: "tamago", vi: "trứng" }
-  - { kana: "ぶた", romaji: "buta", vi: "con heo" }
+  - { kana: "かばん", romaji: "kaban", vi: "cái cặp", en: "bag" }
+  - { kana: "ともだち", romaji: "tomodachi", vi: "bạn bè", en: "friend" }
+  - { kana: "ぱん", romaji: "pan", vi: "bánh mì", en: "bread" }
+  - { kana: "ごはん", romaji: "gohan", vi: "cơm", en: "cooked rice, meal" }
+  - { kana: "かぎ", romaji: "kagi", vi: "chìa khóa", en: "key" }
+  - { kana: "でんわ", romaji: "denwa", vi: "điện thoại", en: "telephone" }
+  - { kana: "たまご", romaji: "tamago", vi: "trứng", en: "egg" }
+  - { kana: "ぶた", romaji: "buta", vi: "con heo", en: "pig" }
 ---
 ## Hai dấu mới
 

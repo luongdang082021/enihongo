@@ -13,15 +13,15 @@ objectives:
   - "Biết は đọc là \"wa\" khi làm trợ từ"
   - "Tự giới thiệu bằng một câu ngắn"
 words:
-  - { kana: "おはよう", romaji: "ohayou", vi: "chào buổi sáng" }
-  - { kana: "こんにちは", romaji: "konnichiwa", vi: "xin chào (ban ngày)", quiz: false }
-  - { kana: "こんばんは", romaji: "konbanwa", vi: "chào buổi tối", quiz: false }
-  - { kana: "ありがとう", romaji: "arigatou", vi: "cảm ơn" }
-  - { kana: "すみません", romaji: "sumimasen", vi: "xin lỗi, xin phép" }
-  - { kana: "さようなら", romaji: "sayounara", vi: "tạm biệt" }
-  - { kana: "はじめまして", romaji: "hajimemashite", vi: "rất vui được gặp" }
-  - { kana: "おやすみなさい", romaji: "oyasuminasai", vi: "chúc ngủ ngon" }
-  - { kana: "です", romaji: "desu", vi: "là" }
+  - { kana: "おはよう", romaji: "ohayou", vi: "chào buổi sáng", en: "good morning" }
+  - { kana: "こんにちは", romaji: "konnichiwa", vi: "xin chào (ban ngày)", en: "hello (daytime)", quiz: false }
+  - { kana: "こんばんは", romaji: "konbanwa", vi: "chào buổi tối", en: "good evening", quiz: false }
+  - { kana: "ありがとう", romaji: "arigatou", vi: "cảm ơn", en: "thank you" }
+  - { kana: "すみません", romaji: "sumimasen", vi: "xin lỗi, xin phép", en: "excuse me, sorry" }
+  - { kana: "さようなら", romaji: "sayounara", vi: "tạm biệt", en: "goodbye" }
+  - { kana: "はじめまして", romaji: "hajimemashite", vi: "rất vui được gặp", en: "nice to meet you" }
+  - { kana: "おやすみなさい", romaji: "oyasuminasai", vi: "chúc ngủ ngon", en: "good night" }
+  - { kana: "です", romaji: "desu", vi: "là", en: "is, am, are" }
 ---
 ## Các câu chào
 

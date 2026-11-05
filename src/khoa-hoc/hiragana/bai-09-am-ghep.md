@@ -47,14 +47,14 @@ chars:
   - { k: "ぴゅ", r: "pyu", tip: "ぴ + ゅ nhỏ" }
   - { k: "ぴょ", r: "pyo", tip: "ぴ + ょ nhỏ" }
 words:
-  - { kana: "しゃしん", romaji: "shashin", vi: "ảnh" }
-  - { kana: "おちゃ", romaji: "ocha", vi: "trà" }
-  - { kana: "ひゃく", romaji: "hyaku", vi: "một trăm" }
-  - { kana: "かいしゃ", romaji: "kaisha", vi: "công ty" }
-  - { kana: "じてんしゃ", romaji: "jitensha", vi: "xe đạp" }
-  - { kana: "しゅくだい", romaji: "shukudai", vi: "bài tập về nhà" }
-  - { kana: "りょこう", romaji: "ryokou", vi: "du lịch" }
-  - { kana: "きょう", romaji: "kyou", vi: "hôm nay" }
+  - { kana: "しゃしん", romaji: "shashin", vi: "ảnh", en: "photo" }
+  - { kana: "おちゃ", romaji: "ocha", vi: "trà", en: "tea" }
+  - { kana: "ひゃく", romaji: "hyaku", vi: "một trăm", en: "one hundred" }
+  - { kana: "かいしゃ", romaji: "kaisha", vi: "công ty", en: "company" }
+  - { kana: "じてんしゃ", romaji: "jitensha", vi: "xe đạp", en: "bicycle" }
+  - { kana: "しゅくだい", romaji: "shukudai", vi: "bài tập về nhà", en: "homework" }
+  - { kana: "りょこう", romaji: "ryokou", vi: "du lịch", en: "travel" }
+  - { kana: "きょう", romaji: "kyou", vi: "hôm nay", en: "today" }
 ---
 ## Cách ghép
 

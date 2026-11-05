@@ -13,18 +13,18 @@ objectives:
   - "Đọc và viết romaji các từ như がっこう, きって, ざっし"
   - "Phân biệt cặp từ có và không có っ"
 words:
-  - { kana: "がっこう", romaji: "gakkou", vi: "trường học" }
-  - { kana: "きって", romaji: "kitte", vi: "tem thư" }
-  - { kana: "ざっし", romaji: "zasshi", vi: "tạp chí" }
-  - { kana: "いっぱい", romaji: "ippai", vi: "nhiều, đầy" }
-  - { kana: "ちょっと", romaji: "chotto", vi: "một chút" }
-  - { kana: "にっぽん", romaji: "nippon", vi: "Nhật Bản" }
-  - { kana: "まっすぐ", romaji: "massugu", vi: "thẳng" }
-  - { kana: "けっこん", romaji: "kekkon", vi: "kết hôn" }
-  - { kana: "きっぷ", romaji: "kippu", vi: "vé" }
-  - { kana: "いっしょ", romaji: "issho", vi: "cùng nhau" }
-  - { kana: "みっつ", romaji: "mittsu", vi: "ba cái" }
-  - { kana: "もっと", romaji: "motto", vi: "hơn nữa" }
+  - { kana: "がっこう", romaji: "gakkou", vi: "trường học", en: "school" }
+  - { kana: "きって", romaji: "kitte", vi: "tem thư", en: "postage stamp" }
+  - { kana: "ざっし", romaji: "zasshi", vi: "tạp chí", en: "magazine" }
+  - { kana: "いっぱい", romaji: "ippai", vi: "nhiều, đầy", en: "a lot, full" }
+  - { kana: "ちょっと", romaji: "chotto", vi: "một chút", en: "a little" }
+  - { kana: "にっぽん", romaji: "nippon", vi: "Nhật Bản", en: "Japan" }
+  - { kana: "まっすぐ", romaji: "massugu", vi: "thẳng", en: "straight" }
+  - { kana: "けっこん", romaji: "kekkon", vi: "kết hôn", en: "marriage" }
+  - { kana: "きっぷ", romaji: "kippu", vi: "vé", en: "ticket" }
+  - { kana: "いっしょ", romaji: "issho", vi: "cùng nhau", en: "together" }
+  - { kana: "みっつ", romaji: "mittsu", vi: "ba cái", en: "three things" }
+  - { kana: "もっと", romaji: "motto", vi: "hơn nữa", en: "more" }
 ---
 ## Quy tắc
 

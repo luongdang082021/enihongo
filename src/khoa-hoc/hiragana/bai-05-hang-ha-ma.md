@@ -24,14 +24,14 @@ chars:
   - { k: "め", r: "me", tip: "Đọc \"mê\". Giống ぬ nhưng không có vòng nhỏ ở cuối." }
   - { k: "も", r: "mo", tip: "Đọc \"mô\". Nét đứng móc lên với hai vạch ngang, như lưỡi câu." }
 words:
-  - { kana: "はな", romaji: "hana", vi: "hoa" }
-  - { kana: "ふね", romaji: "fune", vi: "con thuyền" }
-  - { kana: "ふく", romaji: "fuku", vi: "quần áo" }
-  - { kana: "ほし", romaji: "hoshi", vi: "ngôi sao" }
-  - { kana: "まち", romaji: "machi", vi: "thị trấn" }
-  - { kana: "くも", romaji: "kumo", vi: "đám mây" }
-  - { kana: "あめ", romaji: "ame", vi: "mưa" }
-  - { kana: "さむい", romaji: "samui", vi: "lạnh" }
+  - { kana: "はな", romaji: "hana", vi: "hoa", en: "flower" }
+  - { kana: "ふね", romaji: "fune", vi: "con thuyền", en: "boat" }
+  - { kana: "ふく", romaji: "fuku", vi: "quần áo", en: "clothes" }
+  - { kana: "ほし", romaji: "hoshi", vi: "ngôi sao", en: "star" }
+  - { kana: "まち", romaji: "machi", vi: "thị trấn", en: "town" }
+  - { kana: "くも", romaji: "kumo", vi: "đám mây", en: "cloud" }
+  - { kana: "あめ", romaji: "ame", vi: "mưa", en: "rain" }
+  - { kana: "さむい", romaji: "samui", vi: "lạnh", en: "cold" }
 ---
 ## Quy luật
 

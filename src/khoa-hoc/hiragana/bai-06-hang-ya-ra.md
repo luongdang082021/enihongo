@@ -22,14 +22,14 @@ chars:
   - { k: "れ", r: "re", tip: "Nét đứng bên trái, đuôi hất ra ngoài, không có vòng." }
   - { k: "ろ", r: "ro", tip: "Giống る nhưng không có vòng ở cuối." }
 words:
-  - { kana: "やま", romaji: "yama", vi: "núi" }
-  - { kana: "ゆき", romaji: "yuki", vi: "tuyết" }
-  - { kana: "よる", romaji: "yoru", vi: "ban đêm" }
-  - { kana: "さくら", romaji: "sakura", vi: "hoa anh đào" }
-  - { kana: "そら", romaji: "sora", vi: "bầu trời" }
-  - { kana: "はる", romaji: "haru", vi: "mùa xuân" }
-  - { kana: "くるま", romaji: "kuruma", vi: "xe hơi" }
-  - { kana: "やすい", romaji: "yasui", vi: "rẻ" }
+  - { kana: "やま", romaji: "yama", vi: "núi", en: "mountain" }
+  - { kana: "ゆき", romaji: "yuki", vi: "tuyết", en: "snow" }
+  - { kana: "よる", romaji: "yoru", vi: "ban đêm", en: "night" }
+  - { kana: "さくら", romaji: "sakura", vi: "hoa anh đào", en: "cherry blossom" }
+  - { kana: "そら", romaji: "sora", vi: "bầu trời", en: "sky" }
+  - { kana: "はる", romaji: "haru", vi: "mùa xuân", en: "spring" }
+  - { kana: "くるま", romaji: "kuruma", vi: "xe hơi", en: "car" }
+  - { kana: "やすい", romaji: "yasui", vi: "rẻ", en: "cheap" }
 ---
 ## Quy luật
 

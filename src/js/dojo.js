@@ -1,3 +1,4 @@
+import {t as tr,lang} from './i18n.js';
 import {ROUNDS,build,buildLesson,esc} from './quiz-core.js';
 import {mountQuiz,starsHTML,fmt} from './quiz-ui.js';
 import {dojoBest,saveDojo} from './progress.js';
@@ -12,10 +13,10 @@ function renderLadder(){
   const best=dojoBest();
   ladder.innerHTML=ROUNDS.map((r,i)=>{
     const b=best[i];
-    return `<li><button class="rung" type="button" data-r="${i}"><span class="num" aria-hidden="true">${r.num}</span><span class="rbody"><span class="rname">Hiệp ${i+1} · ${esc(r.name)}</span><span class="sub">${esc(r.sub)}</span><span class="chips">${esc(r.chips)}</span></span><span class="best">${b?starsHTML(b.stars,16)+'<b>'+fmt(b.score)+'</b>':'<span>Chưa chơi</span>'}</span></button></li>`;
+    return `<li><button class="rung" type="button" data-r="${i}"><span class="num" aria-hidden="true">${r.num}</span><span class="rbody"><span class="rname">${esc(tr('d.round',{i:i+1,name:r.name}))}</span><span class="sub">${esc(r.sub)}</span><span class="chips">${esc(r.chips)}</span></span><span class="best">${b?starsHTML(b.stars,16)+'<b>'+fmt(b.score)+'</b>':'<span>'+tr('d.unplayed')+'</span>'}</span></button></li>`;
   }).join('');
   const sum=ROUNDS.reduce((a,_,i)=>a+((best[i]&&best[i].score)||0),0);
-  total.innerHTML=sum?`Tổng điểm cao nhất: <b>${fmt(sum)}</b>`:'';
+  total.innerHTML=sum?tr('d.total',{n:fmt(sum)}):'';
 }
 function showHome(){
   if(q){q.destroy();q=null}
@@ -27,9 +28,9 @@ function startRound(i){
   home.hidden=true;play.hidden=false;
   const r=ROUNDS[i];
   q=mountQuiz(play,{
-    questions:build(i),title:`Hiệp ${r.num} · ${r.name}`,quitLabel:'Menu',
+    questions:build(i),title:tr('d.roundTitle',{num:r.num,name:r.name}),quitLabel:tr('d.menu'),
     rebuild:()=>build(round),
-    extraActions:[...(round<ROUNDS.length-1?[{id:'next',label:'Hiệp tiếp theo'}]:[]),{id:'home',label:'Về menu'}],
+    extraActions:[...(round<ROUNDS.length-1?[{id:'next',label:tr('d.nextRound')}]:[]),{id:'home',label:tr('d.toMenu')}],
     onFinish:res=>res.review?{}:{record:saveDojo(round,res.score,res.stars)},
     onAction:id=>{if(id==='next')startRound(round+1);else showHome()},
     onQuit:showHome
@@ -59,16 +60,17 @@ function loadPool(){
     if(want&&pool.courses.some(c=>c.id===want))sel.add(want);
     else pool.courses.forEach(c=>sel.add(c.id));
     renderPicker();
-  }).catch(()=>{$('picksum').textContent='Không tải được danh sách khóa. Kiểm tra kết nối rồi thử lại.';loading=null});
+  }).catch(()=>{$('picksum').textContent=tr('d.loadFail');loading=null});
   return loading;
 }
+const cname=c=>(lang==='en'&&c.en)||c.name;
 const lessonsOf=id=>pool.lessons.filter(l=>l.course===id);
 const chosen=()=>pool?pool.lessons.filter(l=>sel.has(l.course)):[];
 function renderPicker(){
   $('picklist').innerHTML='<ul class="picklist">'+pool.courses.map(c=>{
     const {chars,words}=gather(lessonsOf(c.id));
-    const cnt=[chars.length?chars.length+' chữ':'',words.length?words.length+' từ':''].filter(Boolean).join(' · ');
-    return `<li><label><input type="checkbox" data-course="${esc(c.id)}"${sel.has(c.id)?' checked':''}><span>${esc(c.name)}</span><span class="cnt">${cnt}</span></label></li>`;
+    const cnt=[chars.length?tr('d.cntChars',{n:chars.length}):'',words.length?tr('d.cntWords',{n:words.length}):''].filter(Boolean).join(' · ');
+    return `<li><label><input type="checkbox" data-course="${esc(c.id)}"${sel.has(c.id)?' checked':''}><span>${esc(cname(c))}</span><span class="cnt">${cnt}</span></label></li>`;
   }).join('')+'</ul>';
   renderPicksum();
 }
@@ -76,9 +78,9 @@ function renderPicksum(){
   const btn=$('startmix'),el=$('picksum');
   if(!pool)return;
   const {chars,words}=gather(chosen());
-  if(!chars.length&&!words.length){el.textContent='Chưa chọn khóa nào.';btn.disabled=true;return}
+  if(!chars.length&&!words.length){el.textContent=tr('d.none');btn.disabled=true;return}
   const b=dojoBest()[mixKey(sel)];
-  el.innerHTML=`Đã chọn ${sel.size} khóa: ${chars.length} chữ, ${words.length} từ.${b?` Điểm cao lượt này: <b>${fmt(b.score)}</b> ${starsHTML(b.stars,14)}`:''}`;
+  el.innerHTML=tr('d.picked',{n:sel.size,c:chars.length,w:words.length})+(b?`${tr('d.best')}<b>${fmt(b.score)}</b> ${starsHTML(b.stars,14)}`:'');
   btn.disabled=false;
 }
 $('panel-custom').addEventListener('change',e=>{
@@ -96,9 +98,9 @@ function startMix(){
   if(q)q.destroy();
   home.hidden=true;play.hidden=false;
   q=mountQuiz(play,{
-    questions:mk(),title:`Tự chọn · ${ids.size} khóa`,quitLabel:'Menu',
+    questions:mk(),title:tr('d.customTitle',{n:ids.size}),quitLabel:tr('d.menu'),
     rebuild:mk,
-    extraActions:[{id:'home',label:'Chọn lại bài'}],
+    extraActions:[{id:'home',label:tr('d.repick')}],
     onFinish:res=>res.review?{}:{record:saveDojo(key,res.score,res.stars)},
     onAction:()=>showHome(),
     onQuit:showHome

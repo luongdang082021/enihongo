@@ -1,10 +1,11 @@
 /* Giao diện quiz dùng chung: mountQuiz(root, opts) vẽ phần chơi và màn kết quả vào root. */
+import {t as tr,lang,num} from './i18n.js';
 import {T,CHOICE,PLAIN,norm,shuffle,esc} from './quiz-core.js';
 
-export const fmt=n=>n.toLocaleString('vi-VN');
+export const fmt=n=>num(n);
 export const fmtTime=secs=>Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0');
 export const starsOf=acc=>acc>=.95?3:acc>=.8?2:acc>=.6?1:0;
-export const starsHTML=(n,sz)=>'<span class="stars" role="img" aria-label="'+n+' trên 3 sao">'+[0,1,2].map(i=>`<svg width="${sz}" height="${sz}" viewBox="0 0 24 24" aria-hidden="true"><path class="${i<n?'st-on':'st-off'}" stroke-width="1.6" stroke-linejoin="round" d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2 6.3 20.3l1.2-6.4L2.8 9.5l6.4-.8z"/></svg>`).join('')+'</span>';
+export const starsHTML=(n,sz)=>'<span class="stars" role="img" aria-label="'+tr('ui.stars',{n})+'">'+[0,1,2].map(i=>`<svg width="${sz}" height="${sz}" viewBox="0 0 24 24" aria-hidden="true"><path class="${i<n?'st-on':'st-off'}" stroke-width="1.6" stroke-linejoin="round" d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2 6.3 20.3l1.2-6.4L2.8 9.5l6.4-.8z"/></svg>`).join('')+'</span>';
 
 function cellsHTML(m,blank){
   const n=m.length,s=n===1?140:n===2?108:n===3?96:n===4?84:n===5?74:n===6?66:58;
@@ -23,21 +24,21 @@ export function mountQuiz(root,opts){
   const sig={signal:ac.signal};
 
   function shell(){
-    root.innerHTML=`<div data-play><div class="bar"><button class="ghost" type="button" data-quit>← ${esc(opts.quitLabel||'Thoát')}</button><span class="rtitle" data-title></span><span class="score" data-score aria-live="off">0</span></div><div class="segs" data-segs></div><div class="meta"><span data-cnt></span><span class="combo" data-combo></span></div><div class="qcard"><span class="tag" data-tag></span><p class="prompt" data-prompt></p><div class="stage" data-stage></div><div data-answer></div></div><div data-fb aria-live="polite"></div></div><div class="res" data-result hidden></div>`;
+    root.innerHTML=`<div data-play><div class="bar"><button class="ghost" type="button" data-quit>← ${esc(opts.quitLabel||tr('ui.quit'))}</button><span class="rtitle" data-title></span><span class="score" data-score aria-live="off">0</span></div><div class="segs" data-segs></div><div class="meta"><span data-cnt></span><span class="combo" data-combo></span></div><div class="qcard"><span class="tag" data-tag></span><p class="prompt" data-prompt></p><div class="stage" data-stage></div><div data-answer></div></div><div data-fb aria-live="polite"></div></div><div class="res" data-result hidden></div>`;
   }
   function start(qs,review){
     clearTimeout(S&&S.timer);
     S={qs,i:0,score:0,streak:0,maxStreak:0,correct:0,marks:[],wrong:[],review:!!review,start:Date.now(),locked:false,timer:null};
     shell();
-    q$('[data-title]').textContent=(review?'Ôn lại · ':'')+(opts.title||'');
+    q$('[data-title]').textContent=(review?tr('ui.review'):'')+(opts.title||'');
     showQ();
   }
   function hud(){
     const n=S.qs.length,sg=q$('[data-segs]');
     sg.style.gridTemplateColumns=`repeat(${n},1fr)`;
     sg.innerHTML=S.qs.map((_,i)=>`<i class="${S.marks[i]===true?'ok':S.marks[i]===false?'no':i===S.i?'cur':''}"></i>`).join('');
-    q$('[data-cnt]').textContent=`Câu ${S.i+1}/${n}`;
-    q$('[data-combo]').textContent=S.streak>=2?`Chuỗi đúng ×${S.streak}`:'';
+    q$('[data-cnt]').textContent=tr('ui.qn',{i:S.i+1,n});
+    q$('[data-combo]').textContent=S.streak>=2?tr('ui.combo',{n:S.streak}):'';
     q$('[data-score]').textContent=fmt(S.score);
   }
   function showQ(){
@@ -57,7 +58,7 @@ export function mountQuiz(root,opts){
     if(CHOICE.has(q.type)){
       a='<div class="opts">'+q.opts.map((o,i)=>`<button type="button" class="opt ${q.font==='kana'?'kana':''}${q.font==='kana'&&[...o].length>5?' long':''}" data-v="${esc(o)}"><span class="k" aria-hidden="true">${i+1}</span>${esc(o)}</button>`).join('')+'</div>';
     }else if(q.type==='type'||q.type==='wtype'){
-      a='<form class="typeform" autocomplete="off"><input data-ans type="text" inputmode="text" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="done" placeholder="romaji…" aria-label="Câu trả lời romaji"><div class="row"><button class="btn primary" type="submit">Kiểm tra</button><button class="btn" data-skip type="button">Không biết</button></div></form>';
+      a=`<form class="typeform" autocomplete="off"><input data-ans type="text" inputmode="text" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="done" placeholder="romaji…" aria-label="${esc(tr('ui.romajiAns'))}"><div class="row"><button class="btn primary" type="submit">${tr('ui.check')}</button><button class="btn" data-skip type="button">${tr('ui.skip')}</button></div></form>`;
     }else if(q.type==='match'){
       S.mm={sel:null,done:0,miss:0};
       const L=shuffle(q.pairs),Rr=shuffle(q.pairs);
@@ -77,10 +78,10 @@ export function mountQuiz(root,opts){
     S.score+=pts;S.marks[S.i]=ok;
     hud();
     const last=S.i>=S.qs.length-1;
-    const head=ok?`Chính xác! +${pts} điểm`:'Chưa đúng';
-    const ansLine=(!ok&&q.type!=='match')?`<div>Đáp án: <b class="ans">${esc(q.answer)}</b></div>`:'';
+    const head=ok?tr('ui.right',{pts}):tr('ui.wrong');
+    const ansLine=(!ok&&q.type!=='match')?`<div>${tr('ui.answer')} <b class="ans">${esc(q.answer)}</b></div>`:'';
     const fb=q$('[data-fb]');
-    fb.innerHTML=`<div class="fb ${ok?'good':'bad'}"><strong>${head}</strong>${ansLine}<div class="ex">${q.explain}${note?'<br>'+note:''}</div><button class="btn primary" data-next type="button">${last?'Xem kết quả':'Tiếp tục'} ↵</button></div>`;
+    fb.innerHTML=`<div class="fb ${ok?'good':'bad'}"><strong>${head}</strong>${ansLine}<div class="ex">${q.explain}${note?'<br>'+note:''}</div><button class="btn primary" data-next type="button">${last?tr('ui.seeResult'):tr('ui.continue')} ↵</button></div>`;
     fb.scrollIntoView({block:'nearest',behavior:'smooth'});
     if(ok&&PLAIN.has(q.type))S.timer=setTimeout(next,1300);
   }
@@ -102,7 +103,7 @@ export function mountQuiz(root,opts){
       const kB=side==='k'?btn:sel.btn,rB=side==='r'?btn:sel.btn;
       const ok=q.pairs.some(p=>p.k===kB.dataset.v&&p.r===rB.dataset.v);
       sel.btn.classList.remove('sel');S.mm.sel=null;
-      if(ok){[kB,rB].forEach(b=>{b.classList.add('done');b.disabled=true});S.mm.done++;if(S.mm.done===q.pairs.length)settle(S.mm.miss===0,S.mm.miss?`Nối sai ${S.mm.miss} lần.`:'')}
+      if(ok){[kB,rB].forEach(b=>{b.classList.add('done');b.disabled=true});S.mm.done++;if(S.mm.done===q.pairs.length)settle(S.mm.miss===0,S.mm.miss?tr('ui.matchMiss',{n:S.mm.miss}):'')}
       else{S.mm.miss++;[kB,rB].forEach(b=>{b.classList.remove('shake');void b.offsetWidth;b.classList.add('shake')})}
     }else{
       if(sel)sel.btn.classList.remove('sel');
@@ -123,14 +124,14 @@ export function mountQuiz(root,opts){
     const secs=Math.round((Date.now()-S.start)/1000);
     const result={score:S.score,stars,correct:S.correct,total,maxStreak:S.maxStreak,secs,wrong:S.wrong.slice(),review:S.review};
     const info=opts.onFinish?opts.onFinish(result)||{}:{};
-    const msg=['Chưa đạt, thử lại nhé','Đạt rồi, luyện thêm chút nữa','Khá tốt!','Xuất sắc!'][stars];
-    const miss=S.wrong.length?`<h3>Câu cần ôn (${S.wrong.length})</h3><ul class="miss">${S.wrong.map(q=>`<li><span class="t">${T[q.type]}</span><span class="a">${esc(q.sum)}</span></li>`).join('')}</ul>`:'<p class="hint">Không sai câu nào.</p>';
+    const msg=tr('ui.msg'+stars);
+    const miss=S.wrong.length?`<h3>${tr('ui.toReview',{n:S.wrong.length})}</h3><ul class="miss">${S.wrong.map(q=>`<li><span class="t">${T[q.type]}</span><span class="a">${esc(q.sum)}</span></li>`).join('')}</ul>`:'<p class="hint">'+tr('ui.noMiss')+'</p>';
     const acts=[];
-    if(S.wrong.length)acts.push(`<button class="btn primary" type="button" data-a="review">Luyện lại ${S.wrong.length} câu sai</button>`);
-    if(opts.rebuild)acts.push(`<button class="btn${S.wrong.length?'':' primary'}" type="button" data-a="again">Chơi lại</button>`);
+    if(S.wrong.length)acts.push(`<button class="btn primary" type="button" data-a="review">${tr('ui.redo',{n:S.wrong.length})}</button>`);
+    if(opts.rebuild)acts.push(`<button class="btn${S.wrong.length?'':' primary'}" type="button" data-a="again">${tr('ui.again')}</button>`);
     (opts.extraActions||[]).forEach(x=>acts.push(`<button class="btn" type="button" data-a="x:${esc(x.id)}">${esc(x.label)}</button>`));
     const el=q$('[data-result]');
-    el.innerHTML=`<p class="hint" style="text-align:left">${S.review?'Ôn lại · ':''}${esc(opts.title||'')}</p><h2>${msg}</h2><div class="bigscore"><span class="big">${fmt(S.score)}</span>${starsHTML(stars,34)}</div>${info.record?'<p class="newbest">Kỷ lục mới.</p>':''}${info.note?'<p>'+esc(info.note)+'</p>':''}<div class="stats"><div class="stat"><b>${S.correct}/${total}</b><span>câu đúng</span></div><div class="stat"><b>${S.maxStreak}</b><span>chuỗi đúng dài nhất</span></div><div class="stat"><b>${fmtTime(secs)}</b><span>thời gian</span></div></div>${miss}<div class="actions">${acts.join('')}</div>`;
+    el.innerHTML=`<p class="hint" style="text-align:left">${S.review?tr('ui.review'):''}${esc(opts.title||'')}</p><h2>${msg}</h2><div class="bigscore"><span class="big">${fmt(S.score)}</span>${starsHTML(stars,34)}</div>${info.record?'<p class="newbest">'+tr('ui.newBest')+'</p>':''}${info.note?'<p>'+esc(info.note)+'</p>':''}<div class="stats"><div class="stat"><b>${S.correct}/${total}</b><span>${tr('ui.correct')}</span></div><div class="stat"><b>${S.maxStreak}</b><span>${tr('ui.maxStreak')}</span></div><div class="stat"><b>${fmtTime(secs)}</b><span>${tr('ui.time')}</span></div></div>${miss}<div class="actions">${acts.join('')}</div>`;
     q$('[data-play]').hidden=true;el.hidden=false;
     el.scrollIntoView({block:'start'});
   }

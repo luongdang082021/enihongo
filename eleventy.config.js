@@ -43,10 +43,10 @@ export default function (eleventyConfig) {
         writing: d.writing,
         tags: d.tags || [],
         chars: (d.chars || []).map((c) => ({ k: c.k, r: c.r })),
-        words: (d.words || []).filter((w) => w.quiz !== false).map((w) => ({ kana: w.kana, romaji: w.romaji, vi: w.vi }))
+        words: (d.words || []).filter((w) => w.quiz !== false).map((w) => ({ kana: w.kana, romaji: w.romaji, vi: w.vi, en: w.en }))
       }));
     const used = new Set(lessons.map((l) => l.course));
-    const cs = courses.filter((c) => used.has(c.id)).map((c) => ({ id: c.id, name: c.name }));
+    const cs = courses.filter((c) => used.has(c.id)).map((c) => ({ id: c.id, name: c.name, en: c.en && c.en.name }));
     return JSON.stringify({ tags, courses: cs, lessons });
   });
 

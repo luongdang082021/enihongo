@@ -18,11 +18,11 @@ chars:
   - { k: "え", r: "e", tip: "Đọc gần giống \"ê\" của tiếng Việt." }
   - { k: "お", r: "o", tip: "Đọc gần giống \"ô\". Giống あ nhưng có thêm một chấm." }
 words:
-  - { kana: "あい", romaji: "ai", vi: "tình yêu" }
-  - { kana: "いえ", romaji: "ie", vi: "nhà" }
-  - { kana: "うえ", romaji: "ue", vi: "phía trên" }
-  - { kana: "あお", romaji: "ao", vi: "màu xanh" }
-  - { kana: "いいえ", romaji: "iie", vi: "không (đáp lại)" }
+  - { kana: "あい", romaji: "ai", vi: "tình yêu", en: "love" }
+  - { kana: "いえ", romaji: "ie", vi: "nhà", en: "house" }
+  - { kana: "うえ", romaji: "ue", vi: "phía trên", en: "above" }
+  - { kana: "あお", romaji: "ao", vi: "màu xanh", en: "blue" }
+  - { kana: "いいえ", romaji: "iie", vi: "không (đáp lại)", en: "no (reply)" }
 ---
 ## Ghi nhớ
 

@@ -24,14 +24,14 @@ chars:
   - { k: "ね", r: "ne", tip: "Nét đứng bên trái, đuôi cũng cuộn vòng. Dễ nhầm với ぬ." }
   - { k: "の", r: "no", tip: "Một nét xoáy tròn liền nhau, giống dấu xoắn ốc." }
 words:
-  - { kana: "たこ", romaji: "tako", vi: "con bạch tuộc" }
-  - { kana: "ちかい", romaji: "chikai", vi: "gần" }
-  - { kana: "つくえ", romaji: "tsukue", vi: "cái bàn" }
-  - { kana: "ねこ", romaji: "neko", vi: "con mèo" }
-  - { kana: "なつ", romaji: "natsu", vi: "mùa hè" }
-  - { kana: "とけい", romaji: "tokei", vi: "đồng hồ" }
-  - { kana: "にく", romaji: "niku", vi: "thịt" }
-  - { kana: "あなた", romaji: "anata", vi: "bạn" }
+  - { kana: "たこ", romaji: "tako", vi: "con bạch tuộc", en: "octopus" }
+  - { kana: "ちかい", romaji: "chikai", vi: "gần", en: "near" }
+  - { kana: "つくえ", romaji: "tsukue", vi: "cái bàn", en: "desk" }
+  - { kana: "ねこ", romaji: "neko", vi: "con mèo", en: "cat" }
+  - { kana: "なつ", romaji: "natsu", vi: "mùa hè", en: "summer" }
+  - { kana: "とけい", romaji: "tokei", vi: "đồng hồ", en: "clock, watch" }
+  - { kana: "にく", romaji: "niku", vi: "thịt", en: "meat" }
+  - { kana: "あなた", romaji: "anata", vi: "bạn", en: "you" }
 ---
 ## Quy luật
 

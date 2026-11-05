@@ -13,18 +13,18 @@ objectives:
   - "Biết cách viết trường âm bằng hiragana và romaji"
   - "Phân biệt các cặp từ ngắn dài như おばさん và おばあさん"
 words:
-  - { kana: "おかあさん", romaji: "okaasan", vi: "mẹ" }
-  - { kana: "おとうさん", romaji: "otousan", vi: "bố" }
-  - { kana: "おにいさん", romaji: "oniisan", vi: "anh trai" }
-  - { kana: "おねえさん", romaji: "oneesan", vi: "chị gái" }
-  - { kana: "おばあさん", romaji: "obaasan", vi: "bà" }
-  - { kana: "おじいさん", romaji: "ojiisan", vi: "ông" }
-  - { kana: "せんせい", romaji: "sensei", vi: "giáo viên" }
-  - { kana: "おおきい", romaji: "ookii", vi: "to, lớn" }
-  - { kana: "とおい", romaji: "tooi", vi: "xa" }
-  - { kana: "ありがとう", romaji: "arigatou", vi: "cảm ơn" }
-  - { kana: "ゆうめい", romaji: "yuumei", vi: "nổi tiếng" }
-  - { kana: "くうき", romaji: "kuuki", vi: "không khí" }
+  - { kana: "おかあさん", romaji: "okaasan", vi: "mẹ", en: "mother" }
+  - { kana: "おとうさん", romaji: "otousan", vi: "bố", en: "father" }
+  - { kana: "おにいさん", romaji: "oniisan", vi: "anh trai", en: "older brother" }
+  - { kana: "おねえさん", romaji: "oneesan", vi: "chị gái", en: "older sister" }
+  - { kana: "おばあさん", romaji: "obaasan", vi: "bà", en: "grandmother" }
+  - { kana: "おじいさん", romaji: "ojiisan", vi: "ông", en: "grandfather" }
+  - { kana: "せんせい", romaji: "sensei", vi: "giáo viên", en: "teacher" }
+  - { kana: "おおきい", romaji: "ookii", vi: "to, lớn", en: "big" }
+  - { kana: "とおい", romaji: "tooi", vi: "xa", en: "far" }
+  - { kana: "ありがとう", romaji: "arigatou", vi: "cảm ơn", en: "thank you" }
+  - { kana: "ゆうめい", romaji: "yuumei", vi: "nổi tiếng", en: "famous" }
+  - { kana: "くうき", romaji: "kuuki", vi: "không khí", en: "air" }
 ---
 ## Quy tắc
 
