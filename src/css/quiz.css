@@ -45,13 +45,13 @@
 .fb.good strong{color:var(--good)}
 .fb.bad strong{color:var(--bad)}
 .fb .ans{font-family:var(--kana);font-size:18px}
-.fb .ex b{font-family:var(--kana)}
+.fb .ex b{font-weight:700}
 .fb .mm{font-family:var(--kana);letter-spacing:.08em;color:var(--ink-2)}
 .fb .btn{justify-self:stretch}
 
 /* kết quả */
 .res{display:grid;gap:18px}
-.res h2{font-family:var(--kana);font-weight:900;font-size:28px;line-height:1.2}
+.res h2{font-weight:800;font-size:28px;line-height:1.2}
 .bigscore{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .big{font-family:var(--kana);font-weight:900;font-size:64px;line-height:1;font-variant-numeric:tabular-nums}
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}

@@ -3,7 +3,7 @@ title: Hàng か và さ
 lessonId: hiragana-03
 n: 3
 minutes: 10
-status: draft
+status: published
 objectives:
   - Đọc và nhận ra 10 chữ か き く け こ さ し す せ そ
   - Biết し đọc là "shi", không phải "si"

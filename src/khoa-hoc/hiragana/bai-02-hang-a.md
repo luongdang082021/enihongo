@@ -3,7 +3,7 @@ title: Hàng あ
 lessonId: hiragana-02
 n: 2
 minutes: 8
-status: draft
+status: published
 objectives:
   - Đọc và nhận ra năm nguyên âm あ い う え お
   - Đọc được vài từ ngắn chỉ gồm nguyên âm

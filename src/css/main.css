@@ -51,7 +51,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .site-footer .inner{max-width:720px;margin:0 auto;display:grid;gap:4px}
 
 /* typography */
-h1{font-family:var(--kana);font-weight:900;font-size:clamp(30px,8vw,44px);line-height:1.15;letter-spacing:-.01em;text-wrap:balance}
+h1{font-family:var(--ui);font-weight:800;font-size:clamp(30px,8vw,44px);line-height:1.15;letter-spacing:-.01em;text-wrap:balance}
 h2{font-size:22px;line-height:1.3;font-weight:700;text-wrap:balance}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
 .lede{color:var(--ink-2);font-size:18px;max-width:52ch}
