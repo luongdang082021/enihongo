@@ -16,12 +16,15 @@ Quy ước: không sửa quyết định cũ; nếu đổi hướng thì thêm d
 | D-006 | 2026-11-05 | Đường dẫn: giữ `luongdang082021.github.io/enihongo/`, chưa mua tên miền | Đã chốt (2026-11-05, theo giả định; đổi được sau bằng biến `PATH_PREFIX`) |
 | D-007 | 2026-11-05 | Thẻ "Sắp ra mắt" không dẫn đi đâu (không link, không form) | Đã chốt (2026-11-05) |
 | D-008 | 2026-11-05 | Giai đoạn 1: dựng khung và 3 bài mẫu (bài 1–3) để duyệt, rồi mới viết các bài còn lại | Đã chốt (2026-11-05) |
-| D-009 | 2026-11-05 | Tiến độ học lưu bằng `localStorage`, có xuất/nhập JSON; không có tài khoản | Đề xuất |
+| D-009 | 2026-11-05 | Tiến độ học lưu bằng `localStorage`, có xuất/nhập JSON; không có tài khoản | Đã chốt (2026-11-06) |
 | D-010 | 2026-11-05 | Analytics: Cloudflare Web Analytics (không cookie). Chỉ bật khi điền token vào `src/_data/site.json` (`cfBeaconToken`) | Đã chốt (2026-11-05); token đã điền |
-| D-011 | 2026-11-05 | Thứ tự nét lấy từ KanjiVG (CC BY-SA 3.0): ghi nguồn ở trang giới thiệu và trong giao diện, dữ liệu rút gọn `src/data/strokes.json` giữ nguyên giấy phép CC BY-SA. Phát âm dùng giọng đọc của thiết bị, không có file âm thanh | Đề xuất (đang áp dụng, cần bạn xác nhận) |
-| D-012 | 2026-11-05 | Katakana: có khóa cứng Hiragana trước hay không | Chờ chốt, xem [`katakana-plan.md`](katakana-plan.md) |
-| D-013 | 2026-11-05 | Katakana: chủ đề từ mượn trong bài và Dojo | Chờ chốt |
-| D-014 | 2026-11-05 | Katakana Dojo là game riêng hay gộp chung | Chờ chốt |
+| D-011 | 2026-11-05 | Thứ tự nét lấy từ KanjiVG (CC BY-SA 3.0): ghi nguồn ở trang giới thiệu và trong giao diện, dữ liệu rút gọn `src/data/strokes.json` giữ nguyên giấy phép CC BY-SA. Phát âm dùng giọng đọc của thiết bị, không có file âm thanh | Đã chốt (2026-11-06) |
+| D-012 | 2026-11-05 | Katakana: không khóa cứng Hiragana trước; hiện gợi ý "nên học Hiragana trước" ở đầu khóa | Đã chốt (2026-11-06), xem [`katakana-plan.md`](katakana-plan.md) |
+| D-013 | 2026-11-05 | Katakana: từ mượn theo chủ đề đồ ăn uống, địa danh, đồ vật hằng ngày; tránh tên thương hiệu | Đã chốt (2026-11-06) |
+| D-014 | 2026-11-05 | Dojo là một tính năng chung (không tách theo từng khóa): bên trong chọn bộ chữ hoặc nội dung (Hiragana, Katakana, Kanji, tổng hợp...) theo các bài đã học, và cho phép trộn nhiều bài hoặc chủ đề | Đã chốt (2026-11-06), thiết kế trong [`katakana-plan.md`](katakana-plan.md) |
+| D-015 | 2026-11-06 | Giáo trình tự biên soạn, bám JF Standard và CEFR, không dùng nội dung sách in; đổi tên khóa N5 thành "Tiếng Nhật sơ cấp 1 và 2" | Đề xuất, xem [`../content/curriculum.md`](../content/curriculum.md) |
+| D-016 | 2026-11-06 | Nguồn dữ liệu nghĩa và âm đọc kanji | Chờ chốt |
+| D-017 | 2026-11-06 | Âm thanh cho khóa nghe và luyện JFT-Basic | Chờ chốt |
 
 ## Ghi chú cho D-002
 

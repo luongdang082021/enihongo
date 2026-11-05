@@ -9,7 +9,7 @@ Mục lục và quy ước cho thư mục `docs/`. Cập nhật lần cuối: 20
 | [`context/`](context/) | Bối cảnh dự án, đối tượng người học, thuật ngữ | Mới vào dự án |
 | [`planning/`](planning/) | Lộ trình, cấu trúc site, ngân sách hiệu năng, tăng trưởng, kế hoạch Katakana, nhật ký quyết định | Lập kế hoạch, chọn hướng |
 | [`planning/archive/`](planning/archive/) | Đề xuất đã gác lại, giữ để tham khảo | Muốn xem lại ý tưởng cũ |
-| [`content/`](content/) | Dàn bài khóa học, mẫu bài học, quy ước viết nội dung, các khóa sắp ra mắt | Viết hoặc duyệt bài |
+| [`content/`](content/) | Giáo trình và khung chương trình, dàn bài khóa học, mẫu bài học, quy ước viết nội dung, các khóa sắp ra mắt | Viết hoặc duyệt bài |
 | [`product/`](product/) | Đặc tả sản phẩm đang chạy (Hiragana Dojo) | Sửa game, thêm dạng câu hỏi |
 | [`agents/`](agents/) | Hướng dẫn cho AI agent làm việc trong repo | Giao việc cho Claude hoặc agent khác |
 | [`skills/`](skills/) | Skill dạng `SKILL.md` dùng lại được | Lặp lại một quy trình |

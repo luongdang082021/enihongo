@@ -11,7 +11,7 @@ Trạng thái: đang dùng. Cập nhật: 2026-11-05.
 | 2. Khóa Hiragana | 13 bài và Dojo, flashcard, mini quiz, tiến độ học | Xong (2026-11-05) |
 | 3. Hoàn thiện | SEO, analytics nhẹ, PWA offline, đo hiệu năng | Đang làm: SEO, PWA và đo hiệu năng xong; analytics đã bật |
 | 4. Thứ tự nét và phát âm | Thứ tự nét (KanjiVG), phát âm bằng giọng thiết bị | Đã làm cho chữ đơn của Hiragana (2026-11-05) |
-| 5. Katakana | Khóa Katakana và Katakana Dojo | Kế hoạch: [`katakana-plan.md`](katakana-plan.md) |
+| 5. Katakana và Dojo chung | Khóa Katakana, Dojo chọn theo bộ chữ, bài và chủ đề | Kế hoạch: [`katakana-plan.md`](katakana-plan.md) |
 
 ## Giai đoạn 1: việc cần làm
 
