@@ -1,6 +1,6 @@
 import {ROUNDS,build,buildLesson,esc} from './quiz-core.js';
 import {mountQuiz,starsHTML,fmt} from './quiz-ui.js';
-import {dojoBest,saveDojo,getAll} from './progress.js';
+import {dojoBest,saveDojo} from './progress.js';
 import {gather,planFor,mixKey,QCOUNT} from './dojo-mix.js';
 
 const $=id=>document.getElementById(id);
@@ -47,78 +47,44 @@ function showTab(name){
 }
 document.querySelector('.tabs').addEventListener('click',e=>{const b=e.target.closest('[data-tab]');if(b)showTab(b.dataset.tab)});
 
-/* ---------- tự chọn bài ---------- */
+/* ---------- tự chọn khóa học ---------- */
+/* Phạm vi là khóa học: mặc định chọn toàn bộ nội dung của khóa, không chọn từng bài. */
 let pool=null,loading=null;
-const sel=new Set();
+const sel=new Set(); // id khóa đang chọn
 function loadPool(){
   if(pool||loading)return loading;
   loading=fetch(new URL('../data/dojo-pool.json',import.meta.url)).then(r=>{if(!r.ok)throw new Error('http');return r.json()}).then(d=>{
     pool=d;
-    const params=new URLSearchParams(location.search).get('bai');
-    if(params)params.split(',').forEach(id=>{if(pool.lessons.some(l=>l.id===id))sel.add(id)});
-    else autoSelectDone();
+    const want=new URLSearchParams(location.search).get('khoa');
+    if(want&&pool.courses.some(c=>c.id===want))sel.add(want);
+    else pool.courses.forEach(c=>sel.add(c.id));
     renderPicker();
-  }).catch(()=>{$('picksum').textContent='Không tải được danh sách bài. Kiểm tra kết nối rồi thử lại.';loading=null});
+  }).catch(()=>{$('picksum').textContent='Không tải được danh sách khóa. Kiểm tra kết nối rồi thử lại.';loading=null});
   return loading;
 }
-function autoSelectDone(){
-  const ls=getAll().lessons;
-  pool.lessons.forEach(l=>{if(ls[l.id]&&ls[l.id].done)sel.add(l.id)});
-}
-const chosen=()=>pool?pool.lessons.filter(l=>sel.has(l.id)):[];
+const lessonsOf=id=>pool.lessons.filter(l=>l.course===id);
+const chosen=()=>pool?pool.lessons.filter(l=>sel.has(l.course)):[];
 function renderPicker(){
-  $('topics').innerHTML=Object.entries(pool.tags).map(([id,label])=>{
-    const ls=pool.lessons.filter(l=>l.tags.includes(id));
-    if(!ls.length)return '';
-    const on=ls.every(l=>sel.has(l.id));
-    return `<button type="button" class="topic" data-topic="${esc(id)}" aria-pressed="${on}">${esc(label)}</button>`;
-  }).join('');
-  const done=getAll().lessons;
-  $('picklist').innerHTML=pool.courses.map(c=>{
-    const ls=pool.lessons.filter(l=>l.course===c.id);
-    const nSel=ls.filter(l=>sel.has(l.id)).length;
-    const rows=ls.map(l=>{
-      const n=l.chars.length,w=l.words.length;
-      const cnt=[n?n+' chữ':'',w?w+' từ':''].filter(Boolean).join(' · ');
-      return `<li><label><input type="checkbox" data-lesson="${esc(l.id)}"${sel.has(l.id)?' checked':''}><span>Bài ${l.n} · ${esc(l.title)}${done[l.id]&&done[l.id].done?'<span class="done-mark">Đã học</span>':''}</span><span class="cnt">${cnt}</span></label></li>`;
-    }).join('');
-    return `<details class="course-group" open><summary><label class="course-all"><input type="checkbox" data-course="${esc(c.id)}"${nSel===ls.length?' checked':''}${nSel>0&&nSel<ls.length?' data-partial="1"':''}><span>Cả khóa: ${esc(c.name)}</span><span class="cnt">${nSel}/${ls.length} bài</span></label></summary><ul class="picklist">${rows}</ul></details>`;
-  }).join('');
-  document.querySelectorAll('[data-partial]').forEach(el=>{el.indeterminate=true});
+  $('picklist').innerHTML='<ul class="picklist">'+pool.courses.map(c=>{
+    const {chars,words}=gather(lessonsOf(c.id));
+    const cnt=[chars.length?chars.length+' chữ':'',words.length?words.length+' từ':''].filter(Boolean).join(' · ');
+    return `<li><label><input type="checkbox" data-course="${esc(c.id)}"${sel.has(c.id)?' checked':''}><span>${esc(c.name)}</span><span class="cnt">${cnt}</span></label></li>`;
+  }).join('')+'</ul>';
   renderPicksum();
 }
 function renderPicksum(){
   const btn=$('startmix'),el=$('picksum');
   if(!pool)return;
   const {chars,words}=gather(chosen());
-  if(!chars.length&&!words.length){el.textContent='Chưa chọn bài nào.';btn.disabled=true;return}
+  if(!chars.length&&!words.length){el.textContent='Chưa chọn khóa nào.';btn.disabled=true;return}
   const b=dojoBest()[mixKey(sel)];
-  const nc=new Set(chosen().map(l=>l.course)).size;
-  el.innerHTML=`Đã chọn ${sel.size} bài (${nc} khóa): ${chars.length} chữ, ${words.length} từ.${b?` Điểm cao lượt này: <b>${fmt(b.score)}</b> ${starsHTML(b.stars,14)}`:''}`;
+  el.innerHTML=`Đã chọn ${sel.size} khóa: ${chars.length} chữ, ${words.length} từ.${b?` Điểm cao lượt này: <b>${fmt(b.score)}</b> ${starsHTML(b.stars,14)}`:''}`;
   btn.disabled=false;
 }
 $('panel-custom').addEventListener('change',e=>{
-  const cc=e.target.closest('[data-course]');
-  if(cc){pool.lessons.filter(l=>l.course===cc.dataset.course).forEach(l=>cc.checked?sel.add(l.id):sel.delete(l.id));renderPicker();return}
-  const cb=e.target.closest('[data-lesson]');if(!cb)return;
-  if(cb.checked)sel.add(cb.dataset.lesson);else sel.delete(cb.dataset.lesson);
-  renderPicker();
-});
-$('panel-custom').addEventListener('click',e=>{
-  const t=e.target.closest('[data-topic]');
-  if(t){
-    const ls=pool.lessons.filter(l=>l.tags.includes(t.dataset.topic));
-    const on=ls.every(l=>sel.has(l.id));
-    ls.forEach(l=>on?sel.delete(l.id):sel.add(l.id));
-    renderPicker();return;
-  }
-  const p=e.target.closest('[data-pick]');
-  if(p&&pool){
-    sel.clear();
-    if(p.dataset.pick==='all')pool.lessons.forEach(l=>sel.add(l.id));
-    else if(p.dataset.pick==='done')autoSelectDone();
-    renderPicker();
-  }
+  const cc=e.target.closest('[data-course]');if(!cc)return;
+  if(cc.checked)sel.add(cc.dataset.course);else sel.delete(cc.dataset.course);
+  renderPicksum();
 });
 $('startmix').addEventListener('click',()=>startMix());
 
@@ -130,7 +96,7 @@ function startMix(){
   if(q)q.destroy();
   home.hidden=true;play.hidden=false;
   q=mountQuiz(play,{
-    questions:mk(),title:`Tự chọn · ${ids.size} bài`,quitLabel:'Menu',
+    questions:mk(),title:`Tự chọn · ${ids.size} khóa`,quitLabel:'Menu',
     rebuild:mk,
     extraActions:[{id:'home',label:'Chọn lại bài'}],
     onFinish:res=>res.review?{}:{record:saveDojo(key,res.score,res.stars)},
@@ -141,4 +107,4 @@ function startMix(){
 }
 
 renderLadder();
-if(new URLSearchParams(location.search).has('bai'))showTab('custom');
+if(new URLSearchParams(location.search).has('khoa'))showTab('custom');

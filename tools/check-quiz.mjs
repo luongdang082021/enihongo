@@ -72,7 +72,7 @@ for(const f of files){
   console.log(`  ${f}: ${(fm.chars||[]).length} chữ, ${(fm.words||[]).length} từ, quiz ${cnt} câu, ok`);
 }
 
-// Dojo tự chọn: từng bài riêng lẻ, toàn bộ, và 150 tập con ngẫu nhiên đều phải sinh đủ 20 câu hợp lệ.
+// Dojo tự chọn (phạm vi khóa học = toàn bộ bài của khóa) và các tập con bài (kiểm tra thêm cho chắc): đều phải sinh đủ 20 câu hợp lệ.
 const lessonsFm=files.map(f=>matter(fs.readFileSync(path.join(dir,f),'utf8')).data).filter(d=>(d.chars&&d.chars.length)||(d.words&&d.words.length));
 const mixes=[...lessonsFm.map(l=>[l]),lessonsFm];
 for(let i=0;i<150;i++)mixes.push(lessonsFm.filter(()=>Math.random()<.4));

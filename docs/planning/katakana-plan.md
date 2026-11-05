@@ -65,10 +65,9 @@ Hiện `src/js/quiz-core.js` gắn cứng bảng Hiragana (`BASIC`, `DAKU`, `YOO
 
 Dojo là một tính năng chung ở `/luyen-tap/`, không tách riêng cho từng khóa. Người chơi chọn nội dung, hệ thống trộn câu hỏi.
 
-- **Chọn nội dung**: ba cách, dùng chung một màn hình.
+- **Chọn nội dung**: hai cách, dùng chung một màn hình.
   1. *Chế độ nhanh*: Hiragana, Katakana, Tổng hợp (sau này thêm Kanji). Hiragana giữ nguyên 5 hiệp hiện có.
-  2. *Theo khóa học*: mỗi khóa một ô "Cả khóa"; mở khóa ra để chọn từng bài nếu muốn. Chọn được nhiều khóa cùng lúc (ví dụ Hiragana và Katakana); các bài đã hoàn thành được chọn sẵn.
-  3. *Theo chủ đề*: nhãn `tags` của bài (nguyên âm, âm đục, từ mượn đồ ăn...), cho phép trộn nhiều chủ đề.
+  2. *Theo khóa học*: mỗi khóa một ô chọn, mặc định toàn bộ nội dung của khóa, không chọn từng bài. Chọn được nhiều khóa cùng lúc (ví dụ Hiragana và Katakana).
 - **Nguồn dữ liệu**: mỗi bài đã khai báo `chars`, `words`, `writing`, `tags` trong front matter. Eleventy sinh `data/dojo-pool.json` từ các bài, nên thêm bài mới là Dojo tự có nội dung mới. Dojo chỉ tải tệp này khi mở màn hình chọn.
 - **Dạng câu hỏi**: lấy theo nội dung đã chọn. Chữ đơn dùng `k2r`, `r2k`, `type`, `match`, `odd`; từ dùng `wk2r`, `wr2k`, `wtype`, `fill`, `mora`; `voice` và `size` chỉ xuất hiện khi lựa chọn có âm đục hoặc âm ghép. Kanji (sau này) thêm dạng riêng.
 - **Hiệp**: chế độ nhanh theo hiệp cố định; chế độ theo bài và chủ đề là một lượt 20 câu rút từ nhóm đã chọn, có thể chơi lại.
