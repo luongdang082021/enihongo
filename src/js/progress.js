@@ -1,6 +1,6 @@
 /* Tiến độ lưu cục bộ trong localStorage (khóa enihongo:v1). Không có tài khoản hay máy chủ. */
 const KEY='enihongo:v1',OLD='hiragana-dojo-best';
-const empty=()=>({v:1,lessons:{},dojo:{}});
+const empty=()=>({v:1,lessons:{},dojo:{},cards:{}});
 function read(){
   try{
     const raw=localStorage.getItem(KEY);
@@ -39,3 +39,15 @@ export function importJSON(text){
   if(!d||d.v!==1||typeof d.lessons!=='object'||typeof d.dojo!=='object')throw new Error('Tệp không đúng định dạng enihongo.');
   return write({...empty(),...d});
 }
+
+/* Flashcard ngắt quãng (Leitner 5 hộp). Mỗi chữ: {b: hộp 1..5, d: thời điểm đến hạn (ms)}. */
+const DAY=86400000,GAP=[0,0,1,3,7,16]; // số ngày chờ theo hộp
+export function cardDue(k,now=Date.now()){const c=read().cards[k];return !c||c.d<=now}
+export function dueOf(keys,now=Date.now()){const cs=read().cards;return keys.filter(k=>!cs[k]||cs[k].d<=now)}
+export function rateCard(k,known,now=Date.now()){
+  const d=read(),c=d.cards[k]||{b:1,d:0};
+  const b=known?Math.min(5,c.b+1):1;
+  d.cards[k]={b,d:known?now+GAP[b]*DAY:now};
+  write(d);return b;
+}
+export function nextDue(keys){const cs=read().cards;const t=keys.map(k=>cs[k]?cs[k].d:0).filter(x=>x>Date.now());return t.length?Math.min(...t):null}

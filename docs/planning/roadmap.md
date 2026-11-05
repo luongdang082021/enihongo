@@ -8,7 +8,7 @@ Trạng thái: đang dùng. Cập nhật: 2026-11-05.
 |---|---|---|
 | 0. Game | Hiragana Dojo chạy độc lập, deploy lên GitHub Pages | Xong (2026-11-05) |
 | 1. Khung trang | Thiết kế giao diện, trang chủ, lưới khóa học có thẻ khóa, pipeline build và deploy, chuyển Dojo về `/luyen-tap/hiragana-dojo` | Xong (2026-11-05) |
-| 2. Khóa Hiragana | 13 bài và Dojo, flashcard, mini quiz, tiến độ học | Xong, trừ flashcard ngắt quãng (2026-11-05) |
+| 2. Khóa Hiragana | 13 bài và Dojo, flashcard, mini quiz, tiến độ học | Xong (2026-11-05) |
 | 3. Hoàn thiện | SEO, analytics nhẹ, PWA offline, đo hiệu năng | Đang làm: SEO, PWA và đo hiệu năng xong; analytics đã bật |
 | 4. Mở rộng | Thứ tự nét, âm thanh phát âm | Chưa bắt đầu |
 
@@ -28,7 +28,7 @@ Trạng thái: đang dùng. Cập nhật: 2026-11-05.
 
 - [x] Mẫu bài học ([`../content/lesson-template.md`](../content/lesson-template.md)) và 3 bài mẫu để duyệt phong cách
 - [x] Viết nốt các bài còn lại theo [`../content/hiragana-course-outline.md`](../content/hiragana-course-outline.md)
-- [ ] Flashcard lặp lại ngắt quãng, lưu bằng `localStorage` (hiện flashcard chỉ có Chưa nhớ / Đã nhớ trong một phiên, chưa lưu)
+- [x] Flashcard lặp lại ngắt quãng (Leitner 5 hộp: chờ 0, 1, 3, 7, 16 ngày), lưu bằng `localStorage` trong `cards` của `enihongo:v1`
 - [x] Mini quiz 10 câu cho mỗi bài
 - [x] Tiến độ học và nút xuất/nhập JSON
 

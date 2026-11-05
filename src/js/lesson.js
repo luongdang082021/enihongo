@@ -1,4 +1,4 @@
-import {lessonState,completeLesson,saveQuizScore} from './progress.js';
+import {lessonState,completeLesson,saveQuizScore,dueOf,rateCard,nextDue} from './progress.js';
 
 const root=document.querySelector('[data-lesson]');
 const id=root.dataset.lesson;
@@ -17,28 +17,35 @@ btn.addEventListener('click',()=>{completeLesson(id);paintDone()});
 paintDone();
 
 if(data){
-  /* flashcard: chưa nhớ / đã nhớ, không lưu */
+  /* flashcard ngắt quãng: chữ đến hạn được ôn trước, nhớ thì lùi lịch ôn, quên thì ôn lại ngay */
   const fc=root.querySelector('[data-flashcards]');
   if(fc){
-  let deck=[],pos=0,flipped=false,known=0;
-  const reset=()=>{deck=data.chars.slice();pos=0;flipped=false;known=0;drawFlash()};
+  const keys=data.chars.map(c=>c.k);
+  let deck=[],pos=0,flipped=false;
+  const reset=(all)=>{
+    const due=all?keys:dueOf(keys);
+    deck=data.chars.filter(c=>due.includes(c.k));
+    pos=0;flipped=false;drawFlash();
+  };
   function drawFlash(){
     if(pos>=deck.length){
-      fc.innerHTML=`<div class="quiz-sum"><p>Xong lượt này. Học lại để nhớ chắc hơn, hoặc làm mini quiz bên dưới.</p><div class="row"><button class="btn primary" type="button" data-f="again">Học lại từ đầu</button></div></div>`;
+      const nd=nextDue(keys);
+      const when=nd?` Lần ôn kế tiếp: ${new Date(nd).toLocaleDateString('vi-VN')}.`:'';
+      fc.innerHTML=`<div class="quiz-sum"><p>${deck.length?'Xong lượt ôn hôm nay.':'Hôm nay không còn chữ nào cần ôn.'}${when}</p><div class="row"><button class="btn" type="button" data-f="all">Xem lại tất cả chữ</button></div></div>`;
       return;
     }
     const c=deck[pos];
-    fc.innerHTML=`<button class="flash" type="button" data-f="flip">${flipped?`<span class="fr">${esc(c.r)}</span><span class="ft">${esc(c.tip||'')}</span>`:`<span class="fk">${esc(c.k)}</span><span class="fh">Chạm để lật · ${pos+1}/${deck.length}</span>`}</button>${flipped?'<div class="row"><button class="btn" type="button" data-f="no">Chưa nhớ</button><button class="btn primary" type="button" data-f="yes">Đã nhớ</button></div>':''}`;
+    fc.innerHTML=`<p class="hint">Còn ${deck.length-pos} thẻ trong lượt này</p><button class="flash" type="button" data-f="flip">${flipped?`<span class="fr">${esc(c.r)}</span><span class="ft">${esc(c.tip||'')}</span>`:`<span class="fk">${esc(c.k)}</span><span class="fh">Chạm để lật</span>`}</button>${flipped?'<div class="row"><button class="btn" type="button" data-f="no">Chưa nhớ</button><button class="btn primary" type="button" data-f="yes">Đã nhớ</button></div>':''}`;
   }
   fc.addEventListener('click',e=>{
     const b=e.target.closest('[data-f]');if(!b)return;
     const a=b.dataset.f;
     if(a==='flip'){flipped=!flipped;drawFlash()}
-    else if(a==='yes'){known++;pos++;flipped=false;drawFlash()}
-    else if(a==='no'){deck.push(deck[pos]);pos++;flipped=false;drawFlash()}
-    else if(a==='again')reset();
+    else if(a==='yes'){rateCard(deck[pos].k,true);pos++;flipped=false;drawFlash()}
+    else if(a==='no'){rateCard(deck[pos].k,false);deck.push(deck[pos]);pos++;flipped=false;drawFlash()}
+    else if(a==='all')reset(true);
   });
-  reset();
+  reset(false);
   }
 
   /* mini quiz */
