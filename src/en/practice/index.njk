@@ -1,0 +1,10 @@
+---
+layout: layouts/base.njk
+route: practice
+quiz: true
+script: /js/dojo.js
+eleventyComputed:
+  title: "{{ t.practice.title }}"
+  description: "{{ t.practice.description }}"
+---
+{% include "pages/practice.njk" %}

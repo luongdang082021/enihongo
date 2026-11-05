@@ -1,0 +1,31 @@
+<script>(function(){
+var d=document.documentElement,L=d.lang,K="enihongo:lang";
+function get(){try{return localStorage.getItem(K)}catch(e){return null}}
+function put(v){try{localStorage.setItem(K,v)}catch(e){}}
+var m=/[?&]lang=(vi|en)\b/.exec(location.search);
+if(m)put(m[1]);
+document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[data-lang-switch]");if(a)put(a.getAttribute("data-lang-switch"))});
+if(/bot|crawl|spider|slurp|lighthouse|preview/i.test(navigator.userAgent))return;
+var pref=get();
+if(pref!=="vi"&&pref!=="en"){
+  var tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||""}catch(e){}
+  if(tz)pref=/^Asia\/(Ho_Chi_Minh|Saigon)$/.test(tz)?"vi":"en";
+  else{var ls=navigator.languages||(navigator.language?[navigator.language]:[]);pref=ls.length&&!ls.some(function(l){return/^vi/i.test(l)})?"en":"vi"}
+}
+if(pref===L)return;
+var to=d.getAttribute("data-alt-"+pref);
+if(!to)return;
+if(d.hasAttribute("data-home")){location.replace(to+location.hash);return}
+var T={{ { vi: i18n.vi.banner, en: i18n.en.banner } | dump | safe }};
+addEventListener("DOMContentLoaded",function(){
+  try{if(sessionStorage.getItem("enihongo:nobanner"))return}catch(e){}
+  var b=document.createElement("div"),s=T[pref];
+  b.className="lang-banner";b.setAttribute("role","region");b.setAttribute("lang",pref);b.setAttribute("aria-label",s.label);
+  b.innerHTML='<span></span><a data-lang-switch="'+pref+'"></a><button type="button"></button>';
+  b.firstChild.textContent=s.text;
+  var a=b.querySelector("a");a.href=to;a.textContent=s.go;
+  var x=b.querySelector("button");x.textContent=s.stay;
+  x.onclick=function(){try{sessionStorage.setItem("enihongo:nobanner","1")}catch(e){}b.remove()};
+  document.body.insertBefore(b,document.body.firstChild);
+});
+})()</script>

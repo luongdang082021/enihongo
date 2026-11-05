@@ -1,0 +1,30 @@
+<div class="wrap narrow">
+  <div id="home">
+    <header class="page-head">
+      <p class="eyebrow">{{ t.practice.eyebrow }}</p>
+      <h1>Dojo</h1>
+      <p class="lede">{{ t.practice.lede }}</p>
+    </header>
+    <div class="tabs" role="tablist" aria-label="{{ t.practice.modes }}">
+      <button type="button" role="tab" id="tab-fixed" aria-controls="panel-fixed" aria-selected="true" data-tab="fixed">{{ t.practice.tabFixed }}</button>
+      <button type="button" role="tab" id="tab-custom" aria-controls="panel-custom" aria-selected="false" data-tab="custom">{{ t.practice.tabCustom }}</button>
+    </div>
+
+    <section id="panel-fixed" role="tabpanel" aria-labelledby="tab-fixed">
+      <ol class="ladder" id="ladder"></ol>
+      <p class="foot-note" id="total"></p>
+      <p class="foot-note">{{ t.practice.scoring }}</p>
+    </section>
+
+    <section id="panel-custom" role="tabpanel" aria-labelledby="tab-custom" hidden>
+      <p>{{ t.practice.pickIntro }}</p>
+      <div id="picklist"></div>
+      <div class="practice">
+        <p id="picksum" aria-live="polite">{{ t.practice.loading }}</p>
+        <button type="button" class="btn primary" id="startmix" disabled>{{ t.practice.start }}</button>
+      </div>
+    </section>
+    <noscript><p>{{ t.practice.noscript }}</p></noscript>
+  </div>
+  <div id="play" hidden></div>
+</div>

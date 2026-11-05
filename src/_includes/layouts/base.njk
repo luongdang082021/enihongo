@@ -1,8 +1,9 @@
 <!doctype html>
-<html lang="{{ t.htmlLang }}">
+<html lang="{{ t.htmlLang }}"{% if alt %} data-alt-vi="{{ alt.vi | url }}" data-alt-en="{{ alt.en | url }}"{% endif %}{% if route == 'home' %} data-home{% endif %}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+{% include "partials/lang-script.njk" %}
 <title>{% if title %}{{ title }} · {% endif %}{{ site.name }}</title>
 <meta name="description" content="{{ description or t.tagline }}">
 <link rel="canonical" href="{{ site.origin }}{{ page.url | url }}">

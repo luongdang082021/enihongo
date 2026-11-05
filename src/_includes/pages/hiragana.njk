@@ -4,6 +4,7 @@
   <header class="page-head">
     <h1>{{ hc.name }}</h1>
     <p class="lede">{{ t.hiragana.lede }}</p>
+    {% if t.hiragana.notice %}<p class="note-draft">{{ t.hiragana.notice }}</p>{% endif %}
     <p class="progress-line" data-summary></p>
   </header>
   <ol class="lesson-list">

@@ -1,38 +1,10 @@
 ---
 layout: layouts/base.njk
 route: practice
-title: Dojo luyện tập
-description: "Dojo: game quiz luyện chữ và từ tiếng Nhật. Chơi 5 hiệp Hiragana hoặc tự chọn khóa, bài, chủ đề để trộn thành lượt 20 câu."
 quiz: true
 script: /js/dojo.js
+eleventyComputed:
+  title: "{{ t.practice.title }}"
+  description: "{{ t.practice.description }}"
 ---
-<div class="wrap narrow">
-  <div id="home">
-    <header class="page-head">
-      <p class="eyebrow">Luyện tập</p>
-      <h1>Dojo</h1>
-      <p class="lede">Game quiz 20 câu mỗi lượt: nhận diện chữ ↔ romaji, gõ, nối cặp, điền chữ thiếu.</p>
-    </header>
-    <div class="tabs" role="tablist" aria-label="Chế độ chơi">
-      <button type="button" role="tab" id="tab-fixed" aria-controls="panel-fixed" aria-selected="true" data-tab="fixed">Năm hiệp Hiragana</button>
-      <button type="button" role="tab" id="tab-custom" aria-controls="panel-custom" aria-selected="false" data-tab="custom">Tự chọn</button>
-    </div>
-
-    <section id="panel-fixed" role="tabpanel" aria-labelledby="tab-fixed">
-      <ol class="ladder" id="ladder"></ol>
-      <p class="foot-note" id="total"></p>
-      <p class="foot-note">Điểm mỗi câu: 100 + thưởng tốc độ (tối đa 50) + thưởng chuỗi đúng. Sao: 60% / 80% / 95% câu đúng. Điểm lưu trên trình duyệt này.</p>
-    </section>
-
-    <section id="panel-custom" role="tabpanel" aria-labelledby="tab-custom" hidden>
-      <p>Chọn khóa học muốn luyện. Dojo lấy toàn bộ chữ và từ của khóa, trộn thành một lượt 20 câu.</p>
-      <div id="picklist"></div>
-      <div class="practice">
-        <p id="picksum" aria-live="polite">Đang tải danh sách khóa…</p>
-        <button type="button" class="btn primary" id="startmix" disabled>Bắt đầu 20 câu</button>
-      </div>
-    </section>
-    <noscript><p>Cần bật JavaScript để chơi.</p></noscript>
-  </div>
-  <div id="play" hidden></div>
-</div>
+{% include "pages/practice.njk" %}
