@@ -42,7 +42,7 @@ Hiện `src/js/quiz-core.js` gắn cứng bảng Hiragana (`BASIC`, `DAKU`, `YOO
 - `parseMorae` nhận thêm `ャュョ`. `っ` thành `ッ`.
 - Trường âm: Hiragana dùng nguyên âm lặp; Katakana dùng **ー**. `isLong`, `romajiOf` và các biến thể sai (`remLong`, `addLong`, `swapLong`) cần nhánh riêng cho Katakana.
 - Âm mở rộng (ファ, ティ, ウィ, ジェ, ヴ...) thêm vào bảng `R` của Katakana; câu hỏi `size` mở rộng cho các cụm này.
-- Bài học khai báo `script: katakana` trong front matter; `buildLesson` chọn bảng theo đó.
+- Bài học khai báo `writing: katakana` trong front matter; `buildLesson` chọn bảng theo đó.
 - Câu hỏi `voice` (thêm ゛ ゜) dùng chung logic, đổi bảng chữ.
 - Giữ nguyên hành vi Hiragana: bộ kiểm tra `npm test` phải còn đạt 1.500 bộ câu hỏi.
 
@@ -52,7 +52,7 @@ Hiện `src/js/quiz-core.js` gắn cứng bảng Hiragana (`BASIC`, `DAKU`, `YOO
 - Layout bài học và trang danh sách bài đọc tên khóa, đường dẫn, mục lục từ dữ liệu khóa, bỏ chữ "Nhập môn Hiragana" gắn cứng trong `lesson.njk` và `hiragana/index.njk`.
 - `courses.json`: đổi Katakana sang `status: open`, thêm `url` và `meta`. Trang "Sắp ra mắt" tự bỏ Katakana vì `soon.js` lọc theo trạng thái.
 - Thêm `src/khoa-hoc/katakana/` với `katakana.json` (layout, tag) tương tự thư mục Hiragana.
-- Front matter mỗi bài thêm `script`, `tags` (xem [`../content/curriculum.md`](../content/curriculum.md)).
+- Front matter mỗi bài thêm `writing`, `tags` (xem [`../content/curriculum.md`](../content/curriculum.md)).
 - Tiến độ lưu chung trong `enihongo:v1`, ID bài dạng `katakana-NN`; không đổi định dạng nên không cần chuyển dữ liệu cũ.
 
 ### 3. Thứ tự nét và phát âm
@@ -69,7 +69,7 @@ Dojo là một tính năng chung ở `/luyen-tap/`, không tách riêng cho từ
   1. *Chế độ nhanh*: Hiragana, Katakana, Tổng hợp (sau này thêm Kanji). Hiragana giữ nguyên 5 hiệp hiện có.
   2. *Theo bài*: danh sách bài của mọi khóa, đánh dấu chọn một hoặc nhiều bài; các bài đã hoàn thành được chọn sẵn.
   3. *Theo chủ đề*: nhãn `tags` của bài (nguyên âm, âm đục, từ mượn đồ ăn...), cho phép trộn nhiều chủ đề.
-- **Nguồn dữ liệu**: mỗi bài đã khai báo `chars`, `words`, `script`, `tags` trong front matter. Eleventy sinh `data/dojo-pool.json` từ các bài, nên thêm bài mới là Dojo tự có nội dung mới. Dojo chỉ tải tệp này khi mở màn hình chọn.
+- **Nguồn dữ liệu**: mỗi bài đã khai báo `chars`, `words`, `writing`, `tags` trong front matter. Eleventy sinh `data/dojo-pool.json` từ các bài, nên thêm bài mới là Dojo tự có nội dung mới. Dojo chỉ tải tệp này khi mở màn hình chọn.
 - **Dạng câu hỏi**: lấy theo nội dung đã chọn. Chữ đơn dùng `k2r`, `r2k`, `type`, `match`, `odd`; từ dùng `wk2r`, `wr2k`, `wtype`, `fill`, `mora`; `voice` và `size` chỉ xuất hiện khi lựa chọn có âm đục hoặc âm ghép. Kanji (sau này) thêm dạng riêng.
 - **Hiệp**: chế độ nhanh theo hiệp cố định; chế độ theo bài và chủ đề là một lượt 20 câu rút từ nhóm đã chọn, có thể chơi lại.
 - **Điểm cao**: lưu theo "bộ nội dung" (tên chế độ hoặc mã băm danh sách bài đã chọn) trong `dojo` của `enihongo:v1`. Điểm của Hiragana Dojo hiện có giữ nguyên khóa `0` đến `4`.

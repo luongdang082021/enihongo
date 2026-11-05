@@ -35,10 +35,13 @@ ROUNDS.forEach((_,i)=>{
 const dir='src/khoa-hoc/hiragana';
 const files=fs.readdirSync(dir).filter(f=>f.endsWith('.md')).sort();
 const learned=new Set();
+const TAGS=JSON.parse(fs.readFileSync('src/_data/topics.json','utf8'));
 const romajiOfWord=kana=>mkWord(kana,'').r;
 for(const f of files){
   const fm=matter(fs.readFileSync(path.join(dir,f),'utf8')).data;
   const num=fm.n;
+  if(!fm.writing)bad(`${f}: thiếu writing`);
+  (fm.tags||[]).forEach(t=>{if(!TAGS[t])bad(`${f}: tag ${t} chưa khai báo trong src/_data/topics.json`)});
   (fm.chars||[]).forEach(c=>{
     if(R[c.k]===undefined)bad(`${f}: chữ ${c.k} không có trong bảng R`);
     else if(R[c.k]!==c.r)bad(`${f}: ${c.k} ghi ${c.r}, bảng là ${R[c.k]}`);

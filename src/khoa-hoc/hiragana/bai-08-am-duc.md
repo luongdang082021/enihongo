@@ -4,6 +4,8 @@ lessonId: hiragana-08
 n: 8
 minutes: 12
 status: published
+writing: hiragana
+tags: [am-duc]
 qcount: 12
 qplan: { k2r: 3, r2k: 3, type: 2, voice: 3, match: 1 }
 objectives:

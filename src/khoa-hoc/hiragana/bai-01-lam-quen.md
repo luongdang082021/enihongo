@@ -4,6 +4,8 @@ lessonId: hiragana-01
 n: 1
 minutes: 5
 status: published
+writing: hiragana
+tags: []
 objectives:
   - Biết tiếng Nhật có ba bộ chữ và vì sao học hiragana trước
   - Hiểu "nhịp" (mora) là đơn vị đọc cơ bản

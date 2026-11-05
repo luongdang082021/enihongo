@@ -4,6 +4,8 @@ lessonId: hiragana-02
 n: 2
 minutes: 8
 status: published
+writing: hiragana
+tags: [hang-co-ban]
 qcount: 10
 qplan: { k2r: 4, r2k: 3, type: 2, match: 1 }
 objectives:

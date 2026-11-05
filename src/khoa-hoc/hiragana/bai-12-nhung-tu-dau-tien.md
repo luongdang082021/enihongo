@@ -4,6 +4,8 @@ lessonId: hiragana-12
 n: 12
 minutes: 12
 status: published
+writing: hiragana
+tags: [cau-chao]
 qcount: 12
 qplan: { wk2r: 4, wr2k: 3, wtype: 3, fill: 1, mora: 1 }
 objectives:

@@ -42,7 +42,7 @@ Mỗi khóa gồm các **bài** nhỏ; mỗi bài khai báo trong front matter n
 
 ```yaml
 course: hiragana
-script: hiragana          # hoặc katakana
+writing: hiragana         # hoặc katakana
 cando: "Đọc và gõ được năm nguyên âm"   # mục tiêu làm được gì, một câu
 chars: [...]              # chữ mới
 words: [...]              # từ ví dụ, chỉ dùng chữ đã học

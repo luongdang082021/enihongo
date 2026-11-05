@@ -4,6 +4,8 @@ lessonId: hiragana-13
 n: 13
 minutes: 12
 status: published
+writing: hiragana
+tags: [on-tap]
 qcount: 15
 qplan: { k2r: 3, r2k: 3, type: 2, match: 1, wk2r: 2, wr2k: 2, wtype: 1, mora: 1 }
 objectives:

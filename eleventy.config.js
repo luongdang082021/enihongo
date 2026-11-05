@@ -24,6 +24,24 @@ export default function (eleventyConfig) {
     return PREFIX + p.replace(/^\//, '') + v;
   });
 
+  // Kho nội dung cho Dojo: sinh từ front matter của các bài, nên thêm bài mới là Dojo tự có nội dung.
+  eleventyConfig.addFilter('dojoPool', (items, tags) => {
+    const lessons = items
+      .map((i) => i.data)
+      .filter((d) => (d.chars && d.chars.length) || (d.words && d.words.length))
+      .sort((a, b) => a.n - b.n)
+      .map((d) => ({
+        id: d.lessonId,
+        n: d.n,
+        title: d.title,
+        writing: d.writing,
+        tags: d.tags || [],
+        chars: (d.chars || []).map((c) => ({ k: c.k, r: c.r })),
+        words: (d.words || []).filter((w) => w.quiz !== false).map((w) => ({ kana: w.kana, romaji: w.romaji, vi: w.vi }))
+      }));
+    return JSON.stringify({ tags, lessons });
+  });
+
   return {
     dir: { input: 'src', includes: '_includes', data: '_data', output: '_site' },
     pathPrefix: PREFIX,

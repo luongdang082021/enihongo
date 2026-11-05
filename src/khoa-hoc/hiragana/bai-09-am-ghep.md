@@ -4,6 +4,8 @@ lessonId: hiragana-09
 n: 9
 minutes: 12
 status: published
+writing: hiragana
+tags: [am-ghep]
 qcount: 12
 qplan: { k2r: 3, r2k: 3, type: 2, size: 2, wk2r: 1, wtype: 1 }
 objectives:

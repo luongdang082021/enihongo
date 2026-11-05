@@ -4,6 +4,8 @@ lessonId: hiragana-10
 n: 10
 minutes: 10
 status: published
+writing: hiragana
+tags: [truong-am]
 qcount: 12
 qplan: { wk2r: 4, wr2k: 3, wtype: 2, fill: 2, mora: 1 }
 objectives:
