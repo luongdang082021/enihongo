@@ -12,5 +12,5 @@
   { "n": 11, "id": "hiragana-11", "slug": "bai-11-am-ngat", "title": "Âm ngắt", "summary": "っ nhỏ làm đôi phụ âm: がっこう.", "state": "ready" },
   { "n": 12, "id": "hiragana-12", "slug": "bai-12-nhung-tu-dau-tien", "title": "Những từ đầu tiên", "summary": "Câu chào và tự giới thiệu.", "state": "ready" },
   { "n": 13, "id": "hiragana-13", "slug": "bai-13-on-tap", "title": "Ôn tập tổng hợp", "summary": "Mini quiz dài và danh sách chữ hay nhầm.", "state": "ready" },
-  { "n": 14, "id": "hiragana-14", "slug": "", "title": "Hiragana Dojo", "summary": "Game luyện tập 5 hiệp × 20 câu.", "state": "dojo", "url": "/luyen-tap/hiragana-dojo/" }
+  { "n": 14, "id": "hiragana-14", "slug": "", "title": "Dojo", "summary": "Game luyện tập: 5 hiệp Hiragana hoặc tự chọn bài.", "state": "dojo", "url": "/luyen-tap/" }
 ]

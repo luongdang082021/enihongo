@@ -13,4 +13,4 @@ Tóm tắt các điểm quan trọng:
 - Trang tĩnh, không backend; giữ trang nhẹ ([`docs/planning/performance-budget.md`](docs/planning/performance-budget.md)).
 - Giao diện và giải thích bằng tiếng Việt; chữ Nhật giai đoạn đầu chỉ dùng hiragana.
 - Nội dung tự biên soạn, không sao chép giáo trình in.
-- Mã nguồn trong `src/`, dựng bằng Eleventy (`npm run build:local`, `npm test`, `npm run size`), triển khai bằng GitHub Actions. `index.html` ở gốc repo là bản game cũ, giữ tạm tới khi Pages chuyển sang Actions. Game mới ở `src/luyen-tap/hiragana-dojo.njk` ([`docs/product/hiragana-dojo-spec.md`](docs/product/hiragana-dojo-spec.md)).
+- Mã nguồn trong `src/`, dựng bằng Eleventy (`npm run build:local`, `npm test`, `npm run size`), triển khai bằng GitHub Actions. `index.html` ở gốc repo là bản game cũ, giữ tạm tới khi Pages chuyển sang Actions. Dojo ở `src/luyen-tap/index.njk` ([`docs/product/hiragana-dojo-spec.md`](docs/product/hiragana-dojo-spec.md)).

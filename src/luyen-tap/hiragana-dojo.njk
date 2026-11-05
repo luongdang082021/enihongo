@@ -1,21 +1,15 @@
 ---
 layout: layouts/base.njk
-title: Hiragana Dojo
-description: Game quiz luyện Hiragana, âm đục, âm ghép, trường âm và âm ngắt. 5 hiệp, mỗi hiệp 20 câu.
-quiz: true
-script: /js/dojo.js
+title: Dojo luyện tập
+permalink: luyen-tap/hiragana-dojo/index.html
+noindex: true
+eleventyExcludeFromCollections: true
 ---
 <div class="wrap narrow">
-  <div id="home">
-    <header class="page-head">
-      <p class="eyebrow">Luyện tập</p>
-      <h1>Hiragana Dojo</h1>
-      <p class="lede">5 hiệp, mỗi hiệp 20 câu. Nhận diện chữ ↔ romaji, gõ, nối cặp, điền chữ thiếu.</p>
-    </header>
-    <ol class="ladder" id="ladder"></ol>
-    <p class="foot-note" id="total"></p>
-    <p class="foot-note">Điểm mỗi câu: 100 + thưởng tốc độ (tối đa 50) + thưởng chuỗi đúng. Sao: 60% / 80% / 95% câu đúng. Điểm lưu trên trình duyệt này.</p>
-    <noscript><p>Cần bật JavaScript để chơi.</p></noscript>
-  </div>
-  <div id="play" hidden></div>
+  <header class="page-head">
+    <h1>Dojo đã chuyển chỗ</h1>
+    <p class="lede">Hiragana Dojo giờ nằm trong trang Dojo chung.</p>
+    <div class="cta"><a class="btn primary" href="{{ '/luyen-tap/' | url }}">Vào Dojo</a></div>
+  </header>
 </div>
+<script>location.replace("{{ '/luyen-tap/' | url }}")</script>

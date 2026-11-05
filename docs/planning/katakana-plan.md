@@ -74,7 +74,7 @@ Dojo là một tính năng chung ở `/luyen-tap/`, không tách riêng cho từ
 - **Hiệp**: chế độ nhanh theo hiệp cố định; chế độ theo bài và chủ đề là một lượt 20 câu rút từ nhóm đã chọn, có thể chơi lại.
 - **Điểm cao**: lưu theo "bộ nội dung" (tên chế độ hoặc mã băm danh sách bài đã chọn) trong `dojo` của `enihongo:v1`. Điểm của Hiragana Dojo hiện có giữ nguyên khóa `0` đến `4`.
 - **Chữ cần ôn**: Dojo ghi chữ trả lời sai vào dữ liệu ôn tập (cùng nơi lưu flashcard) để ưu tiên ở lượt sau; thực hiện sau khi Dojo chung chạy ổn.
-- Thay đổi này chỉ làm sau khi tách engine (xem trình tự), vì Dojo chung cần engine hiểu cả hai bộ chữ.
+- **Tiến độ (2026-11-06)**: phần Hiragana đã làm (`dojo-mix.js`, `dojo-pool.json`, màn hình chọn bài). Khi có Katakana chỉ cần thêm bài vào kho và bổ sung lựa chọn theo `writing`; việc còn lại của engine là hiểu bảng chữ thứ hai.
 
 ### 5. Điều hướng, SEO, hiệu năng
 

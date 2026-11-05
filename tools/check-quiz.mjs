@@ -1,5 +1,6 @@
 // Kiểm tra: (1) mô phỏng bộ câu hỏi Dojo, (2) nội dung từng bài: romaji khớp, từ chỉ dùng chữ đã học, mini quiz sinh được.
 import {ROUNDS,build,buildLesson,mkWord,CHOICE,norm,AMB,R,BASIC,DAKU,YOON,parseMorae} from '../src/js/quiz-core.js';
+import {gather,planFor} from '../src/js/dojo-mix.js';
 import matter from 'gray-matter';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -70,6 +71,23 @@ for(const f of files){
   }
   console.log(`  ${f}: ${(fm.chars||[]).length} chữ, ${(fm.words||[]).length} từ, quiz ${cnt} câu, ok`);
 }
+
+// Dojo tự chọn: từng bài riêng lẻ, toàn bộ, và 150 tập con ngẫu nhiên đều phải sinh đủ 20 câu hợp lệ.
+const lessonsFm=files.map(f=>matter(fs.readFileSync(path.join(dir,f),'utf8')).data).filter(d=>(d.chars&&d.chars.length)||(d.words&&d.words.length));
+const mixes=[...lessonsFm.map(l=>[l]),lessonsFm];
+for(let i=0;i<150;i++)mixes.push(lessonsFm.filter(()=>Math.random()<.4));
+let nm=0;
+for(const mix of mixes){
+  const {chars,words}=gather(mix);
+  const plan=planFor(chars,words);
+  if(!plan){if(mix.length)bad('Dojo tự chọn: không có kế hoạch cho '+mix.map(l=>l.n));continue}
+  const label='Dojo tự chọn bài '+mix.map(l=>l.n).join(',');
+  for(let t=0;t<5;t++){
+    try{const qs=buildLesson(chars,plan,words);nm++;if(qs.length!==20)bad(`${label}: ${qs.length} câu`);qs.forEach(q=>checkQ(q,label))}
+    catch(e){bad(`${label}: ${e.message}`);break}
+  }
+}
+console.log(`  Dojo tự chọn: ${mixes.length} tập bài, ${nm} lượt, ok`);
 
 if(problems.length){console.error('LỖI:\n'+problems.join('\n'));process.exit(1)}
 console.log(`Đạt: ${n} bộ câu hỏi hiệp và ${files.length} bài, 0 vấn đề.`);
