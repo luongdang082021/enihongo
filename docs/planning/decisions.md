@@ -21,7 +21,7 @@ Quy ước: không sửa quyết định cũ; nếu đổi hướng thì thêm d
 | D-011 | 2026-11-05 | Thứ tự nét lấy từ KanjiVG (CC BY-SA 3.0): ghi nguồn ở trang giới thiệu và trong giao diện, dữ liệu rút gọn `src/data/strokes.json` giữ nguyên giấy phép CC BY-SA. Phát âm dùng giọng đọc của thiết bị, không có file âm thanh | Đã chốt (2026-11-06) |
 | D-012 | 2026-11-05 | Katakana: không khóa cứng Hiragana trước; hiện gợi ý "nên học Hiragana trước" ở đầu khóa | Đã chốt (2026-11-06), xem [`katakana-plan.md`](katakana-plan.md) |
 | D-013 | 2026-11-05 | Katakana: từ mượn theo chủ đề đồ ăn uống, địa danh, đồ vật hằng ngày; tránh tên thương hiệu | Đã chốt (2026-11-06) |
-| D-014 | 2026-11-05 | Dojo là một tính năng chung (không tách theo từng khóa): bên trong chọn bộ chữ hoặc nội dung (Hiragana, Katakana, Kanji, tổng hợp...) theo các bài đã học, và cho phép trộn nhiều bài hoặc chủ đề | Đã chốt (2026-11-06), thiết kế trong [`katakana-plan.md`](katakana-plan.md) |
+| D-014 | 2026-11-05 | Dojo là một tính năng chung (không tách theo từng khóa). Đơn vị chọn là **khóa học**: chọn cả khóa, hoặc mở khóa để chọn từng bài, hoặc chọn theo chủ đề; có thể trộn nhiều khóa, bài, chủ đề. Điều chỉnh ngày 2026-11-06: từ "chọn theo bài" sang "chọn theo khóa học, bài là mức chi tiết bên trong" | Đã chốt (2026-11-06), thiết kế trong [`katakana-plan.md`](katakana-plan.md) |
 | D-015 | 2026-11-06 | Giáo trình tự biên soạn, bám JF Standard và CEFR, không dùng nội dung sách in; đổi tên khóa N5 thành "Tiếng Nhật sơ cấp 1 và 2" | Hoãn (pending), xem [`../content/curriculum.md`](../content/curriculum.md) |
 | D-016 | 2026-11-06 | Nguồn dữ liệu nghĩa và âm đọc kanji | Hoãn (pending) |
 | D-017 | 2026-11-06 | Âm thanh cho khóa nghe và luyện JFT-Basic | Hoãn (pending) |

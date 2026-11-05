@@ -25,13 +25,14 @@ export default function (eleventyConfig) {
   });
 
   // Kho nội dung cho Dojo: sinh từ front matter của các bài, nên thêm bài mới là Dojo tự có nội dung.
-  eleventyConfig.addFilter('dojoPool', (items, tags) => {
+  eleventyConfig.addFilter('dojoPool', (items, tags, courses) => {
     const lessons = items
       .map((i) => i.data)
       .filter((d) => (d.chars && d.chars.length) || (d.words && d.words.length))
       .sort((a, b) => a.n - b.n)
       .map((d) => ({
         id: d.lessonId,
+        course: d.course,
         n: d.n,
         title: d.title,
         writing: d.writing,
@@ -39,7 +40,9 @@ export default function (eleventyConfig) {
         chars: (d.chars || []).map((c) => ({ k: c.k, r: c.r })),
         words: (d.words || []).filter((w) => w.quiz !== false).map((w) => ({ kana: w.kana, romaji: w.romaji, vi: w.vi }))
       }));
-    return JSON.stringify({ tags, lessons });
+    const used = new Set(lessons.map((l) => l.course));
+    const cs = courses.filter((c) => used.has(c.id)).map((c) => ({ id: c.id, name: c.name }));
+    return JSON.stringify({ tags, courses: cs, lessons });
   });
 
   return {

@@ -67,7 +67,7 @@ Dojo là một tính năng chung ở `/luyen-tap/`, không tách riêng cho từ
 
 - **Chọn nội dung**: ba cách, dùng chung một màn hình.
   1. *Chế độ nhanh*: Hiragana, Katakana, Tổng hợp (sau này thêm Kanji). Hiragana giữ nguyên 5 hiệp hiện có.
-  2. *Theo bài*: danh sách bài của mọi khóa, đánh dấu chọn một hoặc nhiều bài; các bài đã hoàn thành được chọn sẵn.
+  2. *Theo khóa học*: mỗi khóa một ô "Cả khóa"; mở khóa ra để chọn từng bài nếu muốn. Chọn được nhiều khóa cùng lúc (ví dụ Hiragana và Katakana); các bài đã hoàn thành được chọn sẵn.
   3. *Theo chủ đề*: nhãn `tags` của bài (nguyên âm, âm đục, từ mượn đồ ăn...), cho phép trộn nhiều chủ đề.
 - **Nguồn dữ liệu**: mỗi bài đã khai báo `chars`, `words`, `writing`, `tags` trong front matter. Eleventy sinh `data/dojo-pool.json` từ các bài, nên thêm bài mới là Dojo tự có nội dung mới. Dojo chỉ tải tệp này khi mở màn hình chọn.
 - **Dạng câu hỏi**: lấy theo nội dung đã chọn. Chữ đơn dùng `k2r`, `r2k`, `type`, `match`, `odd`; từ dùng `wk2r`, `wr2k`, `wtype`, `fill`, `mora`; `voice` và `size` chỉ xuất hiện khi lựa chọn có âm đục hoặc âm ghép. Kanji (sau này) thêm dạng riêng.

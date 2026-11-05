@@ -1,7 +1,7 @@
 ---
 layout: layouts/base.njk
 title: Dojo luyện tập
-description: "Dojo: game quiz luyện chữ và từ tiếng Nhật. Chơi 5 hiệp Hiragana hoặc tự chọn bài, chủ đề để trộn thành lượt 20 câu."
+description: "Dojo: game quiz luyện chữ và từ tiếng Nhật. Chơi 5 hiệp Hiragana hoặc tự chọn khóa, bài, chủ đề để trộn thành lượt 20 câu."
 quiz: true
 script: /js/dojo.js
 ---
@@ -14,7 +14,7 @@ script: /js/dojo.js
     </header>
     <div class="tabs" role="tablist" aria-label="Chế độ chơi">
       <button type="button" role="tab" id="tab-fixed" aria-controls="panel-fixed" aria-selected="true" data-tab="fixed">Năm hiệp Hiragana</button>
-      <button type="button" role="tab" id="tab-custom" aria-controls="panel-custom" aria-selected="false" data-tab="custom">Tự chọn bài</button>
+      <button type="button" role="tab" id="tab-custom" aria-controls="panel-custom" aria-selected="false" data-tab="custom">Tự chọn</button>
     </div>
 
     <section id="panel-fixed" role="tabpanel" aria-labelledby="tab-fixed">
@@ -24,7 +24,7 @@ script: /js/dojo.js
     </section>
 
     <section id="panel-custom" role="tabpanel" aria-labelledby="tab-custom" hidden>
-      <p>Chọn các bài hoặc chủ đề muốn luyện. Dojo trộn chữ và từ của những bài đó thành một lượt 20 câu.</p>
+      <p>Chọn cả khóa học, hoặc chỉ vài bài hay chủ đề muốn luyện. Dojo trộn chữ và từ đã chọn thành một lượt 20 câu.</p>
       <h2 class="small">Chủ đề</h2>
       <div class="topics" id="topics"></div>
       <div class="pick-actions">
@@ -32,7 +32,7 @@ script: /js/dojo.js
         <button type="button" class="ghost" data-pick="all">Chọn tất cả</button>
         <button type="button" class="ghost" data-pick="none">Bỏ chọn</button>
       </div>
-      <ul class="picklist" id="picklist"></ul>
+      <div id="picklist"></div>
       <div class="practice">
         <p id="picksum" aria-live="polite">Đang tải danh sách bài…</p>
         <button type="button" class="btn primary" id="startmix" disabled>Bắt đầu 20 câu</button>

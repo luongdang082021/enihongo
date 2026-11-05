@@ -74,11 +74,17 @@ function renderPicker(){
     return `<button type="button" class="topic" data-topic="${esc(id)}" aria-pressed="${on}">${esc(label)}</button>`;
   }).join('');
   const done=getAll().lessons;
-  $('picklist').innerHTML=pool.lessons.map(l=>{
-    const n=l.chars.length,w=l.words.length;
-    const cnt=[n?n+' chữ':'',w?w+' từ':''].filter(Boolean).join(' · ');
-    return `<li><label><input type="checkbox" data-lesson="${esc(l.id)}"${sel.has(l.id)?' checked':''}><span>Bài ${l.n} · ${esc(l.title)}${done[l.id]&&done[l.id].done?'<span class="done-mark">Đã học</span>':''}</span><span class="cnt">${cnt}</span></label></li>`;
+  $('picklist').innerHTML=pool.courses.map(c=>{
+    const ls=pool.lessons.filter(l=>l.course===c.id);
+    const nSel=ls.filter(l=>sel.has(l.id)).length;
+    const rows=ls.map(l=>{
+      const n=l.chars.length,w=l.words.length;
+      const cnt=[n?n+' chữ':'',w?w+' từ':''].filter(Boolean).join(' · ');
+      return `<li><label><input type="checkbox" data-lesson="${esc(l.id)}"${sel.has(l.id)?' checked':''}><span>Bài ${l.n} · ${esc(l.title)}${done[l.id]&&done[l.id].done?'<span class="done-mark">Đã học</span>':''}</span><span class="cnt">${cnt}</span></label></li>`;
+    }).join('');
+    return `<details class="course-group" open><summary><label class="course-all"><input type="checkbox" data-course="${esc(c.id)}"${nSel===ls.length?' checked':''}${nSel>0&&nSel<ls.length?' data-partial="1"':''}><span>Cả khóa: ${esc(c.name)}</span><span class="cnt">${nSel}/${ls.length} bài</span></label></summary><ul class="picklist">${rows}</ul></details>`;
   }).join('');
+  document.querySelectorAll('[data-partial]').forEach(el=>{el.indeterminate=true});
   renderPicksum();
 }
 function renderPicksum(){
@@ -87,10 +93,13 @@ function renderPicksum(){
   const {chars,words}=gather(chosen());
   if(!chars.length&&!words.length){el.textContent='Chưa chọn bài nào.';btn.disabled=true;return}
   const b=dojoBest()[mixKey(sel)];
-  el.innerHTML=`Đã chọn ${sel.size} bài: ${chars.length} chữ, ${words.length} từ.${b?` Điểm cao lượt này: <b>${fmt(b.score)}</b> ${starsHTML(b.stars,14)}`:''}`;
+  const nc=new Set(chosen().map(l=>l.course)).size;
+  el.innerHTML=`Đã chọn ${sel.size} bài (${nc} khóa): ${chars.length} chữ, ${words.length} từ.${b?` Điểm cao lượt này: <b>${fmt(b.score)}</b> ${starsHTML(b.stars,14)}`:''}`;
   btn.disabled=false;
 }
 $('panel-custom').addEventListener('change',e=>{
+  const cc=e.target.closest('[data-course]');
+  if(cc){pool.lessons.filter(l=>l.course===cc.dataset.course).forEach(l=>cc.checked?sel.add(l.id):sel.delete(l.id));renderPicker();return}
   const cb=e.target.closest('[data-lesson]');if(!cb)return;
   if(cb.checked)sel.add(cb.dataset.lesson);else sel.delete(cb.dataset.lesson);
   renderPicker();

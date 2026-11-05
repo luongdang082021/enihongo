@@ -66,8 +66,8 @@ Mã chia module trong `src/js/`: `dojo-mix.js` (kế hoạch câu hỏi cho ch�
 
 Tab "Tự chọn bài" ở `/luyen-tap/`:
 
-- Chọn theo chủ đề (nhãn `tags` của bài, tên ở `src/_data/topics.json`) hoặc tích từng bài; nút "Các bài đã học", "Chọn tất cả", "Bỏ chọn". Có thể trộn nhiều bài và chủ đề.
-- Kho nội dung là `data/dojo-pool.json`, sinh khi build từ front matter các bài (bộ lọc `dojoPool`), tải khi mở tab. Từ có `quiz: false` bị loại.
+- Đơn vị chọn là khóa học: mỗi khóa có ô "Cả khóa" (hiện trạng thái một phần khi chỉ chọn vài bài), mở ra là danh sách bài để chọn riêng. Ngoài ra có chip chủ đề (nhãn `tags` của bài, tên ở `src/_data/topics.json`) cắt ngang các khóa; nút "Các bài đã học", "Chọn tất cả", "Bỏ chọn". Trộn được nhiều khóa, bài và chủ đề.
+- Kho nội dung là `data/dojo-pool.json`, sinh khi build từ front matter các bài (bộ lọc `dojoPool`, mỗi bài có `course` lấy từ dữ liệu thư mục của khóa), tải khi mở tab. Từ có `quiz: false` bị loại.
 - `src/js/dojo-mix.js` gom chữ và từ rồi lập kế hoạch đúng 20 câu: có cả chữ và từ thì trộn cả hai; chỉ chữ hoặc chỉ từ thì dùng dạng phù hợp; có chữ đục thì thêm `voice`, có chữ ghép thì thêm `size`.
 - Điểm cao lưu trong `dojo` của `enihongo:v1`, khóa `m` + mã băm của tập bài đã chọn; 5 hiệp cố định giữ khóa `0` đến `4`.
 - `?bai=<id>[,<id>]` chọn sẵn bài; trang bài học có liên kết "Luyện thêm bài này trong Dojo".
