@@ -1,0 +1,9 @@
+---
+layout: layouts/base.njk
+route: about
+permalink: en/about/index.html
+eleventyComputed:
+  title: "{{ t.about.title }}"
+  description: "{{ t.about.description }}"
+---
+{% include "pages/about." + lang + ".njk" %}

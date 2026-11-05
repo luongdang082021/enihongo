@@ -1,0 +1,13 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: soon
+  size: 1
+  alias: course
+permalink: "en/courses/{{ course.id }}/index.html"
+eleventyExcludeFromCollections: true
+noindex: true
+eleventyComputed:
+  title: "{{ (course | l10n(lang)).name }}"
+---
+{% include "pages/soon.njk" %}

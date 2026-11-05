@@ -1,0 +1,10 @@
+---
+layout: layouts/base.njk
+route: hiragana
+quiz: true
+script: /js/course.js
+eleventyComputed:
+  title: "{{ (courses[0] | l10n(lang)).name }}"
+  description: "{{ t.hiragana.description }}"
+---
+{% include "pages/hiragana.njk" %}
