@@ -1,0 +1,30 @@
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">{{ t.home.eyebrow }}</p>
+    <h1>{{ t.home.h1 }}</h1>
+    <p class="lede">{{ t.home.lede }}</p>
+    <div class="cta">
+      <a class="btn primary" href="{{ 'hiragana' | route(lang) | url }}">{{ t.home.start }}</a>
+      <a class="btn" href="{{ 'practice' | route(lang) | url }}">{{ t.home.tryDojo }}</a>
+    </div>
+    <div class="cells hero-cells" style="--s:84px" aria-hidden="true">
+      <span class="cell">あ</span><span class="cell">い</span><span class="cell">う</span><span class="cell">え</span><span class="cell">お</span>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-courses">
+    <h2 id="h-courses">{{ t.home.courses }}</h2>
+    <div class="cards">
+      {% include "pages/course-cards.njk" %}
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-practice">
+    <h2 id="h-practice">{{ t.home.practice }}</h2>
+    <div class="practice">
+      <h3>Dojo</h3>
+      <p>{{ t.home.dojoText }}</p>
+      <div><a class="btn" href="{{ 'practice' | route(lang) | url }}">{{ t.home.enterDojo }}</a></div>
+    </div>
+  </section>
+</div>

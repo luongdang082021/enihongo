@@ -70,7 +70,7 @@ script: /js/lesson.js
     {% if prev %}<a href="{{ ('/khoa-hoc/hiragana/' + prev.slug + '/') | url }}"><small>Bài trước</small><b>{{ prev.title }}</b></a>{% else %}<span></span>{% endif %}
     {% if next %}
       {% if next.state == 'ready' %}<a class="next" href="{{ ('/khoa-hoc/hiragana/' + next.slug + '/') | url }}"><small>Bài tiếp theo</small><b>{{ next.title }}</b></a>
-      {% elif next.state == 'dojo' %}<a class="next" href="{{ next.url | url }}"><small>Luyện tiếp</small><b>{{ next.title }}</b></a>
+      {% elif next.state == 'dojo' %}<a class="next" href="{{ 'practice' | route(lang) | url }}"><small>Luyện tiếp</small><b>{{ next.title }}</b></a>
       {% else %}<span class="next"><small>Bài tiếp theo</small><b>{{ next.title }} (sắp có)</b></span>{% endif %}
     {% endif %}
   </nav>

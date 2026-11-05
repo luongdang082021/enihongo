@@ -1,0 +1,26 @@
+{% set hc = courses[0] | l10n(lang) %}
+<div class="wrap">
+  <nav class="crumbs" aria-label="{{ t.crumbs }}"><a href="{{ 'courses' | route(lang) | url }}">{{ t.courses.title }}</a> / {{ hc.name }}</nav>
+  <header class="page-head">
+    <h1>{{ hc.name }}</h1>
+    <p class="lede">{{ t.hiragana.lede }}</p>
+    <p class="progress-line" data-summary></p>
+  </header>
+  <ol class="lesson-list">
+    {% for l0 in lessons %}{% set l = l0 | l10n(lang) %}
+    {% if l.state == 'ready' %}
+    <li data-lesson-id="{{ l.id }}"><a href="{{ ('/khoa-hoc/hiragana/' + l.slug + '/') | url }}"><span class="lnum">{{ l.n }}</span><span class="lt"><b>{{ l.title }}</b><span>{{ l.summary }}</span></span><span class="pill go" data-status>{{ t.hiragana.learn }}</span></a></li>
+    {% elif l.state == 'dojo' %}
+    <li data-lesson-id="{{ l.id }}"><a href="{{ 'practice' | route(lang) | url }}"><span class="lnum">{{ l.n }}</span><span class="lt"><b>{{ l.title }}</b><span>{{ l.summary }}</span></span><span class="pill go" data-status>{{ t.hiragana.play }}</span></a></li>
+    {% else %}
+    <li class="soon"><div class="off"><span class="lnum">{{ l.n }}</span><span class="lt"><b>{{ l.title }}</b><span>{{ l.summary }}</span></span><span class="pill">{{ t.hiragana.later }}</span></div></li>
+    {% endif %}
+    {% endfor %}
+  </ol>
+  <div class="backup">
+    <span>{{ t.hiragana.saved }}</span>
+    <button class="btn" type="button" data-export>{{ t.hiragana.export }}</button>
+    <label class="btn" for="imp">{{ t.hiragana.import }}</label><input id="imp" type="file" accept="application/json" data-import>
+    <span data-backup-msg role="status"></span>
+  </div>
+</div>

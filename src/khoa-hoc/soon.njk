@@ -8,15 +8,6 @@ permalink: "khoa-hoc/{{ course.id }}/index.html"
 eleventyExcludeFromCollections: true
 noindex: true
 eleventyComputed:
-  title: "{{ course.name }}"
+  title: "{{ (course | l10n(lang)).name }}"
 ---
-<div class="wrap narrow">
-  <nav class="crumbs" aria-label="Đường dẫn"><a href="{{ '/khoa-hoc/' | url }}">Khóa học</a> / {{ course.name }}</nav>
-  <header class="page-head">
-    <span class="badge">Sắp ra mắt</span>
-    <h1>{{ course.name }}</h1>
-    <p class="lede">{{ course.blurb }}</p>
-    <p>Khóa này đang được chuẩn bị. Trong lúc chờ, bạn có thể bắt đầu với khóa Hiragana.</p>
-    <div class="cta"><a class="btn primary" href="{{ '/khoa-hoc/hiragana/' | url }}">Học Hiragana</a></div>
-  </header>
-</div>
+{% include "pages/soon.njk" %}

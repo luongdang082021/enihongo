@@ -5,36 +5,60 @@
     "status": "open",
     "blurb": "Bảng chữ cái đầu tiên của tiếng Nhật: từ nguyên âm đến âm ghép, trường âm và âm ngắt.",
     "meta": "13 bài · khoảng 10 phút mỗi bài",
-    "url": "/khoa-hoc/hiragana/"
+    "en": {
+      "name": "Hiragana Basics",
+      "blurb": "The first Japanese alphabet: from vowels to combined sounds, long vowels and the small っ.",
+      "meta": "13 lessons · about 10 minutes each"
+    }
   },
   {
     "id": "katakana",
     "name": "Katakana",
     "status": "soon",
-    "blurb": "Bảng chữ dùng cho từ mượn và tên nước ngoài."
+    "blurb": "Bảng chữ dùng cho từ mượn và tên nước ngoài.",
+    "en": {
+      "name": "Katakana",
+      "blurb": "The alphabet used for loanwords and foreign names."
+    }
   },
   {
     "id": "n5",
     "name": "Ngữ pháp và từ vựng sơ cấp (N5)",
     "status": "soon",
-    "blurb": "Câu cơ bản và từ vựng thường gặp."
+    "blurb": "Câu cơ bản và từ vựng thường gặp.",
+    "en": {
+      "name": "Elementary grammar and vocabulary (N5)",
+      "blurb": "Basic sentences and common vocabulary."
+    }
   },
   {
     "id": "kanji",
     "name": "Kanji cơ bản",
     "status": "soon",
-    "blurb": "Những chữ Hán thường gặp đầu tiên."
+    "blurb": "Những chữ Hán thường gặp đầu tiên.",
+    "en": {
+      "name": "Basic Kanji",
+      "blurb": "The first common Chinese characters."
+    }
   },
   {
     "id": "giao-tiep-jft",
     "name": "Giao tiếp và luyện JFT-Basic",
     "status": "soon",
-    "blurb": "Tình huống giao tiếp hằng ngày và làm quen dạng đề."
+    "blurb": "Tình huống giao tiếp hằng ngày và làm quen dạng đề.",
+    "en": {
+      "name": "Conversation and JFT-Basic practice",
+      "blurb": "Everyday situations and getting used to the exam format."
+    }
   },
   {
     "id": "luyen-nghe",
     "name": "Luyện nghe",
     "status": "soon",
-    "blurb": "Nghe và nhận diện từ, câu ngắn."
+    "blurb": "Nghe và nhận diện từ, câu ngắn.",
+    "en": {
+      "name": "Listening practice",
+      "blurb": "Listen to and recognise words and short sentences."
+    }
   }
 ]

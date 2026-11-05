@@ -1,0 +1,11 @@
+{% set cc = course | l10n(lang) %}
+<div class="wrap narrow">
+  <nav class="crumbs" aria-label="{{ t.crumbs }}"><a href="{{ 'courses' | route(lang) | url }}">{{ t.courses.title }}</a> / {{ cc.name }}</nav>
+  <header class="page-head">
+    <span class="badge">{{ t.courses.soon }}</span>
+    <h1>{{ cc.name }}</h1>
+    <p class="lede">{{ cc.blurb }}</p>
+    <p>{{ t.soon.pending }}</p>
+    <div class="cta"><a class="btn primary" href="{{ 'hiragana' | route(lang) | url }}">{{ t.soon.cta }}</a></div>
+  </header>
+</div>

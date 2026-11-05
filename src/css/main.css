@@ -47,6 +47,8 @@ button{font:inherit;color:inherit;cursor:pointer}
 .site-header nav{display:flex;gap:16px;flex-wrap:wrap}
 .site-header nav a{color:var(--ink-2);text-decoration:none;font-weight:600;padding:4px 0;border-bottom:2px solid transparent}
 .site-header nav a:hover,.site-header nav a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}
+.site-header nav a.lang-switch{border:1.5px solid var(--line);border-radius:999px;padding:2px 10px;font-size:13px;color:var(--ink)}
+.site-header nav a.lang-switch:hover{border-color:var(--accent)}
 .site-footer{padding-block:28px max(28px,env(safe-area-inset-bottom,0px));color:var(--ink-2);font-size:14px}
 .site-footer .inner{max-width:720px;margin:0 auto;display:grid;gap:4px}
 

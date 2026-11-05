@@ -1,6 +1,8 @@
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 
+const routes = JSON.parse(fs.readFileSync(new URL('./src/_data/routes.json', import.meta.url), 'utf8'));
+
 // GitHub Pages phục vụ site ở /enihongo/. Khi chạy local dùng PATH_PREFIX=/ (xem package.json).
 const PREFIX = process.env.PATH_PREFIX || '/enihongo/';
 
@@ -24,6 +26,9 @@ export default function (eleventyConfig) {
     return PREFIX + p.replace(/^\//, '') + v;
   });
 
+  eleventyConfig.addFilter('route', (key, lang) => routes[key][lang || 'vi']);
+  // Ghi đè trường theo ngôn ngữ: { name, en: { name } } với lang 'en' -> { name: bản en }.
+  eleventyConfig.addFilter('l10n', (o, lang) => (lang && lang !== 'vi' && o[lang] ? { ...o, ...o[lang] } : o));
   // Kho nội dung cho Dojo: sinh từ front matter của các bài, nên thêm bài mới là Dojo tự có nội dung.
   eleventyConfig.addFilter('dojoPool', (items, tags, courses) => {
     const lessons = items
