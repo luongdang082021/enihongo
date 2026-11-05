@@ -9,7 +9,7 @@ Trạng thái: đang dùng. Cập nhật: 2026-11-05.
 | 0. Game | Hiragana Dojo chạy độc lập, deploy lên GitHub Pages | Xong (2026-11-05) |
 | 1. Khung trang | Thiết kế giao diện, trang chủ, lưới khóa học có thẻ khóa, pipeline build và deploy, chuyển Dojo về `/luyen-tap/hiragana-dojo` | Xong (2026-11-05) |
 | 2. Khóa Hiragana | 13 bài và Dojo, flashcard, mini quiz, tiến độ học | Xong, trừ flashcard ngắt quãng (2026-11-05) |
-| 3. Hoàn thiện | SEO, analytics nhẹ, PWA offline, đo hiệu năng | Đang làm: SEO, PWA và đo hiệu năng xong; analytics chờ token Cloudflare |
+| 3. Hoàn thiện | SEO, analytics nhẹ, PWA offline, đo hiệu năng | Đang làm: SEO, PWA và đo hiệu năng xong; analytics đã bật |
 | 4. Mở rộng | Thứ tự nét, âm thanh phát âm | Chưa bắt đầu |
 
 ## Giai đoạn 1: việc cần làm
@@ -36,7 +36,7 @@ Trạng thái: đang dùng. Cập nhật: 2026-11-05.
 
 - [x] Thẻ meta (canonical, Open Graph, Twitter Card), JSON-LD cho trang chủ và khóa Hiragana, sitemap, robots
 - [x] Biểu tượng, manifest và service worker (ưu tiên mạng, dùng bản đã lưu khi mất mạng)
-- [x] Mã nhúng Cloudflare Web Analytics (D-010), tự tắt khi chưa có token. Còn thiếu: token từ tài khoản Cloudflare của chủ site
+- [x] Mã nhúng Cloudflare Web Analytics (D-010), tự tắt khi chưa có token.  Token đã điền (2026-11-05)
 - [x] Thẻ "Sắp ra mắt" không dẫn đi đâu (D-007)
 - [ ] Đo lại Lighthouse trên bản deploy thật
 
