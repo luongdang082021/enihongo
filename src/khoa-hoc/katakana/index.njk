@@ -1,0 +1,11 @@
+---
+layout: layouts/base.njk
+route: katakana
+cid: katakana
+quiz: true
+script: /js/course.js
+eleventyComputed:
+  title: "{{ (courses | byId(cid) | l10n(lang)).name }}"
+  description: "{{ (courses | byId(cid) | l10n(lang)).description }}"
+---
+{% include "pages/course.njk" %}

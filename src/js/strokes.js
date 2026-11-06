@@ -1,10 +1,10 @@
 import {t as tr} from './i18n.js';
 /* Thứ tự nét: vẽ lần lượt từng nét từ dữ liệu KanjiVG (CC BY-SA 3.0). Dữ liệu chỉ tải khi người học bấm xem. */
-let data=null;
-const url=new URL('../data/strokes.json',import.meta.url);
-export async function loadStrokes(){
-  if(!data){const r=await fetch(url);if(!r.ok)throw new Error('không tải được dữ liệu nét');data=await r.json()}
-  return data;
+const cache={};
+const urls={hiragana:new URL('../data/strokes.json',import.meta.url),katakana:new URL('../data/strokes-katakana.json',import.meta.url)};
+export async function loadStrokes(kind='hiragana'){
+  if(!cache[kind]){const r=await fetch(urls[kind]);if(!r.ok)throw new Error('không tải được dữ liệu nét');cache[kind]=await r.json()}
+  return cache[kind];
 }
 const start=d=>{const m=/^M\s*([\d.]+)[ ,]([\d.]+)/.exec(d);return m?[Number(m[1]),Number(m[2])]:[10,10]};
 /* Trả về HTML SVG. Mỗi nét có animation-delay theo thứ tự; số thứ tự đặt ở điểm bắt đầu nét. */

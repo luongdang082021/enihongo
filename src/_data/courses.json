@@ -8,18 +8,31 @@
     "en": {
       "name": "Hiragana Basics",
       "blurb": "The first Japanese alphabet: from vowels to combined sounds, long vowels and the small っ.",
-      "meta": "13 lessons · about 10 minutes each"
-    }
+      "meta": "13 lessons · about 10 minutes each",
+      "lede": "The first alphabet of Japanese. Every lesson has a chart, flashcards and a mini quiz.",
+      "description": "A Hiragana course in 13 short lessons, from あ い う え お to combined sounds, long vowels and the small っ."
+    },
+    "enLessons": false,
+    "lede": "Bảng chữ cái đầu tiên của tiếng Nhật. Mỗi bài có bảng chữ, flashcard và mini quiz.",
+    "description": "Khóa học Hiragana cho người Việt: 13 bài ngắn từ あ い う え お đến âm ghép, trường âm và âm ngắt."
   },
   {
     "id": "katakana",
     "name": "Katakana",
-    "status": "soon",
-    "blurb": "Bảng chữ dùng cho từ mượn và tên nước ngoài.",
+    "status": "open",
+    "blurb": "Bảng chữ dành cho từ mượn và tên nước ngoài: từ ア đến ン, dấu ー, ッ và âm mở rộng.",
     "en": {
       "name": "Katakana",
-      "blurb": "The alphabet used for loanwords and foreign names."
-    }
+      "blurb": "The alphabet for loanwords and foreign names: from ア to ン, the ー mark, ッ and extended sounds.",
+      "meta": "12 lessons · about 10 minutes each",
+      "lede": "The alphabet for loanwords and foreign names. Every lesson has a chart, flashcards and a mini quiz.",
+      "description": "A free Katakana course in 12 short lessons, from ア イ ウ エ オ to the ー mark, small ッ and extended sounds for reading loanwords."
+    },
+    "meta": "12 bài · khoảng 10 phút mỗi bài",
+    "prereq": "hiragana",
+    "enLessons": true,
+    "lede": "Bảng chữ dành cho từ mượn và tên nước ngoài. Mỗi bài có bảng chữ, flashcard và mini quiz.",
+    "description": "Khóa học Katakana miễn phí cho người Việt: 12 bài ngắn từ ア イ ウ エ オ đến dấu ー, ッ và các âm mở rộng để đọc từ mượn."
   },
   {
     "id": "n5",

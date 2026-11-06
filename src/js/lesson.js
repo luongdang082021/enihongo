@@ -99,7 +99,7 @@ root.addEventListener('click',async e=>{
     panel.hidden=false;panel.innerHTML='<p class="hint">'+tr('l.loading')+'</p>';
     try{
       const {loadStrokes,strokeSVG}=await import('./strokes.js');
-      const all=await loadStrokes();
+      const all=await loadStrokes(/[ァ-ヺ]/.test(k)?'katakana':'hiragana');
       if(!all[k]){panel.innerHTML='<p class="hint">'+tr('l.noStroke')+'</p>';return}
       const draw=()=>{panel.innerHTML=`<b>${esc(k)}</b>${strokeSVG(all[k],200)}<p class="hint">${tr('l.strokeInfo',{n:all[k].length})}</p><button type="button" class="mini" data-replay>${tr('l.replay')}</button><p class="credit">${tr('l.credit')}</p>`;panel.querySelector('[data-replay]').addEventListener('click',draw);panel.dataset.k=k};
       draw();

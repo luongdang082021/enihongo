@@ -26,6 +26,10 @@ export default function (eleventyConfig) {
     return PREFIX + p.replace(/^\//, '') + v;
   });
 
+  eleventyConfig.addFilter('byId', (arr, id) => arr.find((x) => x.id === id));
+  // URL bài học: tiếng Việt /khoa-hoc/<khóa>/<slug>/, tiếng Anh /en/courses/<khóa>/<slug>/ (slug tiếng Anh nằm ở l.en.slug).
+  eleventyConfig.addFilter('lessonUrl', (l, course, lang) =>
+    lang === 'en' ? `/en/courses/${course}/${(l.en && l.en.slug) || l.slug}/` : `/khoa-hoc/${course}/${l.slug}/`);
   eleventyConfig.addFilter('route', (key, lang) => routes[key][lang || 'vi']);
   // Ghi đè trường theo ngôn ngữ: { name, en: { name } } với lang 'en' -> { name: bản en }.
   eleventyConfig.addFilter('l10n', (o, lang) => (lang && lang !== 'vi' && o[lang] ? { ...o, ...o[lang] } : o));

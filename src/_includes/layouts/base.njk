@@ -24,7 +24,7 @@
 <link rel="apple-touch-icon" href="{{ '/icons/icon-192.png' | url }}">
 <link rel="manifest" href="{{ '/manifest.webmanifest' | url }}">
 {% if route == 'home' %}<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"{{ site.name }}","url":"{{ site.origin }}{{ page.url | url }}","inLanguage":"{{ lang }}","description":"{{ t.tagline }}"}</script>{% endif %}
-{% if route == 'hiragana' %}<script type="application/ld+json">{"@context":"https://schema.org","@type":"Course","name":"{{ (courses[0] | l10n(lang)).name }}","description":"{{ t.hiragana.ld }}","inLanguage":"{{ lang }}","isAccessibleForFree":true,"provider":{"@type":"Organization","name":"{{ site.name }}","url":"{{ site.origin }}{{ '/' | url }}"}}</script>{% endif %}
+{% if route == 'hiragana' or route == 'katakana' %}<script type="application/ld+json">{"@context":"https://schema.org","@type":"Course","name":"{{ (courses | byId(cid) | l10n(lang)).name }}","description":"{{ (courses | byId(cid) | l10n(lang)).description }}","inLanguage":"{{ lang }}","isAccessibleForFree":true,"provider":{"@type":"Organization","name":"{{ site.name }}","url":"{{ site.origin }}{{ '/' | url }}"}}</script>{% endif %}
 <link rel="stylesheet" href="{{ '/css/main.css' | asset }}">
 {% if quiz %}<link rel="stylesheet" href="{{ '/css/quiz.css' | asset }}">{% endif %}
 </head>

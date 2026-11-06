@@ -40,10 +40,9 @@ export default {
       pending: 'Khóa này đang được chuẩn bị. Trong lúc chờ, bạn có thể bắt đầu với khóa Hiragana.',
       cta: 'Học Hiragana'
     },
-    hiragana: {
-      ld: 'Khóa học Hiragana miễn phí cho người Việt, 13 bài ngắn.',
-      description: 'Khóa học Hiragana cho người Việt: 13 bài ngắn từ あ い う え お đến âm ghép, trường âm và âm ngắt.',
-      lede: 'Bảng chữ cái đầu tiên của tiếng Nhật. Mỗi bài có bảng chữ, flashcard và mini quiz.',
+    course: {
+      prereq: 'Nên học Hiragana trước (không bắt buộc).',
+      prereqLink: 'Học Hiragana',
       notice: '',
       learn: 'Học',
       play: 'Chơi',
@@ -69,6 +68,26 @@ export default {
       loading: 'Đang tải danh sách khóa…',
       start: 'Bắt đầu 20 câu',
       noscript: 'Cần bật JavaScript để chơi.'
+    },
+    lesson: {
+      crumb: 'Bài {n}',
+      eyebrow: 'Bài {n} · khoảng {m} phút',
+      draft: 'Bản nháp: nội dung đang chờ người biết tiếng Nhật duyệt.',
+      charsH: 'Bảng chữ',
+      readAs: 'đọc là',
+      wordsH: 'Từ đầu tiên',
+      flashH: 'Flashcard',
+      flashNoJs: 'Cần bật JavaScript để dùng flashcard.',
+      quizH: 'Mini quiz',
+      quizIntro: '{n} câu ôn các nội dung trong bài. Đúng từ 70% số câu thì bài được đánh dấu hoàn thành.',
+      quizStart: 'Bắt đầu mini quiz',
+      dojoLink: 'Luyện cả khóa trong Dojo',
+      complete: 'Đánh dấu hoàn thành',
+      pager: 'Chuyển bài',
+      prev: 'Bài trước',
+      next: 'Bài tiếp theo',
+      practiceNext: 'Luyện tiếp',
+      soonTag: '(sắp có)'
     },
     notFound: {
       title: 'Không tìm thấy trang',
@@ -115,10 +134,9 @@ export default {
       pending: 'This course is being prepared. In the meantime you can start with the Hiragana course.',
       cta: 'Learn Hiragana'
     },
-    hiragana: {
-      ld: 'A free Hiragana course in 13 short lessons.',
-      description: 'A Hiragana course in 13 short lessons, from あ い う え お to combined sounds, long vowels and the small っ.',
-      lede: 'The first alphabet of Japanese. Every lesson has a chart, flashcards and a mini quiz.',
+    course: {
+      prereq: 'We suggest learning Hiragana first (not required).',
+      prereqLink: 'Learn Hiragana',
       notice: 'The lesson texts are still in Vietnamese; English lessons are coming. The letters, romaji and the Dojo already work in English.',
       learn: 'Learn',
       play: 'Play',
@@ -144,6 +162,26 @@ export default {
       loading: 'Loading the course list…',
       start: 'Start 20 questions',
       noscript: 'JavaScript is required to play.'
+    },
+    lesson: {
+      crumb: 'Lesson {n}',
+      eyebrow: 'Lesson {n} · about {m} minutes',
+      draft: 'Draft: this content is waiting for review.',
+      charsH: 'Letter chart',
+      readAs: 'is read as',
+      wordsH: 'First words',
+      flashH: 'Flashcards',
+      flashNoJs: 'JavaScript is required to use the flashcards.',
+      quizH: 'Mini quiz',
+      quizIntro: '{n} questions on this lesson. Get at least 70% right and the lesson is marked as completed.',
+      quizStart: 'Start the mini quiz',
+      dojoLink: 'Practise the whole course in the Dojo',
+      complete: 'Mark as completed',
+      pager: 'Lesson navigation',
+      prev: 'Previous lesson',
+      next: 'Next lesson',
+      practiceNext: 'Keep practising',
+      soonTag: '(coming soon)'
     },
     notFound: {
       title: 'Page not found',

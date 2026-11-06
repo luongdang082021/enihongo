@@ -1,7 +1,26 @@
 {
-  "home": { "vi": "/", "en": "/en/" },
-  "courses": { "vi": "/khoa-hoc/", "en": "/en/courses/" },
-  "hiragana": { "vi": "/khoa-hoc/hiragana/", "en": "/en/courses/hiragana/" },
-  "practice": { "vi": "/luyen-tap/", "en": "/en/practice/" },
-  "about": { "vi": "/gioi-thieu/", "en": "/en/about/" }
+  "home": {
+    "vi": "/",
+    "en": "/en/"
+  },
+  "courses": {
+    "vi": "/khoa-hoc/",
+    "en": "/en/courses/"
+  },
+  "hiragana": {
+    "vi": "/khoa-hoc/hiragana/",
+    "en": "/en/courses/hiragana/"
+  },
+  "practice": {
+    "vi": "/luyen-tap/",
+    "en": "/en/practice/"
+  },
+  "about": {
+    "vi": "/gioi-thieu/",
+    "en": "/en/about/"
+  },
+  "katakana": {
+    "vi": "/khoa-hoc/katakana/",
+    "en": "/en/courses/katakana/"
+  }
 }

@@ -3,25 +3,27 @@ layout: layouts/base.njk
 quiz: true
 script: /js/lesson.js
 ---
-{% set prev = lessons[n - 2] if n > 1 else null %}
-{% set next = lessons[n] if n < lessons.length else null %}
+{% set cl = lessons[course] %}
+{% set cobj = courses | byId(course) | l10n(lang) %}
+{% set prev = cl[n - 2] | l10n(lang) if n > 1 else null %}
+{% set next = cl[n] | l10n(lang) if n < cl.length else null %}
 <article class="lesson wrap" data-lesson="{{ lessonId }}">
-  <nav class="crumbs" aria-label="Đường dẫn"><a href="{{ '/khoa-hoc/' | url }}">Khóa học</a> / <a href="{{ '/khoa-hoc/hiragana/' | url }}">Nhập môn Hiragana</a> / Bài {{ n }}</nav>
+  <nav class="crumbs" aria-label="{{ t.crumbs }}"><a href="{{ 'courses' | route(lang) | url }}">{{ t.courses.title }}</a> / <a href="{{ course | route(lang) | url }}">{{ cobj.name }}</a> / {{ t.lesson.crumb | replace('{n}', n) }}</nav>
   <header>
-    <p class="eyebrow">Bài {{ n }} · khoảng {{ minutes }} phút</p>
+    <p class="eyebrow">{{ t.lesson.eyebrow | replace('{n}', n) | replace('{m}', minutes) }}</p>
     <h1>{{ title }}</h1>
     <ul class="goals">{% for g in objectives %}<li>{{ g }}</li>{% endfor %}</ul>
-    {% if status == 'draft' %}<p class="note-draft">Bản nháp: nội dung đang chờ người biết tiếng Nhật duyệt.</p>{% endif %}
+    {% if status == 'draft' %}<p class="note-draft">{{ t.lesson.draft }}</p>{% endif %}
   </header>
 
   {% if chars %}
   <section aria-labelledby="h-chars">
-    <h2 id="h-chars">Bảng chữ</h2>
+    <h2 id="h-chars">{{ t.lesson.charsH }}</h2>
     <div class="char-grid">
       {% for c in chars %}
       <div class="char" data-char="{{ c.k }}">
         <span class="cell{% if c.k | length > 1 %} y{% endif %}" aria-hidden="true">{{ c.k }}</span>
-        <span class="rom"><span class="sr-only">{{ c.k }} đọc là </span>{{ c.r }}</span>
+        <span class="rom"><span class="sr-only">{{ c.k }} {{ t.lesson.readAs }} </span>{{ c.r }}</span>
         <span class="tip">{{ c.tip }}</span>
       </div>
       {% endfor %}
@@ -36,42 +38,42 @@ script: /js/lesson.js
 
   {% if words %}
   <section aria-labelledby="h-words">
-    <h2 id="h-words">Từ đầu tiên</h2>
+    <h2 id="h-words">{{ wordsH or t.lesson.wordsH }}</h2>
     <ul class="words">
-      {% for w in words %}<li data-say="{{ w.kana }}"><span class="wk">{{ w.kana }}</span><span class="wr">{{ w.romaji }}</span><span class="wv">{{ w.vi }}</span></li>{% endfor %}
+      {% for w in words %}<li data-say="{{ w.kana }}"><span class="wk">{{ w.kana }}</span><span class="wr">{{ w.romaji }}</span><span class="wv">{{ w.en if lang == 'en' else w.vi }}</span></li>{% endfor %}
     </ul>
   </section>
   {% endif %}
 
   {% if chars %}
   <section aria-labelledby="h-flash">
-    <h2 id="h-flash">Flashcard</h2>
-    <div data-flashcards><p class="hint">Cần bật JavaScript để dùng flashcard.</p></div>
+    <h2 id="h-flash">{{ t.lesson.flashH }}</h2>
+    <div data-flashcards><p class="hint">{{ t.lesson.flashNoJs }}</p></div>
   </section>
   {% endif %}
   {% if qplan %}
   <section aria-labelledby="h-quiz">
-    <h2 id="h-quiz">Mini quiz</h2>
+    <h2 id="h-quiz">{{ t.lesson.quizH }}</h2>
     <div class="quiz-box" data-miniquiz>
-      <p>{{ qcount }} câu ôn các nội dung trong bài. Đúng từ 70% số câu thì bài được đánh dấu hoàn thành.</p>
-      <button class="btn primary" type="button" data-act="start-quiz">Bắt đầu mini quiz</button>
+      <p>{{ t.lesson.quizIntro | replace('{n}', qcount) }}</p>
+      <button class="btn primary" type="button" data-act="start-quiz">{{ t.lesson.quizStart }}</button>
     </div>
   </section>
   {% endif %}
 
-  {% if qplan %}<p><a href="{{ ('/luyen-tap/?khoa=hiragana') | url }}">Luyện cả khóa trong Dojo</a></p>{% endif %}
+  {% if qplan %}<p><a href="{{ (('practice' | route(lang)) + '?khoa=' + course) | url }}">{{ t.lesson.dojoLink }}</a></p>{% endif %}
 
   <section class="done-row">
-    <button class="btn" type="button" data-complete>Đánh dấu hoàn thành</button>
+    <button class="btn" type="button" data-complete>{{ t.lesson.complete }}</button>
     <span class="done-state" data-complete-state aria-live="polite"></span>
   </section>
 
-  <nav class="pager" aria-label="Chuyển bài">
-    {% if prev %}<a href="{{ ('/khoa-hoc/hiragana/' + prev.slug + '/') | url }}"><small>Bài trước</small><b>{{ prev.title }}</b></a>{% else %}<span></span>{% endif %}
+  <nav class="pager" aria-label="{{ t.lesson.pager }}">
+    {% if prev %}<a href="{{ (prev | lessonUrl(course, lang)) | url }}"><small>{{ t.lesson.prev }}</small><b>{{ prev.title }}</b></a>{% else %}<span></span>{% endif %}
     {% if next %}
-      {% if next.state == 'ready' %}<a class="next" href="{{ ('/khoa-hoc/hiragana/' + next.slug + '/') | url }}"><small>Bài tiếp theo</small><b>{{ next.title }}</b></a>
-      {% elif next.state == 'dojo' %}<a class="next" href="{{ 'practice' | route(lang) | url }}"><small>Luyện tiếp</small><b>{{ next.title }}</b></a>
-      {% else %}<span class="next"><small>Bài tiếp theo</small><b>{{ next.title }} (sắp có)</b></span>{% endif %}
+      {% if next.state == 'ready' %}<a class="next" href="{{ (next | lessonUrl(course, lang)) | url }}"><small>{{ t.lesson.next }}</small><b>{{ next.title }}</b></a>
+      {% elif next.state == 'dojo' %}<a class="next" href="{{ (('practice' | route(lang)) + '?khoa=' + course) | url }}"><small>{{ t.lesson.practiceNext }}</small><b>{{ next.title }}</b></a>
+      {% else %}<span class="next"><small>{{ t.lesson.next }}</small><b>{{ next.title }} {{ t.lesson.soonTag }}</b></span>{% endif %}
     {% endif %}
   </nav>
 </article>
