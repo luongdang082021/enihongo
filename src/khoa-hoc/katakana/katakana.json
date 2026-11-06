@@ -1,0 +1,5 @@
+{
+  "layout": "layouts/lesson.njk",
+  "tags": "katakanaLesson",
+  "course": "katakana"
+}
