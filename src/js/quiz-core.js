@@ -14,14 +14,22 @@ const parseRows=a=>a.map(s=>s.split(' ').map(t=>{const p=t.split(':');return{k:p
 const BASIC=parseRows(['あ:a い:i う:u え:e お:o','か:ka き:ki く:ku け:ke こ:ko','さ:sa し:shi す:su せ:se そ:so','た:ta ち:chi つ:tsu て:te と:to','な:na に:ni ぬ:nu ね:ne の:no','は:ha ひ:hi ふ:fu へ:he ほ:ho','ま:ma み:mi む:mu め:me も:mo','や:ya ゆ:yu よ:yo','ら:ra り:ri る:ru れ:re ろ:ro','わ:wa を:wo ん:n']);
 const DAKU=parseRows(['が:ga ぎ:gi ぐ:gu げ:ge ご:go','ざ:za じ:ji ず:zu ぜ:ze ぞ:zo','だ:da ぢ:ji づ:zu で:de ど:do','ば:ba び:bi ぶ:bu べ:be ぼ:bo','ぱ:pa ぴ:pi ぷ:pu ぺ:pe ぽ:po']);
 const YOON=parseRows(['きゃ:kya きゅ:kyu きょ:kyo','しゃ:sha しゅ:shu しょ:sho','ちゃ:cha ちゅ:chu ちょ:cho','にゃ:nya にゅ:nyu にょ:nyo','ひゃ:hya ひゅ:hyu ひょ:hyo','みゃ:mya みゅ:myu みょ:myo','りゃ:rya りゅ:ryu りょ:ryo','ぎゃ:gya ぎゅ:gyu ぎょ:gyo','じゃ:ja じゅ:ju じょ:jo','びゃ:bya びゅ:byu びょ:byo','ぴゃ:pya ぴゅ:pyu ぴょ:pyo']);
-const R={};[BASIC,DAKU,YOON].forEach(rows=>rows.flat().forEach(x=>{R[x.k]=x.r}));
-const AMB=new Set(['ぢ','づ']);
-const ALT={'を':['o'],'ん':['nn']};
+const toK=s=>[...s].map(c=>c>='ぁ'&&c<='ゖ'?String.fromCharCode(c.charCodeAt(0)+96):c).join('');
+const kRows=rows=>rows.map(row=>row.map(x=>({k:toK(x.k),r:x.r})));
+const KBASIC=kRows(BASIC),KDAKU=kRows(DAKU),KYOON=kRows(YOON);
+/* âm mở rộng của Katakana, dùng để đọc từ mượn */
+const KEXT=parseRows(['ファ:fa フィ:fi フェ:fe フォ:fo','ティ:ti ディ:di ウィ:wi ウェ:we ウォ:wo','ジェ:je シェ:she チェ:che']);
+const R={};[BASIC,DAKU,YOON,KBASIC,KDAKU,KYOON,KEXT].forEach(rows=>rows.flat().forEach(x=>{R[x.k]=x.r}));
+const AMB=new Set(['ぢ','づ','ヂ','ヅ']);
+const ALT={'を':['o'],'ん':['nn'],'ヲ':['o'],'ン':['nn']};
+const isKata=s=>/[ァ-ヺー]/.test(s);
+const SMALL='ゃゅょャュョァィゥェォ';
+const SOK='っッ';
 const noteOf=k=>has('note.'+k)?tr('note.'+k):'';
 
 /* ---------- words (mora based) ---------- */
-function parseMorae(s){const out=[];for(const ch of s){if('ゃゅょ'.includes(ch)&&out.length)out[out.length-1]+=ch;else out.push(ch)}return out}
-function romajiOf(m){let out='',pend=false;for(const x of m){if(x==='っ'){pend=true;continue}const r=R[x]||'?';out+=pend?(r.startsWith('ch')?'t':r[0])+r:r;pend=false}return out}
+function parseMorae(s){const out=[];for(const ch of s){if(SMALL.includes(ch)&&out.length)out[out.length-1]+=ch;else out.push(ch)}return out}
+function romajiOf(m){let out='',pend=false;for(const x of m){if(SOK.includes(x)){pend=true;continue}if(x==='ー'){out+=out.slice(-1);continue}const r=R[x]||'?';out+=pend?(r.startsWith('ch')?'t':r[0])+r:r;pend=false}return out}
 const mkWords=s=>s.split('|').map(t=>{const p=t.split(':');const m=parseMorae(p[0]);return{k:p[0],vi:p[1],en:p[2],m:m,r:romajiOf(m)}});
 const LONGW=mkWords('おかあさん:mẹ:mother|おとうさん:bố:father|おにいさん:anh trai:older brother|おねえさん:chị gái:older sister|おばあさん:bà:grandmother|おじいさん:ông:grandfather|ゆうめい:nổi tiếng:famous|せんせい:giáo viên:teacher|おおきい:to, lớn:big|ちいさい:nhỏ:small|とおい:xa:far|ありがとう:cảm ơn:thank you|こうこう:trường cấp 3:high school|くうき:không khí:air|ひこうき:máy bay:airplane|とうきょう:Tokyo:Tokyo|えいが:phim:movie|ふうふ:vợ chồng:married couple|きのう:hôm qua:yesterday|おおさか:Osaka:Osaka');
 const SOKW=mkWords('がっこう:trường học:school|きって:tem thư:postage stamp|ざっし:tạp chí:magazine|いっぱい:nhiều, đầy:a lot, full|ちょっと:một chút:a little|にっぽん:Nhật Bản:Japan|しゅっぱつ:xuất phát:departure|まっすぐ:thẳng:straight|けっこん:kết hôn:marriage|きっぷ:vé:ticket|いっしょ:cùng nhau:together|みっつ:ba cái:three things|やっつ:tám cái:eight things|ほっかいどう:Hokkaido:Hokkaido|さっぽろ:Sapporo:Sapporo|はっぱ:chiếc lá:leaf|ずっと:suốt, mãi:all along|ぜったい:nhất định:absolutely|もっと:hơn nữa:more');
@@ -32,6 +40,7 @@ const V=x=>{const r=R[x];return r?r[r.length-1]:''};
 const isV=v=>v.length===1&&'aiueo'.includes(v);
 function isLong(m,i){
   if(i<1)return false;
+  if(m[i]==='ー')return true;
   const c=m[i],pv=V(m[i-1]);
   if(!isV(pv))return false;
   return (c==='あ'&&pv==='a')||(c==='い'&&(pv==='i'||pv==='e'))||(c==='う'&&(pv==='u'||pv==='o'))||(c==='え'&&pv==='e')||(c==='お'&&pv==='o');
@@ -41,13 +50,14 @@ function isLong(m,i){
 const CONF={};
 const link=(a,b)=>{(CONF[a]=CONF[a]||[]).push(b);(CONF[b]=CONF[b]||[]).push(a)};
 'かが きぎ くぐ けげ こご さざ しじ すず せぜ そぞ ただ てで とど はば ひび ふぶ へべ ほぼ はぱ ぬめ ねれ れわ るろ まも あお さち いり ゆや つし'.split(' ').forEach(p=>link(p[0],p[1]));
+'カガ キギ クグ ケゲ コゴ サザ スズ セゼ タダ テデ トド ハバ ヒビ フブ ヘベ ホボ ハパ シツ ソン ノメ クワ ナメ ウワ ヌス コユ チテ ケタ'.split(' ').forEach(p=>link(p[0],p[1]));
 
 const mutations={
-  remSok(m){const i=m.indexOf('っ');if(i<0)return null;const b=m.slice();b.splice(i,1);return b},
-  addSok(m){const c=[];for(let i=0;i<m.length-1;i++){const n=m[i+1];if(m[i]!=='っ'&&m[i]!=='ん'&&n!=='っ'&&R[n]&&/^(k|s|t|p|ch|sh|ts)/.test(R[n]))c.push(i)}if(!c.length)return null;const b=m.slice();b.splice(pick(c)+1,0,'っ');return b},
+  remSok(m){const i=m.findIndex(x=>SOK.includes(x));if(i<0)return null;const b=m.slice();b.splice(i,1);return b},
+  addSok(m){const c=[];for(let i=0;i<m.length-1;i++){const n=m[i+1];if(!SOK.includes(m[i])&&m[i]!=='ん'&&m[i]!=='ン'&&m[i]!=='ー'&&!SOK.includes(n)&&R[n]&&/^(k|s|t|p|ch|sh|ts)/.test(R[n]))c.push(i)}if(!c.length)return null;const b=m.slice();b.splice(pick(c)+1,0,m.some(isKata)?'ッ':'っ');return b},
   remLong(m){const c=[];m.forEach((x,i)=>{if(isLong(m,i))c.push(i)});if(!c.length)return null;const b=m.slice();b.splice(pick(c),1);return b},
-  addLong(m){const c=[];m.forEach((x,i)=>{if(isV(V(x))&&!(m[i+1]&&isLong(m,i+1)))c.push(i)});if(!c.length)return null;const i=pick(c);const ins={a:'あ',i:'い',u:'う',e:'い',o:'う'}[V(m[i])];const b=m.slice();b.splice(i+1,0,ins);return b},
-  swapLong(m){const c=[];m.forEach((x,i)=>{if(!isLong(m,i))return;const pv=V(m[i-1]);if((x==='う'||x==='お')&&pv==='o')c.push(i);if((x==='い'||x==='え')&&pv==='e')c.push(i)});if(!c.length)return null;const i=pick(c);const sw={'う':'お','お':'う','い':'え','え':'い'};const b=m.slice();b[i]=sw[m[i]];return b},
+  addLong(m){const c=[];m.forEach((x,i)=>{if(isV(V(x))&&!(m[i+1]&&isLong(m,i+1)))c.push(i)});if(!c.length)return null;const i=pick(c);const ins=m.some(isKata)?'ー':{a:'あ',i:'い',u:'う',e:'い',o:'う'}[V(m[i])];const b=m.slice();b.splice(i+1,0,ins);return b},
+  swapLong(m){if(m.some(isKata))return null;const c=[];m.forEach((x,i)=>{if(!isLong(m,i))return;const pv=V(m[i-1]);if((x==='う'||x==='お')&&pv==='o')c.push(i);if((x==='い'||x==='え')&&pv==='e')c.push(i)});if(!c.length)return null;const i=pick(c);const sw={'う':'お','お':'う','い':'え','え':'い'};const b=m.slice();b[i]=sw[m[i]];return b},
   swap(m){const c=[];m.forEach((x,i)=>{if(CONF[x])c.push(i)});if(!c.length)return null;const i=pick(c);const b=m.slice();b[i]=pick(CONF[m[i]]);return b}
 };
 function mutants(w,n){
@@ -61,7 +71,7 @@ function mutants(w,n){
   }
   let guard=0;
   while(out.length<n&&guard++<60){
-    const b=w.m.slice();const i=rnd(b.length);b[i]=pick(BASIC.flat()).k;
+    const b=w.m.slice();const i=rnd(b.length);if(b[i]==='ー'||SOK.includes(b[i]))continue;b[i]=pick((w.m.some(isKata)?KBASIC:BASIC).flat()).k;
     const r=romajiOf(b);if(seen.has(r))continue;
     seen.add(r);out.push({m:b,k:b.join(''),r:r});
   }
@@ -87,14 +97,14 @@ function distract(it,pool,n){
 function explainK(it){
   let s=tr('e.read',{k:esc(it.k),r:esc(it.r)});
   if(noteOf(it.k))s+=' '+noteOf(it.k);
-  if(it.k.length>1)s+=tr('e.yoonK');
+  if(it.k.length>1)s+=tr(isKata(it.k)?'e.smallK':'e.yoonK');
   return s;
 }
 function explainW(w){
   let s=`<b>${esc(w.k)}</b> = <b>${esc(w.r)}</b> · ${esc(gloss(w))}<br><span class="mm">${w.m.join('・')}</span>`;
   const n=[];
-  if(w.m.includes('っ'))n.push(tr('e.sok'));
-  if(w.m.some((x,i)=>isLong(w.m,i)))n.push(tr('e.long'));
+  if(w.m.some(x=>SOK.includes(x)))n.push(tr(isKata(w.k)?'e.sokK':'e.sok'));
+  if(w.m.some((x,i)=>isLong(w.m,i)))n.push(tr(w.m.includes('ー')?'e.longK':'e.long'));
   if(w.m.some(x=>x.length>1))n.push(tr('e.yoonW'));
   return s+(n.length?'<br>'+n.join('<br>'):'');
 }
@@ -124,15 +134,16 @@ function qOdd(rows){
   return{type:'odd',prompt:tr('p.odd',{list:A.map(x=>x.r).join(', ')}),opts:shuffle([...trio.map(x=>x.k),out.k]),font:'kana',answer:out.k,
     explain:tr('e.odd',{k:esc(out.k),r:esc(out.r),rest:trio.map(x=>esc(x.k)+' ('+esc(x.r)+')').join(', ')}),sum:`${out.k} = ${out.r}`};
 }
-const VP=[];
+const VP=[],KVP=[];
 (function(){const add=(b,v,mk)=>{[...b].forEach((c,i)=>VP.push({base:c,voiced:[...v][i],mark:mk}))};
-  add('かきくけこ','がぎぐげご','゛');add('さしすせそ','ざじずぜぞ','゛');add('たてと','だでど','゛');add('はひふへほ','ばびぶべぼ','゛');add('はひふへほ','ぱぴぷぺぽ','゜');})();
-function qVoice(){
-  const v=pick(VP);
+  add('かきくけこ','がぎぐげご','゛');add('さしすせそ','ざじずぜぞ','゛');add('たてと','だでど','゛');add('はひふへほ','ばびぶべぼ','゛');add('はひふへほ','ぱぴぷぺぽ','゜');VP.forEach(v=>KVP.push({base:toK(v.base),voiced:toK(v.voiced),mark:v.mark}));})();
+function qVoice(sc){
+  const kat=sc==='k',VPS=kat?KVP:VP,BAS=kat?KBASIC:BASIC;
+  const v=pick(VPS);
   if(Math.random()<.6){
-    const alt=VP.find(x=>x.base===v.base&&x.mark!==v.mark);
+    const alt=VPS.find(x=>x.base===v.base&&x.mark!==v.mark);
     const vIt={k:v.voiced,r:R[v.voiced]};
-    const pool=VP.map(x=>({k:x.voiced,r:R[x.voiced]}));
+    const pool=VPS.map(x=>({k:x.voiced,r:R[x.voiced]}));
     const opts=[vIt];
     if(alt)opts.push({k:alt.voiced,r:R[alt.voiced]});
     distract(vIt,pool.filter(x=>!alt||x.k!==alt.voiced),3).forEach(x=>{if(opts.length<4)opts.push(x)});
@@ -140,16 +151,17 @@ function qVoice(){
       explain:`${v.base} (${R[v.base]}) + ${v.mark} = <b>${v.voiced}</b> (${R[v.voiced]}).${v.mark==='゜'?tr('e.handaku'):''}`,sum:`${v.base} + ${v.mark} = ${v.voiced}`};
   }
   const bIt={k:v.base,r:R[v.base]};
-  const pool=BASIC.flat().filter(x=>!AMB.has(x.k));
+  const pool=BAS.flat().filter(x=>!AMB.has(x.k));
   return{type:'voice',prompt:tr('p.voiceDel',{voiced:v.voiced}),stage:{m:[v.voiced]},opts:shuffle([v.base,...distract(bIt,pool,3).map(x=>x.k)]),font:'kana',answer:v.base,
     explain:`${v.voiced} (${R[v.voiced]}) = <b>${v.base}</b> (${R[v.base]}) + ${v.mark}.`,sum:`${v.voiced} − ${v.mark} = ${v.base}`};
 }
-const LARGE={'ゃ':'や','ゅ':'ゆ','ょ':'よ'};
+const LARGE={'ゃ':'や','ゅ':'ゆ','ょ':'よ','ャ':'ヤ','ュ':'ユ','ョ':'ヨ'};
 function qSize(y){
   const c=y.k[0],s=y.k[1],l=LARGE[s];
   const large=c+l;
-  const other=c+pick('ゃゅょ'.split('').filter(z=>z!==s));
-  const diff=pick(YOON.flat().filter(x=>x.k[1]===s&&x.k[0]!==c)).k;
+  const kat=isKata(y.k);
+  const other=c+pick((kat?'ャュョ':'ゃゅょ').split('').filter(z=>z!==s));
+  const diff=pick((kat?KYOON:YOON).flat().filter(x=>x.k[1]===s&&x.k[0]!==c)).k;
   return{type:'size',prompt:tr('p.size',{r:y.r}),stage:{text:y.r},opts:shuffle([y.k,large,other,diff]),font:'kana',answer:y.k,
     explain:tr('e.size',{k:y.k,r:y.r,s:s,large:large,l:l,r1:R[c],r2:R[l]}),sum:`${y.r} = ${y.k}`};
 }
@@ -163,9 +175,9 @@ function qWType(w){
   return{type:'wtype',prompt:tr('p.wtype'),stage:{m:w.m,hint:tr('h.wtype')},answer:w.r,alt:[],cap:20,explain:explainW(w),sum:`${w.k} = ${w.r}`};
 }
 function qFill(w){
-  const c=[];w.m.forEach((x,i)=>{if(x==='っ'||isLong(w.m,i))c.push(i)});
-  const i=pick(c),ans=w.m[i];
-  const ds=ans==='っ'?['つ','う','ん']:take(['あ','い','う','え','お','っ'].filter(x=>x!==ans),3);
+  const c=[];w.m.forEach((x,i)=>{if(SOK.includes(x)||isLong(w.m,i))c.push(i)});
+  const i=pick(c),ans=w.m[i],kat=isKata(w.k);
+  const ds=ans==='っ'?['つ','う','ん']:ans==='ッ'?['ツ','シ','ン']:kat?take(['ア','イ','ウ','エ','オ','ッ'].filter(x=>x!==ans),3):take(['あ','い','う','え','お','っ'].filter(x=>x!==ans),3);
   return{type:'fill',prompt:tr('p.fill'),stage:{m:w.m,blank:i,hint:`${w.r} · ${gloss(w)}`},opts:shuffle([ans,...ds]),font:'kana',answer:ans,explain:explainW(w),sum:`${w.k} = ${w.r}`};
 }
 function qMora(w){
@@ -201,12 +213,12 @@ function buildFromCtx(ctx){
       case 'type':return qType(draw(ctx.pool));
       case 'match':{const g=[];let n=0;while(g.length<4&&n++<80){const x=draw(ctx.pool,noamb);if(!g.some(y=>y.r===x.r))g.push(x)}return qMatch(g)}
       case 'odd':return qOdd(ctx.rows);
-      case 'voice':return qVoice();
-      case 'size':return qSize(draw(YOON.flat()));
+      case 'voice':return qVoice((ctx.sc||'h').length>1?pick([...ctx.sc]):(ctx.sc||'h'));
+      case 'size':return qSize(draw(ctx.sizePool||YOON.flat()));
       case 'wk2r':return qWK2R(draw(ctx.words));
       case 'wr2k':return qWR2K(draw(ctx.words));
       case 'wtype':return qWType(draw(ctx.words));
-      case 'fill':return qFill(draw(ctx.words,w=>w.m.some((x,i)=>x==='っ'||isLong(w.m,i))));
+      case 'fill':return qFill(draw(ctx.words,w=>w.m.some((x,i)=>SOK.includes(x)||isLong(w.m,i))));
       case 'mora':return qMora(draw(ctx.words));
     }
     throw new Error('unknown type '+t);
@@ -214,7 +226,7 @@ function buildFromCtx(ctx){
 }
 
 export function build(idx){return buildFromCtx(ROUNDS[idx])}
-export {BASIC,DAKU,YOON,R,AMB,ROUNDS,T,CHOICE,PLAIN,buildFromCtx,norm,parseMorae,shuffle,pick,take,esc,ALLK,ALLW,LONGW,SOKW,YOONW};
+export {BASIC,DAKU,YOON,KBASIC,KDAKU,KYOON,KEXT,isKata,R,AMB,ROUNDS,T,CHOICE,PLAIN,buildFromCtx,norm,parseMorae,shuffle,pick,take,esc,ALLK,ALLW,LONGW,SOKW,YOONW};
 
 /* Bộ câu hỏi cho mini quiz trong bài học: chỉ dùng các chữ và từ của bài, distractor lấy từ cùng bảng. */
 export function mkWord(kana,vi,romaji,en){
@@ -224,17 +236,21 @@ export function mkWord(kana,vi,romaji,en){
 const WORD_TYPES=new Set(['wk2r','wr2k','wtype','fill','mora']);
 export function buildLesson(chars,plan,words){
   let items=chars.map(c=>({k:c.k,r:c.r})).filter(x=>!AMB.has(x.k));
+  const srcs=chars.length?chars.map(c=>c.k):(words||[]).map(w=>w.kana);
+  const hasK=srcs.some(isKata),hasH=srcs.some(k=>!isKata(k));
+  const kat=hasK&&!hasH;
+  const BAS=kat?KBASIC:BASIC;
   const ws=(words||[]).filter(w=>w.quiz!==false).map(w=>mkWord(w.kana,w.vi,w.romaji,w.en));
   const needChars=Object.keys(plan).some(t=>!WORD_TYPES.has(t));
   if(needChars&&items.length<4){ // bài ít chữ (vd わ を ん): thêm vài chữ cũ để ôn
-    const extra=take(BASIC.flat().filter(x=>!AMB.has(x.k)&&!items.some(i=>i.k===x.k)&&x.k!=='を'),4);
+    const extra=take(BAS.flat().filter(x=>!AMB.has(x.k)&&!items.some(i=>i.k===x.k)&&x.k!=='を'&&x.k!=='ヲ'),4);
     items=[...items,...extra];
   }
-  const pool=items.length>=8?items:[...items,...BASIC.flat().filter(x=>!AMB.has(x.k)&&!items.some(i=>i.k===x.k))];
+  const pool=items.length>=8?items:[...items,...BAS.flat().filter(x=>!AMB.has(x.k)&&!items.some(i=>i.k===x.k))];
   const used=new Set(),usedW=new Set();
   const draw=(src,set,f)=>{let c=src.filter(x=>!set.has(x.k)&&(!f||f(x)));if(!c.length){set.clear();c=src.filter(x=>!f||f(x))}if(!c.length)return null;const x=pick(c);set.add(x.k);return x};
   const dI=f=>draw(items,used,f),dW=f=>draw(ws,usedW,f);
-  const hasSpecial=w=>w.m.some((x,i)=>x==='っ'||isLong(w.m,i));
+  const hasSpecial=w=>w.m.some((x,i)=>SOK.includes(x)||isLong(w.m,i));
   const list=[];Object.entries(plan).forEach(([t,n])=>{for(let i=0;i<n;i++)list.push(t)});
   const order=shuffle(list);
   const f=order.findIndex(t=>t==='k2r'||t==='wk2r');if(f>0){const t=order[0];order[0]=order[f];order[f]=t}
@@ -244,8 +260,8 @@ export function buildLesson(chars,plan,words){
       case 'r2k':return qR2K(dI(),pool);
       case 'type':return qType(dI());
       case 'match':{const g=[];let n=0;while(g.length<Math.min(4,items.length)&&n++<80){const x=dI();if(!g.some(y=>y.k===x.k||y.r===x.r))g.push(x)}return qMatch(g)}
-      case 'voice':return qVoice();
-      case 'size':{const y=dI(x=>x.k.length===2&&'ゃゅょ'.includes(x.k[1]));if(!y)throw new Error('size cần chữ ghép');return qSize(y)}
+      case 'voice':return qVoice(hasK&&hasH?pick(['h','k']):kat?'k':'h');
+      case 'size':{const y=dI(x=>x.k.length===2&&'ゃゅょャュョ'.includes(x.k[1]));if(!y)throw new Error('size cần chữ ghép');return qSize(y)}
       case 'wk2r':return qWK2R(dW());
       case 'wr2k':return qWR2K(dW());
       case 'wtype':return qWType(dW());
