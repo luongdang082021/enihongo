@@ -2,7 +2,18 @@
 
 Tóm tắt: mở khóa Katakana thứ hai, tái dùng khung trang và engine quiz; việc khó nhất là làm engine hiểu hai bộ chữ và viết nội dung cho từ mượn.
 
-Trạng thái: kế hoạch đã duyệt, chưa bắt đầu viết mã; làm sau Dojo chung và hạ tầng hai ngôn ngữ ([`i18n-plan.md`](i18n-plan.md)), bài viết song ngữ ngay từ đầu. D-012 đến D-014 đã chốt (2026-11-06). Cập nhật: 2026-11-05.
+Trạng thái: **đã phát hành (2026-11-06)**. 12 bài viết song ngữ Việt và Anh, nội dung duyệt theo D-019. D-012 đến D-014 đã chốt (2026-11-06).
+
+Khác với kế hoạch ban đầu:
+
+- Không tách `kana-data.js`: bảng Katakana sinh từ bảng Hiragana theo độ lệch mã (`toK` trong `quiz-core.js`), cộng bảng âm mở rộng (`KEXT`). Dấu ー, ッ và các chữ nhỏ ャュョァィゥェォ xử lý trong `parseMorae`, `romajiOf`, `isLong` và các biến thể sai; không dạy ヴ và ヂ ヅ.
+- Dữ liệu bài theo khóa nằm trong `src/_data/lessons.json` (khóa là khóa của đối tượng); trang khóa và layout bài dùng chung cho mọi khóa. Bài tiếng Anh là tệp riêng trong `src/en/courses/katakana/`, dữ liệu chữ và từ phải khớp bản tiếng Việt (kiểm tra trong `npm test`).
+- Nét viết: `src/data/strokes-katakana.json` tách khỏi `strokes.json` (73 chữ, khoảng 18 KB).
+- Dojo: không thêm hiệp cố định cho Katakana; chọn khóa Katakana (hoặc cả hai khóa) ở tab "Tự chọn".
+- Mini quiz không dùng dạng `odd` trong bài; bài 8 (chữ dễ nhầm) dùng k2r, r2k, type, match.
+- Còn lại: kiểm tra Lighthouse bản triển khai thật, nét viết cho chữ ghép (hai chữ), quiz ưu tiên chữ sai.
+
+Nội dung kế hoạch gốc giữ bên dưới để đối chiếu.
 
 ## Mục tiêu
 

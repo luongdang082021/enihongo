@@ -28,7 +28,7 @@ Mã nguồn các trang nằm trong `src/` (Eleventy). Trang chủ là `src/index
 | Khóa | Trạng thái | Ghi chú |
 |---|---|---|
 | Nhập môn Hiragana | Mở | 14 bài, xem dàn bài |
-| Katakana | Sắp ra mắt | Khóa kế tiếp hợp lý nhất |
+| Katakana | Đang mở (12 bài, `/khoa-hoc/katakana/`, `/en/courses/katakana/`) | Đã phát hành 2026-11-06 |
 | Ngữ pháp và từ vựng sơ cấp (N5) | Sắp ra mắt | Nội dung tự biên soạn |
 | Kanji cơ bản | Sắp ra mắt | |
 | Giao tiếp và luyện JFT-Basic | Sắp ra mắt | |
