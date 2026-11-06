@@ -19,8 +19,7 @@ const VN = /[àáảãạăằắẳẵặâầấẩẫậèéẻẽẹêềế
 for (const [k, v] of Object.entries(en)) if (VN.test(v)) bad(`en.js còn tiếng Việt ở ${k}: ${v}`);
 
 // nghĩa từ trong bài học
-const dir = root + 'src/khoa-hoc/hiragana/';
-for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.md'))) {
+for (const dir of ['hiragana', 'katakana'].map((c) => root + 'src/khoa-hoc/' + c + '/').filter((d) => fs.existsSync(d))) for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.md'))) {
   const d = matter(fs.readFileSync(dir + f, 'utf8')).data;
   for (const w of d.words || []) {
     if (!w.en) bad(`${f}: từ ${w.kana} thiếu en`);
@@ -28,9 +27,22 @@ for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.md'))) {
   }
 }
 
+// bài học tiếng Anh: không còn tiếng Việt (trừ trường vi của từ)
+{
+  const walkMd=(d)=>fs.readdirSync(d,{withFileTypes:true}).flatMap((e)=>e.isDirectory()?walkMd(d+'/'+e.name):e.name.endsWith('.md')?[d+'/'+e.name]:[]);
+  for(const f of walkMd(root+'src/en')){
+    const g=matter(fs.readFileSync(f,'utf8'));
+    const data={...g.data,words:(g.data.words||[]).map((w)=>({...w,vi:''}))};
+    if(VN.test(JSON.stringify(data))||VN.test(g.content))bad(`${path.relative(root,f)}: còn tiếng Việt`);
+  }
+}
 // dữ liệu khóa và bài
+const flat = (f) => {
+  const d = JSON.parse(fs.readFileSync(`${root}src/_data/${f}.json`, 'utf8'));
+  return Array.isArray(d) ? d : Object.values(d).flat();
+};
 for (const f of ['courses', 'lessons']) {
-  for (const x of JSON.parse(fs.readFileSync(`${root}src/_data/${f}.json`, 'utf8'))) {
+  for (const x of flat(f)) {
     if (!x.en) bad(`${f}.json: ${x.id} thiếu en`);
     else for (const [k, v] of Object.entries(x.en)) if (VN.test(v)) bad(`${f}.json: ${x.id}.en.${k} có dấu tiếng Việt`);
   }

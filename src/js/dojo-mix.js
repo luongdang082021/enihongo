@@ -1,5 +1,5 @@
 /* Dojo tự chọn: từ các bài đã chọn gom chữ và từ, rồi lập kế hoạch 20 câu. Không đụng DOM nên kiểm tra được trong Node. */
-const VOICED='がぎぐげござじずぜぞだでどばびぶべぼぱぴぷぺぽ';
+const VOICED='がぎぐげござじずぜぞだでどばびぶべぼぱぴぷぺぽガギグゲゴザジズゼゾダデドバビブベボパピプペポ';
 export const QCOUNT=20;
 
 export function gather(lessons){
@@ -15,7 +15,7 @@ export function gather(lessons){
 export function planFor(chars,words){
   const hasC=chars.length>0,hasW=words.length>0;
   if(!hasC&&!hasW)return null;
-  const voiced=chars.some(c=>VOICED.includes(c.k)),yoon=chars.some(c=>c.k.length===2);
+  const voiced=chars.some(c=>VOICED.includes(c.k)),yoon=chars.some(c=>c.k.length===2&&'ゃゅょャュョ'.includes(c.k[1]));
   let plan;
   if(hasC&&hasW)plan={k2r:4,r2k:3,type:2,match:1,wk2r:3,wr2k:3,wtype:2,fill:1,mora:1};
   else if(hasC)plan={k2r:8,r2k:6,type:4,match:2};
