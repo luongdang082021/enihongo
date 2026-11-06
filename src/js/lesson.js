@@ -37,7 +37,7 @@ if(data){
       return;
     }
     const c=deck[pos];
-    fc.innerHTML=`<p class="hint">${tr('l.fcLeft',{n:deck.length-pos})}</p><button class="flash" type="button" data-f="flip">${flipped?`<span class="fr">${esc(c.r)}</span><span class="ft">${esc(c.tip||'')}</span>`:`<span class="fk">${esc(c.k)}</span><span class="fh">${tr('l.fcTap')}</span>`}</button>${flipped?'<div class="row"><button class="btn" type="button" data-f="no">${tr('l.fcNo')}</button><button class="btn primary" type="button" data-f="yes">${tr('l.fcYes')}</button></div>':''}`;
+    fc.innerHTML=`<p class="hint">${tr('l.fcLeft',{n:deck.length-pos})}</p><button class="flash" type="button" data-f="flip">${flipped?`<span class="fr">${esc(c.r)}</span><span class="ft">${esc(c.tip||'')}</span>`:`<span class="fk">${esc(c.k)}</span><span class="fh">${tr('l.fcTap')}</span>`}</button>${flipped?`<div class="row"><button class="btn" type="button" data-f="no">${tr('l.fcNo')}</button><button class="btn primary" type="button" data-f="yes">${tr('l.fcYes')}</button></div>`:''}`;
   }
   fc.addEventListener('click',e=>{
     const b=e.target.closest('[data-f]');if(!b)return;

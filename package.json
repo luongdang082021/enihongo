@@ -8,7 +8,7 @@
     "start": "PATH_PREFIX=/ eleventy --serve",
     "build": "eleventy",
     "build:local": "PATH_PREFIX=/ eleventy",
-    "test": "node tools/check-quiz.mjs && node tools/check-i18n.mjs",
+    "test": "node tools/check-syntax.mjs && node tools/check-quiz.mjs && node tools/check-i18n.mjs",
     "size": "node tools/size-report.mjs"
   },
   "devDependencies": {
