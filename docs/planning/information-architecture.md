@@ -12,7 +12,7 @@ Trạng thái: nháp, chờ chốt D-005 và D-006. Cập nhật: 2026-11-05.
 | `/khoa-hoc/` | Lưới các khóa: khóa mở và khóa khóa |
 | `/khoa-hoc/hiragana/` | Danh sách bài của khóa, kèm tiến độ |
 | `/khoa-hoc/hiragana/bai-xx` | Một bài học |
-| `/luyen-tap/` | Dojo chung: 5 hiệp Hiragana hoặc tự chọn bài và chủ đề (`?bai=hiragana-03` chọn sẵn bài). `/luyen-tap/hiragana-dojo/` chuyển hướng về đây |
+| `/luyen-tap/` | Dojo chung: chọn khóa học để trộn (D-021 bỏ 5 hiệp cố định) (`?bai=hiragana-03` chọn sẵn bài). `/luyen-tap/hiragana-dojo/` chuyển hướng về đây |
 | `/gioi-thieu` | Mục đích dự án, cách đóng góp |
 
 Mã nguồn các trang nằm trong `src/` (Eleventy). Trang chủ là `src/index.njk`, Dojo ở `/luyen-tap/`.

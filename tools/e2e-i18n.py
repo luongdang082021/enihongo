@@ -73,12 +73,12 @@ with sync_playwright() as pw:
     # Dojo tiếng Anh
     pg = page('America/New_York')
     pg.goto(BASE + '/en/practice/')
-    pg.locator('#ladder .rung').first.click()
+    pg.wait_for_selector('.picklist input'); pg.locator('#startmix').click()
     pg.wait_for_selector('.qcard')
     text = pg.inner_text('main')
     check('Dojo tiếng Anh không lẫn tiếng Việt', not VN_RE.search(text), VN_RE.findall(text)[:5])
     pg.goto(BASE + '/en/practice/')
-    pg.locator('[data-tab=custom]').click(); pg.wait_for_selector('.picklist input')
+    pg.wait_for_selector('.picklist input')
     names = pg.inner_text('#picklist')
     check('danh sách khóa tiếng Anh', 'Hiragana Basics' in names and 'letters' in names, names)
 

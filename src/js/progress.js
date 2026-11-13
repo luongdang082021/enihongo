@@ -1,7 +1,7 @@
 import {t as tr} from './i18n.js';
 /* Tiến độ lưu cục bộ trong localStorage (khóa enihongo:v1). Không có tài khoản hay máy chủ. */
 const KEY='enihongo:v1',OLD='hiragana-dojo-best';
-const empty=()=>({v:1,lessons:{},dojo:{},cards:{}});
+const empty=()=>({v:1,lessons:{},dojo:{},cards:{},weak:{}});
 function read(){
   try{
     const raw=localStorage.getItem(KEY);
@@ -33,6 +33,17 @@ export function saveDojo(round,score,stars){
   d.dojo[round]={score:Math.max(score,p?p.score:0),stars:Math.max(stars,p?p.stars:0)};
   write(d);
   return record;
+}
+/* Chữ và từ hay sai: điểm 1..6, sai +2, đúng -1. Dojo ưu tiên chọn các mục có điểm cao. */
+export function weakMap(){return read().weak||{}}
+export function noteWeak(trail){
+  if(!trail||!trail.length)return;
+  const d=read(),w=d.weak||{};
+  for(const e of trail)for(const k of e.keys){
+    const n=e.ok?(w[k]||0)-1:Math.min(6,(w[k]||0)+2);
+    if(n>0)w[k]=n;else delete w[k];
+  }
+  d.weak=w;write(d);
 }
 export function exportJSON(){return JSON.stringify(read(),null,2)}
 export function importJSON(text){

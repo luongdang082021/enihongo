@@ -3,15 +3,9 @@ this is static web for learning Japanese
 
 ## Hiragana Dojo
 
-Game quiz hiragana, 5 hiệp × 20 câu (`index.html`, không cần build):
+Dojo: game quiz 20 câu mỗi lượt, chọn khóa (Hiragana, Katakana) để trộn chữ và từ vựng. Câu sai được hỏi lại ở dạng khác, chữ hay sai được ưu tiên ở lượt sau (xem `docs/product/hiragana-dojo-spec.md`).
 
-1. Chữ cơ bản
-2. Âm đục và bán đục
-3. Âm ghép
-4. Trường âm và âm ngắt
-5. Tổng hợp
-
-Các dạng câu hỏi: chữ ↔ romaji, gõ romaji, nối cặp, tìm chữ khác nhóm, dấu ゛ ゜, âm ghép, điền chữ thiếu, đếm nhịp.
+Các dạng câu hỏi: chữ ↔ romaji, gõ romaji, nối cặp, âm ghép, soạn từ bằng ô chữ, điền chữ thiếu, đếm nhịp.
 Điểm cao nhất lưu trong `localStorage` của trình duyệt.
 
 ### Chạy local

@@ -7,7 +7,7 @@ status: published
 writing: katakana
 tags: [am-duc]
 qcount: 14
-qplan: { k2r: 3, r2k: 3, type: 2, voice: 3, match: 1, wk2r: 1, wr2k: 1 }
+qplan: { k2r: 3, r2k: 3, type: 2, compose: 3, match: 1, wk2r: 1, wr2k: 1 }
 objectives:
   - "Add the marks ゛ and ゜ to make new letters, as in Hiragana"
   - "Read ガ ザ ダ バ パ and the letters in their rows"

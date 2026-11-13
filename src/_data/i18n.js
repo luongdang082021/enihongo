@@ -26,7 +26,7 @@ export default {
       tryDojo: 'Chơi thử Dojo',
       courses: 'Các khóa học',
       practice: 'Luyện tập',
-      dojoText: 'Game quiz 20 câu mỗi lượt. Chơi 5 hiệp Hiragana, hoặc tự chọn bài và chủ đề để trộn.',
+      dojoText: 'Game quiz 20 câu mỗi lượt. Chọn khóa muốn luyện; câu sai sẽ được hỏi lại ở dạng khác.',
       enterDojo: 'Vào Dojo'
     },
     courses: {
@@ -57,13 +57,11 @@ export default {
     },
     practice: {
       title: 'Dojo luyện tập',
-      description: 'Dojo: game quiz luyện chữ và từ tiếng Nhật. Chơi 5 hiệp Hiragana hoặc tự chọn khóa, bài, chủ đề để trộn thành lượt 20 câu.',
+      description: 'Dojo: game quiz luyện chữ và từ tiếng Nhật. Chọn khóa học để trộn thành lượt 20 câu, câu sai được nhắc lại.',
       eyebrow: 'Luyện tập',
-      lede: 'Game quiz 20 câu mỗi lượt: nhận diện chữ ↔ romaji, gõ, nối cặp, điền chữ thiếu.',
-      modes: 'Chế độ chơi',
-      tabFixed: 'Năm hiệp Hiragana',
-      tabCustom: 'Tự chọn',
-      scoring: 'Điểm mỗi câu: 100 + thưởng tốc độ (tối đa 50) + thưởng chuỗi đúng. Sao: 60% / 80% / 95% câu đúng. Điểm lưu trên trình duyệt này.',
+      lede: 'Game quiz 20 câu mỗi lượt: nhận diện chữ ↔ romaji, gõ, nối cặp, soạn từ bằng ô chữ, điền chữ thiếu.',
+      modes: 'Chọn khóa học',
+      scoring: 'Điểm mỗi câu: 100 + thưởng tốc độ (tối đa 50) + thưởng chuỗi đúng. Sao: 60% / 80% / 95% câu đúng, chỉ tính 20 câu gốc. Câu sai được hỏi lại 1 đến 2 lần ở dạng khác (câu nhắc lại chỉ cộng điểm), và chữ hay sai sẽ xuất hiện nhiều hơn ở các lượt sau. Dữ liệu lưu trên trình duyệt này.',
       pickIntro: 'Chọn khóa học muốn luyện. Dojo lấy toàn bộ chữ và từ của khóa, trộn thành một lượt 20 câu.',
       loading: 'Đang tải danh sách khóa…',
       start: 'Bắt đầu 20 câu',
@@ -120,7 +118,7 @@ export default {
       tryDojo: 'Try the Dojo',
       courses: 'Courses',
       practice: 'Practice',
-      dojoText: 'A 20-question quiz game. Play five Hiragana rounds, or pick your own course to mix.',
+      dojoText: 'A 20-question quiz game. Pick the courses to practise; mistakes come back in a different form.',
       enterDojo: 'Enter the Dojo'
     },
     courses: {
@@ -151,13 +149,11 @@ export default {
     },
     practice: {
       title: 'Practice Dojo',
-      description: 'Dojo: a quiz game for Japanese letters and words. Play five Hiragana rounds, or pick courses to mix into a 20-question run.',
+      description: 'Dojo: a quiz game for Japanese letters and words. Pick courses to mix into a 20-question run; mistakes are asked again.',
       eyebrow: 'Practice',
-      lede: 'A 20-question quiz per run: recognise letters ↔ romaji, type, match pairs, fill the gap.',
-      modes: 'Play mode',
-      tabFixed: 'Five Hiragana rounds',
-      tabCustom: 'Custom',
-      scoring: 'Points per question: 100 + speed bonus (up to 50) + streak bonus. Stars: 60% / 80% / 95% correct. Scores are saved in this browser.',
+      lede: 'A 20-question quiz per run: recognise letters ↔ romaji, type, match pairs, build words from tiles, fill the gap.',
+      modes: 'Choose courses',
+      scoring: 'Points per question: 100 + speed bonus (up to 50) + streak bonus. Stars: 60% / 80% / 95% correct, counting only the 20 original questions. A wrong answer comes back once or twice in a different form (revisit questions only add points), and letters you often miss appear more in later runs. Data is saved in this browser.',
       pickIntro: 'Choose the courses to practise. The Dojo takes every letter and word of a course and mixes them into one 20-question run.',
       loading: 'Loading the course list…',
       start: 'Start 20 questions',

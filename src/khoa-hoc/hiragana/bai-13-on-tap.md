@@ -7,7 +7,7 @@ status: published
 writing: hiragana
 tags: [on-tap]
 qcount: 15
-qplan: { k2r: 3, r2k: 3, type: 2, match: 1, wk2r: 2, wr2k: 2, wtype: 1, mora: 1 }
+qplan: { k2r: 3, r2k: 3, type: 2, match: 1, wk2r: 2, wr2k: 2, compose: 1, mora: 1 }
 objectives:
   - "Ôn lại các chữ dễ nhầm"
   - "Đọc nhanh từ có âm đục, âm ghép, trường âm và âm ngắt"

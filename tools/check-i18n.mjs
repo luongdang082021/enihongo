@@ -61,6 +61,7 @@ walk(pages.vi, pages.en, '');
 // mô phỏng câu hỏi ở chế độ tiếng Anh
 globalThis.ENIHONGO_LANG = 'en';
 const core = await import(root + 'src/js/quiz-core.js');
+const { gather } = await import(root + 'src/js/dojo-mix.js');
 const scan = (q, where) => {
   for (const f of ['prompt', 'explain', 'sum']) {
     const s = q[f] || '';
@@ -69,8 +70,16 @@ const scan = (q, where) => {
   }
   if (q.stage && q.stage.hint && VN.test(q.stage.hint)) bad(`${where}: hint có tiếng Việt`);
 };
-for (let r = 0; r < 5; r++) for (let i = 0; i < 40; i++) for (const q of core.build(r)) scan(q, `hiệp ${r + 1}`);
-if (VN.test(JSON.stringify(core.ROUNDS.map((r) => [r.name, r.sub])))) bad('tên hiệp có tiếng Việt');
+const { default: vocab } = await import(root + 'src/_data/vocab.js');
+for (const [c, list] of Object.entries(vocab)) for (const w of list) if (VN.test(w.en)) bad(`vocab ${c}: ${w.kana} en có dấu tiếng Việt`);
+const toLesson = (list) => ({ chars: [], words: list.map((w) => ({ kana: w.kana, vi: w.vi, en: w.en })) });
+const hira = [{ chars: [{ k: 'あ', r: 'a' }, { k: 'き', r: 'ki' }, { k: 'しゃ', r: 'sha' }, { k: 'が', r: 'ga' }, { k: 'ぬ', r: 'nu' }, { k: 'め', r: 'me' }], words: [] }, toLesson(vocab.hiragana)];
+const kata = [{ chars: [{ k: 'ア', r: 'a' }, { k: 'キ', r: 'ki' }, { k: 'シャ', r: 'sha' }, { k: 'ガ', r: 'ga' }, { k: 'ヌ', r: 'nu' }, { k: 'メ', r: 'me' }], words: [] }, toLesson(vocab.katakana)];
+for (const [name, mix] of [['hiragana', hira], ['katakana', kata]]) {
+  const { chars, words } = gather(mix);
+  const dj = core.dojoSession(chars, words, { weak: {} });
+  for (let i = 0; i < 40; i++) for (const q of dj.build()) { scan(q, `dojo ${name}`); const f = dj.follow(q); if (f) scan(f, `nhắc lại ${name}`); }
+}
 
 console.log(problems ? `${problems} vấn đề i18n.` : `Đạt: ${Object.keys(vi).length} khóa chuỗi JS, nghĩa từ tiếng Anh đầy đủ, câu hỏi tiếng Anh sạch tiếng Việt.`);
 process.exit(problems ? 1 : 0);

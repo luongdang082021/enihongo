@@ -7,7 +7,7 @@ status: published
 writing: katakana
 tags: [on-tap]
 qcount: 17
-qplan: { k2r: 3, r2k: 2, type: 2, match: 1, wk2r: 2, wr2k: 2, wtype: 2, fill: 2, mora: 1 }
+qplan: { k2r: 3, r2k: 2, type: 2, match: 1, wk2r: 2, wr2k: 2, wtype: 1, compose: 1, fill: 2, mora: 1 }
 objectives:
   - "Review all of Katakana"
   - "Read common loanwords"

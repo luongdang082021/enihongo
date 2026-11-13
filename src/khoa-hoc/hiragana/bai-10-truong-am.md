@@ -7,7 +7,7 @@ status: published
 writing: hiragana
 tags: [truong-am]
 qcount: 12
-qplan: { wk2r: 4, wr2k: 3, wtype: 2, fill: 2, mora: 1 }
+qplan: { wk2r: 4, wr2k: 3, wtype: 1, compose: 1, fill: 2, mora: 1 }
 objectives:
   - "Biết nguyên âm kéo dài chiếm 2 nhịp"
   - "Biết cách viết trường âm bằng hiragana và romaji"

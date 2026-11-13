@@ -7,7 +7,7 @@ status: published
 writing: hiragana
 tags: [am-ngat]
 qcount: 12
-qplan: { wk2r: 4, wr2k: 3, wtype: 2, fill: 2, mora: 1 }
+qplan: { wk2r: 4, wr2k: 3, wtype: 1, compose: 1, fill: 2, mora: 1 }
 objectives:
   - "Biết っ nhỏ là một nhịp lặng, làm đôi phụ âm đứng sau"
   - "Đọc và viết romaji các từ như がっこう, きって, ざっし"

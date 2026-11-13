@@ -13,7 +13,7 @@
     {"n": 11, "id": "hiragana-11", "slug": "bai-11-am-ngat", "title": "Âm ngắt", "summary": "っ nhỏ làm đôi phụ âm: がっこう.", "state": "ready", "en": {"title": "The small っ", "summary": "Small っ doubles the next consonant: がっこう."}},
     {"n": 12, "id": "hiragana-12", "slug": "bai-12-nhung-tu-dau-tien", "title": "Những từ đầu tiên", "summary": "Câu chào và tự giới thiệu.", "state": "ready", "en": {"title": "First words", "summary": "Greetings and introducing yourself."}},
     {"n": 13, "id": "hiragana-13", "slug": "bai-13-on-tap", "title": "Ôn tập tổng hợp", "summary": "Mini quiz dài và danh sách chữ hay nhầm.", "state": "ready", "en": {"title": "Review", "summary": "A longer mini quiz and a list of easily confused letters."}},
-    {"n": 14, "id": "hiragana-14", "slug": "", "title": "Dojo", "summary": "Game luyện tập: 5 hiệp Hiragana hoặc tự chọn bài.", "state": "dojo", "en": {"title": "Dojo", "summary": "Practice game: five Hiragana rounds or pick your own course."}}
+    {"n": 14, "id": "hiragana-14", "slug": "", "title": "Dojo", "summary": "Game luyện tập: chọn khóa học để trộn câu hỏi, câu sai được nhắc lại.", "state": "dojo", "en": {"title": "Dojo", "summary": "Practice game: pick a course to mix questions; mistakes are asked again."}}
   ],
   "katakana": [
     {"n": 1, "id": "katakana-01", "slug": "bai-01-lam-quen", "title": "Làm quen Katakana", "summary": "Katakana dùng để làm gì và khác Hiragana ở đâu.", "state": "ready", "en": {"slug": "lesson-01-meet-katakana", "title": "Meet Katakana", "summary": "What Katakana is used for and how it differs from Hiragana."}},

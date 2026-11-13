@@ -28,6 +28,7 @@ Quy ước: không sửa quyết định cũ; nếu đổi hướng thì thêm d
 | D-018 | 2026-11-06 | Hai ngôn ngữ Việt và Anh: tiếng Việt ở gốc, tiếng Anh dưới `/en/`, slug dịch, nút chuyển ngôn ngữ, mã bài và tiến độ dùng chung. Bổ sung: lần đầu chọn ngôn ngữ theo vị trí người dùng (Việt Nam thì tiếng Việt, nơi khác thì tiếng Anh; vị trí lấy từ múi giờ trình duyệt) | Đã chốt (2026-11-06) và đã triển khai hạ tầng; chi tiết áp dụng ở trang con (hiện chỉ gợi ý bằng banner) chờ xác nhận, xem [`i18n-plan.md`](i18n-plan.md) |
 | D-019 | 2026-11-06 | Người duyệt bản tiếng Anh (và duyệt nội dung bài nói chung): Claude có toàn quyền kiểm duyệt, kiểm tra bằng công cụ trong repo | Đã chốt (2026-11-06) |
 | D-020 | 2026-11-06 | Tra IP bằng dịch vụ ngoài để xác định nước | Hoãn (pending), xác nhận 2026-11-06 |
+| D-021 | 2026-11-13 | Dojo chỉ còn chế độ chọn khóa, bỏ 5 hiệp Hiragana cố định. Bỏ dạng câu thêm/bỏ dấu ゛ ゜; thêm dạng soạn từ bằng ô chữ (romaji → kana). Dạng câu chọn ngẫu nhiên theo trọng số; câu sai được hỏi lại ở dạng khác (tối đa 2 lần, không tính sao); chữ hay sai được ưu tiên ở lượt sau. Thêm kho từ vựng bổ sung tự biên soạn cho từng khóa | Đã chốt (2026-11-13), xem [`../product/hiragana-dojo-spec.md`](../product/hiragana-dojo-spec.md) |
 
 ## Ghi chú cho D-002
 

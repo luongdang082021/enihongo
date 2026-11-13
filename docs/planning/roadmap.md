@@ -2,7 +2,7 @@
 
 Tóm tắt: bốn giai đoạn đi từ khung trang đến mở rộng; giai đoạn 0 (game) đã xong.
 
-Trạng thái: đang dùng. Cập nhật: 2026-11-05.
+Trạng thái: đang dùng. Cập nhật: 2026-11-13.
 
 | Giai đoạn | Nội dung | Trạng thái |
 |---|---|---|
@@ -11,8 +11,8 @@ Trạng thái: đang dùng. Cập nhật: 2026-11-05.
 | 2. Khóa Hiragana | 13 bài và Dojo, flashcard, mini quiz, tiến độ học | Xong (2026-11-05) |
 | 3. Hoàn thiện | SEO, analytics nhẹ, PWA offline, đo hiệu năng | Đang làm: SEO, PWA và đo hiệu năng xong; analytics đã bật |
 | 4. Thứ tự nét và phát âm | Thứ tự nét (KanjiVG), phát âm bằng giọng thiết bị | Đã làm cho chữ đơn của Hiragana (2026-11-05) |
-| 5. Dojo chung | Dojo chọn theo bộ chữ, bài và chủ đề (D-014) | Phần Hiragana xong (2026-11-06); Katakana và Kanji chờ khóa |
-| 6. Hai ngôn ngữ | Việt và Anh, mặc định theo vị trí (Việt Nam: tiếng Việt, nơi khác: tiếng Anh), xem [`i18n-plan.md`](i18n-plan.md) | Hạ tầng và giao diện tiếng Anh đã xong; còn bài học tiếng Anh (chờ D-019). Ưu tiên trước Katakana và giáo trình |
+| 5. Dojo chung | Dojo chọn theo khóa học (D-014); 2026-11-13 (D-021): bỏ 5 hiệp, thêm soạn từ bằng ô chữ, câu nhắc lại, ưu tiên chữ sai, kho từ vựng bổ sung | Hiragana và Katakana xong; Kanji chờ khóa |
+| 6. Hai ngôn ngữ | Việt và Anh, mặc định theo vị trí (Việt Nam: tiếng Việt, nơi khác: tiếng Anh), xem [`i18n-plan.md`](i18n-plan.md) | Hạ tầng, giao diện tiếng Anh và Katakana tiếng Anh đã xong; bài Hiragana tiếng Anh đang làm (D-019 đã chốt) |
 | 7. Katakana | Khóa Katakana song ngữ, xem [`katakana-plan.md`](katakana-plan.md) | Đã phát hành (2026-11-06): 12 bài Việt và Anh, Dojo trộn hai bộ chữ |
 | 8. Giáo trình sơ cấp | Theo [`../content/curriculum.md`](../content/curriculum.md); D-015 đến D-017 hoãn | Hoãn |
 

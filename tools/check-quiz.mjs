@@ -1,6 +1,7 @@
 // Kiểm tra: (1) mô phỏng bộ câu hỏi Dojo, (2) nội dung từng bài: romaji khớp, từ chỉ dùng chữ đã học, mini quiz sinh được.
-import {ROUNDS,build,buildLesson,mkWord,CHOICE,norm,AMB,R,BASIC,DAKU,YOON,parseMorae} from '../src/js/quiz-core.js';
-import {gather,planFor} from '../src/js/dojo-mix.js';
+import {dojoSession,buildLesson,mkWord,CHOICE,norm,AMB,R,BASIC,DAKU,YOON,KBASIC,KDAKU,KYOON,KEXT,parseMorae,KEYS_OF} from '../src/js/quiz-core.js';
+import {gather} from '../src/js/dojo-mix.js';
+import vocab from '../src/_data/vocab.js';
 import matter from 'gray-matter';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -16,6 +17,15 @@ function checkQ(q,where){
     if(q.opts.length<3)bad(`${where}: ít lựa chọn (${q.type})`);
   }else if(q.type==='type'||q.type==='wtype'){
     if(!norm(q.answer))bad(`${where}: đáp án rỗng`);
+  }else if(q.type==='compose'){
+    const m=parseMorae(q.answer);
+    if(q.slotN!==m.length)bad(`${where}: compose slotN ${q.slotN} khác số nhịp ${m.length}`);
+    const need=[...m].sort().join('|'),got=q.tiles.slice().sort();
+    for(const x of m){const i=got.indexOf(x);if(i<0){bad(`${where}: compose thiếu ô ${x} cho ${q.answer}`);break}got.splice(i,1)}
+    if(got.length<2)bad(`${where}: compose có ít ô thừa (${q.answer})`);
+    if(got.some(x=>m.includes(x)))bad(`${where}: compose ô thừa trùng ô cần (${q.answer})`);
+    if(q.tiles.some(x=>AMB.has(x)))bad(`${where}: compose có ぢ/づ`);
+    if(!q.stage||!q.stage.text)bad(`${where}: compose thiếu romaji`);
   }else if(q.type==='match'){
     if(new Set(q.pairs.map(p=>p.r)).size!==q.pairs.length)bad(`${where}: cặp nối trùng romaji`);
     if(q.pairs.some(p=>AMB.has(p.k)))bad(`${where}: có ぢ/づ trong nối cặp`);
@@ -23,14 +33,6 @@ function checkQ(q,where){
 }
 
 let n=0;
-ROUNDS.forEach((_,i)=>{
-  for(let t=0;t<300;t++){
-    const qs=build(i);n++;
-    if(qs.length!==20)bad(`hiệp ${i+1}: ${qs.length} câu`);
-    if(!['k2r','wk2r'].includes(qs[0].type))bad(`hiệp ${i+1}: câu đầu là ${qs[0].type}`);
-    qs.forEach(q=>checkQ(q,`hiệp ${i+1}`));
-  }
-});
 
 // Nội dung bài học của từng khóa
 const TAGS=JSON.parse(fs.readFileSync('src/_data/topics.json','utf8'));
@@ -104,22 +106,70 @@ for(const C of COURSES){
   }
 }
 
-// Dojo tự chọn (phạm vi khóa học = toàn bộ bài của khóa) và các tập con bài (kiểm tra thêm cho chắc): đều phải sinh đủ 20 câu hợp lệ.
+// Kho từ vựng bổ sung: chỉ dùng chữ của khóa, romaji sinh được, có đủ nghĩa Việt và Anh
+const KANA_OK={
+  hiragana:new Set([...[...BASIC,...DAKU,...YOON].flat().flatMap(x=>[...x.k]),...'ゃゅょっ'].filter(c=>!'ぢづを'.includes(c))),
+  katakana:new Set([...[...KBASIC,...KDAKU,...KYOON,...KEXT].flat().flatMap(x=>[...x.k]),...'ッーャュョァィゥェォ'].filter(c=>!'ヂヅヲ'.includes(c)))
+};
+const vocabLessons=[];
+for(const [course,list] of Object.entries(vocab)){
+  const seen=new Set();
+  for(const w of list){
+    const miss=[...w.kana].filter(c=>!KANA_OK[course].has(c));
+    if(miss.length)bad(`vocab ${course}: ${w.kana} dùng chữ ngoài khóa: ${miss.join('')}`);
+    if(mkWord(w.kana,'').r.includes('?'))bad(`vocab ${course}: ${w.kana} không sinh được romaji`);
+    if(!w.vi||!w.en)bad(`vocab ${course}: ${w.kana} thiếu nghĩa`);
+    if(seen.has(w.kana))bad(`vocab ${course}: trùng ${w.kana}`);
+    seen.add(w.kana);
+  }
+  vocabLessons.push({writing:course,n:99,chars:[],words:list.map(w=>({kana:w.kana,vi:w.vi,en:w.en}))});
+  console.log(`  vocab ${course}: ${list.length} từ, ok`);
+}
+
+// Dojo: phạm vi khóa học (toàn bộ bài + kho từ), tập con để kiểm tra thêm; đều phải sinh đủ 20 câu hợp lệ,
+// câu đầu dễ, không ba dạng giống nhau liền nhau, và câu sai luôn có câu nhắc lại cùng chữ hoặc từ.
 const lessonsFm=allLessons.filter(d=>(d.chars&&d.chars.length)||(d.words&&d.words.length));
-const mixes=[...lessonsFm.map(l=>[l]),lessonsFm,lessonsFm.filter(l=>l.writing==='katakana')];
-for(let i=0;i<150;i++)mixes.push(lessonsFm.filter(()=>Math.random()<.4));
-let nm=0;
+const of=w=>lessonsFm.filter(l=>l.writing===w),voc=w=>vocabLessons.filter(l=>l.writing===w);
+const mixes=[[...of('hiragana'),...voc('hiragana')],[...of('katakana'),...voc('katakana')],[...lessonsFm,...vocabLessons],voc('hiragana'),voc('katakana'),of('hiragana'),...lessonsFm.map(l=>[l])];
+for(let i=0;i<120;i++)mixes.push([...lessonsFm,...vocabLessons].filter(()=>Math.random()<.3));
+let nm=0,nf=0;
 for(const mix of mixes){
   const {chars,words}=gather(mix);
-  const plan=planFor(chars,words);
-  if(!plan){if(mix.length)bad('Dojo tự chọn: không có kế hoạch cho '+mix.map(l=>l.n));continue}
-  const label='Dojo tự chọn bài '+mix.map(l=>l.n).join(',');
-  for(let t=0;t<5;t++){
-    try{const qs=buildLesson(chars,plan,words);nm++;if(qs.length!==20)bad(`${label}: ${qs.length} câu`);qs.forEach(q=>checkQ(q,label))}
-    catch(e){bad(`${label}: ${e.message}`);break}
+  if(!chars.length&&!words.length){continue}
+  const label='Dojo '+mix.map(l=>l.writing+l.n).join(',').slice(0,60);
+  const dj=dojoSession(chars,words,{weak:{}});
+  for(let t=0;t<4;t++){
+    try{
+      const qs=dj.build();nm++;
+      if(qs.length!==20)bad(`${label}: ${qs.length} câu`);
+      if(!['k2r','wk2r'].includes(qs[0].type))bad(`${label}: câu đầu là ${qs[0].type}`);
+      for(let i=2;i<qs.length;i++)if(qs[i].type===qs[i-1].type&&qs[i].type===qs[i-2].type&&new Set(qs.map(q=>q.type)).size>3)bad(`${label}: ba câu ${qs[i].type} liền nhau`);
+      qs.forEach(q=>{
+        checkQ(q,label);
+        const fq=dj.follow(q);nf++;
+        if(!fq){bad(`${label}: không có câu nhắc lại cho ${q.type}`);return}
+        checkQ(fq,label+' (nhắc lại)');
+        if(!fq.again||fq.depth!==1)bad(`${label}: câu nhắc lại thiếu cờ`);
+        if(fq.type===q.type)bad(`${label}: câu nhắc lại cùng dạng ${q.type}`);
+        const kq=KEYS_OF(q);
+        if(!KEYS_OF(fq).some(k=>kq.includes(k)))bad(`${label}: câu nhắc lại không cùng chữ/từ (${q.type} → ${fq.type})`);
+        const f2=dj.follow(fq);
+        if(!f2||f2.depth!==2)bad(`${label}: thiếu lần nhắc thứ hai`);
+        else{checkQ(f2,label+' (nhắc lần 2)');if(dj.follow(f2))bad(`${label}: nhắc quá hai lần`)}
+      });
+    }catch(e){bad(`${label}: ${e.stack.split('\n').slice(0,3).join(' ')}`);break}
   }
 }
-console.log(`  Dojo tự chọn: ${mixes.length} tập bài, ${nm} lượt, ok`);
+console.log(`  Dojo: ${mixes.length} tập, ${nm} lượt, ${nf} lần nhắc lại, ok`);
+
+// Chữ hay sai phải xuất hiện nhiều hơn
+{
+  const {chars,words}=gather([...of('hiragana'),...voc('hiragana')]);
+  const rate=weak=>{let hit=0;const N=300;for(let i=0;i<N;i++){const qs=dojoSession(chars,words,{weak}).build();if(qs.some(q=>KEYS_OF(q).includes('ぬ')))hit++}return hit/N};
+  const base=rate({}),boosted=rate({'ぬ':6});
+  if(!(boosted>base+0.08))bad(`chữ hay sai không được ưu tiên: ${base.toFixed(2)} → ${boosted.toFixed(2)}`);
+  console.log(`  ưu tiên chữ sai: ぬ xuất hiện ${(base*100).toFixed(0)}% → ${(boosted*100).toFixed(0)}% lượt`);
+}
 
 if(problems.length){console.error('LỖI:\n'+problems.join('\n'));process.exit(1)}
-console.log(`Đạt: ${n} bộ câu hỏi hiệp và ${nFiles} bài, 0 vấn đề.`);
+console.log(`Đạt: ${nFiles} bài, kho từ vựng và Dojo, 0 vấn đề.`);

@@ -54,7 +54,7 @@ Hiện `src/js/quiz-core.js` gắn cứng bảng Hiragana (`BASIC`, `DAKU`, `YOO
 - Trường âm: Hiragana dùng nguyên âm lặp; Katakana dùng **ー**. `isLong`, `romajiOf` và các biến thể sai (`remLong`, `addLong`, `swapLong`) cần nhánh riêng cho Katakana.
 - Âm mở rộng (ファ, ティ, ウィ, ジェ, ヴ...) thêm vào bảng `R` của Katakana; câu hỏi `size` mở rộng cho các cụm này.
 - Bài học khai báo `writing: katakana` trong front matter; `buildLesson` chọn bảng theo đó.
-- Câu hỏi `voice` (thêm ゛ ゜) dùng chung logic, đổi bảng chữ.
+- Câu hỏi `voice` (thêm ゛ ゜) từng dùng chung logic; đã bỏ ở D-021 vì quá đơn giản, thay bằng `compose` (soạn từ bằng ô chữ).
 - Giữ nguyên hành vi Hiragana: bộ kiểm tra `npm test` phải còn đạt 1.500 bộ câu hỏi.
 
 ### 2. Dữ liệu khóa học theo từng khóa
@@ -77,13 +77,13 @@ Hiện `src/js/quiz-core.js` gắn cứng bảng Hiragana (`BASIC`, `DAKU`, `YOO
 Dojo là một tính năng chung ở `/luyen-tap/`, không tách riêng cho từng khóa. Người chơi chọn nội dung, hệ thống trộn câu hỏi.
 
 - **Chọn nội dung**: hai cách, dùng chung một màn hình.
-  1. *Chế độ nhanh*: Hiragana, Katakana, Tổng hợp (sau này thêm Kanji). Hiragana giữ nguyên 5 hiệp hiện có.
+  1. ~~*Chế độ nhanh*~~: đã bỏ ở D-021 (không còn 5 hiệp cố định).
   2. *Theo khóa học*: mỗi khóa một ô chọn, mặc định toàn bộ nội dung của khóa, không chọn từng bài. Chọn được nhiều khóa cùng lúc (ví dụ Hiragana và Katakana).
 - **Nguồn dữ liệu**: mỗi bài đã khai báo `chars`, `words`, `writing`, `tags` trong front matter. Eleventy sinh `data/dojo-pool.json` từ các bài, nên thêm bài mới là Dojo tự có nội dung mới. Dojo chỉ tải tệp này khi mở màn hình chọn.
-- **Dạng câu hỏi**: lấy theo nội dung đã chọn. Chữ đơn dùng `k2r`, `r2k`, `type`, `match`, `odd`; từ dùng `wk2r`, `wr2k`, `wtype`, `fill`, `mora`; `voice` và `size` chỉ xuất hiện khi lựa chọn có âm đục hoặc âm ghép. Kanji (sau này) thêm dạng riêng.
-- **Hiệp**: chế độ nhanh theo hiệp cố định; chế độ theo bài và chủ đề là một lượt 20 câu rút từ nhóm đã chọn, có thể chơi lại.
-- **Điểm cao**: lưu theo "bộ nội dung" (tên chế độ hoặc mã băm danh sách bài đã chọn) trong `dojo` của `enihongo:v1`. Điểm của Hiragana Dojo hiện có giữ nguyên khóa `0` đến `4`.
-- **Chữ cần ôn**: Dojo ghi chữ trả lời sai vào dữ liệu ôn tập (cùng nơi lưu flashcard) để ưu tiên ở lượt sau; thực hiện sau khi Dojo chung chạy ổn.
+- **Dạng câu hỏi**: lấy theo nội dung đã chọn. Chữ đơn dùng `k2r`, `r2k`, `type`, `match`, `odd`; từ dùng `wk2r`, `wr2k`, `wtype`, `fill`, `mora`; `size` chỉ xuất hiện khi lựa chọn có âm ghép; `compose` (soạn từ bằng ô chữ) dùng cho cả chữ và từ (D-021). Kanji (sau này) thêm dạng riêng.
+- **Lượt chơi**: một lượt 20 câu rút từ các khóa đã chọn, có thể chơi lại; câu sai được nhắc lại ở dạng khác (D-021).
+- **Điểm cao**: lưu theo "bộ nội dung" (tên chế độ hoặc mã băm danh sách bài đã chọn) trong `dojo` của `enihongo:v1`. Khóa `0` đến `4` của 5 hiệp cũ không còn dùng.
+- **Chữ cần ôn**: đã làm (D-021): bảng `weak` trong `enihongo:v1`, chữ và từ hay sai được rút nhiều hơn ở lượt sau.
 - **Tiến độ (2026-11-06)**: phần Hiragana đã làm (`dojo-mix.js`, `dojo-pool.json`, màn hình chọn bài). Khi có Katakana chỉ cần thêm bài vào kho và bổ sung lựa chọn theo `writing`; việc còn lại của engine là hiểu bảng chữ thứ hai.
 
 ### 5. Điều hướng, SEO, hiệu năng

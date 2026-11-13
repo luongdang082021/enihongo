@@ -34,7 +34,7 @@ export default function (eleventyConfig) {
   // Ghi đè trường theo ngôn ngữ: { name, en: { name } } với lang 'en' -> { name: bản en }.
   eleventyConfig.addFilter('l10n', (o, lang) => (lang && lang !== 'vi' && o[lang] ? { ...o, ...o[lang] } : o));
   // Kho nội dung cho Dojo: sinh từ front matter của các bài, nên thêm bài mới là Dojo tự có nội dung.
-  eleventyConfig.addFilter('dojoPool', (items, tags, courses) => {
+  eleventyConfig.addFilter('dojoPool', (items, tags, courses, vocab) => {
     const lessons = items
       .map((i) => i.data)
       .filter((d) => (d.chars && d.chars.length) || (d.words && d.words.length))
@@ -49,6 +49,20 @@ export default function (eleventyConfig) {
         chars: (d.chars || []).map((c) => ({ k: c.k, r: c.r })),
         words: (d.words || []).filter((w) => w.quiz !== false).map((w) => ({ kana: w.kana, romaji: w.romaji, vi: w.vi, en: w.en }))
       }));
+    // Kho từ vựng bổ sung của từng khóa (src/_data/vocab.js): thêm như một "bài" chỉ có từ, không có chữ mới.
+    for (const [course, list] of Object.entries(vocab || {})) {
+      if (!lessons.some((l) => l.course === course)) continue;
+      lessons.push({
+        id: course + '-vocab',
+        course,
+        n: 99,
+        title: 'Vocabulary bank',
+        writing: course,
+        tags: [],
+        chars: [],
+        words: list.map((w) => ({ kana: w.kana, vi: w.vi, en: w.en }))
+      });
+    }
     const used = new Set(lessons.map((l) => l.course));
     const cs = courses.filter((c) => used.has(c.id)).map((c) => ({ id: c.id, name: c.name, en: c.en && c.en.name }));
     return JSON.stringify({ tags, courses: cs, lessons });
