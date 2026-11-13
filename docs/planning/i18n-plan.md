@@ -109,14 +109,14 @@ Dịch máy từng chữ không dùng được vì phần lớn lời giải th�
 7. Cập nhật kiểm tra, sitemap, Lighthouse cho hai ngôn ngữ.
 8. Từ lúc này mọi khóa mới (Katakana, sơ cấp) viết song ngữ ngay từ đầu.
 
-## Tiến độ triển khai (cập nhật 2026-11-06)
+## Tiến độ triển khai (cập nhật 2026-11-13)
 
 | Bước | Trạng thái | Ghi chú |
 |---|---|---|
 | 2. Hạ tầng | Xong | Chuỗi trang ở `src/_data/i18n.js` (đối tượng JS, không phải JSON, để dùng chung cho hai ngôn ngữ trong một tệp); `src/_data/routes.json` ánh xạ URL; thân trang dùng chung ở `src/_includes/pages/*.njk`, trang tiếng Anh nằm ở `src/en/` với `lang: en` từ `src/en/en.json`. Lọc `route` và `l10n`. Đầu ra tiếng Việt chỉ khác ở `hreflang` và nút chuyển ngôn ngữ |
 | 3. Tách chuỗi JS | Xong | `src/js/i18n/{vi,en}.js`, `src/js/i18n.js` (`t`, `gloss`, `num`). Snapshot quiz tiếng Việt có seed trùng khớp trước và sau |
-| 4. Trang tiếng Anh | Xong phần giao diện | Trang chủ, khóa học, Hiragana, giới thiệu, Dojo, "sắp ra mắt". Danh sách bài tiếng Anh vẫn trỏ về bài tiếng Việt, kèm ghi chú |
-| 5. Bài học tiếng Anh | Katakana song ngữ xong (12 bài); 13 bài Hiragana tiếng Anh chưa làm | D-019 đã chốt. Nghĩa từ tiếng Anh (`en`) đã có cho mọi từ trong bài |
+| 4. Trang tiếng Anh | Xong | Trang chủ, khóa học, Hiragana, Katakana, giới thiệu, Dojo, "sắp ra mắt". Danh sách bài của cả hai khóa dẫn tới bài tiếng Anh (`enLessons: true`) |
+| 5. Bài học tiếng Anh | Xong (2026-11-13): Katakana 12 bài, Hiragana 13 bài, nằm ở `src/en/courses/<khóa>/lesson-NN-*.md`. Dữ liệu (chữ, romaji, từ, quiz) giống bản tiếng Việt, gợi ý phát âm viết lại cho người nói tiếng Anh; `check-quiz` kiểm tra hai bản khớp nhau | D-019 đã chốt. Nghĩa từ tiếng Anh (`en`) đã có cho mọi từ trong bài |
 | 6. Chọn theo vị trí | Xong | `src/_includes/partials/lang-script.njk`; kiểm tra `tools/e2e-i18n.py` |
 | 7. Kiểm tra và đo | Một phần | `tools/check-i18n.mjs` nằm trong `npm test`; Lighthouse 100/100/96/100 (best-practices 96 do beacon bị chặn trong sandbox) cho `/`, `/en/`; `/en/practice/` hiệu năng 98 |
 

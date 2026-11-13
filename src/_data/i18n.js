@@ -135,7 +135,7 @@ export default {
     course: {
       prereq: 'We suggest learning Hiragana first (not required).',
       prereqLink: 'Learn Hiragana',
-      notice: 'The lesson texts are still in Vietnamese; English lessons are coming. The letters, romaji and the Dojo already work in English.',
+      notice: '',
       learn: 'Learn',
       play: 'Play',
       later: 'Soon',

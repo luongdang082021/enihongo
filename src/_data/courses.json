@@ -12,7 +12,7 @@
       "lede": "The first alphabet of Japanese. Every lesson has a chart, flashcards and a mini quiz.",
       "description": "A Hiragana course in 13 short lessons, from あ い う え お to combined sounds, long vowels and the small っ."
     },
-    "enLessons": false,
+    "enLessons": true,
     "lede": "Bảng chữ cái đầu tiên của tiếng Nhật. Mỗi bài có bảng chữ, flashcard và mini quiz.",
     "description": "Khóa học Hiragana cho người Việt: 13 bài ngắn từ あ い う え お đến âm ghép, trường âm và âm ngắt."
   },

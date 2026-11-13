@@ -89,20 +89,24 @@ for(const C of COURSES){
   }
 }
 
-// Bản tiếng Anh của Katakana phải khớp bản tiếng Việt về dữ liệu (chữ, romaji, từ, kế hoạch quiz)
-{
-  const vi=fs.readdirSync('src/khoa-hoc/katakana').filter(f=>f.endsWith('.md')).map(f=>matter(fs.readFileSync('src/khoa-hoc/katakana/'+f,'utf8')).data);
-  const enDir='src/en/courses/katakana';
+// Bản tiếng Anh của mỗi khóa phải khớp bản tiếng Việt về dữ liệu (chữ, romaji, từ, kế hoạch quiz) và có đủ bài
+for(const course of ['hiragana','katakana']){
+  const viDir=`src/khoa-hoc/${course}`,enDir=`src/en/courses/${course}`;
+  const vi=fs.readdirSync(viDir).filter(f=>f.endsWith('.md')).map(f=>matter(fs.readFileSync(path.join(viDir,f),'utf8')).data);
   const en=fs.readdirSync(enDir).filter(f=>f.endsWith('.md')).map(f=>matter(fs.readFileSync(path.join(enDir,f),'utf8')).data);
-  if(vi.length!==en.length)bad(`Katakana: ${vi.length} bài tiếng Việt, ${en.length} bài tiếng Anh`);
+  if(vi.length!==en.length)bad(`${course}: ${vi.length} bài tiếng Việt, ${en.length} bài tiếng Anh`);
+  const slugs=JSON.parse(fs.readFileSync('src/_data/lessons.json','utf8'))[course];
+  const enFiles=fs.readdirSync(enDir).filter(f=>f.endsWith('.md')).map(f=>f.replace(/\.md$/,''));
+  for(const l of slugs.filter(x=>x.state==='ready'))if(!enFiles.includes(l.en.slug))bad(`${course}: lessons.json ${l.id} có slug en "${l.en.slug}" nhưng không có tệp bài tiếng Anh`);
   for(const v of vi){
     const e=en.find(x=>x.lessonId===v.lessonId);
-    if(!e){bad(`Katakana: ${v.lessonId} thiếu bản tiếng Anh`);continue}
+    if(!e){bad(`${course}: ${v.lessonId} thiếu bản tiếng Anh`);continue}
     const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
     if(!same((v.chars||[]).map(c=>[c.k,c.r]),(e.chars||[]).map(c=>[c.k,c.r])))bad(`${v.lessonId}: chữ khác nhau giữa hai ngôn ngữ`);
-    if(!same((v.words||[]).map(w=>[w.kana,w.romaji,w.vi,w.en]),(e.words||[]).map(w=>[w.kana,w.romaji,w.vi,w.en])))bad(`${v.lessonId}: từ khác nhau giữa hai ngôn ngữ`);
-    if(!same(v.qplan,e.qplan)||!same(v.tags,e.tags)||v.minutes!==e.minutes||v.n!==e.n)bad(`${v.lessonId}: qplan/tags/minutes/n khác nhau`);
+    if(!same((v.words||[]).map(w=>[w.kana,w.romaji,w.vi,w.en,w.quiz]),(e.words||[]).map(w=>[w.kana,w.romaji,w.vi,w.en,w.quiz])))bad(`${v.lessonId}: từ khác nhau giữa hai ngôn ngữ`);
+    if(!same(v.qplan,e.qplan)||!same(v.qcount,e.qcount)||!same(v.tags,e.tags)||v.minutes!==e.minutes||v.n!==e.n)bad(`${v.lessonId}: qplan/qcount/tags/minutes/n khác nhau`);
     if(!same((v.objectives||[]).length,(e.objectives||[]).length))bad(`${v.lessonId}: số mục tiêu khác nhau`);
+    if(!same((v.chars||[]).map(c=>!!c.tip),(e.chars||[]).map(c=>!!c.tip)))bad(`${v.lessonId}: gợi ý (tip) của chữ lệch giữa hai ngôn ngữ`);
   }
 }
 

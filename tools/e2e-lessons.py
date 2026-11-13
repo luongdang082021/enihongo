@@ -1,4 +1,4 @@
-"""Mini quiz trong bài Katakana (vi, en) chạy được và không lỗi JS. Cần: npm run build:local; python3 -m http.server 8123 --directory _site."""
+"""Mini quiz trong bài Hiragana và Katakana (vi, en) chạy được và không lỗi JS. Cần: npm run build:local; python3 -m http.server 8123 --directory _site."""
 import re
 from playwright.sync_api import sync_playwright
 BASE='http://localhost:8123'
@@ -6,7 +6,7 @@ VN=re.compile(r'[àáảãạăằắẳẵặâầấẩẫậèéẻẽẹê�
 bad=[]
 with sync_playwright() as pw:
     br=pw.chromium.launch()
-    for tz,pre,slug,lessons in [('Asia/Ho_Chi_Minh','','/khoa-hoc/katakana/',['bai-03-hang-ka-sa','bai-10-am-ghep-truong-am','bai-11-am-ngat-mo-rong','bai-12-on-tap']),('America/New_York','/en','/en/courses/katakana/',['lesson-03-ka-sa-rows','lesson-10-combined-and-long','lesson-11-small-tsu-extended','lesson-12-review'])]:
+    for tz,pre,slug,lessons in [('Asia/Ho_Chi_Minh','','/khoa-hoc/hiragana/',['bai-02-hang-a','bai-08-am-duc','bai-10-truong-am','bai-12-nhung-tu-dau-tien','bai-13-on-tap']),('America/New_York','/en','/en/courses/hiragana/',['lesson-02-a-row','lesson-08-voiced-sounds','lesson-10-long-vowels','lesson-12-first-words','lesson-13-review']),('Asia/Ho_Chi_Minh','','/khoa-hoc/katakana/',['bai-03-hang-ka-sa','bai-10-am-ghep-truong-am','bai-11-am-ngat-mo-rong','bai-12-on-tap']),('America/New_York','/en','/en/courses/katakana/',['lesson-03-ka-sa-rows','lesson-10-combined-and-long','lesson-11-small-tsu-extended','lesson-12-review'])]:
         ctx=br.new_context(timezone_id=tz,locale='en-US'); pg=ctx.new_page()
         errs=[]; pg.on('pageerror',lambda e:errs.append(str(e))); pg.on('console',lambda m:errs.append(m.text) if m.type=='error' else None)
         for l in lessons:
@@ -24,6 +24,8 @@ with sync_playwright() as pw:
                 # answer by trying: choice -> click first option; type -> fill 'a'; match -> skip by clicking pairs
                 if pg.locator('.opt').count():
                     pg.locator('.opt').first.click()
+                elif pg.locator('.tile').count():
+                    pg.locator('[data-skip]').click()
                 elif pg.locator('.typeform input').count():
                     pg.locator('.typeform input').fill('a'); pg.locator('.typeform button[type=submit]').click()
                 else:

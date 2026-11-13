@@ -55,4 +55,4 @@ words:
 
 ## Làm tiếp
 
-Mini quiz bên dưới dài 15 câu, gồm cả chữ và từ. Sau khi đạt, bạn có thể vào **Hiragana Dojo** để luyện thêm theo từng hiệp.
+Mini quiz bên dưới dài 15 câu, gồm cả chữ và từ. Sau khi đạt, bạn có thể vào **Dojo** để luyện thêm.
