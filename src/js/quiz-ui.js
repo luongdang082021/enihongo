@@ -51,7 +51,7 @@ export function mountQuiz(root,opts){
     let st='';
     if(q.stage){
       if(q.stage.m)st+=cellsHTML(q.stage.m,q.stage.blank);
-      if(q.stage.text)st+=`<div class="romaji${[...q.stage.text].length>8?' long':''}">${esc(q.stage.text)}</div>`;
+      if(q.stage.text)st+=`<div class="romaji${[...q.stage.text].length>8?' long':''}${q.stage.gloss?' gl':''}">${esc(q.stage.text)}</div>`;
       if(q.stage.hint)st+=`<p class="hint">${esc(q.stage.hint)}</p>`;
     }
     const stage=q$('[data-stage]');stage.innerHTML=st;stage.hidden=!st;

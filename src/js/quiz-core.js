@@ -174,13 +174,13 @@ function qWK2M(w,ws){
 }
 function qWM2K(w,ws){
   const ds=take(shuffle(ws.filter(x=>x.k!==w.k)),3);
-  return{type:'wm2k',prompt:tr('p.wm2k'),stage:{text:gloss(w)},opts:shuffle([w.k,...ds.map(x=>x.k)]),font:'kana',answer:w.k,explain:explainW(w),sum:`${gloss(w)} = ${w.k}`,src:{w}};
+  return{type:'wm2k',prompt:tr('p.wm2k'),stage:{text:gloss(w),gloss:true},opts:shuffle([w.k,...ds.map(x=>x.k)]),font:'kana',answer:w.k,explain:explainW(w),sum:`${gloss(w)} = ${w.k}`,src:{w}};
 }
 function qOrder(sn){
   const extra=sn.t.some(x=>PARTS.includes(x))?take(PARTS.filter(p=>!sn.t.includes(p)),1):[];
   let tiles=shuffle([...sn.t,...extra]);
   for(let i=0;i<6&&sn.t.length>1&&tiles.slice(0,sn.t.length).join('')===sn.t.join('');i++)tiles=shuffle(tiles);
-  return{type:'order',prompt:tr('p.order'),stage:{text:sgloss(sn),hint:tr('h.order')},tiles:tiles,slotN:sn.t.length,wide:true,font:'kana',answer:sn.t.join(''),cap:60,explain:explainS(sn),sum:sn.ja,src:{s:sn}};
+  return{type:'order',prompt:tr('p.order'),stage:{text:sgloss(sn),hint:tr('h.order'),gloss:true},tiles:tiles,slotN:sn.t.length,wide:true,font:'kana',answer:sn.t.join(''),cap:60,explain:explainS(sn),sum:sn.ja,src:{s:sn}};
 }
 function qParticle(sn){
   const i=pick(sn.b),ans=sn.t[i];
