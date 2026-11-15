@@ -98,6 +98,8 @@ h2.small{font-size:14px;color:var(--ink-2);margin:14px 0 6px}
 .slots{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;min-height:68px}
 .slot{width:56px;height:64px;display:inline-flex;align-items:center;justify-content:center;border:1.5px dashed var(--grid);border-radius:8px;background:var(--paper);font-family:var(--kana);font-weight:700;font-size:30px;color:var(--ink);padding:0}
 .slot.full{border-style:solid;border-color:var(--accent);background:var(--card)}
+.slot,.tile{white-space:nowrap}
+.slot.full{width:auto;min-width:56px;padding:0 8px}
 .slots.good .slot{border-color:var(--good);background:var(--good-bg);color:var(--good)}
 .slots.bad .slot{border-color:var(--bad);background:var(--bad-bg);color:var(--bad)}
 .tiles{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
