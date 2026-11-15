@@ -33,8 +33,8 @@ const lessonsOf=id=>pool.lessons.filter(l=>l.course===id);
 const chosen=()=>pool?pool.lessons.filter(l=>sel.has(l.course)):[];
 function renderPicker(){
   $('picklist').innerHTML='<ul class="picklist">'+pool.courses.map(c=>{
-    const {chars,words}=gather(lessonsOf(c.id));
-    const cnt=[chars.length?tr('d.cntChars',{n:chars.length}):'',words.length?tr('d.cntWords',{n:words.length}):''].filter(Boolean).join(' · ');
+    const {chars,words,sents}=gather(lessonsOf(c.id));
+    const cnt=[chars.length?tr('d.cntChars',{n:chars.length}):'',words.length?tr('d.cntWords',{n:words.length}):'',sents.length?tr('d.cntSents',{n:sents.length}):''].filter(Boolean).join(' · ');
     return `<li><label><input type="checkbox" data-course="${esc(c.id)}"${sel.has(c.id)?' checked':''}><span>${esc(cname(c))}</span><span class="cnt">${cnt}</span></label></li>`;
   }).join('')+'</ul>';
   renderPicksum();
@@ -42,10 +42,10 @@ function renderPicker(){
 function renderPicksum(){
   const btn=$('startmix'),el=$('picksum');
   if(!pool)return;
-  const {chars,words}=gather(chosen());
-  if(!chars.length&&!words.length){el.textContent=tr('d.none');btn.disabled=true;return}
+  const {chars,words,sents}=gather(chosen());
+  if(!chars.length&&!words.length&&!sents.length){el.textContent=tr('d.none');btn.disabled=true;return}
   const b=dojoBest()[mixKey(sel)];
-  el.innerHTML=tr('d.picked',{n:sel.size,c:chars.length,w:words.length})+(b?`${tr('d.best')}<b>${fmt(b.score)}</b> ${starsHTML(b.stars,14)}`:'');
+  el.innerHTML=tr('d.picked',{n:sel.size,c:chars.length,w:words.length,s:sents.length})+(b?`${tr('d.best')}<b>${fmt(b.score)}</b> ${starsHTML(b.stars,14)}`:'');
   btn.disabled=false;
 }
 $('picker').addEventListener('change',e=>{
@@ -56,10 +56,10 @@ $('picker').addEventListener('change',e=>{
 $('startmix').addEventListener('click',()=>startMix());
 
 function startMix(){
-  const ls=chosen(),{chars,words}=gather(ls);
-  if(!chars.length&&!words.length)return;
+  const ls=chosen(),{chars,words,sents}=gather(ls);
+  if(!chars.length&&!words.length&&!sents.length)return;
   const key=mixKey(sel),ids=new Set(sel);
-  const dj=dojoSession(chars,words,{weak:weakMap});
+  const dj=dojoSession(chars,words,{weak:weakMap,sents});
   if(q)q.destroy();
   home.hidden=true;play.hidden=false;
   q=mountQuiz(play,{

@@ -19,11 +19,15 @@ const VN = /[àáảãạăằắẳẵặâầấẩẫậèéẻẽẹêềế
 for (const [k, v] of Object.entries(en)) if (VN.test(v)) bad(`en.js còn tiếng Việt ở ${k}: ${v}`);
 
 // nghĩa từ trong bài học
-for (const dir of ['hiragana', 'katakana'].map((c) => root + 'src/khoa-hoc/' + c + '/').filter((d) => fs.existsSync(d))) for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.md'))) {
+for (const dir of ['hiragana', 'katakana', 'so-cap-1'].map((c) => root + 'src/khoa-hoc/' + c + '/').filter((d) => fs.existsSync(d))) for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.md'))) {
   const d = matter(fs.readFileSync(dir + f, 'utf8')).data;
   for (const w of d.words || []) {
     if (!w.en) bad(`${f}: từ ${w.kana} thiếu en`);
     else if (VN.test(w.en)) bad(`${f}: ${w.kana} en chứa dấu tiếng Việt`);
+  }
+  for (const x of d.sents || []) {
+    if (!x.en || !x.vi) bad(`${f}: câu ${x.t.join('')} thiếu nghĩa`);
+    else if (VN.test(x.en)) bad(`${f}: câu ${x.t.join('')} en chứa dấu tiếng Việt`);
   }
 }
 
@@ -32,7 +36,7 @@ for (const dir of ['hiragana', 'katakana'].map((c) => root + 'src/khoa-hoc/' + c
   const walkMd=(d)=>fs.readdirSync(d,{withFileTypes:true}).flatMap((e)=>e.isDirectory()?walkMd(d+'/'+e.name):e.name.endsWith('.md')?[d+'/'+e.name]:[]);
   for(const f of walkMd(root+'src/en')){
     const g=matter(fs.readFileSync(f,'utf8'));
-    const data={...g.data,words:(g.data.words||[]).map((w)=>({...w,vi:''}))};
+    const data={...g.data,words:(g.data.words||[]).map((w)=>({...w,vi:''})),sents:(g.data.sents||[]).map((x)=>({...x,vi:''}))};
     if(VN.test(JSON.stringify(data))||VN.test(g.content))bad(`${path.relative(root,f)}: còn tiếng Việt`);
   }
 }
@@ -72,12 +76,13 @@ const scan = (q, where) => {
 };
 const { default: vocab } = await import(root + 'src/_data/vocab.js');
 for (const [c, list] of Object.entries(vocab)) for (const w of list) if (VN.test(w.en)) bad(`vocab ${c}: ${w.kana} en có dấu tiếng Việt`);
+const elem = fs.readdirSync(root + 'src/khoa-hoc/so-cap-1').filter((x) => x.endsWith('.md')).map((f) => matter(fs.readFileSync(root + 'src/khoa-hoc/so-cap-1/' + f, 'utf8')).data);
 const toLesson = (list) => ({ chars: [], words: list.map((w) => ({ kana: w.kana, vi: w.vi, en: w.en })) });
 const hira = [{ chars: [{ k: 'あ', r: 'a' }, { k: 'き', r: 'ki' }, { k: 'しゃ', r: 'sha' }, { k: 'が', r: 'ga' }, { k: 'ぬ', r: 'nu' }, { k: 'め', r: 'me' }], words: [] }, toLesson(vocab.hiragana)];
 const kata = [{ chars: [{ k: 'ア', r: 'a' }, { k: 'キ', r: 'ki' }, { k: 'シャ', r: 'sha' }, { k: 'ガ', r: 'ga' }, { k: 'ヌ', r: 'nu' }, { k: 'メ', r: 'me' }], words: [] }, toLesson(vocab.katakana)];
-for (const [name, mix] of [['hiragana', hira], ['katakana', kata]]) {
-  const { chars, words } = gather(mix);
-  const dj = core.dojoSession(chars, words, { weak: {} });
+for (const [name, mix] of [['hiragana', hira], ['katakana', kata], ['so-cap-1', elem]]) {
+  const { chars, words, sents } = gather(mix);
+  const dj = core.dojoSession(chars, words, { weak: {}, sents });
   for (let i = 0; i < 40; i++) for (const q of dj.build()) { scan(q, `dojo ${name}`); const f = dj.follow(q); if (f) scan(f, `nhắc lại ${name}`); }
 }
 

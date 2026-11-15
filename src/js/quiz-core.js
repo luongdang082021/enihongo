@@ -1,4 +1,4 @@
-import {t as tr,gloss,has} from './i18n.js';
+import {t as tr,gloss,has,lang} from './i18n.js';
 
 
 
@@ -106,8 +106,8 @@ function explainW(w){
 }
 
 /* ---------- question builders ---------- */
-const T=Object.fromEntries(['k2r','r2k','type','match','odd','size','wk2r','wr2k','wtype','fill','mora','compose'].map(k=>[k,tr('ty.'+k)]));
-const CHOICE=new Set(['k2r','r2k','odd','size','wk2r','wr2k','fill','mora']);
+const T=Object.fromEntries(['k2r','r2k','type','match','odd','size','wk2r','wr2k','wtype','fill','mora','compose','wk2m','wm2k','order','particle','sk2m'].map(k=>[k,tr('ty.'+k)]));
+const CHOICE=new Set(['k2r','r2k','odd','size','wk2r','wr2k','fill','mora','wk2m','wm2k','particle','sk2m']);
 const PLAIN=new Set(['k2r','r2k','odd','size','type','match']);
 
 function qK2R(it,pool){
@@ -163,6 +163,35 @@ function qMora(w){
     explain:tr('e.mora',{morae:w.m.map(esc).join(' | '),n:n,k:esc(w.k),r:esc(w.r),gl:esc(gloss(w))}),sum:tr('s.mora',{k:w.k,n:n}),src:{w}};
 }
 
+
+/* ---------- nghĩa của từ, câu, trợ từ ---------- */
+const PARTS=['は','が','を','に','で','へ','と','も','の','か'];
+const sgloss=s=>(lang==='en'&&s.en)||s.vi;
+const explainS=s=>`<b>${esc(s.ja)}</b><br>${esc(s.r)}<br>${esc(sgloss(s))}`;
+function qWK2M(w,ws){
+  const ds=take(shuffle(ws.filter(x=>x.k!==w.k&&gloss(x)!==gloss(w))).filter((x,i,a)=>a.findIndex(y=>gloss(y)===gloss(x))===i),3);
+  return{type:'wk2m',prompt:tr('p.wk2m'),stage:{m:w.m,hint:w.r},opts:shuffle([gloss(w),...ds.map(gloss)]),font:'latin',answer:gloss(w),explain:explainW(w),sum:`${w.k} = ${gloss(w)}`,src:{w}};
+}
+function qWM2K(w,ws){
+  const ds=take(shuffle(ws.filter(x=>x.k!==w.k)),3);
+  return{type:'wm2k',prompt:tr('p.wm2k'),stage:{text:gloss(w)},opts:shuffle([w.k,...ds.map(x=>x.k)]),font:'kana',answer:w.k,explain:explainW(w),sum:`${gloss(w)} = ${w.k}`,src:{w}};
+}
+function qOrder(sn){
+  const extra=sn.t.some(x=>PARTS.includes(x))?take(PARTS.filter(p=>!sn.t.includes(p)),1):[];
+  let tiles=shuffle([...sn.t,...extra]);
+  for(let i=0;i<6&&sn.t.length>1&&tiles.slice(0,sn.t.length).join('')===sn.t.join('');i++)tiles=shuffle(tiles);
+  return{type:'order',prompt:tr('p.order'),stage:{text:sgloss(sn),hint:tr('h.order')},tiles:tiles,slotN:sn.t.length,wide:true,font:'kana',answer:sn.t.join(''),cap:60,explain:explainS(sn),sum:sn.ja,src:{s:sn}};
+}
+function qParticle(sn){
+  const i=pick(sn.b),ans=sn.t[i];
+  const ds=take(PARTS.filter(p=>p!==ans),3);
+  return{type:'particle',prompt:tr('p.particle'),stage:{text:sn.t.map((x,j)=>j===i?'＿＿':x).join(' '),hint:sgloss(sn)},opts:shuffle([ans,...ds]),font:'kana',answer:ans,explain:explainS(sn),sum:sn.ja,src:{s:sn}};
+}
+function qSK2M(sn,sns){
+  const ds=take(shuffle(sns.filter(x=>x.ja!==sn.ja&&sgloss(x)!==sgloss(sn))).filter((x,i,a)=>a.findIndex(y=>sgloss(y)===sgloss(x))===i),3);
+  return{type:'sk2m',prompt:tr('p.sk2m'),stage:{text:sn.ja,hint:sn.r},opts:shuffle([sgloss(sn),...ds.map(sgloss)]),font:'latin',answer:sgloss(sn),explain:explainS(sn),sum:sn.ja,src:{s:sn}};
+}
+
 /* ---------- soạn chữ từ romaji ---------- */
 /* Người chơi chạm các ô chữ theo đúng thứ tự. Ô thừa lấy từ các lỗi dễ nhầm (chữ giống nhau, âm đục, trường âm, âm ngắt). */
 function qCompose(w,src){
@@ -197,6 +226,9 @@ function session(chars,words,o){
   const kat=hasK&&!hasH;
   const BAS=kat?KBASIC:BASIC;
   const ws=(words||[]).filter(w=>w.quiz!==false).map(w=>mkWord(w.kana,w.vi,w.romaji,w.en));
+  const sns=(o.sents||[]).map(mkSent);
+  const pS=sns.filter(s=>s.b.length),usedS=new Set();
+  const dS=f=>draw(sns.map(s=>s),usedS,f);
   if(o.needChars!==false&&items.length<4){ // bài ít chữ (vd わ を ん): thêm vài chữ cũ để ôn
     const extra=take(BAS.flat().filter(x=>!AMB.has(x.k)&&!items.some(i=>i.k===x.k)&&x.k!=='を'&&x.k!=='ヲ'),4);
     items=[...items,...extra];
@@ -228,6 +260,11 @@ function session(chars,words,o){
       case 'fill':{const w=dW(hasSpecial);return w?qFill(w):qMora(dW())}
       case 'mora':return qMora(dW());
       case 'compose':return composeQ();
+      case 'wk2m':return qWK2M(dW(),ws);
+      case 'wm2k':return qWM2K(dW(),ws);
+      case 'order':return qOrder(dS());
+      case 'particle':return qParticle(dS(x=>x.b.length));
+      case 'sk2m':return qSK2M(dS(),sns);
     }
     throw new Error('unknown type '+t);
   }
@@ -250,6 +287,9 @@ function session(chars,words,o){
       if(items.some(x=>isYoonK(x.k)))T.push(['size',1.5,3]);
     }
     if(ws.length)T.push(['wk2r',2.5,8],['wr2k',2.5,8],['wtype',2,5],['mora',1,2]);
+    const mw=ws.filter(w=>gloss(w)).length>=4;
+    if(mw)T.push(['wk2m',2.5,6],['wm2k',2,5]);
+    if(sns.length>=1){T.push(['order',2.5,5]);if(sns.length>=4)T.push(['sk2m',2,4]);if(pS.length)T.push(['particle',2.5,5])}
     if(ws.some(hasSpecial))T.push(['fill',1.5,3]);
     if(composeW>0)T.push(['compose',composeW,5]);
     const order=[],cnt={};
@@ -271,11 +311,17 @@ function session(chars,words,o){
     const d=q.depth||0;
     if(d>=2||!q.src)return null;
     let fq=null;
-    if(q.src.w){
+    if(q.src.s){
+      const sn=q.src.s,ts=['order'];if(sns.length>=4)ts.push('sk2m');if(sn.b&&sn.b.length)ts.push('particle');
+      const ts2=ts.filter(x=>x!==q.type),t=pick(ts2.length?ts2:ts);
+      fq=t==='order'?qOrder(sn):t==='particle'?qParticle(sn):qSK2M(sn,sns);
+      if(!fq)return null;
+    }else if(q.src.w){
       const w=q.src.w,ts=['wk2r','wr2k','wtype','compose','compose','mora'];
+      if(gloss(w)&&ws.filter(x=>gloss(x)).length>=4)ts.push('wk2m','wm2k');
       if(hasSpecial(w))ts.push('fill','fill');
       const t=pick(ts.filter(x=>x!==q.type));
-      fq=t==='wk2r'?qWK2R(w):t==='wr2k'?qWR2K(w):t==='wtype'?qWType(w):t==='compose'?qCompose(w,{w}):t==='fill'?qFill(w):qMora(w);
+      fq=t==='wk2r'?qWK2R(w):t==='wr2k'?qWR2K(w):t==='wtype'?qWType(w):t==='compose'?qCompose(w,{w}):t==='fill'?qFill(w):t==='wk2m'?qWK2M(w,ws):t==='wm2k'?qWM2K(w,ws):qMora(w);
     }else{
       const cs=q.src.c,miss=q.missK?cs.filter(x=>q.missK.includes(x.k)):[];
       const it=pick(miss.length?miss:cs);
@@ -292,7 +338,7 @@ function session(chars,words,o){
   return{fromPlan,dojo,follow};
 }
 
-export const KEYS_OF=q=>q.src?(q.src.w?[q.src.w.k]:q.src.c.map(x=>x.k)):[];
+export const KEYS_OF=q=>q.src?(q.src.s?[q.src.s.k]:q.src.w?[q.src.w.k]:q.src.c.map(x=>x.k)):[];
 
 export {BASIC,DAKU,YOON,KBASIC,KDAKU,KYOON,KEXT,isKata,R,AMB,T,CHOICE,PLAIN,norm,parseMorae,shuffle,pick,take,esc};
 
@@ -301,10 +347,15 @@ export function mkWord(kana,vi,romaji,en){
   const m=parseMorae(kana);
   return{k:kana,vi:vi||'',en:en||'',m:m,r:romaji||romajiOf(m)};
 }
-const WORD_TYPES=new Set(['wk2r','wr2k','wtype','fill','mora']);
-export function buildLesson(chars,plan,words){
+const WORD_TYPES=new Set(['wk2r','wr2k','wtype','fill','mora','wk2m','wm2k','order','particle','sk2m']);
+/* Câu: {t:[từ…],r,vi,en}. k = chuỗi kana liền, b = chỉ số các trợ từ trong t. */
+export function mkSent(s){
+  const ja=s.t.join('');
+  return{k:ja,ja:ja,t:s.t,r:s.r||'',vi:s.vi||'',en:s.en||'',b:s.t.map((x,i)=>PARTS.includes(x)?i:-1).filter(i=>i>=0)};
+}
+export function buildLesson(chars,plan,words,sents){
   const needChars=Object.keys(plan).some(t=>!WORD_TYPES.has(t));
-  return session(chars,words,{needChars}).fromPlan(plan);
+  return session(chars,words,{needChars,sents}).fromPlan(plan);
 }
 
 /* Dojo: {build(), follow(q)}. build() tạo lượt mới (đọc lại chữ yếu mỗi lần), follow(q) trả câu nhắc lại cho câu sai. */

@@ -2,4 +2,4 @@
 permalink: data/dojo-pool.json
 eleventyExcludeFromCollections: true
 ---
-{{ collections.hiraganaLesson.concat(collections.katakanaLesson or []) | dojoPool(topics, courses, vocab) | safe }}
+{{ collections.hiraganaLesson.concat(collections.katakanaLesson or [], collections.elemLesson or []) | dojoPool(topics, courses, vocab) | safe }}

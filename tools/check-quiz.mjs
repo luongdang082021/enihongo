@@ -26,6 +26,13 @@ function checkQ(q,where){
     if(got.some(x=>m.includes(x)))bad(`${where}: compose ô thừa trùng ô cần (${q.answer})`);
     if(q.tiles.some(x=>AMB.has(x)))bad(`${where}: compose có ぢ/づ`);
     if(!q.stage||!q.stage.text)bad(`${where}: compose thiếu romaji`);
+  }else if(q.type==='order'){
+    if(q.slotN<2)bad(`${where}: order quá ngắn`);
+    const got=q.tiles.slice();
+    for(let i=0;i<q.slotN;i++){}
+    if(q.tiles.length<q.slotN)bad(`${where}: order thiếu ô`);
+    if(q.tiles.slice(0,q.slotN).join('')===q.answer&&q.slotN>1&&q.tiles.length===q.slotN&&false)bad(`${where}: order đã đúng sẵn`);
+    if(!q.stage||!q.stage.text)bad(`${where}: order thiếu nghĩa`);
   }else if(q.type==='match'){
     if(new Set(q.pairs.map(p=>p.r)).size!==q.pairs.length)bad(`${where}: cặp nối trùng romaji`);
     if(q.pairs.some(p=>AMB.has(p.k)))bad(`${where}: có ぢ/づ trong nối cặp`);
@@ -47,8 +54,10 @@ const COURSES=[
   {id:'katakana',dir:'src/khoa-hoc/katakana',exempt:0,extra(num,learned){
     if(num>=10)'ャュョー'.split('').forEach(x=>learned.add(x));
     if(num>=11)'ッァィゥェォ'.split('').forEach(x=>learned.add(x));
-  }}
+  }},
+  {id:'so-cap-1',writing:'kana',dir:'src/khoa-hoc/so-cap-1',exempt:-1,allKana:true,extra(){}}
 ];
+const ALLKANA=()=>new Set([...[...BASIC,...DAKU,...YOON,...KBASIC,...KDAKU,...KYOON,...KEXT].flat().flatMap(x=>[...x.k]),...'ゃゅょっッーャュョァィゥェォを'].filter(c=>!'ぢづヂヅヲ'.includes(c)));
 const allLessons=[];
 let nFiles=0;
 for(const C of COURSES){
@@ -59,7 +68,7 @@ for(const C of COURSES){
     const fm=matter(fs.readFileSync(path.join(C.dir,f),'utf8')).data;
     allLessons.push(fm);
     const num=fm.n;
-    if(fm.writing!==C.id)bad(`${f}: writing phải là ${C.id}`);
+    if(fm.writing!==(C.writing||C.id))bad(`${f}: writing phải là ${C.writing||C.id}`);
     if(fm.lessonId!==`${C.id}-${String(num).padStart(2,'0')}`)bad(`${f}: lessonId ${fm.lessonId} không khớp số bài`);
     (fm.tags||[]).forEach(t=>{if(!TAGS[t])bad(`${f}: tag ${t} chưa khai báo trong src/_data/topics.json`)});
     (fm.chars||[]).forEach(c=>{
@@ -68,8 +77,21 @@ for(const C of COURSES){
       learned.add(c.k);[...c.k].forEach(x=>learned.add(x));
     });
     C.extra(num,learned);
+    if(C.allKana){
+      const ok=ALLKANA();
+      for(const s of fm.sents||[]){
+        if(s.t.length<2)bad(`${f}: câu ${s.t.join('')} quá ngắn`);
+        if(!s.vi||!s.en)bad(`${f}: câu ${s.t.join('')} thiếu nghĩa`);
+        if(s.r.split(' ').length!==s.t.length)bad(`${f}: câu ${s.t.join('')} số từ romaji khác số từ`);
+        const miss=[...s.t.join('')].filter(ch=>!ok.has(ch));
+        if(miss.length)bad(`${f}: câu ${s.t.join('')} dùng ký tự ngoài kana: ${miss.join('')}`);
+      }
+      if((fm.sents||[]).length<5)bad(`${f}: ít hơn 5 câu`);
+      if((fm.words||[]).length<8)bad(`${f}: ít hơn 8 từ`);
+    }
     for(const w of fm.words||[]){
-      if(num!==C.exempt){
+      if(C.allKana){const ok=ALLKANA();const miss=[...w.kana].filter(ch=>!ok.has(ch));if(miss.length)bad(`${f}: từ ${w.kana} dùng ký tự ngoài kana: ${miss.join('')}`)}
+      else if(num!==C.exempt){
         const miss=[...w.kana].filter(ch=>!learned.has(ch));
         if(miss.length)bad(`${f}: từ ${w.kana} dùng chữ chưa học: ${miss.join('')}`);
       }
@@ -80,17 +102,17 @@ for(const C of COURSES){
     if(cnt!==fm.qcount)bad(`${f}: qcount ${fm.qcount} khác tổng plan ${cnt}`);
     for(let t=0;t<200;t++){
       try{
-        const qs=buildLesson(fm.chars||[],fm.qplan,fm.words);
+        const qs=buildLesson(fm.chars||[],fm.qplan,fm.words,fm.sents);
         if(qs.length!==cnt)bad(`${f}: ${qs.length} câu, cần ${cnt}`);
         qs.forEach(q=>checkQ(q,f));
       }catch(e){bad(`${f}: ${e.message}`);break}
     }
-    console.log(`  ${f}: ${(fm.chars||[]).length} chữ, ${(fm.words||[]).length} từ, quiz ${cnt} câu, ok`);
+    console.log(`  ${f}: ${(fm.chars||[]).length} chữ, ${(fm.words||[]).length} từ, ${(fm.sents||[]).length} câu, quiz ${cnt} câu, ok`);
   }
 }
 
 // Bản tiếng Anh của mỗi khóa phải khớp bản tiếng Việt về dữ liệu (chữ, romaji, từ, kế hoạch quiz) và có đủ bài
-for(const course of ['hiragana','katakana']){
+for(const course of ['hiragana','katakana','so-cap-1']){
   const viDir=`src/khoa-hoc/${course}`,enDir=`src/en/courses/${course}`;
   const vi=fs.readdirSync(viDir).filter(f=>f.endsWith('.md')).map(f=>matter(fs.readFileSync(path.join(viDir,f),'utf8')).data);
   const en=fs.readdirSync(enDir).filter(f=>f.endsWith('.md')).map(f=>matter(fs.readFileSync(path.join(enDir,f),'utf8')).data);
@@ -104,6 +126,7 @@ for(const course of ['hiragana','katakana']){
     const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
     if(!same((v.chars||[]).map(c=>[c.k,c.r]),(e.chars||[]).map(c=>[c.k,c.r])))bad(`${v.lessonId}: chữ khác nhau giữa hai ngôn ngữ`);
     if(!same((v.words||[]).map(w=>[w.kana,w.romaji,w.vi,w.en,w.quiz]),(e.words||[]).map(w=>[w.kana,w.romaji,w.vi,w.en,w.quiz])))bad(`${v.lessonId}: từ khác nhau giữa hai ngôn ngữ`);
+    if(!same((v.sents||[]).map(s=>[s.t,s.r,s.vi,s.en]),(e.sents||[]).map(s=>[s.t,s.r,s.vi,s.en])))bad(`${v.lessonId}: câu khác nhau giữa hai ngôn ngữ`);
     if(!same(v.qplan,e.qplan)||!same(v.qcount,e.qcount)||!same(v.tags,e.tags)||v.minutes!==e.minutes||v.n!==e.n)bad(`${v.lessonId}: qplan/qcount/tags/minutes/n khác nhau`);
     if(!same((v.objectives||[]).length,(e.objectives||[]).length))bad(`${v.lessonId}: số mục tiêu khác nhau`);
     if(!same((v.chars||[]).map(c=>!!c.tip),(e.chars||[]).map(c=>!!c.tip)))bad(`${v.lessonId}: gợi ý (tip) của chữ lệch giữa hai ngôn ngữ`);
@@ -132,16 +155,16 @@ for(const [course,list] of Object.entries(vocab)){
 
 // Dojo: phạm vi khóa học (toàn bộ bài + kho từ), tập con để kiểm tra thêm; đều phải sinh đủ 20 câu hợp lệ,
 // câu đầu dễ, không ba dạng giống nhau liền nhau, và câu sai luôn có câu nhắc lại cùng chữ hoặc từ.
-const lessonsFm=allLessons.filter(d=>(d.chars&&d.chars.length)||(d.words&&d.words.length));
+const lessonsFm=allLessons.filter(d=>(d.chars&&d.chars.length)||(d.words&&d.words.length)||(d.sents&&d.sents.length));
 const of=w=>lessonsFm.filter(l=>l.writing===w),voc=w=>vocabLessons.filter(l=>l.writing===w);
-const mixes=[[...of('hiragana'),...voc('hiragana')],[...of('katakana'),...voc('katakana')],[...lessonsFm,...vocabLessons],voc('hiragana'),voc('katakana'),of('hiragana'),...lessonsFm.map(l=>[l])];
+const mixes=[of('kana'),[...of('kana'),...of('hiragana')],[...of('hiragana'),...voc('hiragana')],[...of('katakana'),...voc('katakana')],[...lessonsFm,...vocabLessons],voc('hiragana'),voc('katakana'),of('hiragana'),...lessonsFm.map(l=>[l])];
 for(let i=0;i<120;i++)mixes.push([...lessonsFm,...vocabLessons].filter(()=>Math.random()<.3));
 let nm=0,nf=0;
 for(const mix of mixes){
-  const {chars,words}=gather(mix);
-  if(!chars.length&&!words.length){continue}
+  const {chars,words,sents}=gather(mix);
+  if(!chars.length&&!words.length&&!sents.length){continue}
   const label='Dojo '+mix.map(l=>l.writing+l.n).join(',').slice(0,60);
-  const dj=dojoSession(chars,words,{weak:{}});
+  const dj=dojoSession(chars,words,{weak:{},sents});
   for(let t=0;t<4;t++){
     try{
       const qs=dj.build();nm++;

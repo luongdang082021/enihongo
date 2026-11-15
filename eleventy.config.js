@@ -37,7 +37,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter('dojoPool', (items, tags, courses, vocab) => {
     const lessons = items
       .map((i) => i.data)
-      .filter((d) => (d.chars && d.chars.length) || (d.words && d.words.length))
+      .filter((d) => (d.chars && d.chars.length) || (d.words && d.words.length) || (d.sents && d.sents.length))
       .sort((a, b) => a.n - b.n)
       .map((d) => ({
         id: d.lessonId,
@@ -47,7 +47,8 @@ export default function (eleventyConfig) {
         writing: d.writing,
         tags: d.tags || [],
         chars: (d.chars || []).map((c) => ({ k: c.k, r: c.r })),
-        words: (d.words || []).filter((w) => w.quiz !== false).map((w) => ({ kana: w.kana, romaji: w.romaji, vi: w.vi, en: w.en }))
+        words: (d.words || []).filter((w) => w.quiz !== false).map((w) => ({ kana: w.kana, romaji: w.romaji, vi: w.vi, en: w.en })),
+        sents: (d.sents || []).map((s) => ({ t: s.t, r: s.r, vi: s.vi, en: s.en }))
       }));
     // Kho từ vựng bổ sung của từng khóa (src/_data/vocab.js): thêm như một "bài" chỉ có từ, không có chữ mới.
     for (const [course, list] of Object.entries(vocab || {})) {

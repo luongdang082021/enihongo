@@ -51,7 +51,7 @@ export function mountQuiz(root,opts){
     let st='';
     if(q.stage){
       if(q.stage.m)st+=cellsHTML(q.stage.m,q.stage.blank);
-      if(q.stage.text)st+=`<div class="romaji">${esc(q.stage.text)}</div>`;
+      if(q.stage.text)st+=`<div class="romaji${[...q.stage.text].length>8?' long':''}">${esc(q.stage.text)}</div>`;
       if(q.stage.hint)st+=`<p class="hint">${esc(q.stage.hint)}</p>`;
     }
     const stage=q$('[data-stage]');stage.innerHTML=st;stage.hidden=!st;
@@ -60,16 +60,16 @@ export function mountQuiz(root,opts){
       a='<div class="opts">'+q.opts.map((o,i)=>`<button type="button" class="opt ${q.font==='kana'?'kana':''}${q.font==='kana'&&[...o].length>5?' long':''}" data-v="${esc(o)}"><span class="k" aria-hidden="true">${i+1}</span>${esc(o)}</button>`).join('')+'</div>';
     }else if(q.type==='type'||q.type==='wtype'){
       a=`<form class="typeform" autocomplete="off"><input data-ans type="text" inputmode="text" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="done" placeholder="romaji…" aria-label="${esc(tr('ui.romajiAns'))}"><div class="row"><button class="btn primary" type="submit">${tr('ui.check')}</button><button class="btn" data-skip type="button">${tr('ui.skip')}</button></div></form>`;
-    }else if(q.type==='compose'){
+    }else if(q.tiles){
       S.cp={placed:[]};
-      a=`<form class="compose" autocomplete="off"><div class="slots" data-slots role="group" aria-label="${esc(tr('ui.slots'))}"></div><div class="tiles" data-tiles>${q.tiles.map((x,i)=>`<button type="button" class="tile${x.length>1?' y':''}" data-tile="${i}">${esc(x)}</button>`).join('')}</div><div class="row"><button class="btn primary" type="submit" data-go>${tr('ui.check')}</button><button class="btn" data-undo type="button">${tr('ui.undo')}</button><button class="btn" data-skip type="button">${tr('ui.skip')}</button></div></form>`;
+      a=`<form class="compose" autocomplete="off"><div class="slots" data-slots role="group" aria-label="${esc(tr('ui.slots'))}"></div><div class="tiles" data-tiles>${q.tiles.map((x,i)=>`<button type="button" class="tile${x.length>1?' y':''}${q.wide?' w':''}" data-tile="${i}">${esc(x)}</button>`).join('')}</div><div class="row"><button class="btn primary" type="submit" data-go>${tr('ui.check')}</button><button class="btn" data-undo type="button">${tr('ui.undo')}</button><button class="btn" data-skip type="button">${tr('ui.skip')}</button></div></form>`;
     }else if(q.type==='match'){
       S.mm={sel:null,done:0,miss:0};
       const L=shuffle(q.pairs),Rr=shuffle(q.pairs);
       a='<div class="match"><div class="col">'+L.map(p=>`<button type="button" class="mbtn kana" data-side="k" data-v="${esc(p.k)}">${esc(p.k)}</button>`).join('')+'</div><div class="col">'+Rr.map(p=>`<button type="button" class="mbtn" data-side="r" data-v="${esc(p.r)}">${esc(p.r)}</button>`).join('')+'</div></div>';
     }
     q$('[data-answer]').innerHTML=a;
-    if(q.type==='compose')paintCompose();
+    if(q.tiles)paintCompose();
     q$('[data-fb]').innerHTML='';
     const inp=q$('[data-ans]');if(inp)inp.focus({preventScroll:true});
   }
@@ -135,7 +135,7 @@ export function mountQuiz(root,opts){
   function paintCompose(){
     const q=cur(),pl=S.cp.placed;
     let h='';
-    for(let i=0;i<q.slotN;i++)h+=i<pl.length?`<button type="button" class="slot full" data-slot="${i}">${esc(q.tiles[pl[i]])}</button>`:'<span class="slot"></span>';
+    for(let i=0;i<q.slotN;i++)h+=i<pl.length?`<button type="button" class="slot full${q.wide?' w':''}" data-slot="${i}">${esc(q.tiles[pl[i]])}</button>`:`<span class="slot${q.wide?' w':''}"></span>`;
     q$('[data-slots]').innerHTML=h;
     root.querySelectorAll('[data-tile]').forEach(b=>{b.disabled=pl.includes(Number(b.dataset.tile))});
     q$('[data-go]').disabled=pl.length<q.slotN;
@@ -175,7 +175,7 @@ export function mountQuiz(root,opts){
     else if(b.hasAttribute('data-tile')&&!S.locked){const q=cur();if(S.cp.placed.length<q.slotN){S.cp.placed.push(Number(b.dataset.tile));paintCompose()}}
     else if(b.hasAttribute('data-slot')&&!S.locked){S.cp.placed.splice(Number(b.dataset.slot),1);paintCompose()}
     else if(b.hasAttribute('data-undo')&&!S.locked){S.cp.placed.pop();paintCompose()}
-    else if(b.hasAttribute('data-skip')&&!S.locked){cur().type==='compose'?submitCompose(true):submitTyped(true)}
+    else if(b.hasAttribute('data-skip')&&!S.locked){cur().tiles?submitCompose(true):submitTyped(true)}
     else if(b.hasAttribute('data-next'))next();
     else if(b.dataset.a){
       const a=b.dataset.a;
@@ -184,12 +184,12 @@ export function mountQuiz(root,opts){
       else if(a.startsWith('x:'))opts.onAction&&opts.onAction(a.slice(2));
     }
   },sig);
-  root.addEventListener('submit',e=>{e.preventDefault();if(!S)return;if(S.locked){next();return}cur().type==='compose'?submitCompose(false):submitTyped(false)},sig);
+  root.addEventListener('submit',e=>{e.preventDefault();if(!S)return;if(S.locked){next();return}cur().tiles?submitCompose(false):submitTyped(false)},sig);
   document.addEventListener('keydown',e=>{
     if(!S||!root.isConnected||q$('[data-play]')==null||q$('[data-play]').hidden)return;
     const q=cur();if(!q)return;
     if(e.key==='Enter'&&S.locked){e.preventDefault();next();return}
-    if(e.key==='Backspace'&&!S.locked&&q.type==='compose'){e.preventDefault();S.cp.placed.pop();paintCompose();return}
+    if(e.key==='Backspace'&&!S.locked&&q.tiles){e.preventDefault();S.cp.placed.pop();paintCompose();return}
     if(!S.locked&&CHOICE.has(q.type)&&/^[1-4]$/.test(e.key)){
       const b=root.querySelectorAll('[data-answer] .opt')[Number(e.key)-1];
       if(b)choose(b.dataset.v);

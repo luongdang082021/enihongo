@@ -62,8 +62,8 @@ if(data){
     const [{buildLesson},{mountQuiz}]=await Promise.all([import('./quiz-core.js'),import('./quiz-ui.js')]);
     box.innerHTML='';
     q=mountQuiz(box,{
-      questions:buildLesson(data.chars||[],plan,data.words),title:tr('l.miniTitle'),quitLabel:tr('ui.quit'),
-      rebuild:()=>buildLesson(data.chars||[],plan,data.words),
+      questions:buildLesson(data.chars||[],plan,data.words,data.sents),title:tr('l.miniTitle'),quitLabel:tr('ui.quit'),
+      rebuild:()=>buildLesson(data.chars||[],plan,data.words,data.sents),
       onFinish:res=>{
         if(res.review)return {};
         saveQuizScore(id,res.score,res.stars);
@@ -86,7 +86,7 @@ root.querySelectorAll('.char[data-char]').forEach(el=>{
   tools.insertAdjacentHTML('beforeend',`<button type="button" class="mini" data-sound="${esc(k)}" hidden>Nghe</button>`);
   el.appendChild(tools);
 });
-root.querySelectorAll('.words li[data-say]').forEach(li=>{
+root.querySelectorAll('.words li[data-say], .sents li[data-say]').forEach(li=>{
   li.insertAdjacentHTML('beforeend',`<button type="button" class="mini" data-sound="${esc(li.dataset.say)}" hidden>Nghe</button>`);
 });
 speakOk.then(ok=>{if(ok)root.querySelectorAll('[data-sound]').forEach(b=>{b.hidden=false})});

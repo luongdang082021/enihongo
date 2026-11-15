@@ -28,6 +28,13 @@ Tên file giữ nguyên `hiragana-dojo-spec.md` để các liên kết cũ khôn
 | fill | Điền chữ thiếu | Điền っ/ッ hoặc nguyên âm kéo dài còn thiếu |
 | mora | Đếm nhịp | Đếm số nhịp; đáp án nhiễu gồm cả số ký tự (bẫy với âm ghép) |
 | compose | Soạn từ bằng ô chữ | Thấy romaji (và nghĩa), chạm các ô chữ theo đúng thứ tự để viết từ |
+| wk2m | Từ → nghĩa | Thấy từ kana, chọn nghĩa đúng (D-022, khóa có nghĩa từ) |
+| wm2k | Nghĩa → từ | Thấy nghĩa, chọn từ kana đúng |
+| order | Sắp xếp câu | Thấy nghĩa của câu, chạm các từ theo đúng thứ tự (dùng chung giao diện ô chữ, ô rộng; có thể có một trợ từ thừa) |
+| particle | Điền trợ từ | Câu bị khuyết một trợ từ (は が を に で へ と も の か), chọn 1 trong 4 |
+| sk2m | Câu → nghĩa | Thấy câu kana và romaji, chọn nghĩa đúng (cần từ 4 câu trở lên) |
+
+Câu hỏi nhắc lại của câu (`src.s`) chuyển giữa `order`, `particle`, `sk2m`; của từ có thêm `wk2m`, `wm2k`.
 
 Đã bỏ dạng `voice` (thêm hoặc bỏ dấu ゛ ゜) vì quá đơn giản (D-021). Các bài đục âm trong khóa dùng `compose` thay thế.
 

@@ -45,6 +45,15 @@ script: /js/lesson.js
   </section>
   {% endif %}
 
+  {% if sents %}
+  <section aria-labelledby="h-sents">
+    <h2 id="h-sents">{{ t.lesson.sentsH }}</h2>
+    <ul class="sents">
+      {% for s in sents %}<li data-say="{{ s.t | join('') }}"><span class="sk">{{ s.t | join('') }}</span><span class="sr">{{ s.r }}</span><span class="sv">{{ s.en if lang == 'en' else s.vi }}</span></li>{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
   {% if chars %}
   <section aria-labelledby="h-flash">
     <h2 id="h-flash">{{ t.lesson.flashH }}</h2>
@@ -77,4 +86,4 @@ script: /js/lesson.js
     {% endif %}
   </nav>
 </article>
-{% if qplan %}<script type="application/json" id="lesson-data">{{ { id: lessonId, chars: chars, words: words, plan: qplan } | dump | safe }}</script>{% endif %}
+{% if qplan %}<script type="application/json" id="lesson-data">{{ { id: lessonId, chars: chars, words: words, sents: sents, plan: qplan } | dump | safe }}</script>{% endif %}
