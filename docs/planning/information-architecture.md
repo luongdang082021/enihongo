@@ -29,7 +29,7 @@ Mã nguồn các trang nằm trong `src/` (Eleventy). Trang chủ là `src/index
 |---|---|---|
 | Nhập môn Hiragana | Mở | 14 bài, xem dàn bài |
 | Katakana | Đang mở (12 bài, `/khoa-hoc/katakana/`, `/en/courses/katakana/`) | Đã phát hành 2026-11-06 |
-| Ngữ pháp và từ vựng sơ cấp (N5) | Sắp ra mắt | Nội dung tự biên soạn |
+| Sơ cấp 1 (A1) | Đang mở (18 bài, `/khoa-hoc/so-cap-1/`, `/en/courses/so-cap-1/`) | D-022, nội dung tự biên soạn, chỉ kana |
 | Kanji cơ bản | Sắp ra mắt | |
 | Giao tiếp và luyện JFT-Basic | Sắp ra mắt | |
 | Luyện nghe | Sắp ra mắt | Cần giải pháp âm thanh nhẹ |

@@ -35,13 +35,21 @@
     "description": "Khóa học Katakana miễn phí cho người Việt: 12 bài ngắn từ ア イ ウ エ オ đến dấu ー, ッ và các âm mở rộng để đọc từ mượn."
   },
   {
-    "id": "n5",
-    "name": "Ngữ pháp và từ vựng sơ cấp (N5)",
-    "status": "soon",
-    "blurb": "Câu cơ bản và từ vựng thường gặp.",
+    "id": "so-cap-1",
+    "name": "Sơ cấp 1 (A1)",
+    "status": "open",
+    "blurb": "Tự giới thiệu, đồ vật, gia đình, mua sắm, ăn uống, giờ giấc và đi lại bằng những câu đơn giản.",
+    "meta": "18 bài · khoảng 15 phút mỗi bài",
+    "prereq": "katakana",
+    "enLessons": true,
+    "lede": "Mười tám chủ đề quen thuộc của cuộc sống hằng ngày. Mỗi bài có từ vựng, mẫu câu và bài tập tương tác, chỉ dùng chữ kana.",
+    "description": "Khóa học tiếng Nhật sơ cấp 1 cho người Việt: 18 bài theo chủ đề từ chào hỏi, gia đình, mua sắm đến giờ giấc và đi lại, có mẫu câu và bài tập tương tác.",
     "en": {
-      "name": "Elementary grammar and vocabulary (N5)",
-      "blurb": "Basic sentences and common vocabulary."
+      "name": "Elementary 1 (A1)",
+      "blurb": "Introductions, objects, family, shopping, food, time and getting around, in simple sentences.",
+      "meta": "18 lessons · about 15 minutes each",
+      "lede": "Eighteen everyday topics. Every lesson has vocabulary, sentence patterns and interactive exercises, written in kana only.",
+      "description": "A free elementary Japanese course for Vietnamese speakers: 18 topic lessons from greetings, family and shopping to time and transport, with sentence patterns and interactive exercises."
     }
   },
   {

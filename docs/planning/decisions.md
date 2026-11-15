@@ -29,6 +29,7 @@ Quy ước: không sửa quyết định cũ; nếu đổi hướng thì thêm d
 | D-019 | 2026-11-06 | Người duyệt bản tiếng Anh (và duyệt nội dung bài nói chung): Claude có toàn quyền kiểm duyệt, kiểm tra bằng công cụ trong repo | Đã chốt (2026-11-06) |
 | D-020 | 2026-11-06 | Tra IP bằng dịch vụ ngoài để xác định nước | Hoãn (pending), xác nhận 2026-11-06 |
 | D-021 | 2026-11-13 | Dojo chỉ còn chế độ chọn khóa, bỏ 5 hiệp Hiragana cố định. Bỏ dạng câu thêm/bỏ dấu ゛ ゜; thêm dạng soạn từ bằng ô chữ (romaji → kana). Dạng câu chọn ngẫu nhiên theo trọng số; câu sai được hỏi lại ở dạng khác (tối đa 2 lần, không tính sao); chữ hay sai được ưu tiên ở lượt sau. Thêm kho từ vựng bổ sung tự biên soạn cho từng khóa | Đã chốt (2026-11-13), xem [`../product/hiragana-dojo-spec.md`](../product/hiragana-dojo-spec.md) |
+| D-022 | 2026-11-15 | Khóa "Sơ cấp 1 (A1)" (`so-cap-1`, 18 bài) đi theo **luồng chủ đề** của giáo trình A1 do người dùng cung cấp (chào hỏi, giới thiệu, lớp học, gia đình, mua sắm, ăn uống, nhà cửa, giờ giấc, đi lại, sở thích, thời tiết, ôn tập). Chỉ theo thứ tự chủ đề; **từ vựng được chọn lại, câu, hội thoại, lời giải thích, bài tập đều tự viết**, không chép câu, hội thoại, nghĩa hay hình ảnh từ sách. Thay thế phần "không dùng thứ tự bài" của D-015 và nguyên tắc 1 trong `curriculum.md`; giữ nguyên D-004. Chỉ dùng kana (chưa có kanji). Thêm 5 dạng bài tập: nghĩa từ, nghĩa → từ, sắp xếp câu, điền trợ từ, nghĩa câu | Đã chốt (2026-11-15, theo yêu cầu người dùng) |
 
 ## Ghi chú cho D-002
 

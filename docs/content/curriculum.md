@@ -6,7 +6,7 @@ Trạng thái: nháp kế hoạch. D-015 đến D-017 hoãn; ưu tiên thấp h�
 
 ## Nguyên tắc
 
-1. **Tự biên soạn** (D-004): câu ví dụ, hội thoại, bài tập, thứ tự giảng và mẹo nhớ đều do dự án viết. Không sao chép hay phỏng theo sát giáo trình in như Minna no Nihongo, Genki, Marugoto, Tobira, Nihongo Sou Matome. Có thể tham khảo để so sánh phạm vi, nhưng không dùng lại câu, hội thoại, thứ tự bài hay cách đặt tên bài.
+1. **Tự biên soạn** (D-004): câu ví dụ, hội thoại, bài tập, thứ tự giảng và mẹo nhớ đều do dự án viết. Không sao chép hay phỏng theo sát giáo trình in như Minna no Nihongo, Genki, Marugoto, Tobira, Nihongo Sou Matome. Có thể tham khảo để so sánh phạm vi. Từ D-022 (2026-11-15), riêng khóa Sơ cấp 1 được đi theo **luồng chủ đề** của một giáo trình A1; câu, hội thoại, từ vựng được chọn, lời giải thích, bài tập và cách đặt tên bài vẫn phải tự viết.
 2. **Bám khung công khai**, không bám sách: dùng mục tiêu "làm được gì" (can-do) của JF Standard và CEFR để chọn nội dung và chủ đề. Khung này công khai và dùng để thiết kế chương trình.
 3. **Dành cho người Việt**: giải thích bằng tiếng Việt, tận dụng từ Hán Việt khi học kanji và từ vựng Hán ngữ, nêu rõ chỗ người Việt hay sai (âm や/ら, trường âm, âm ngắt, trợ từ).
 4. **Học ngắn, nhớ lâu**: mỗi bài khoảng 10 phút, có ôn ngắt quãng và kiểm tra cuối bài; mọi bài có thể luyện lại trong Dojo.
@@ -20,7 +20,7 @@ Bảng đối chiếu để định hướng nội dung, không phải cam kết
 |---|---|---|---|
 | Nhập môn Hiragana | Điều kiện đầu vào cho A1 | Cần thiết cho mọi bài thi | Đã mở (13 bài) |
 | Katakana | Điều kiện đầu vào cho A1 | Cần thiết cho mọi bài thi | Có kế hoạch ([`../planning/katakana-plan.md`](../planning/katakana-plan.md)) |
-| Tiếng Nhật sơ cấp 1 | CEFR A1 | JLPT N5, JFT-Basic mức A1 | Chưa bắt đầu |
+| Tiếng Nhật sơ cấp 1 | CEFR A1 | JLPT N5, JFT-Basic mức A1 | Đã mở (18 bài, kana, D-022) |
 | Tiếng Nhật sơ cấp 2 | CEFR A2 | JLPT N4, JFT-Basic mức A2 | Chưa bắt đầu |
 | Kanji cơ bản | Hỗ trợ A1 đến A2 | JLPT N5, N4 | Chưa bắt đầu |
 | Giao tiếp và luyện JFT-Basic | A1 đến A2 | JFT-Basic | Chưa bắt đầu |

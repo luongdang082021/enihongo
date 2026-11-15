@@ -1,0 +1,5 @@
+{
+  "layout": "layouts/lesson.njk",
+  "tags": "elemLesson",
+  "course": "so-cap-1"
+}

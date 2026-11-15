@@ -22,5 +22,9 @@
   "katakana": {
     "vi": "/khoa-hoc/katakana/",
     "en": "/en/courses/katakana/"
+  },
+  "so-cap-1": {
+    "vi": "/khoa-hoc/so-cap-1/",
+    "en": "/en/courses/so-cap-1/"
   }
 }

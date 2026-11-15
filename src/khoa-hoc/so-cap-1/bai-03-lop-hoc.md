@@ -1,0 +1,53 @@
+---
+title: "Lớp học và đồ dùng"
+lessonId: so-cap-1-03
+n: 3
+minutes: 15
+status: published
+writing: kana
+qcount: 13
+qplan: {wk2m: 2, wm2k: 2, wk2r: 1, wtype: 1, compose: 1, order: 3, sk2m: 1, particle: 2}
+objectives:
+  - "Gọi tên đồ dùng trong lớp"
+  - "Phân biệt これ, それ, あれ"
+  - "Hỏi và trả lời \"đây là cái gì\""
+wordsH: "Từ vựng"
+words:
+  - { kana: "きょうしつ", romaji: "kyoushitsu", vi: "lớp học", en: "classroom" }
+  - { kana: "つくえ", romaji: "tsukue", vi: "bàn học", en: "desk" }
+  - { kana: "いす", romaji: "isu", vi: "ghế", en: "chair" }
+  - { kana: "ほん", romaji: "hon", vi: "sách", en: "book" }
+  - { kana: "ノート", romaji: "nooto", vi: "vở", en: "notebook" }
+  - { kana: "えんぴつ", romaji: "enpitsu", vi: "bút chì", en: "pencil" }
+  - { kana: "ペン", romaji: "pen", vi: "bút", en: "pen" }
+  - { kana: "けしゴム", romaji: "keshigomu", vi: "cục tẩy", en: "eraser" }
+  - { kana: "かばん", romaji: "kaban", vi: "cặp, túi", en: "bag" }
+  - { kana: "じしょ", romaji: "jisho", vi: "từ điển", en: "dictionary" }
+  - { kana: "とけい", romaji: "tokei", vi: "đồng hồ", en: "clock, watch" }
+  - { kana: "これ", romaji: "kore", vi: "cái này (gần tôi)", en: "this (near me)" }
+  - { kana: "それ", romaji: "sore", vi: "cái đó (gần bạn)", en: "that (near you)" }
+  - { kana: "あれ", romaji: "are", vi: "cái kia (xa cả hai)", en: "that over there" }
+  - { kana: "なん", romaji: "nan", vi: "cái gì", en: "what" }
+sents:
+  - { t: ["これ","は","ほん","です"], r: "kore wa hon desu", vi: "Đây là quyển sách", en: "This is a book" }
+  - { t: ["それ","は","えんぴつ","です"], r: "sore wa enpitsu desu", vi: "Đó là cây bút chì", en: "That is a pencil" }
+  - { t: ["あれ","は","とけい","です"], r: "are wa tokei desu", vi: "Kia là cái đồng hồ", en: "That over there is a clock" }
+  - { t: ["これ","は","なん","です","か"], r: "kore wa nan desu ka", vi: "Đây là cái gì?", en: "What is this?" }
+  - { t: ["これ","は","ノート","じゃ","ありません"], r: "kore wa nooto ja arimasen", vi: "Đây không phải vở", en: "This is not a notebook" }
+  - { t: ["それ","は","わたし","の","かばん","です"], r: "sore wa watashi no kaban desu", vi: "Đó là cặp của tôi", en: "That is my bag" }
+---
+## Ba từ chỉ vị trí
+
+- **これ**: vật gần người nói.
+- **それ**: vật gần người nghe.
+- **あれ**: vật xa cả hai người.
+
+Khi bạn hỏi "これは なんですか", người kia trả lời bằng **それ**, vì với họ vật đó ở gần bạn nhưng với bạn thì nó là "cái này". Hãy để ý vị trí của vật.
+
+## Phủ định
+
+Muốn nói "không phải", đổi **です** thành **じゃ ありません**: これは ノートじゃ ありません.
+
+## Trợ từ の
+
+**A の B** nghĩa là B của A: わたしの かばん (cặp của tôi).
