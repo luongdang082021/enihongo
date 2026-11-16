@@ -7,7 +7,7 @@ bad=[]
 with sync_playwright() as pw:
     br=pw.chromium.launch()
     for tz,pre,slug,lessons in [('Asia/Ho_Chi_Minh','','/khoa-hoc/hiragana/',['bai-02-hang-a','bai-08-am-duc','bai-10-truong-am','bai-12-nhung-tu-dau-tien','bai-13-on-tap']),('America/New_York','/en','/en/courses/hiragana/',['lesson-02-a-row','lesson-08-voiced-sounds','lesson-10-long-vowels','lesson-12-first-words','lesson-13-review']),('Asia/Ho_Chi_Minh','','/khoa-hoc/katakana/',['bai-03-hang-ka-sa','bai-10-am-ghep-truong-am','bai-11-am-ngat-mo-rong','bai-12-on-tap']),('America/New_York','/en','/en/courses/katakana/',['lesson-03-ka-sa-rows','lesson-10-combined-and-long','lesson-11-small-tsu-extended','lesson-12-review']),('Asia/Ho_Chi_Minh','','/khoa-hoc/so-cap-1/',['bai-01-chao-hoi','bai-03-lop-hoc','bai-10-nha-cua','bai-18-on-tap']),('America/New_York','/en','/en/courses/so-cap-1/',['lesson-01-greetings','lesson-03-classroom','lesson-10-house','lesson-18-review'])]:
-        ctx=br.new_context(timezone_id=tz,locale='en-US'); pg=ctx.new_page()
+        ctx=br.new_context(timezone_id=tz,locale='en-US'); pg=ctx.new_page(); pg.set_default_timeout(4000); ctx.route('**/*cloudflare*',lambda r:r.abort())
         errs=[]; pg.on('pageerror',lambda e:errs.append(str(e))); pg.on('console',lambda m:errs.append(m.text) if m.type=='error' else None)
         for l in lessons:
             pg.goto(BASE+slug+l+'/')
@@ -29,17 +29,10 @@ with sync_playwright() as pw:
                 elif pg.locator('.typeform input').count():
                     pg.locator('.typeform input').fill('a'); pg.locator('.typeform button[type=submit]').click()
                 else:
-                    # match: click each left/right in order
-                    for _ in range(12):
-                        cols=pg.locator('.match .col')
-                        if cols.count()<2: break
-                        left=cols.nth(0).locator('.mbtn:not(.done)'); 
-                        if left.count()==0: break
-                        left.first.click()
-                        r=cols.nth(1).locator('.mbtn:not(.done)')
-                        for i in range(r.count()):
-                            r.nth(i).click()
-                            if left.count()==0 or not pg.locator('.mbtn.sel').count(): break
+                    # match: ghép bằng JS (nhanh), mỗi bên trái thử lần lượt các bên phải
+                    pg.evaluate('''()=>{const c=document.querySelectorAll('.match .col');if(c.length<2)return;
+                      for(const L of c[0].querySelectorAll('.mbtn')){if(L.classList.contains('done'))continue;
+                        for(const R of c[1].querySelectorAll('.mbtn')){if(R.classList.contains('done'))continue;L.click();R.click();if(L.classList.contains('done'))break}}}''')
                 pg.keyboard.press('Enter')
                 pg.wait_for_timeout(30)
             txt=pg.inner_text('main')
