@@ -27,6 +27,35 @@ words:
   - { kana: "くつ", romaji: "kutsu", vi: "giày", en: "shoes" }
   - { kana: "かさ", romaji: "kasa", vi: "ô, dù", en: "umbrella" }
   - { kana: "おかね", romaji: "okane", vi: "tiền", en: "money" }
+  - { kana: "ねだん", romaji: "nedan", vi: "giá cả", en: "price" }
+  - { kana: "セール", romaji: "seeru", vi: "giảm giá", en: "sale" }
+  - { kana: "ちいさい", romaji: "chiisai", vi: "nhỏ", en: "small" }
+  - { kana: "おおきい", romaji: "ookii", vi: "to, lớn", en: "big" }
+  - { kana: "あたらしい", romaji: "atarashii", vi: "mới", en: "new" }
+  - { kana: "ふるい", romaji: "furui", vi: "cũ", en: "old (thing)" }
+  - { kana: "わるい", romaji: "warui", vi: "xấu, tệ", en: "bad" }
+  - { kana: "ほしい", romaji: "hoshii", vi: "muốn có", en: "want" }
+  - { kana: "うりば", romaji: "uriba", vi: "quầy bán", en: "sales floor" }
+  - { kana: "レジ", romaji: "reji", vi: "quầy thu ngân", en: "cash register" }
+  - { kana: "ふくろ", romaji: "fukuro", vi: "túi (đựng hàng)", en: "bag (shopping)" }
+  - { kana: "おつり", romaji: "otsuri", vi: "tiền thừa", en: "change" }
+  - { kana: "クレジットカード", romaji: "kurejittokaado", vi: "thẻ tín dụng", en: "credit card" }
+  - { kana: "げんきん", romaji: "genkin", vi: "tiền mặt", en: "cash" }
+  - { kana: "ふく", romaji: "fuku", vi: "quần áo", en: "clothes" }
+  - { kana: "ぼうし", romaji: "boushi", vi: "mũ", en: "hat" }
+  - { kana: "めがね", romaji: "megane", vi: "kính mắt", en: "glasses" }
+  - { kana: "くつした", romaji: "kutsushita", vi: "tất", en: "socks" }
+  - { kana: "ズボン", romaji: "zubon", vi: "quần dài", en: "trousers" }
+  - { kana: "スカート", romaji: "sukaato", vi: "váy", en: "skirt" }
+  - { kana: "コート", romaji: "kooto", vi: "áo khoác", en: "coat" }
+  - { kana: "サイズ", romaji: "saizu", vi: "cỡ, kích thước", en: "size" }
+  - { kana: "いろ", romaji: "iro", vi: "màu sắc", en: "color" }
+  - { kana: "あか", romaji: "aka", vi: "màu đỏ", en: "red" }
+  - { kana: "あお", romaji: "ao", vi: "màu xanh dương", en: "blue" }
+  - { kana: "しろ", romaji: "shiro", vi: "màu trắng", en: "white" }
+  - { kana: "くろ", romaji: "kuro", vi: "màu đen", en: "black" }
+  - { kana: "きいろ", romaji: "kiiro", vi: "màu vàng", en: "yellow" }
+  - { kana: "みどり", romaji: "midori", vi: "màu xanh lá", en: "green" }
 sents:
   - { t: ["この","ほん","は","いくら","です","か"], r: "kono hon wa ikura desu ka", vi: "Quyển sách này bao nhiêu tiền?", en: "How much is this book?" }
   - { t: ["これ","を","ください"], r: "kore o kudasai", vi: "Cho tôi cái này", en: "Please give me this" }

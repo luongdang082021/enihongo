@@ -28,6 +28,48 @@ words:
   - { kana: "たんじょうび", romaji: "tanjoubi", vi: "sinh nhật", en: "birthday" }
   - { kana: "しゅうまつ", romaji: "shuumatsu", vi: "cuối tuần", en: "weekend" }
   - { kana: "あいます", romaji: "aimasu", vi: "gặp", en: "meet" }
+  - { kana: "ひ", romaji: "hi", vi: "ngày", en: "day" }
+  - { kana: "しゅう", romaji: "shuu", vi: "tuần", en: "week" }
+  - { kana: "こんしゅう", romaji: "konshuu", vi: "tuần này", en: "this week" }
+  - { kana: "せんしゅう", romaji: "senshuu", vi: "tuần trước", en: "last week" }
+  - { kana: "らいしゅう", romaji: "raishuu", vi: "tuần sau", en: "next week" }
+  - { kana: "まいしゅう", romaji: "maishuu", vi: "mỗi tuần", en: "every week" }
+  - { kana: "こんげつ", romaji: "kongetsu", vi: "tháng này", en: "this month" }
+  - { kana: "せんげつ", romaji: "sengetsu", vi: "tháng trước", en: "last month" }
+  - { kana: "らいげつ", romaji: "raigetsu", vi: "tháng sau", en: "next month" }
+  - { kana: "まいつき", romaji: "maitsuki", vi: "mỗi tháng", en: "every month" }
+  - { kana: "ことし", romaji: "kotoshi", vi: "năm nay", en: "this year" }
+  - { kana: "きょねん", romaji: "kyonen", vi: "năm ngoái", en: "last year" }
+  - { kana: "らいねん", romaji: "rainen", vi: "năm sau", en: "next year" }
+  - { kana: "まいとし", romaji: "maitoshi", vi: "mỗi năm", en: "every year" }
+  - { kana: "おととい", romaji: "ototoi", vi: "hôm kia", en: "the day before yesterday" }
+  - { kana: "あさって", romaji: "asatte", vi: "ngày kia", en: "the day after tomorrow" }
+  - { kana: "いちがつ", romaji: "ichigatsu", vi: "tháng một", en: "January" }
+  - { kana: "にがつ", romaji: "nigatsu", vi: "tháng hai", en: "February" }
+  - { kana: "さんがつ", romaji: "sangatsu", vi: "tháng ba", en: "March" }
+  - { kana: "しがつ", romaji: "shigatsu", vi: "tháng tư", en: "April" }
+  - { kana: "ごがつ", romaji: "gogatsu", vi: "tháng năm", en: "May" }
+  - { kana: "ろくがつ", romaji: "rokugatsu", vi: "tháng sáu", en: "June" }
+  - { kana: "しちがつ", romaji: "shichigatsu", vi: "tháng bảy", en: "July" }
+  - { kana: "はちがつ", romaji: "hachigatsu", vi: "tháng tám", en: "August" }
+  - { kana: "くがつ", romaji: "kugatsu", vi: "tháng chín", en: "September" }
+  - { kana: "じゅうがつ", romaji: "juugatsu", vi: "tháng mười", en: "October" }
+  - { kana: "じゅういちがつ", romaji: "juuichigatsu", vi: "tháng mười một", en: "November" }
+  - { kana: "じゅうにがつ", romaji: "juunigatsu", vi: "tháng mười hai", en: "December" }
+  - { kana: "なんがつ", romaji: "nangatsu", vi: "tháng mấy", en: "which month" }
+  - { kana: "ついたち", romaji: "tsuitachi", vi: "mùng một", en: "the 1st" }
+  - { kana: "ふつか", romaji: "futsuka", vi: "mùng hai", en: "the 2nd" }
+  - { kana: "みっか", romaji: "mikka", vi: "mùng ba", en: "the 3rd" }
+  - { kana: "よっか", romaji: "yokka", vi: "mùng bốn", en: "the 4th" }
+  - { kana: "いつか", romaji: "itsuka", vi: "mùng năm", en: "the 5th" }
+  - { kana: "むいか", romaji: "muika", vi: "mùng sáu", en: "the 6th" }
+  - { kana: "なのか", romaji: "nanoka", vi: "mùng bảy", en: "the 7th" }
+  - { kana: "ようか", romaji: "youka", vi: "mùng tám", en: "the 8th" }
+  - { kana: "ここのか", romaji: "kokonoka", vi: "mùng chín", en: "the 9th" }
+  - { kana: "とおか", romaji: "tooka", vi: "mùng mười", en: "the 10th" }
+  - { kana: "はつか", romaji: "hatsuka", vi: "ngày hai mươi", en: "the 20th" }
+  - { kana: "なんにち", romaji: "nannichi", vi: "ngày mấy", en: "which day" }
+  - { kana: "カレンダー", romaji: "karendaa", vi: "lịch", en: "calendar" }
 sents:
   - { t: ["きょう","は","なんようび","です","か"], r: "kyou wa nanyoubi desu ka", vi: "Hôm nay là thứ mấy?", en: "What day is it today?" }
   - { t: ["きょう","は","きんようび","です"], r: "kyou wa kinyoubi desu", vi: "Hôm nay là thứ sáu", en: "Today is Friday" }

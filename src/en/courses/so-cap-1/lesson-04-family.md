@@ -27,6 +27,31 @@ words:
   - { kana: "こども", romaji: "kodomo", vi: "con, trẻ em", en: "child" }
   - { kana: "りょうしん", romaji: "ryoushin", vi: "bố mẹ", en: "parents" }
   - { kana: "ひと", romaji: "hito", vi: "người", en: "person" }
+  - { kana: "そふ", romaji: "sofu", vi: "ông (của mình)", en: "my grandfather" }
+  - { kana: "そぼ", romaji: "sobo", vi: "bà (của mình)", en: "my grandmother" }
+  - { kana: "おじいさん", romaji: "ojiisan", vi: "ông, ông lão", en: "grandfather, old man" }
+  - { kana: "おばあさん", romaji: "obaasan", vi: "bà, bà lão", en: "grandmother, old woman" }
+  - { kana: "おじ", romaji: "oji", vi: "chú, bác (của mình)", en: "my uncle" }
+  - { kana: "おば", romaji: "oba", vi: "cô, dì (của mình)", en: "my aunt" }
+  - { kana: "いとこ", romaji: "itoko", vi: "anh chị em họ", en: "cousin" }
+  - { kana: "きょうだい", romaji: "kyoudai", vi: "anh chị em ruột", en: "siblings" }
+  - { kana: "ふうふ", romaji: "fuufu", vi: "vợ chồng", en: "married couple" }
+  - { kana: "おっと", romaji: "otto", vi: "chồng (của mình)", en: "my husband" }
+  - { kana: "つま", romaji: "tsuma", vi: "vợ (của mình)", en: "my wife" }
+  - { kana: "ごしゅじん", romaji: "goshujin", vi: "chồng (của người khác)", en: "your husband" }
+  - { kana: "おくさん", romaji: "okusan", vi: "vợ (của người khác)", en: "your wife" }
+  - { kana: "むすこ", romaji: "musuko", vi: "con trai (của mình)", en: "my son" }
+  - { kana: "むすめ", romaji: "musume", vi: "con gái (của mình)", en: "my daughter" }
+  - { kana: "おとこのこ", romaji: "otokonoko", vi: "bé trai", en: "boy" }
+  - { kana: "おんなのこ", romaji: "onnanoko", vi: "bé gái", en: "girl" }
+  - { kana: "あかちゃん", romaji: "akachan", vi: "em bé", en: "baby" }
+  - { kana: "おとな", romaji: "otona", vi: "người lớn", en: "adult" }
+  - { kana: "ふたり", romaji: "futari", vi: "hai người", en: "two people" }
+  - { kana: "さんにん", romaji: "sannin", vi: "ba người", en: "three people" }
+  - { kana: "よにん", romaji: "yonin", vi: "bốn người", en: "four people" }
+  - { kana: "なんにん", romaji: "nannin", vi: "mấy người", en: "how many people" }
+  - { kana: "ごかぞく", romaji: "gokazoku", vi: "gia đình (của bạn)", en: "your family" }
+  - { kana: "ペット", romaji: "petto", vi: "thú cưng", en: "pet" }
 sents:
   - { t: ["これ","は","わたし","の","かぞく","です"], r: "kore wa watashi no kazoku desu", vi: "Đây là gia đình tôi", en: "This is my family" }
   - { t: ["わたし","の","はは","は","せんせい","です"], r: "watashi no haha wa sensei desu", vi: "Mẹ tôi là giáo viên", en: "My mother is a teacher" }

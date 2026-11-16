@@ -27,7 +27,35 @@ words:
   - { kana: "ひとり", romaji: "hitori", vi: "một mình", en: "alone" }
   - { kana: "いっしょに", romaji: "isshoni", vi: "cùng nhau", en: "together" }
   - { kana: "きます", romaji: "kimasu", vi: "đến", en: "come" }
-  - { kana: "いきます", romaji: "ikimasu", vi: "đi", en: "go" }
+  - { kana: "のりば", romaji: "noriba", vi: "bến, chỗ lên xe", en: "boarding point" }
+  - { kana: "きっぷ", romaji: "kippu", vi: "vé", en: "ticket" }
+  - { kana: "ていきけん", romaji: "teikiken", vi: "vé tháng", en: "commuter pass" }
+  - { kana: "かいさつ", romaji: "kaisatsu", vi: "cổng soát vé", en: "ticket gate" }
+  - { kana: "ホーム", romaji: "hoomu", vi: "sân ga", en: "platform" }
+  - { kana: "のりかえ", romaji: "norikae", vi: "chuyển tuyến", en: "transfer" }
+  - { kana: "でぐち", romaji: "deguchi", vi: "lối ra", en: "exit" }
+  - { kana: "いりぐち", romaji: "iriguchi", vi: "lối vào", en: "entrance" }
+  - { kana: "ちず", romaji: "chizu", vi: "bản đồ", en: "map" }
+  - { kana: "くうこう", romaji: "kuukou", vi: "sân bay", en: "airport" }
+  - { kana: "バスてい", romaji: "basutei", vi: "trạm xe buýt", en: "bus stop" }
+  - { kana: "しんかんせん", romaji: "shinkansen", vi: "tàu cao tốc shinkansen", en: "bullet train" }
+  - { kana: "ふね", romaji: "fune", vi: "tàu thuyền", en: "ship, boat" }
+  - { kana: "バイク", romaji: "baiku", vi: "xe máy", en: "motorbike" }
+  - { kana: "オートバイ", romaji: "ootobai", vi: "xe mô tô", en: "motorcycle" }
+  - { kana: "まっすぐ", romaji: "massugu", vi: "thẳng", en: "straight" }
+  - { kana: "こうさてん", romaji: "kousaten", vi: "ngã tư", en: "intersection" }
+  - { kana: "しんごう", romaji: "shingou", vi: "đèn giao thông", en: "traffic light" }
+  - { kana: "みち", romaji: "michi", vi: "con đường", en: "road" }
+  - { kana: "のります", romaji: "norimasu", vi: "lên (xe), đi (xe)", en: "get on, ride" }
+  - { kana: "おります", romaji: "orimasu", vi: "xuống (xe)", en: "get off" }
+  - { kana: "わたります", romaji: "watarimasu", vi: "băng qua", en: "cross" }
+  - { kana: "まがります", romaji: "magarimasu", vi: "rẽ", en: "turn" }
+  - { kana: "とまります", romaji: "tomarimasu", vi: "dừng", en: "stop" }
+  - { kana: "かかります", romaji: "kakarimasu", vi: "mất (thời gian, tiền)", en: "take (time, money)" }
+  - { kana: "どのくらい", romaji: "donokurai", vi: "khoảng bao lâu", en: "about how long" }
+  - { kana: "ちかい", romaji: "chikai", vi: "gần", en: "near" }
+  - { kana: "とおい", romaji: "tooi", vi: "xa", en: "far" }
+  - { kana: "うんてんします", romaji: "untenshimasu", vi: "lái xe", en: "drive" }
 sents:
   - { t: ["バス","で","がっこう","へ","いきます"], r: "basu de gakkou e ikimasu", vi: "Tôi đi học bằng xe buýt", en: "I go to school by bus" }
   - { t: ["でんしゃ","で","かいしゃ","へ","いきます"], r: "densha de kaisha e ikimasu", vi: "Tôi đi làm bằng tàu điện", en: "I go to work by train" }

@@ -25,9 +25,34 @@ words:
   - { kana: "ちかく", romaji: "chikaku", vi: "gần đây", en: "nearby" }
   - { kana: "かいます", romaji: "kaimasu", vi: "mua", en: "buy" }
   - { kana: "よみます", romaji: "yomimasu", vi: "đọc", en: "read" }
-  - { kana: "あそこ", romaji: "asoko", vi: "đằng kia", en: "over there" }
   - { kana: "となり", romaji: "tonari", vi: "bên cạnh", en: "next to" }
   - { kana: "まえ", romaji: "mae", vi: "phía trước", en: "in front of" }
+  - { kana: "やっきょく", romaji: "yakkyoku", vi: "hiệu thuốc", en: "pharmacy" }
+  - { kana: "えいがかん", romaji: "eigakan", vi: "rạp chiếu phim", en: "movie theater" }
+  - { kana: "きっさてん", romaji: "kissaten", vi: "quán cà phê", en: "coffee shop" }
+  - { kana: "パンや", romaji: "panya", vi: "tiệm bánh mì", en: "bakery" }
+  - { kana: "ほんや", romaji: "honya", vi: "hiệu sách", en: "bookstore" }
+  - { kana: "はなや", romaji: "hanaya", vi: "tiệm hoa", en: "flower shop" }
+  - { kana: "にくや", romaji: "nikuya", vi: "tiệm thịt", en: "butcher" }
+  - { kana: "さかなや", romaji: "sakanaya", vi: "tiệm cá", en: "fish shop" }
+  - { kana: "やおや", romaji: "yaoya", vi: "tiệm rau quả", en: "greengrocer" }
+  - { kana: "こうばん", romaji: "kouban", vi: "đồn công an nhỏ", en: "police box" }
+  - { kana: "しやくしょ", romaji: "shiyakusho", vi: "tòa thị chính", en: "city hall" }
+  - { kana: "はくぶつかん", romaji: "hakubutsukan", vi: "bảo tàng", en: "museum" }
+  - { kana: "びじゅつかん", romaji: "bijutsukan", vi: "bảo tàng mỹ thuật", en: "art museum" }
+  - { kana: "プール", romaji: "puuru", vi: "bể bơi", en: "swimming pool" }
+  - { kana: "ジム", romaji: "jimu", vi: "phòng gym", en: "gym" }
+  - { kana: "おてら", romaji: "otera", vi: "chùa", en: "temple" }
+  - { kana: "じんじゃ", romaji: "jinja", vi: "đền thần đạo", en: "shrine" }
+  - { kana: "おんせん", romaji: "onsen", vi: "suối nước nóng", en: "hot spring" }
+  - { kana: "うみ", romaji: "umi", vi: "biển", en: "sea" }
+  - { kana: "やま", romaji: "yama", vi: "núi", en: "mountain" }
+  - { kana: "かわ", romaji: "kawa", vi: "sông", en: "river" }
+  - { kana: "まち", romaji: "machi", vi: "thị trấn, phố", en: "town" }
+  - { kana: "いなか", romaji: "inaka", vi: "vùng quê", en: "countryside" }
+  - { kana: "とかい", romaji: "tokai", vi: "thành phố lớn", en: "big city" }
+  - { kana: "ビル", romaji: "biru", vi: "tòa nhà", en: "building" }
+  - { kana: "こうじょう", romaji: "koujou", vi: "nhà máy", en: "factory" }
 sents:
   - { t: ["ぎんこう","は","どこ","です","か"], r: "ginkou wa doko desu ka", vi: "Ngân hàng ở đâu?", en: "Where is the bank?" }
   - { t: ["えき","の","ちかく","に","コンビニ","が","あります"], r: "eki no chikaku ni konbini ga arimasu", vi: "Gần ga có cửa hàng tiện lợi", en: "There is a convenience store near the station" }

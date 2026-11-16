@@ -28,6 +28,32 @@ words:
   - { kana: "はん", romaji: "han", vi: "rưỡi", en: "half past" }
   - { kana: "ごぜん", romaji: "gozen", vi: "buổi sáng (a.m.)", en: "a.m." }
   - { kana: "ごご", romaji: "gogo", vi: "buổi chiều (p.m.)", en: "p.m." }
+  - { kana: "じゅういちじ", romaji: "juuichiji", vi: "mười một giờ", en: "eleven o'clock" }
+  - { kana: "じゅうにじ", romaji: "juuniji", vi: "mười hai giờ", en: "twelve o'clock" }
+  - { kana: "ふん", romaji: "fun", vi: "phút", en: "minute" }
+  - { kana: "いっぷん", romaji: "ippun", vi: "một phút", en: "one minute" }
+  - { kana: "にふん", romaji: "nifun", vi: "hai phút", en: "two minutes" }
+  - { kana: "さんぷん", romaji: "sanpun", vi: "ba phút", en: "three minutes" }
+  - { kana: "よんぷん", romaji: "yonpun", vi: "bốn phút", en: "four minutes" }
+  - { kana: "ごふん", romaji: "gofun", vi: "năm phút", en: "five minutes" }
+  - { kana: "ろっぷん", romaji: "roppun", vi: "sáu phút", en: "six minutes" }
+  - { kana: "ななふん", romaji: "nanafun", vi: "bảy phút", en: "seven minutes" }
+  - { kana: "はっぷん", romaji: "happun", vi: "tám phút", en: "eight minutes" }
+  - { kana: "きゅうふん", romaji: "kyuufun", vi: "chín phút", en: "nine minutes" }
+  - { kana: "じゅっぷん", romaji: "juppun", vi: "mười phút", en: "ten minutes" }
+  - { kana: "なんぷん", romaji: "nanpun", vi: "mấy phút", en: "how many minutes" }
+  - { kana: "ちょうど", romaji: "choudo", vi: "đúng, vừa đúng", en: "exactly" }
+  - { kana: "すぎ", romaji: "sugi", vi: "qua (giờ)", en: "past" }
+  - { kana: "けさ", romaji: "kesa", vi: "sáng nay", en: "this morning" }
+  - { kana: "ゆうがた", romaji: "yuugata", vi: "chiều tối", en: "early evening" }
+  - { kana: "ばん", romaji: "ban", vi: "buổi tối", en: "evening" }
+  - { kana: "こんばん", romaji: "konban", vi: "tối nay", en: "tonight" }
+  - { kana: "いつも", romaji: "itsumo", vi: "luôn luôn", en: "always" }
+  - { kana: "はやい", romaji: "hayai", vi: "sớm, nhanh", en: "early, fast" }
+  - { kana: "おそい", romaji: "osoi", vi: "muộn, chậm", en: "late, slow" }
+  - { kana: "かいぎ", romaji: "kaigi", vi: "cuộc họp", en: "meeting" }
+  - { kana: "ひるやすみ", romaji: "hiruyasumi", vi: "nghỉ trưa", en: "lunch break" }
+  - { kana: "ちこく", romaji: "chikoku", vi: "đi muộn", en: "being late" }
 sents:
   - { t: ["いま","なんじ","です","か"], r: "ima nanji desu ka", vi: "Bây giờ là mấy giờ?", en: "What time is it now?" }
   - { t: ["いま","さんじ","です"], r: "ima sanji desu", vi: "Bây giờ là ba giờ", en: "It is three o'clock" }

@@ -28,6 +28,38 @@ words:
   - { kana: "しゃいん", romaji: "shain", vi: "nhân viên", en: "employee" }
   - { kana: "どこ", romaji: "doko", vi: "ở đâu", en: "where" }
   - { kana: "おくに", romaji: "okuni", vi: "đất nước của bạn", en: "your country (polite)" }
+  - { kana: "インド", romaji: "indo", vi: "Ấn Độ", en: "India" }
+  - { kana: "インドネシア", romaji: "indoneshia", vi: "Indonesia", en: "Indonesia" }
+  - { kana: "フィリピン", romaji: "firipin", vi: "Philippines", en: "Philippines" }
+  - { kana: "マレーシア", romaji: "mareeshia", vi: "Malaysia", en: "Malaysia" }
+  - { kana: "シンガポール", romaji: "shingapooru", vi: "Singapore", en: "Singapore" }
+  - { kana: "カンボジア", romaji: "kanbojia", vi: "Campuchia", en: "Cambodia" }
+  - { kana: "ラオス", romaji: "raosu", vi: "Lào", en: "Laos" }
+  - { kana: "ミャンマー", romaji: "myanmaa", vi: "Myanmar", en: "Myanmar" }
+  - { kana: "ドイツ", romaji: "doitsu", vi: "Đức", en: "Germany" }
+  - { kana: "イギリス", romaji: "igirisu", vi: "Anh", en: "United Kingdom" }
+  - { kana: "ロシア", romaji: "roshia", vi: "Nga", en: "Russia" }
+  - { kana: "オーストラリア", romaji: "oosutoraria", vi: "Úc", en: "Australia" }
+  - { kana: "カナダ", romaji: "kanada", vi: "Canada", en: "Canada" }
+  - { kana: "ブラジル", romaji: "burajiru", vi: "Brazil", en: "Brazil" }
+  - { kana: "ハノイ", romaji: "hanoi", vi: "Hà Nội", en: "Hanoi" }
+  - { kana: "ホーチミン", romaji: "hoochimin", vi: "Hồ Chí Minh", en: "Ho Chi Minh City" }
+  - { kana: "とうきょう", romaji: "toukyou", vi: "Tokyo", en: "Tokyo" }
+  - { kana: "おおさか", romaji: "oosaka", vi: "Osaka", en: "Osaka" }
+  - { kana: "べんごし", romaji: "bengoshi", vi: "luật sư", en: "lawyer" }
+  - { kana: "けいさつかん", romaji: "keisatsukan", vi: "cảnh sát", en: "police officer" }
+  - { kana: "コック", romaji: "kokku", vi: "đầu bếp", en: "cook" }
+  - { kana: "プログラマー", romaji: "puroguramaa", vi: "lập trình viên", en: "programmer" }
+  - { kana: "デザイナー", romaji: "dezainaa", vi: "nhà thiết kế", en: "designer" }
+  - { kana: "かしゅ", romaji: "kashu", vi: "ca sĩ", en: "singer" }
+  - { kana: "せんしゅ", romaji: "senshu", vi: "vận động viên", en: "athlete" }
+  - { kana: "てんいん", romaji: "tenin", vi: "nhân viên cửa hàng", en: "shop clerk" }
+  - { kana: "ぎんこういん", romaji: "ginkouin", vi: "nhân viên ngân hàng", en: "bank clerk" }
+  - { kana: "ぎのうじっしゅうせい", romaji: "ginoujisshuusei", vi: "thực tập sinh kỹ năng", en: "technical intern trainee" }
+  - { kana: "しゅふ", romaji: "shufu", vi: "nội trợ", en: "homemaker" }
+  - { kana: "だいがくせい", romaji: "daigakusei", vi: "sinh viên đại học", en: "university student" }
+  - { kana: "こうこうせい", romaji: "koukousei", vi: "học sinh cấp ba", en: "high school student" }
+  - { kana: "ちゅうがくせい", romaji: "chuugakusei", vi: "học sinh cấp hai", en: "junior high student" }
 sents:
   - { t: ["わたし","は","ベトナムじん","です"], r: "watashi wa betonamujin desu", vi: "Tôi là người Việt Nam", en: "I am Vietnamese" }
   - { t: ["あなた","は","にほんじん","です","か"], r: "anata wa nihonjin desu ka", vi: "Bạn là người Nhật à?", en: "Are you Japanese?" }

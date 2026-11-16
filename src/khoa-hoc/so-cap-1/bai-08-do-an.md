@@ -28,6 +28,40 @@ words:
   - { kana: "サラダ", romaji: "sarada", vi: "salad", en: "salad" }
   - { kana: "たべます", romaji: "tabemasu", vi: "ăn", en: "eat" }
   - { kana: "たべません", romaji: "tabemasen", vi: "không ăn", en: "do not eat" }
+  - { kana: "あさごはん", romaji: "asagohan", vi: "bữa sáng", en: "breakfast" }
+  - { kana: "ひるごはん", romaji: "hirugohan", vi: "bữa trưa", en: "lunch" }
+  - { kana: "ばんごはん", romaji: "bangohan", vi: "bữa tối", en: "dinner" }
+  - { kana: "おべんとう", romaji: "obentou", vi: "cơm hộp", en: "boxed lunch" }
+  - { kana: "おにぎり", romaji: "onigiri", vi: "cơm nắm", en: "rice ball" }
+  - { kana: "うどん", romaji: "udon", vi: "mì udon", en: "udon noodles" }
+  - { kana: "そば", romaji: "soba", vi: "mì soba", en: "soba noodles" }
+  - { kana: "てんぷら", romaji: "tenpura", vi: "tempura", en: "tempura" }
+  - { kana: "やきとり", romaji: "yakitori", vi: "gà nướng xiên", en: "yakitori" }
+  - { kana: "ぎゅうにく", romaji: "gyuuniku", vi: "thịt bò", en: "beef" }
+  - { kana: "ぶたにく", romaji: "butaniku", vi: "thịt lợn", en: "pork" }
+  - { kana: "とりにく", romaji: "toriniku", vi: "thịt gà", en: "chicken" }
+  - { kana: "えび", romaji: "ebi", vi: "tôm", en: "shrimp" }
+  - { kana: "いか", romaji: "ika", vi: "mực", en: "squid" }
+  - { kana: "とうふ", romaji: "toufu", vi: "đậu phụ", en: "tofu" }
+  - { kana: "みそしる", romaji: "misoshiru", vi: "canh miso", en: "miso soup" }
+  - { kana: "ケーキ", romaji: "keeki", vi: "bánh ngọt", en: "cake" }
+  - { kana: "アイスクリーム", romaji: "aisukuriimu", vi: "kem", en: "ice cream" }
+  - { kana: "チョコレート", romaji: "chokoreeto", vi: "sô cô la", en: "chocolate" }
+  - { kana: "おかし", romaji: "okashi", vi: "bánh kẹo", en: "sweets" }
+  - { kana: "ハンバーガー", romaji: "hanbaagaa", vi: "hamburger", en: "hamburger" }
+  - { kana: "ピザ", romaji: "piza", vi: "pizza", en: "pizza" }
+  - { kana: "ステーキ", romaji: "suteeki", vi: "bít tết", en: "steak" }
+  - { kana: "トマト", romaji: "tomato", vi: "cà chua", en: "tomato" }
+  - { kana: "たまねぎ", romaji: "tamanegi", vi: "hành tây", en: "onion" }
+  - { kana: "にんじん", romaji: "ninjin", vi: "cà rốt", en: "carrot" }
+  - { kana: "じゃがいも", romaji: "jagaimo", vi: "khoai tây", en: "potato" }
+  - { kana: "キャベツ", romaji: "kyabetsu", vi: "bắp cải", en: "cabbage" }
+  - { kana: "きゅうり", romaji: "kyuuri", vi: "dưa chuột", en: "cucumber" }
+  - { kana: "バナナ", romaji: "banana", vi: "chuối", en: "banana" }
+  - { kana: "いちご", romaji: "ichigo", vi: "dâu tây", en: "strawberry" }
+  - { kana: "ぶどう", romaji: "budou", vi: "nho", en: "grapes" }
+  - { kana: "すいか", romaji: "suika", vi: "dưa hấu", en: "watermelon" }
+  - { kana: "もも", romaji: "momo", vi: "đào", en: "peach" }
 sents:
   - { t: ["わたし","は","りんご","を","たべます"], r: "watashi wa ringo o tabemasu", vi: "Tôi ăn táo", en: "I eat an apple" }
   - { t: ["まいあさ","パン","を","たべます"], r: "maiasa pan o tabemasu", vi: "Mỗi sáng tôi ăn bánh mì", en: "I eat bread every morning" }

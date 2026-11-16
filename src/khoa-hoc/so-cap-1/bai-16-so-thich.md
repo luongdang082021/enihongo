@@ -28,6 +28,33 @@ words:
   - { kana: "よく", romaji: "yoku", vi: "thường", en: "often" }
   - { kana: "ときどき", romaji: "tokidoki", vi: "thỉnh thoảng", en: "sometimes" }
   - { kana: "たのしい", romaji: "tanoshii", vi: "vui", en: "fun" }
+  - { kana: "どくしょ", romaji: "dokusho", vi: "đọc sách", en: "reading" }
+  - { kana: "しゃしん", romaji: "shashin", vi: "ảnh", en: "photo" }
+  - { kana: "カラオケ", romaji: "karaoke", vi: "karaoke", en: "karaoke" }
+  - { kana: "うた", romaji: "uta", vi: "bài hát", en: "song" }
+  - { kana: "うたいます", romaji: "utaimasu", vi: "hát", en: "sing" }
+  - { kana: "ダンス", romaji: "dansu", vi: "nhảy", en: "dance" }
+  - { kana: "ギター", romaji: "gitaa", vi: "đàn guitar", en: "guitar" }
+  - { kana: "ピアノ", romaji: "piano", vi: "đàn piano", en: "piano" }
+  - { kana: "つり", romaji: "tsuri", vi: "câu cá", en: "fishing" }
+  - { kana: "キャンプ", romaji: "kyanpu", vi: "cắm trại", en: "camping" }
+  - { kana: "ハイキング", romaji: "haikingu", vi: "đi bộ đường dài", en: "hiking" }
+  - { kana: "およぎます", romaji: "oyogimasu", vi: "bơi", en: "swim" }
+  - { kana: "ジョギング", romaji: "jogingu", vi: "chạy bộ", en: "jogging" }
+  - { kana: "ヨガ", romaji: "yoga", vi: "yoga", en: "yoga" }
+  - { kana: "やきゅう", romaji: "yakyuu", vi: "bóng chày", en: "baseball" }
+  - { kana: "バスケットボール", romaji: "basukettobooru", vi: "bóng rổ", en: "basketball" }
+  - { kana: "バレーボール", romaji: "bareebooru", vi: "bóng chuyền", en: "volleyball" }
+  - { kana: "たっきゅう", romaji: "takkyuu", vi: "bóng bàn", en: "table tennis" }
+  - { kana: "ゴルフ", romaji: "gorufu", vi: "golf", en: "golf" }
+  - { kana: "アニメ", romaji: "anime", vi: "phim hoạt hình Nhật", en: "anime" }
+  - { kana: "マンガ", romaji: "manga", vi: "truyện tranh", en: "manga" }
+  - { kana: "ドラマ", romaji: "dorama", vi: "phim truyền hình", en: "TV drama" }
+  - { kana: "インターネット", romaji: "intaanetto", vi: "internet", en: "internet" }
+  - { kana: "ショッピング", romaji: "shoppingu", vi: "mua sắm", en: "shopping" }
+  - { kana: "ドライブ", romaji: "doraibu", vi: "lái xe đi chơi", en: "drive" }
+  - { kana: "うんどう", romaji: "undou", vi: "vận động, tập thể dục", en: "exercise" }
+  - { kana: "あそびます", romaji: "asobimasu", vi: "chơi, đi chơi", en: "play, hang out" }
 sents:
   - { t: ["わたし","の","しゅみ","は","おんがく","です"], r: "watashi no shumi wa ongaku desu", vi: "Sở thích của tôi là âm nhạc", en: "My hobby is music" }
   - { t: ["しゅうまつ","に","えいが","を","みます"], r: "shuumatsu ni eiga o mimasu", vi: "Cuối tuần tôi xem phim", en: "I watch a movie on the weekend" }

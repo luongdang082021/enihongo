@@ -27,6 +27,24 @@ words:
   - { kana: "ごちそうさま", romaji: "gochisousama", vi: "cảm ơn bữa ăn (nói sau khi ăn)", en: "said after eating" }
   - { kana: "はい", romaji: "hai", vi: "vâng", en: "yes" }
   - { kana: "いいえ", romaji: "iie", vi: "không", en: "no" }
+  - { kana: "おげんきですか", romaji: "ogenkidesuka", vi: "bạn khỏe không", en: "how are you" }
+  - { kana: "げんきです", romaji: "genkidesu", vi: "tôi khỏe", en: "I am fine" }
+  - { kana: "おひさしぶりです", romaji: "ohisashiburidesu", vi: "lâu rồi không gặp", en: "long time no see" }
+  - { kana: "いってきます", romaji: "ittekimasu", vi: "tôi đi đây", en: "I'm off" }
+  - { kana: "いってらっしゃい", romaji: "itterasshai", vi: "bạn đi nhé", en: "see you later" }
+  - { kana: "ただいま", romaji: "tadaima", vi: "tôi về rồi", en: "I'm home" }
+  - { kana: "おかえりなさい", romaji: "okaerinasai", vi: "mừng bạn về", en: "welcome back" }
+  - { kana: "おめでとう", romaji: "omedetou", vi: "chúc mừng", en: "congratulations" }
+  - { kana: "おつかれさまです", romaji: "otsukaresamadesu", vi: "bạn vất vả rồi", en: "thanks for your hard work" }
+  - { kana: "しつれいします", romaji: "shitsureishimasu", vi: "xin phép, xin lỗi vì làm phiền", en: "excuse me" }
+  - { kana: "おさきにしつれいします", romaji: "osakinishitsureishimasu", vi: "xin phép về trước", en: "excuse me for leaving first" }
+  - { kana: "またあした", romaji: "mataashita", vi: "hẹn mai gặp lại", en: "see you tomorrow" }
+  - { kana: "じゃあね", romaji: "jaane", vi: "tạm biệt (thân mật)", en: "bye (casual)" }
+  - { kana: "どうぞ", romaji: "douzo", vi: "xin mời", en: "please, go ahead" }
+  - { kana: "どうも", romaji: "doumo", vi: "cảm ơn, chào (gọn)", en: "thanks, hi (casual)" }
+  - { kana: "もしもし", romaji: "moshimoshi", vi: "alo", en: "hello (on the phone)" }
+  - { kana: "わかりました", romaji: "wakarimashita", vi: "tôi hiểu rồi", en: "understood" }
+  - { kana: "ちょっとまってください", romaji: "chottomattekudasai", vi: "xin chờ một chút", en: "please wait a moment" }
 sents:
   - { t: ["おはよう","ございます"], r: "ohayou gozaimasu", vi: "Chào buổi sáng (lịch sự)", en: "Good morning (polite)" }
   - { t: ["ありがとう","ございます"], r: "arigatou gozaimasu", vi: "Cảm ơn (lịch sự)", en: "Thank you (polite)" }

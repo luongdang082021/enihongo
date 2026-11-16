@@ -31,6 +31,35 @@ words:
   - { kana: "いぬ", romaji: "inu", vi: "chó", en: "dog" }
   - { kana: "あります", romaji: "arimasu", vi: "có (đồ vật)", en: "there is (thing)" }
   - { kana: "います", romaji: "imasu", vi: "có (người, con vật)", en: "there is (person, animal)" }
+  - { kana: "げんかん", romaji: "genkan", vi: "cửa vào, tiền sảnh", en: "entrance" }
+  - { kana: "キッチン", romaji: "kitchin", vi: "bếp", en: "kitchen" }
+  - { kana: "だいどころ", romaji: "daidokoro", vi: "bếp", en: "kitchen" }
+  - { kana: "おふろ", romaji: "ofuro", vi: "bồn tắm, phòng tắm", en: "bath" }
+  - { kana: "ベランダ", romaji: "beranda", vi: "ban công", en: "balcony" }
+  - { kana: "かいだん", romaji: "kaidan", vi: "cầu thang", en: "stairs" }
+  - { kana: "エレベーター", romaji: "erebeetaa", vi: "thang máy", en: "elevator" }
+  - { kana: "エアコン", romaji: "eakon", vi: "điều hòa", en: "air conditioner" }
+  - { kana: "せんたくき", romaji: "sentakuki", vi: "máy giặt", en: "washing machine" }
+  - { kana: "でんき", romaji: "denki", vi: "đèn, điện", en: "light, electricity" }
+  - { kana: "カーテン", romaji: "kaaten", vi: "rèm cửa", en: "curtain" }
+  - { kana: "たな", romaji: "tana", vi: "kệ", en: "shelf" }
+  - { kana: "ソファ", romaji: "sofa", vi: "ghế sofa", en: "sofa" }
+  - { kana: "ごみ", romaji: "gomi", vi: "rác", en: "garbage" }
+  - { kana: "かぎ", romaji: "kagi", vi: "chìa khóa", en: "key" }
+  - { kana: "うしろ", romaji: "ushiro", vi: "phía sau", en: "behind" }
+  - { kana: "よこ", romaji: "yoko", vi: "bên cạnh", en: "beside" }
+  - { kana: "あいだ", romaji: "aida", vi: "ở giữa", en: "between" }
+  - { kana: "みぎ", romaji: "migi", vi: "bên phải", en: "right" }
+  - { kana: "ひだり", romaji: "hidari", vi: "bên trái", en: "left" }
+  - { kana: "ここ", romaji: "koko", vi: "chỗ này", en: "here" }
+  - { kana: "あそこ", romaji: "asoko", vi: "đằng kia", en: "over there" }
+  - { kana: "アパート", romaji: "apaato", vi: "căn hộ nhỏ", en: "apartment" }
+  - { kana: "マンション", romaji: "manshon", vi: "chung cư", en: "condominium" }
+  - { kana: "やちん", romaji: "yachin", vi: "tiền thuê nhà", en: "rent" }
+  - { kana: "ひろい", romaji: "hiroi", vi: "rộng", en: "spacious" }
+  - { kana: "せまい", romaji: "semai", vi: "chật", en: "narrow" }
+  - { kana: "しずか", romaji: "shizuka", vi: "yên tĩnh", en: "quiet" }
+  - { kana: "にぎやか", romaji: "nigiyaka", vi: "nhộn nhịp", en: "lively" }
 sents:
   - { t: ["つくえ","の","うえ","に","ほん","が","あります"], r: "tsukue no ue ni hon ga arimasu", vi: "Trên bàn có quyển sách", en: "There is a book on the desk" }
   - { t: ["へや","に","ねこ","が","います"], r: "heya ni neko ga imasu", vi: "Trong phòng có con mèo", en: "There is a cat in the room" }

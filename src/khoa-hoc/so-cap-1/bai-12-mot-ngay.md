@@ -28,6 +28,31 @@ words:
   - { kana: "うち", romaji: "uchi", vi: "nhà (của mình)", en: "home" }
   - { kana: "にほんご", romaji: "nihongo", vi: "tiếng Nhật", en: "Japanese language" }
   - { kana: "ニュース", romaji: "nyuusu", vi: "tin tức", en: "news" }
+  - { kana: "はみがきします", romaji: "hamigakishimasu", vi: "đánh răng", en: "brush teeth" }
+  - { kana: "シャワー", romaji: "shawaa", vi: "vòi sen", en: "shower" }
+  - { kana: "あびます", romaji: "abimasu", vi: "tắm (vòi sen)", en: "take (a shower)" }
+  - { kana: "はいります", romaji: "hairimasu", vi: "vào", en: "enter" }
+  - { kana: "でます", romaji: "demasu", vi: "ra", en: "leave, exit" }
+  - { kana: "でかけます", romaji: "dekakemasu", vi: "đi ra ngoài", en: "go out" }
+  - { kana: "あらいます", romaji: "araimasu", vi: "rửa, giặt", en: "wash" }
+  - { kana: "そうじします", romaji: "soujishimasu", vi: "dọn dẹp", en: "clean" }
+  - { kana: "せんたくします", romaji: "sentakushimasu", vi: "giặt đồ", en: "do laundry" }
+  - { kana: "りょうりします", romaji: "ryourishimasu", vi: "nấu ăn", en: "cook" }
+  - { kana: "かいものします", romaji: "kaimonoshimasu", vi: "mua sắm", en: "go shopping" }
+  - { kana: "おわります", romaji: "owarimasu", vi: "kết thúc", en: "end, finish" }
+  - { kana: "はじまります", romaji: "hajimarimasu", vi: "bắt đầu", en: "begin, start" }
+  - { kana: "やすみます", romaji: "yasumimasu", vi: "nghỉ", en: "rest, take a day off" }
+  - { kana: "はたらきます", romaji: "hatarakimasu", vi: "làm việc", en: "work" }
+  - { kana: "ならいます", romaji: "naraimasu", vi: "học (từ ai)", en: "learn" }
+  - { kana: "はなします", romaji: "hanashimasu", vi: "nói chuyện", en: "speak, talk" }
+  - { kana: "でんわします", romaji: "denwashimasu", vi: "gọi điện", en: "make a phone call" }
+  - { kana: "すわります", romaji: "suwarimasu", vi: "ngồi", en: "sit" }
+  - { kana: "たちます", romaji: "tachimasu", vi: "đứng", en: "stand" }
+  - { kana: "あけます", romaji: "akemasu", vi: "mở", en: "open" }
+  - { kana: "しめます", romaji: "shimemasu", vi: "đóng", en: "close" }
+  - { kana: "つけます", romaji: "tsukemasu", vi: "bật", en: "turn on" }
+  - { kana: "けします", romaji: "keshimasu", vi: "tắt", en: "turn off" }
+  - { kana: "もちます", romaji: "mochimasu", vi: "cầm, mang", en: "hold, carry" }
 sents:
   - { t: ["まいにち","ろくじ","に","おきます"], r: "mainichi rokuji ni okimasu", vi: "Mỗi ngày tôi dậy lúc sáu giờ", en: "I get up at six every day" }
   - { t: ["ごじ","に","うち","へ","かえります"], r: "goji ni uchi e kaerimasu", vi: "Năm giờ tôi về nhà", en: "I go home at five" }

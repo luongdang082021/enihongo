@@ -28,6 +28,34 @@ words:
   - { kana: "それ", romaji: "sore", vi: "cái đó (gần bạn)", en: "that (near you)" }
   - { kana: "あれ", romaji: "are", vi: "cái kia (xa cả hai)", en: "that over there" }
   - { kana: "なん", romaji: "nan", vi: "cái gì", en: "what" }
+  - { kana: "こくばん", romaji: "kokuban", vi: "bảng đen", en: "blackboard" }
+  - { kana: "ホワイトボード", romaji: "howaitoboodo", vi: "bảng trắng", en: "whiteboard" }
+  - { kana: "きょうかしょ", romaji: "kyoukasho", vi: "sách giáo khoa", en: "textbook" }
+  - { kana: "テスト", romaji: "tesuto", vi: "bài kiểm tra", en: "test" }
+  - { kana: "しゅくだい", romaji: "shukudai", vi: "bài tập về nhà", en: "homework" }
+  - { kana: "しつもん", romaji: "shitsumon", vi: "câu hỏi", en: "question" }
+  - { kana: "こたえ", romaji: "kotae", vi: "câu trả lời", en: "answer" }
+  - { kana: "もんだい", romaji: "mondai", vi: "bài tập, vấn đề", en: "problem, exercise" }
+  - { kana: "じゅぎょう", romaji: "jugyou", vi: "giờ học", en: "class, lesson" }
+  - { kana: "やすみ", romaji: "yasumi", vi: "nghỉ, ngày nghỉ", en: "break, day off" }
+  - { kana: "かみ", romaji: "kami", vi: "giấy", en: "paper" }
+  - { kana: "はさみ", romaji: "hasami", vi: "cái kéo", en: "scissors" }
+  - { kana: "のり", romaji: "nori", vi: "hồ dán", en: "glue" }
+  - { kana: "じょうぎ", romaji: "jougi", vi: "thước kẻ", en: "ruler" }
+  - { kana: "ボールペン", romaji: "boorupen", vi: "bút bi", en: "ballpoint pen" }
+  - { kana: "パソコン", romaji: "pasokon", vi: "máy tính", en: "computer" }
+  - { kana: "スマホ", romaji: "sumaho", vi: "điện thoại thông minh", en: "smartphone" }
+  - { kana: "ざっし", romaji: "zasshi", vi: "tạp chí", en: "magazine" }
+  - { kana: "しんぶん", romaji: "shinbun", vi: "báo", en: "newspaper" }
+  - { kana: "てがみ", romaji: "tegami", vi: "thư", en: "letter" }
+  - { kana: "ごみばこ", romaji: "gomibako", vi: "thùng rác", en: "trash can" }
+  - { kana: "かきます", romaji: "kakimasu", vi: "viết", en: "write" }
+  - { kana: "はじめましょう", romaji: "hajimemashou", vi: "bắt đầu nào", en: "let's begin" }
+  - { kana: "おわりましょう", romaji: "owarimashou", vi: "kết thúc nào", en: "let's finish" }
+  - { kana: "みてください", romaji: "mitekudasai", vi: "xin hãy nhìn", en: "please look" }
+  - { kana: "きいてください", romaji: "kiitekudasai", vi: "xin hãy nghe", en: "please listen" }
+  - { kana: "よんでください", romaji: "yondekudasai", vi: "xin hãy đọc", en: "please read" }
+  - { kana: "かいてください", romaji: "kaitekudasai", vi: "xin hãy viết", en: "please write" }
 sents:
   - { t: ["これ","は","ほん","です"], r: "kore wa hon desu", vi: "Đây là quyển sách", en: "This is a book" }
   - { t: ["それ","は","えんぴつ","です"], r: "sore wa enpitsu desu", vi: "Đó là cây bút chì", en: "That is a pencil" }

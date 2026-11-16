@@ -14,7 +14,7 @@ Trạng thái: đang dùng. Cập nhật: 2026-11-13.
 | 5. Dojo chung | Dojo chọn theo khóa học (D-014); 2026-11-13 (D-021): bỏ 5 hiệp, thêm soạn từ bằng ô chữ, câu nhắc lại, ưu tiên chữ sai, kho từ vựng bổ sung | Hiragana và Katakana xong; Kanji chờ khóa |
 | 6. Hai ngôn ngữ | Việt và Anh, mặc định theo vị trí (Việt Nam: tiếng Việt, nơi khác: tiếng Anh), xem [`i18n-plan.md`](i18n-plan.md) | Xong (2026-11-13): hạ tầng, giao diện, 13 bài Hiragana và 12 bài Katakana tiếng Anh. Còn chờ xác nhận cách chuyển hướng ở trang con (D-018) |
 | 7. Katakana | Khóa Katakana song ngữ, xem [`katakana-plan.md`](katakana-plan.md) | Đã phát hành (2026-11-06): 12 bài Việt và Anh, Dojo trộn hai bộ chữ |
-| 8. Sơ cấp 1 (A1) | 18 bài theo luồng chủ đề A1 (D-022), mỗi bài có từ vựng, mẫu câu và mini quiz; thêm 5 dạng bài tập (nghĩa từ, nghĩa → từ, sắp xếp câu, điền trợ từ, nghĩa câu) | Đã phát hành (2026-11-15): 18 bài Việt và Anh, Dojo trộn cả từ và câu. Chờ người biết tiếng Nhật rà soát nội dung |
+| 8. Sơ cấp 1 (A1) | 18 bài theo luồng chủ đề A1 (D-022), mỗi bài có từ vựng, mẫu câu và mini quiz; thêm 5 dạng bài tập (nghĩa từ, nghĩa → từ, sắp xếp câu, điền trợ từ, nghĩa câu) | Đã phát hành (2026-11-15): 18 bài Việt và Anh, Dojo trộn cả từ và câu. 2026-11-16 (D-023): mở rộng còn khoảng 757 từ, xem [`../content/so-cap-1-plan.md`](../content/so-cap-1-plan.md). Chờ người biết tiếng Nhật rà soát nội dung |
 | 8. Giáo trình sơ cấp | Theo [`../content/curriculum.md`](../content/curriculum.md); D-015 đến D-017 hoãn | Hoãn |
 
 ## Giai đoạn 1: việc cần làm

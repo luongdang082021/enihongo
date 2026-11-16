@@ -28,6 +28,39 @@ words:
   - { kana: "せん", romaji: "sen", vi: "một nghìn", en: "thousand" }
   - { kana: "えん", romaji: "en", vi: "yên (tiền Nhật)", en: "yen" }
   - { kana: "いくら", romaji: "ikura", vi: "bao nhiêu tiền", en: "how much" }
+  - { kana: "れい", romaji: "rei", vi: "số không (cách đọc khác)", en: "zero (alternative)" }
+  - { kana: "し", romaji: "shi", vi: "bốn (cách đọc khác)", en: "four (alternative)" }
+  - { kana: "しち", romaji: "shichi", vi: "bảy (cách đọc khác)", en: "seven (alternative)" }
+  - { kana: "く", romaji: "ku", vi: "chín (cách đọc khác)", en: "nine (alternative)" }
+  - { kana: "じゅういち", romaji: "juuichi", vi: "mười một", en: "eleven" }
+  - { kana: "じゅうに", romaji: "juuni", vi: "mười hai", en: "twelve" }
+  - { kana: "にじゅう", romaji: "nijuu", vi: "hai mươi", en: "twenty" }
+  - { kana: "さんじゅう", romaji: "sanjuu", vi: "ba mươi", en: "thirty" }
+  - { kana: "よんじゅう", romaji: "yonjuu", vi: "bốn mươi", en: "forty" }
+  - { kana: "ごじゅう", romaji: "gojuu", vi: "năm mươi", en: "fifty" }
+  - { kana: "ろくじゅう", romaji: "rokujuu", vi: "sáu mươi", en: "sixty" }
+  - { kana: "ななじゅう", romaji: "nanajuu", vi: "bảy mươi", en: "seventy" }
+  - { kana: "はちじゅう", romaji: "hachijuu", vi: "tám mươi", en: "eighty" }
+  - { kana: "きゅうじゅう", romaji: "kyuujuu", vi: "chín mươi", en: "ninety" }
+  - { kana: "さんびゃく", romaji: "sanbyaku", vi: "ba trăm", en: "three hundred" }
+  - { kana: "ろっぴゃく", romaji: "roppyaku", vi: "sáu trăm", en: "six hundred" }
+  - { kana: "はっぴゃく", romaji: "happyaku", vi: "tám trăm", en: "eight hundred" }
+  - { kana: "さんぜん", romaji: "sanzen", vi: "ba nghìn", en: "three thousand" }
+  - { kana: "はっせん", romaji: "hassen", vi: "tám nghìn", en: "eight thousand" }
+  - { kana: "いちまん", romaji: "ichiman", vi: "mười nghìn", en: "ten thousand" }
+  - { kana: "ばんごう", romaji: "bangou", vi: "số, mã số", en: "number" }
+  - { kana: "でんわばんごう", romaji: "denwabangou", vi: "số điện thoại", en: "phone number" }
+  - { kana: "いくつ", romaji: "ikutsu", vi: "bao nhiêu cái", en: "how many" }
+  - { kana: "ひとつ", romaji: "hitotsu", vi: "một cái", en: "one (thing)" }
+  - { kana: "ふたつ", romaji: "futatsu", vi: "hai cái", en: "two (things)" }
+  - { kana: "みっつ", romaji: "mittsu", vi: "ba cái", en: "three (things)" }
+  - { kana: "よっつ", romaji: "yottsu", vi: "bốn cái", en: "four (things)" }
+  - { kana: "いつつ", romaji: "itsutsu", vi: "năm cái", en: "five (things)" }
+  - { kana: "むっつ", romaji: "muttsu", vi: "sáu cái", en: "six (things)" }
+  - { kana: "ななつ", romaji: "nanatsu", vi: "bảy cái", en: "seven (things)" }
+  - { kana: "やっつ", romaji: "yattsu", vi: "tám cái", en: "eight (things)" }
+  - { kana: "ここのつ", romaji: "kokonotsu", vi: "chín cái", en: "nine (things)" }
+  - { kana: "とお", romaji: "too", vi: "mười cái", en: "ten (things)" }
 sents:
   - { t: ["これ","は","いくら","です","か"], r: "kore wa ikura desu ka", vi: "Cái này bao nhiêu tiền?", en: "How much is this?" }
   - { t: ["ひゃくえん","です"], r: "hyakuen desu", vi: "Một trăm yên", en: "It is 100 yen" }

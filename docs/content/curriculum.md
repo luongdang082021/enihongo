@@ -20,7 +20,7 @@ Bảng đối chiếu để định hướng nội dung, không phải cam kết
 |---|---|---|---|
 | Nhập môn Hiragana | Điều kiện đầu vào cho A1 | Cần thiết cho mọi bài thi | Đã mở (13 bài) |
 | Katakana | Điều kiện đầu vào cho A1 | Cần thiết cho mọi bài thi | Có kế hoạch ([`../planning/katakana-plan.md`](../planning/katakana-plan.md)) |
-| Tiếng Nhật sơ cấp 1 | CEFR A1 | JLPT N5, JFT-Basic mức A1 | Đã mở (18 bài, kana, D-022) |
+| Tiếng Nhật sơ cấp 1 | CEFR A1 | JLPT N5, JFT-Basic mức A1 | Đã mở (18 bài, kana, D-022, D-023), xem [`so-cap-1-plan.md`](so-cap-1-plan.md) |
 | Tiếng Nhật sơ cấp 2 | CEFR A2 | JLPT N4, JFT-Basic mức A2 | Chưa bắt đầu |
 | Kanji cơ bản | Hỗ trợ A1 đến A2 | JLPT N5, N4 | Chưa bắt đầu |
 | Giao tiếp và luyện JFT-Basic | A1 đến A2 | JFT-Basic | Chưa bắt đầu |

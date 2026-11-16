@@ -28,6 +28,36 @@ words:
   - { kana: "まずい", romaji: "mazui", vi: "dở", en: "bad-tasting" }
   - { kana: "なに", romaji: "nani", vi: "cái gì", en: "what" }
   - { kana: "ちゅうもん", romaji: "chuumon", vi: "gọi món", en: "order" }
+  - { kana: "コーラ", romaji: "koora", vi: "cô ca", en: "cola" }
+  - { kana: "ワイン", romaji: "wain", vi: "rượu vang", en: "wine" }
+  - { kana: "さけ", romaji: "sake", vi: "rượu, sake", en: "alcohol, sake" }
+  - { kana: "こうちゃ", romaji: "koucha", vi: "trà đen", en: "black tea" }
+  - { kana: "りょくちゃ", romaji: "ryokucha", vi: "trà xanh", en: "green tea" }
+  - { kana: "むぎちゃ", romaji: "mugicha", vi: "trà lúa mạch", en: "barley tea" }
+  - { kana: "おゆ", romaji: "oyu", vi: "nước nóng", en: "hot water" }
+  - { kana: "こおり", romaji: "koori", vi: "đá", en: "ice" }
+  - { kana: "つめたい", romaji: "tsumetai", vi: "lạnh (đồ uống, đồ vật)", en: "cold (to the touch)" }
+  - { kana: "あまい", romaji: "amai", vi: "ngọt", en: "sweet" }
+  - { kana: "からい", romaji: "karai", vi: "cay", en: "spicy" }
+  - { kana: "しょっぱい", romaji: "shoppai", vi: "mặn", en: "salty" }
+  - { kana: "にがい", romaji: "nigai", vi: "đắng", en: "bitter" }
+  - { kana: "すっぱい", romaji: "suppai", vi: "chua", en: "sour" }
+  - { kana: "おなか", romaji: "onaka", vi: "bụng", en: "stomach" }
+  - { kana: "のど", romaji: "nodo", vi: "cổ họng", en: "throat" }
+  - { kana: "おさら", romaji: "osara", vi: "đĩa", en: "plate" }
+  - { kana: "はし", romaji: "hashi", vi: "đũa", en: "chopsticks" }
+  - { kana: "スプーン", romaji: "supuun", vi: "thìa", en: "spoon" }
+  - { kana: "フォーク", romaji: "fooku", vi: "dĩa", en: "fork" }
+  - { kana: "ナイフ", romaji: "naifu", vi: "dao ăn", en: "knife" }
+  - { kana: "コップ", romaji: "koppu", vi: "cốc", en: "glass, cup" }
+  - { kana: "ちゃわん", romaji: "chawan", vi: "bát", en: "rice bowl" }
+  - { kana: "おかいけい", romaji: "okaikei", vi: "thanh toán", en: "the bill" }
+  - { kana: "ごちゅうもん", romaji: "gochuumon", vi: "gọi món (lịch sự)", en: "your order" }
+  - { kana: "おすすめ", romaji: "osusume", vi: "món gợi ý", en: "recommendation" }
+  - { kana: "セット", romaji: "setto", vi: "set", en: "set meal" }
+  - { kana: "ランチ", romaji: "ranchi", vi: "bữa trưa set", en: "lunch special" }
+  - { kana: "ていしょく", romaji: "teishoku", vi: "cơm set", en: "set meal with rice" }
+  - { kana: "よやく", romaji: "yoyaku", vi: "đặt chỗ", en: "reservation" }
 sents:
   - { t: ["コーヒー","を","ください"], r: "koohii o kudasai", vi: "Cho tôi cà phê", en: "Coffee, please" }
   - { t: ["みず","を","おねがいします"], r: "mizu o onegaishimasu", vi: "Cho tôi nước", en: "Water, please" }

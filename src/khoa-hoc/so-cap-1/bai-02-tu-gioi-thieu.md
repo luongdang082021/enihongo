@@ -23,9 +23,27 @@ words:
   - { kana: "がくせい", romaji: "gakusei", vi: "học sinh, sinh viên", en: "student" }
   - { kana: "かいしゃいん", romaji: "kaishain", vi: "nhân viên công ty", en: "company employee" }
   - { kana: "ともだち", romaji: "tomodachi", vi: "bạn bè", en: "friend" }
-  - { kana: "さん", romaji: "san", vi: "anh, chị, ông, bà (đi sau tên)", en: "Mr, Ms (after a name)" }
+  - { kana: "さん", romaji: "san", vi: "anh, chị, ông, bà (đi sau tên)", en: "Mr, Ms (after a name)", quiz: false }
   - { kana: "です", romaji: "desu", vi: "là", en: "is, am, are" }
   - { kana: "なん", romaji: "nan", vi: "cái gì", en: "what" }
+  - { kana: "しごと", romaji: "shigoto", vi: "công việc", en: "work, job" }
+  - { kana: "だいがく", romaji: "daigaku", vi: "đại học", en: "university" }
+  - { kana: "アルバイト", romaji: "arubaito", vi: "việc làm thêm", en: "part-time job" }
+  - { kana: "しゃちょう", romaji: "shachou", vi: "giám đốc", en: "company president" }
+  - { kana: "うんてんしゅ", romaji: "untenshu", vi: "tài xế", en: "driver" }
+  - { kana: "ベトナムご", romaji: "betonamugo", vi: "tiếng Việt", en: "Vietnamese language" }
+  - { kana: "えいご", romaji: "eigo", vi: "tiếng Anh", en: "English language" }
+  - { kana: "だれ", romaji: "dare", vi: "ai", en: "who" }
+  - { kana: "どなた", romaji: "donata", vi: "vị nào (lịch sự)", en: "who (polite)" }
+  - { kana: "こちら", romaji: "kochira", vi: "vị này, phía này", en: "this person, this way" }
+  - { kana: "ぼく", romaji: "boku", vi: "tôi (nam, thân mật)", en: "I (male, casual)" }
+  - { kana: "かれ", romaji: "kare", vi: "anh ấy, bạn trai", en: "he, boyfriend" }
+  - { kana: "かのじょ", romaji: "kanojo", vi: "cô ấy, bạn gái", en: "she, girlfriend" }
+  - { kana: "みなさん", romaji: "minasan", vi: "mọi người", en: "everyone" }
+  - { kana: "さい", romaji: "sai", vi: "tuổi", en: "years old" }
+  - { kana: "はたち", romaji: "hatachi", vi: "hai mươi tuổi", en: "twenty years old" }
+  - { kana: "なんさい", romaji: "nansai", vi: "mấy tuổi", en: "how old" }
+  - { kana: "じこしょうかい", romaji: "jikoshoukai", vi: "tự giới thiệu", en: "self-introduction" }
 sents:
   - { t: ["はじめまして","よろしく","おねがいします"], r: "hajimemashite yoroshiku onegaishimasu", vi: "Rất vui được gặp, mong được giúp đỡ", en: "Nice to meet you, please treat me well" }
   - { t: ["わたし","は","ミン","です"], r: "watashi wa min desu", vi: "Tôi là Minh", en: "I am Minh" }
